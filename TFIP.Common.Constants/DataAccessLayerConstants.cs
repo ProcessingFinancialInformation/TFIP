@@ -2,6 +2,6 @@
 {
     public class DataAccessLayerConstants
     {
-        public static string CreditDatabaseConnectionStringName = "CreditDbConnection";
+        public const string CreditDatabaseConnectionStringName = "CreditDbConnection";
     }
 }
