@@ -5,7 +5,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TFIP.Web.Infrastructure;
 
-namespace TFIP.WebApi
+namespace TFIP.Web.Api
 {
     public class WebApiApplication : HttpApplication
     {

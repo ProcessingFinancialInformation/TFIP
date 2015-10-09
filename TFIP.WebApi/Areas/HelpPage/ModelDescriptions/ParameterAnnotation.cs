@@ -1,6 +1,6 @@
 using System;
 
-namespace TFIP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace TFIP.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

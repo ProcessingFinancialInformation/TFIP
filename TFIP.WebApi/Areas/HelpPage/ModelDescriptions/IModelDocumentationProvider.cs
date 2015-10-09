@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace TFIP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace TFIP.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

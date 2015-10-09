@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.Services", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.Contracts", "TFIP.Business.Contracts\TFIP.Business.Contracts.csproj", "{EB93E46A-EA8C-4C47-A746-DBC19DD6E607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.WebApi", "TFIP.WebApi\TFIP.WebApi.csproj", "{50633F36-A59A-41D0-8341-D7979F96A1E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Web.Api", "TFIP.WebApi\TFIP.Web.Api.csproj", "{50633F36-A59A-41D0-8341-D7979F96A1E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Web.Infrastructure", "TFIP.Web.Infrastructure\TFIP.Web.Infrastructure.csproj", "{A444BA0D-0EB7-4483-9316-17341236F8CA}"
 EndProject

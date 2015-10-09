@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using TFIP.WebApi.Areas.HelpPage.ModelDescriptions;
-using TFIP.WebApi.Areas.HelpPage.Models;
+using TFIP.Web.Api.Areas.HelpPage.ModelDescriptions;
+using TFIP.Web.Api.Areas.HelpPage.Models;
 
-namespace TFIP.WebApi.Areas.HelpPage.Controllers
+namespace TFIP.Web.Api.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

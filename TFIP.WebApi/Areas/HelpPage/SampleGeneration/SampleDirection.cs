@@ -1,4 +1,4 @@
-namespace TFIP.WebApi.Areas.HelpPage
+namespace TFIP.Web.Api.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using TFIP.WebApi.Areas.HelpPage.ModelDescriptions;
-using TFIP.WebApi.Areas.HelpPage.Models;
+using TFIP.Web.Api.Areas.HelpPage.ModelDescriptions;
+using TFIP.Web.Api.Areas.HelpPage.Models;
+using TFIP.Web.Api.Areas.HelpPage.SampleGeneration;
 
-namespace TFIP.WebApi.Areas.HelpPage
+namespace TFIP.Web.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

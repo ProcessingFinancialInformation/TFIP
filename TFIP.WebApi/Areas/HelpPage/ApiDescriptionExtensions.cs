@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace TFIP.WebApi.Areas.HelpPage
+namespace TFIP.Web.Api.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

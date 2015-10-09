@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using TFIP.Business.Contracts;
 
-namespace TFIP.WebApi.Controllers
+namespace TFIP.Web.Api.Controllers
 {
     public class HomeController : Controller
     {

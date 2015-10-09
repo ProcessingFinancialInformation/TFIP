@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace TFIP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace TFIP.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

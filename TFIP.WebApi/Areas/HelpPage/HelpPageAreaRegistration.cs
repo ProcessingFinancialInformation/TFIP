@@ -1,7 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using TFIP.Web.Api.Areas.HelpPage.App_Start;
 
-namespace TFIP.WebApi.Areas.HelpPage
+namespace TFIP.Web.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {
