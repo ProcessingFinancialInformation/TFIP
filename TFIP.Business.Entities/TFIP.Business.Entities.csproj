@@ -54,6 +54,8 @@
     <Compile Include="IndividualClient.cs" />
     <Compile Include="JuridicalClient.cs" />
     <Compile Include="Notification.cs" />
+    <Compile Include="NotificationAccountType.cs" />
+    <Compile Include="NotificationType.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

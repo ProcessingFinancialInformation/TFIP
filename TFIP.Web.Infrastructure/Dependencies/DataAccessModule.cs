@@ -9,6 +9,11 @@ namespace TFIP.Web.Infrastructure.Dependencies
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<CreditDbContext>()
+                .AsSelf()
+                .WithParameter("connectionStringName", "CreditDbConnection")
+                .InstancePerRequest();
+
             builder.RegisterType<RepositoryProvider>()
                 .As<IRepositoryProvider>();
 

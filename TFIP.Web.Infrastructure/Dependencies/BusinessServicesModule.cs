@@ -12,6 +12,8 @@ namespace TFIP.Web.Infrastructure.Dependencies
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces();
 
+            builder.RegisterType(typeof(AutomapperConfigurator))
+                .AsSelf();
 
             builder.RegisterType<ServiceFactory>()
                 .As<IServiceFactory>()
