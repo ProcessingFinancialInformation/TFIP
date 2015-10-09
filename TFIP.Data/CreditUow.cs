@@ -14,7 +14,7 @@ namespace TFIP.Data
         /// </summary>
         /// <param name="context">Db context </param>
         /// <param name="repositoryProvider">Repository provider</param>
-        public CreditUow(CreditDbContext context, IRepositoryProvider repositoryProvider)
+        public CreditUow(DbContext context, IRepositoryProvider repositoryProvider)
         {
             dbContext = context;
             ConfigureDbContext();
