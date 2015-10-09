@@ -40,7 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attachment.cs" />
+    <Compile Include="AttachmentHeader.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="ClientType.cs" />
+    <Compile Include="CreditRequest.cs" />
+    <Compile Include="CreditType.cs" />
+    <Compile Include="EmailStatus.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Guarantor.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="IEntityWithAttachments.cs" />
+    <Compile Include="IndividualClient.cs" />
+    <Compile Include="JuridicalClient.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
