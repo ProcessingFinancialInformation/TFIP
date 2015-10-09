@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Entities", "TFIP.Entities\TFIP.Entities.csproj", "{1BB7DC50-2F5C-4BA3-9482-886C5CE7BCBB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{85B83380-DE3D-4CFF-9958-4D10B2D12C77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F0A457B4-FFAE-40D9-A674-661AEF627C69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{319700B1-4B14-40D8-AD7B-B007409BFFFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CFD58EBA-695D-4874-95E9-693590017084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Data", "TFIP.Data\TFIP.Data.csproj", "{62A5BF44-2AA3-4731-82A7-4136470FEFA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Data.Contracts", "TFIP.Data.Contracts\TFIP.Data.Contracts.csproj", "{763FB63B-3BD0-4C29-BE50-E91913AF1E54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.Entities", "TFIP.Business.Entities\TFIP.Business.Entities.csproj", "{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +23,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1BB7DC50-2F5C-4BA3-9482-886C5CE7BCBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BB7DC50-2F5C-4BA3-9482-886C5CE7BCBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BB7DC50-2F5C-4BA3-9482-886C5CE7BCBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BB7DC50-2F5C-4BA3-9482-886C5CE7BCBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A5BF44-2AA3-4731-82A7-4136470FEFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A5BF44-2AA3-4731-82A7-4136470FEFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A5BF44-2AA3-4731-82A7-4136470FEFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A5BF44-2AA3-4731-82A7-4136470FEFA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763FB63B-3BD0-4C29-BE50-E91913AF1E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763FB63B-3BD0-4C29-BE50-E91913AF1E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763FB63B-3BD0-4C29-BE50-E91913AF1E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763FB63B-3BD0-4C29-BE50-E91913AF1E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62A5BF44-2AA3-4731-82A7-4136470FEFA9} = {CFD58EBA-695D-4874-95E9-693590017084}
+		{763FB63B-3BD0-4C29-BE50-E91913AF1E54} = {CFD58EBA-695D-4874-95E9-693590017084}
+		{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
 	EndGlobalSection
 EndGlobal
