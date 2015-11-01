@@ -2,6 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-<div>
-    Work on this shit, bitch!
+<div ng-controller="HomeController">
+    <div ng-repeat="info in infos" ng-bind="info"></div>
 </div>

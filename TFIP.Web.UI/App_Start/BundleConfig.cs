@@ -9,15 +9,23 @@ namespace TFIP.Web.UI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jQuery/jquery-{version}.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+            bundles.Add(
+                new ScriptBundle("~/bundles/angular")
+                    .IncludeDirectory("~/Scripts/Angular", "*.js").IncludeDirectory("~/Scripts/angular-sanitize", "*.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/modernizr/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").IncludeDirectory(
+                      "~/Scripts/bootstrap/", "*.js"));
+
+            bundles.Add(
+                new ScriptBundle("~/bundles/main").IncludeDirectory("~/Scripts/App/", "*.js")
+                    .IncludeDirectory("~/Scripts/Extensions/", "*.js")
+                    .IncludeDirectory("~/Scripts/Home/", "*.js")
+                    .IncludeDirectory("~/Scripts/linq/", "*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

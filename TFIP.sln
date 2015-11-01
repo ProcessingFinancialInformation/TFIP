@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{85B83380-DE3D-4CFF-9958-4D10B2D12C77}"
+	ProjectSection(SolutionItems) = preProject
+		Generate TypeScript references.fsx = Generate TypeScript references.fsx
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F0A457B4-FFAE-40D9-A674-661AEF627C69}"
 EndProject
