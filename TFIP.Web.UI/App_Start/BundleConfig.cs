@@ -8,15 +8,31 @@ namespace TFIP.Web.UI
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jQuery/jquery-{version}.js"));
+            RegisterScriptBundles(bundles);
+            RegisterStyleBundles(bundles);
+        }
 
-            bundles.Add(
-                new ScriptBundle("~/bundles/angular")
-                    .IncludeDirectory("~/Scripts/Angular", "*.js").IncludeDirectory("~/Scripts/angular-sanitize", "*.js"));
+        private static void RegisterStyleBundles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/Content/libs").Include(
+                "~/Content/bootstrap.min.css"));
+
+            bundles.Add(new LessBundle("~/Content/common").Include(
+                "~/Content/app/variables.less",
+                "~/Content/app/colors.less",
+                "~/Content/app/common.less"));
+        }
+
+        private static void RegisterScriptBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                "~/Scripts/jQuery/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular")
+                .IncludeDirectory("~/Scripts/Angular", "*.js").IncludeDirectory("~/Scripts/angular-sanitize", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr/modernizr-*"));
+            "~/Scripts/modernizr/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").IncludeDirectory(
                       "~/Scripts/bootstrap/", "*.js"));
@@ -26,10 +42,6 @@ namespace TFIP.Web.UI
                     .IncludeDirectory("~/Scripts/Extensions/", "*.js")
                     .IncludeDirectory("~/Scripts/Home/", "*.js")
                     .IncludeDirectory("~/Scripts/linq/", "*.js"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
         }
     }
 }

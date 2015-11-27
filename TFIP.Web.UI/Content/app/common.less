@@ -1,0 +1,65 @@
+﻿@import "variables.less";
+@import "colors.less";
+
+body, div, span, li, h1, h2, h3, h4, h5, h6 {
+    font-family: @main-font;
+}
+
+body {
+    background-color: @backgroundColor;
+
+    footer {
+        background: none repeat scroll 0 0 white;
+        border-top: 1px solid #e7eaec;
+        bottom: 0;
+        left: 0;
+        padding: 10px 15px;
+        position: absolute;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    @media (max-width: @tablet-screen) {
+        footer {
+            max-width: 100%;
+        }
+    }
+
+    @media (min-width: @tablet-screen) {
+        footer {
+            max-width: @tablet-screen-container;
+        }
+    }
+
+    @media(min-width: @small-screen) {
+        footer {
+            max-width: @small-screen-container;
+        }
+    }
+    
+    @media(min-width: @big-screen) {
+        footer {
+            max-width: @big-screen-container;
+        }
+    }
+
+    .page-header {
+        background: linear-gradient(to top, #efb73e, #bf3e11);
+        margin-top: 51px;
+        padding: 40px 15px 25px 15px;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
+
+    .body-content {
+        padding: 15px;
+    }
+
+    .page-header-container {
+        padding: 0;
+    }
+
+    .container:not(.navbar-container) {
+        background-color: @containerBackgroundColor;
+    }
+}
