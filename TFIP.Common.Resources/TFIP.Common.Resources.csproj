@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</ProjectGuid>
+    <ProjectGuid>{6B049560-B01B-47C4-AFD1-272F90C7FA34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TFIP.Business.Entities</RootNamespace>
-    <AssemblyName>TFIP.Business.Entities</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>TFIP.Common.Resources</RootNamespace>
+    <AssemblyName>TFIP.Common.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,42 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attachment.cs" />
-    <Compile Include="AttachmentHeader.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="ClientType.cs" />
-    <Compile Include="CreditKind.cs" />
-    <Compile Include="CreditRequest.cs" />
-    <Compile Include="CreditType.cs" />
-    <Compile Include="Currency.cs" />
-    <Compile Include="EmailStatus.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="Guarantor.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IEntityWithAttachments.cs" />
-    <Compile Include="IndividualClient.cs" />
-    <Compile Include="JuridicalClient.cs" />
-    <Compile Include="MoneyType.cs" />
-    <Compile Include="Notification.cs" />
-    <Compile Include="NotificationAccountType.cs" />
-    <Compile Include="NotificationType.cs" />
-    <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
-      <Project>{8483AAE7-5E1C-4D74-91F9-B44878F83359}</Project>
-      <Name>TFIP.Common.Constants</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

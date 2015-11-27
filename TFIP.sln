@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{85B83380-DE3D-4CFF-9958-4D10B2D12C77}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,6 +37,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Common.Helpers", "TFIP.Common.Helpers\TFIP.Common.Helpers.csproj", "{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Web.UI", "TFIP.Web.UI\TFIP.Web.UI.csproj", "{73F0F204-7C1D-483D-96A1-5303C5C8A767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Common.Resources", "TFIP.Common.Resources\TFIP.Common.Resources.csproj", "{6B049560-B01B-47C4-AFD1-272F90C7FA34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,10 @@ Global
 		{73F0F204-7C1D-483D-96A1-5303C5C8A767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73F0F204-7C1D-483D-96A1-5303C5C8A767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73F0F204-7C1D-483D-96A1-5303C5C8A767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B049560-B01B-47C4-AFD1-272F90C7FA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B049560-B01B-47C4-AFD1-272F90C7FA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B049560-B01B-47C4-AFD1-272F90C7FA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B049560-B01B-47C4-AFD1-272F90C7FA34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +115,6 @@ Global
 		{2A5075C0-8133-4A3E-9C88-0CA301F7B54B} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
 		{4124F2F0-D0DF-403F-A2CE-B645C61C5D30} = {319700B1-4B14-40D8-AD7B-B007409BFFFA}
 		{73F0F204-7C1D-483D-96A1-5303C5C8A767} = {85B83380-DE3D-4CFF-9958-4D10B2D12C77}
+		{6B049560-B01B-47C4-AFD1-272F90C7FA34} = {319700B1-4B14-40D8-AD7B-B007409BFFFA}
 	EndGlobalSection
 EndGlobal
