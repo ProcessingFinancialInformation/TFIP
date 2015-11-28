@@ -32,7 +32,7 @@ namespace TFIP.Business.NotificationModule.EmailTransport
 
         private EmailTemplate GetEmailTemplateByType(NotificationType templateType)
         {
-            string templateContent = GetTemplateContent("EmailTemplates", templateType.ToString());
+            string templateContent = GetTemplateContent("Templates", templateType.ToString());
 
             return new EmailTemplate
             {
@@ -46,7 +46,7 @@ namespace TFIP.Business.NotificationModule.EmailTransport
             var localAssembly = typeof(EmailBuilder).Assembly;
             string assemblyAbsolutePath = new Uri(localAssembly.CodeBase).LocalPath;
             string outputDirectory = Path.GetDirectoryName(assemblyAbsolutePath);
-            string templateFilePath = Path.Combine(outputDirectory, templateFolder, string.Format("{0}.cshtml", templateType));
+            string templateFilePath = Path.Combine(outputDirectory, templateFolder, string.Format("{0}.html", templateType));
             return File.ReadAllText(templateFilePath);
         }
     }

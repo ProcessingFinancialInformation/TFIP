@@ -8,6 +8,7 @@ namespace TFIP.Business.NotificationModule.EmailTransport
     {
         public SmtpConfigurator()
         {
+            this.UseDefaultCredentials = false;
             this.Credentials = new NetworkCredential(ConfigurationHelper.GetSMTPUser(), ConfigurationHelper.GetSMTPPassword());
             this.Host = ConfigurationHelper.GetSMTPHost();
             this.Port = ConfigurationHelper.GetSMTPPort();
