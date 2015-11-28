@@ -40,6 +40,8 @@ namespace TFIP.Web.UI
             bundles.Add(
                 new ScriptBundle("~/bundles/main").IncludeDirectory("~/Scripts/App/", "*.js")
                     .IncludeDirectory("~/Scripts/Extensions/", "*.js")
+                    .IncludeDirectory("~/Scripts/MasterPage/", "*.js")
+                    .IncludeDirectory("~/Scripts/Clients/", "*.js")
                     .IncludeDirectory("~/Scripts/Home/", "*.js")
                     .IncludeDirectory("~/Scripts/linq/", "*.js"));
         }

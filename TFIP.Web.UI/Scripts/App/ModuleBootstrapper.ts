@@ -55,6 +55,8 @@
             modulesNames = modulesNames.concat([]);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
+                .controller("ClientsController", TFIP.Web.UI.Clients.ClientsController)
+                .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController);
 
             return new ModuleBootstrapper(mainModule, "body");

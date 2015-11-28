@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/common")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body ng-controller="MasterPageController">
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container navbar-container">
             <div class="navbar-header">
@@ -23,6 +23,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="ClientsController">
+    <div ng-if="!clientViewModel" ng-include="'@Url.Action("ClientSelection")'"></div>
+</div>
+
