@@ -2,9 +2,5 @@
 {
     public class JuridicalClient : Client
     {
-        public JuridicalClient()
-        {
-            ClientType = ClientType.JuridicalPerson;
-        }
     }
 }

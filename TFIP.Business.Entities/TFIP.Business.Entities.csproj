@@ -82,6 +82,7 @@
     <Compile Include="Currency.cs" />
     <Compile Include="EmailStatus.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Gender.cs" />
     <Compile Include="Guarantor.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityWithAttachments.cs" />
