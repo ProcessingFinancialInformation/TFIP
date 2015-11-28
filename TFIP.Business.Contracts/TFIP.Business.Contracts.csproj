@@ -76,6 +76,7 @@
     <Compile Include="IIndividualClientsService.cs" />
     <Compile Include="IMapperProfileService.cs" />
     <Compile Include="INotificationService.cs" />
+    <Compile Include="IRolePermissionService.cs" />
     <Compile Include="IServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +87,10 @@
     <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
+      <Project>{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}</Project>
+      <Name>TFIP.Common.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

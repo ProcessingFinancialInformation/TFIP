@@ -15,5 +15,13 @@
         public const string SMTPEnableSSL = "SMTP.EnableSSL";
 
         public const string DemoEmail = "DemoEmail";
+
+        public const string AdminGroup = "Groups.Admin";
+
+        public const string CreditComissionGroup = "Groups.CreditComission";
+
+        public const string OperatorGroup = "Groups.Operator";
+
+        public const string SecurityAgentGroup = "Groups.Security";
     }
 }

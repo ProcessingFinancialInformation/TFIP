@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -235,6 +236,10 @@
     <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Business.Services\TFIP.Business.Services.csproj">
+      <Project>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</Project>
+      <Name>TFIP.Business.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\TFIP.Web.Infrastructure\TFIP.Web.Infrastructure.csproj">
       <Project>{a444ba0d-0eb7-4483-9316-17341236f8ca}</Project>

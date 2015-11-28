@@ -37,6 +37,26 @@ namespace TFIP.Common.Helpers
             return GetSettingFromConfig(ConfigurationKeys.DemoEmail);
         }
 
+        public static string GetAdminGroup()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.AdminGroup);
+        }
+
+        public static string GetCreditComissionGroup()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.CreditComissionGroup);
+        }
+
+        public static string GetOperatorGroup()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.OperatorGroup);
+        }
+
+        public static string GetSecurityAgentGroup()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.SecurityAgentGroup);
+        }
+
         #region Utilities
         private static string GetSettingFromConfig(string configurationKey, string defaultValue = null)
         {

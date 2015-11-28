@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using TFIP.Business.Contracts;
+using TFIP.Business.Services.ActiveDirectory;
 
 namespace TFIP.Web.Api.Controllers
 {
@@ -14,7 +15,7 @@ namespace TFIP.Web.Api.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = ActiveDirectoryHelper.GetActiveDirectoryUser(User.Identity.Name);
             
             return View();
         }
