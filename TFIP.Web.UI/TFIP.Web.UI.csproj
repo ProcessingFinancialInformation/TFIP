@@ -133,6 +133,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,6 +149,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-tpls-0.14.3.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-tpls-0.14.3.min.js" />
     <Content Include="Scripts\Angular\angular.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
@@ -155,6 +158,9 @@
     <Content Include="Content\app\common.less" />
     <Content Include="Content\app\colors.less" />
     <Content Include="Content\app\variables.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jQuery\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jQuery\jquery.validate.js" />
@@ -179,25 +185,34 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jQuery\jquery-1.10.2.min.map" />
+    <Content Include="Views\Clients\ClientSelection.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\IndividualClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientsController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
+    <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\UrlBuilderService.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\MasterPage\MasterPageController.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\_references.ts" />

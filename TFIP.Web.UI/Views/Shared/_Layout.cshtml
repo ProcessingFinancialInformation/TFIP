@@ -4,12 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title | Bank System</title>
+    <script>
+        ApiRootUrl = "http://localhost:42484/";
+    </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/libs")
     @Styles.Render("~/Content/common")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body ng-controller="MasterPageController">
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container navbar-container">
             <div class="navbar-header">
@@ -23,6 +26,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
                 </ul>
             </div>
         </div>

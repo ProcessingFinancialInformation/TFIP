@@ -63,3 +63,48 @@ body {
         background-color: @containerBackgroundColor;
     }
 }
+
+message-box {
+    .modal-dialog {
+        width: 520px;
+    }
+
+    .cell {
+        display: table-cell;
+
+        .icon {
+            width: 32px;
+            height: 32px;
+            margin: 4px;
+            //background: url(@icons-sprite-url) 0 -1614px no-repeat;
+
+            &.info {
+                background-position: 0 -1734px;
+            }
+
+            &.warning {
+                background-position: 0 -1654px;
+            }
+
+            &.error {
+                background-position: 0 -1694px;
+            }
+        }
+
+        &.message {
+            vertical-align: middle;
+            word-wrap: break-word;
+        }
+    }
+
+    .btn {
+        margin-top: 10px;
+        margin-left: 4px;
+        margin-right: 4px;
+        text-align: center;
+
+        .defBtn {
+            margin-right: 10px;
+        }
+    }
+}
