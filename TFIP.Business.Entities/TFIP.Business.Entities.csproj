@@ -78,6 +78,7 @@
     <Compile Include="ClientType.cs" />
     <Compile Include="CreditKind.cs" />
     <Compile Include="CreditRequest.cs" />
+    <Compile Include="CreditRequestStatus.cs" />
     <Compile Include="CreditType.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="EmailStatus.cs" />

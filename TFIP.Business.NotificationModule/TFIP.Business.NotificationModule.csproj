@@ -109,6 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Templates\CreditRequestIsProccessedBySecurity.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CreditRequestIsProcessed.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\NewCreditRequest.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
