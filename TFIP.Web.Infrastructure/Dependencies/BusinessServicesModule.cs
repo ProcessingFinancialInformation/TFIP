@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using TFIP.Business.Contracts;
+using TFIP.Business.NotificationModule.EmailTransport;
 using TFIP.Business.Services;
 
 namespace TFIP.Web.Infrastructure.Dependencies
@@ -8,6 +9,16 @@ namespace TFIP.Web.Infrastructure.Dependencies
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType(typeof(Business.NotificationModule.NotificationService))
+                .AsImplementedInterfaces();
+
+            builder.RegisterType(typeof(EmailTransport))
+                .AsImplementedInterfaces();
+
+            builder.RegisterType(typeof(EmailBuilder))
+                .AsSelf();
+
+
             builder.RegisterAssemblyTypes(typeof (NotificationService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces();
