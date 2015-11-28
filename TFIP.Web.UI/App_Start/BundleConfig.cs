@@ -29,7 +29,9 @@ namespace TFIP.Web.UI
                 "~/Scripts/jQuery/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
-                .IncludeDirectory("~/Scripts/Angular", "*.js").IncludeDirectory("~/Scripts/angular-sanitize", "*.js"));
+                .IncludeDirectory("~/Scripts/Angular", "*.js")
+                .IncludeDirectory("~/Scripts/angular-sanitize", "*.js")
+                .IncludeDirectory("~/Scripts/angular-ui", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             "~/Scripts/modernizr/modernizr-*"));
@@ -39,7 +41,10 @@ namespace TFIP.Web.UI
 
             bundles.Add(
                 new ScriptBundle("~/bundles/main").IncludeDirectory("~/Scripts/App/", "*.js")
+                    .IncludeDirectory("~/Scripts/Core/", "*.js")
                     .IncludeDirectory("~/Scripts/Extensions/", "*.js")
+                    .IncludeDirectory("~/Scripts/MasterPage/", "*.js")
+                    .IncludeDirectory("~/Scripts/Clients/", "*.js")
                     .IncludeDirectory("~/Scripts/Home/", "*.js")
                     .IncludeDirectory("~/Scripts/linq/", "*.js"));
         }

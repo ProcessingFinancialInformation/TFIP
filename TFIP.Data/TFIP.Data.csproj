@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\IndividualClientConfiguration.cs" />
+    <Compile Include="Configurations\JuridicalClientConfiguration.cs" />
     <Compile Include="CreditDbContext.cs" />
     <Compile Include="CreditUow.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />
@@ -79,6 +81,7 @@
       <Name>TFIP.Data.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

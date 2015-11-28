@@ -2,6 +2,7 @@
 using System.Data.Entity.ModelConfiguration.Conventions;
 using TFIP.Business.Entities;
 using TFIP.Common.Constants;
+using TFIP.Data.Configurations;
 
 namespace TFIP.Data
 {
@@ -46,6 +47,10 @@ namespace TFIP.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Configurations.Add(new IndividualClientConfiguration());
+
+            modelBuilder.Configurations.Add(new JuridicalClientConfiguration());
         }
     }
 }
