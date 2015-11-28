@@ -129,6 +129,10 @@
       <Project>{77e14fe6-3d06-4b65-a1ef-7b12ba39e53c}</Project>
       <Name>TFIP.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Business.NotificationModule\TFIP.Business.NotificationModule.csproj">
+      <Project>{c0279e21-0b66-492a-a498-044194155d12}</Project>
+      <Name>TFIP.Business.NotificationModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Business.Services\TFIP.Business.Services.csproj">
       <Project>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</Project>
       <Name>TFIP.Business.Services</Name>

@@ -2,6 +2,6 @@
 {
     public interface INotificationService
     {
-
+        bool SendNewCreditRequestCreated(long requestId, string requestNumber);
     }
 }

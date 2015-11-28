@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</ProjectGuid>
+    <ProjectGuid>{C0279E21-0B66-492A-A498-044194155D12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TFIP.Business.Services</RootNamespace>
-    <AssemblyName>TFIP.Business.Services</AssemblyName>
+    <RootNamespace>TFIP.Business.NotificationModule</RootNamespace>
+    <AssemblyName>TFIP.Business.NotificationModule</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,11 +35,20 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="CsQuery, Version=1.3.3.249, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PreMailer.Net, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PreMailer.Net.1.4.2\lib\net40\PreMailer.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.7.4.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.7.4\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -73,52 +81,40 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomapperConfigurator.cs" />
-    <Compile Include="Mapper\MapperProfile.cs" />
-    <Compile Include="Mapper\MapperProfileService.cs" />
+    <Compile Include="Contracts\IEmailTransport.cs" />
+    <Compile Include="Contracts\INotificationService.cs" />
+    <Compile Include="EmailTransport\EmailBuilder.cs" />
+    <Compile Include="EmailTransport\EmailNotificationTemplate.cs" />
+    <Compile Include="EmailTransport\EmailTemplate.cs" />
+    <Compile Include="EmailTransport\EmailTransport.cs" />
+    <Compile Include="EmailTransport\NotificationData.cs" />
+    <Compile Include="EmailTransport\SmtpConfigurator.cs" />
+    <Compile Include="NotificationHelper.cs" />
     <Compile Include="NotificationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TFIP.Business.Contracts\TFIP.Business.Contracts.csproj">
-      <Project>{EB93E46A-EA8C-4C47-A746-DBC19DD6E607}</Project>
-      <Name>TFIP.Business.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TFIP.Business.NotificationModule\TFIP.Business.NotificationModule.csproj">
-      <Project>{c0279e21-0b66-492a-a498-044194155d12}</Project>
-      <Name>TFIP.Business.NotificationModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}</Project>
       <Name>TFIP.Common.Helpers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TFIP.Common.Resources\TFIP.Common.Resources.csproj">
-      <Project>{6B049560-B01B-47C4-AFD1-272F90C7FA34}</Project>
-      <Name>TFIP.Common.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TFIP.Data.Contracts\TFIP.Data.Contracts.csproj">
-      <Project>{763FB63B-3BD0-4C29-BE50-E91913AF1E54}</Project>
-      <Name>TFIP.Data.Contracts</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Templates\NewCreditRequest.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
