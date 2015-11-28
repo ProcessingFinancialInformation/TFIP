@@ -21,5 +21,7 @@ namespace TFIP.Business.Entities
         public virtual CreditType CreditType { get; set; }
 
         public virtual ICollection<Guarantor> Guarantors { get; set; }
+
+        public CreditRequestStatus Status { get; set; }
     }
 }
