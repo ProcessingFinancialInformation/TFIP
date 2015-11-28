@@ -149,19 +149,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-sanitize\angular-sanitize.js" />
-    <Content Include="Scripts\angular-ui\template\datepicker\datepicker.html" />
-    <Content Include="Scripts\angular-ui\template\datepicker\day.html" />
-    <Content Include="Scripts\angular-ui\template\datepicker\month.html" />
-    <Content Include="Scripts\angular-ui\template\datepicker\popup.html" />
-    <Content Include="Scripts\angular-ui\template\datepicker\year.html" />
-    <Content Include="Scripts\angular-ui\template\modal\backdrop.html" />
-    <Content Include="Scripts\angular-ui\template\modal\window.html" />
-    <Content Include="Scripts\angular-ui\template\pagination\pager.html" />
-    <Content Include="Scripts\angular-ui\template\pagination\pagination.html" />
-    <Content Include="Scripts\angular-ui\template\typeahead\typeahead-match.html" />
-    <Content Include="Scripts\angular-ui\template\typeahead\typeahead-popup.html" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-0.14.3.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-0.14.3.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-tpls-0.14.3.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-custom-tpls-0.14.3.min.js" />
     <Content Include="Scripts\Angular\angular.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
@@ -198,6 +187,7 @@
     <Content Include="Scripts\jQuery\jquery-1.10.2.min.map" />
     <Content Include="Views\Clients\ClientSelection.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\IndividualClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,12 +200,19 @@
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
+    <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\UrlBuilderService.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\MasterPage\MasterPageController.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\_references.ts" />

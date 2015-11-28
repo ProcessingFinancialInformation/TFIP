@@ -52,9 +52,13 @@
 
         public static main(modules: ModuleBootstrapper[]) {
             var modulesNames: string[] = modules.asEnumerable().select((m: ModuleBootstrapper, index: number) => { return m.module.name; }).toArray();
-            modulesNames = modulesNames.concat([]);
+            modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize"]);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
+                .service("messageBox", Core.MessageBoxService)
+                .service("apiUrlService", Core.ApiUrlService)
+                .service("urlBuilderService", Core.UrlBuilderService)
+                .service("clientService", Clients.ClientService)
                 .controller("ClientsController", TFIP.Web.UI.Clients.ClientsController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController);

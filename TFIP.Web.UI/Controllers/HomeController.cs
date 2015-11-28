@@ -17,10 +17,10 @@ namespace TFIP.Web.UI.Controllers
             return View();
         }
 
-        public ActionResult PostTestNotification()
-        {
-            notificationService.SendNewCreditRequestCreated(1, "1234");
-            return View("Index");
-        }
+        //public ActionResult PostTestNotification()
+        //{
+        //    notificationService.SendNewCreditRequestCreated(1, "1234");
+        //    return View("Index");
+        //}
     }
 }
