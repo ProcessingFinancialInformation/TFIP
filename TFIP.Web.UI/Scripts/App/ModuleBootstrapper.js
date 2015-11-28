@@ -33,7 +33,8 @@ var TFIP;
                         if (!element) {
                             return false;
                         }
-                        return updatedElements.length == 0 || Enumerable.from(updatedElements).any(function (panel) { return $.contains(panel, element); });
+                        return updatedElements.length == 0 ||
+                            Enumerable.from(updatedElements).any(function (panel) { return $.contains(panel, element); });
                     };
                     ModuleBootstrapper.prototype.dispose = function () {
                         if (this.scope) {
@@ -41,11 +42,11 @@ var TFIP;
                         }
                     };
                     ModuleBootstrapper.main = function (modules) {
-                        var modulesNames = modules.asEnumerable().select(function (m, index) {
-                            return m.module.name;
-                        }).toArray();
+                        var modulesNames = modules.asEnumerable().select(function (m, index) { return m.module.name; }).toArray();
                         modulesNames = modulesNames.concat([]);
-                        var mainModule = angular.module("TFIP.Web.UI", modulesNames).controller("HomeController", TFIP.Web.UI.Home.HomeController);
+                        var mainModule = angular
+                            .module("TFIP.Web.UI", modulesNames)
+                            .controller("HomeController", TFIP.Web.UI.Home.HomeController);
                         return new ModuleBootstrapper(mainModule, "body");
                     };
                     return ModuleBootstrapper;

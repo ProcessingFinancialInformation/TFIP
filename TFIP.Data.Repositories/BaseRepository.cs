@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using TFIP.Business.Entities;
 using TFIP.Data.Contracts;
 
@@ -43,6 +44,21 @@ namespace TFIP.Data.Repositories
         public virtual T GetById(long id)
         {
             return DbSet.Find(id);
+        }
+
+        /// <summary>
+        /// Gets entity from repository by specific condition.
+        /// </summary>
+        /// <param name="filter">Condition</param>
+        /// <returns>Returns loaded entity or null.</returns>
+        public virtual IQueryable<T> Get(Expression<Func<T, bool>> filter)
+        {
+            IQueryable<T> query = DbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            return query;
         }
 
         /// <summary>

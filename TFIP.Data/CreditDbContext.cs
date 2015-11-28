@@ -33,8 +33,6 @@ namespace TFIP.Data
 
         public IDbSet<CreditType> CreditTypes { get; set; }
 
-        public IDbSet<Guarantor> Guarantors { get; set; }
-
         public IDbSet<IndividualClient> IndividualClients { get; set; }
 
         public IDbSet<JuridicalClient> JuridicalClients { get; set; }

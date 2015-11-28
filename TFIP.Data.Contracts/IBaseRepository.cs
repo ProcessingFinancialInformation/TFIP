@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using TFIP.Business.Entities;
 
 namespace TFIP.Data.Contracts
@@ -36,5 +38,7 @@ namespace TFIP.Data.Contracts
         /// </summary>
         /// <param name="id"></param>
         void Delete(long id);
+
+        IQueryable<T> Get(Expression<Func<T, bool>> filter);
     }
 }
