@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationKeys.cs" />
     <Compile Include="CreditKindsConstants.cs" />
+    <Compile Include="CreditRequestStatusConstants.cs" />
     <Compile Include="DataAccessLayerConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

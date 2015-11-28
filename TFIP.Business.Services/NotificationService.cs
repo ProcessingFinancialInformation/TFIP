@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using TFIP.Business.Entities;
 using TFIP.Common.Helpers;
-using TFIP.Data.Contracts;
 using TFIP.Business.NotificationModule.EmailTransport;
 using TFIP.Common.Resources;
 
@@ -10,12 +10,10 @@ namespace TFIP.Business.Services
 {
     public class NotificationService : Contracts.INotificationService
     {
-        private readonly ICreditUow creditUow;
         private readonly NotificationModule.Contracts.INotificationService notificationService;
 
-        public NotificationService(ICreditUow creditUow, NotificationModule.Contracts.INotificationService notificationService)
+        public NotificationService(NotificationModule.Contracts.INotificationService notificationService)
         {
-            this.creditUow = creditUow;
             this.notificationService = notificationService;
         }
 
@@ -25,10 +23,47 @@ namespace TFIP.Business.Services
             data.Subject = EmailTemplatesSubjects.NewRequestCreated;
 
             data.RequestNumber = requestNumber;
-            data.LinkToRequest = "http://google.com/";
-
+            data.LinkToRequest = GenerateLinkToRequest(requestId);
+            // TODO: Get emails
             return SendNotification(NotificationType.NewCreditRequest,
                 new Addressee("gromilich@gmail.com", NotificationAccountType.Email), data);
+        }
+
+        public bool SendCreditRequestIsProcessed(string clientName, string clientEmail,
+            CreditRequestStatus requestStatus)
+        {
+            if (requestStatus != CreditRequestStatus.Denied && requestStatus != CreditRequestStatus.Approved)
+            {
+                throw new Exception("Wrong method usage.");
+            }
+
+            dynamic data = new ExpandoObject();
+            data.Subject = EmailTemplatesSubjects.CreditRequestIsProcessed;
+
+            data.ClientName = clientName;
+            data.RequestProcessResult = EnumHelper.GetEnumDescription(requestStatus);
+
+            return SendNotification(NotificationType.CreditRequestIsProcessed, 
+                new Addressee(clientEmail, NotificationAccountType.Email), data);
+        }
+
+        public bool SendCreditRequestIsProcessedBySecurity(long requestId, string requestNumber)
+        {
+            dynamic data = new ExpandoObject();
+            data.Subject = EmailTemplatesSubjects.CreditRequestIsProcessedBySecurity;
+
+            data.RequestNumber = requestNumber;
+            data.LinkToRequest = GenerateLinkToRequest(requestId);
+            // TODO: Email!
+
+            return SendNotification(NotificationType.CreditRequestIsProccessedBySecurity, 
+                new Addressee("", NotificationAccountType.Email), data);
+        }
+
+        private string GenerateLinkToRequest(long requestId)
+        {
+            // TODO!
+            return string.Empty;
         }
 
         private bool SendNotification(NotificationType notificationType, Addressee addressee, dynamic data)

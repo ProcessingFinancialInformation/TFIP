@@ -61,6 +61,24 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваша заявка на кредитование была обработана.
+        /// </summary>
+        public static string CreditRequestIsProcessed {
+            get {
+                return ResourceManager.GetString("CreditRequestIsProcessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заявка на кредитования физ. лица/юр. лица была обработана отделом безопасности.
+        /// </summary>
+        public static string CreditRequestIsProcessedBySecurity {
+            get {
+                return ResourceManager.GetString("CreditRequestIsProcessedBySecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добавлена новая заявка на кредит.
         /// </summary>
         public static string NewRequestCreated {

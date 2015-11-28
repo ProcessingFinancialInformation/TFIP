@@ -9,5 +9,7 @@ namespace TFIP.Business.Entities
         public string ProcessedBy { get; set; }
 
         public DateTime ProcessedAt { get; set; }
+
+        public MoneyType MoneyType { get; set; }
     }
 }
