@@ -8,6 +8,8 @@
 <button type="button" class="btn btn-success">Success</button>
 <button type="button" class="btn btn-info">Info</button>
 
+@Html.ActionLink("Post test notification", "PostTestNotification", "Home");
+
 <div ng-controller="HomeController">
     <div ng-repeat="info in infos" ng-bind="info"></div>
 </div>
