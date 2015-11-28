@@ -73,14 +73,6 @@ namespace TFIP.Data
             }
         }
 
-        public IBaseRepository<Guarantor> Guarantors
-        {
-            get
-            {
-                return GetBaseRepo<Guarantor>();
-            }
-        }
-
         public IBaseRepository<IndividualClient> IndividualClients
         {
             get

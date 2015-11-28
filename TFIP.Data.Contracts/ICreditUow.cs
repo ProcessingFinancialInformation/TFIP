@@ -9,7 +9,6 @@ namespace TFIP.Data.Contracts
         IBaseRepository<AttachmentHeader> AttachmentHeaders { get; }
         IBaseRepository<CreditRequest> CreditRequests { get; }
         IBaseRepository<CreditType> CreditTypes { get; }
-        IBaseRepository<Guarantor> Guarantors { get; }
         IBaseRepository<IndividualClient> IndividualClients { get; }
         IBaseRepository<JuridicalClient> JuridicalClients { get; }
         IBaseRepository<Notification> Notifications { get; }
