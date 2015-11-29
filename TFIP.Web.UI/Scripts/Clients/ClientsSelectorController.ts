@@ -42,15 +42,18 @@
                         this.$location.path("" + "/" + this.$scope.clientInput.clientId);
                     } else {
                         this.messageBox.confirm("Клиенты", "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?").then(() => {
-                            window.location.href = "/";
+                            window.location.href = "/Clients/CreateIndividualClient";
                         });
                     }
                 }, (reason: any) => {
                     this.messageBox.showError("Клиенты", reason.message);
                 });
             } else {
-                this.messageBox.showError("Клиенты", "");
+                this.$scope.clientSelectionForm.$error.required[0].$dirty = true;
+                this.messageBox.showError("Клиенты", "Введены неверные данные");
             }
         }
+
+        
     }
 }   

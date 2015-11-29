@@ -179,6 +179,7 @@
     <Content Include="Scripts\jQuery\jquery-1.10.2.min.map" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\IndividualClient.cshtml" />
+    <Content Include="Views\Clients\CreateIndividualClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -193,6 +194,7 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateClientController.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />

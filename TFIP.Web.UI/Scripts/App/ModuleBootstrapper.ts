@@ -60,6 +60,7 @@
                 .service("urlBuilderService", Core.UrlBuilderService)
                 .service("clientService", Clients.ClientService)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
+                .controller("CreateClientConroller", Clients.CreateClientController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController)
                 .config([

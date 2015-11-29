@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "CreateClient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="CreateClientConroller" ng-form="createClientForm">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="lastName" class="col-sm-2 control-label">Фамилия</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.lastName" class="form-control" id="lastName" name="lastName" placeholder="Фамилия">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-2 control-label">Имя</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.firstName" class="form-control" id="firstName" name="firstName" placeholder="Имя">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="patronymic" class="col-sm-2 control-label">Отчество</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.patronymic" class="form-control" id="patronymic" name="patronymic" placeholder="Отчество">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-sm-2 control-label">Пол</label>
+            <div class="col-sm-10">
+                <select ng-model="clientViewModel.gender" class="form-control" id="gender" name="gender">
+                    <option ng-value="genders.male">Мужской</option>
+                    <option ng-value="genders.female">Женский</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="nationality" class="col-sm-2 control-label">Гражданство</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.nationality" class="form-control" id="nationality" name="nationality" placeholder="Гражданство">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="passportSeries" class="col-sm-2 control-label">Серия паспорта</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.passportSeries" class="form-control" id="passportSeries" name="passportSeries" placeholder="Серия паспорта">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="passportNumber" class="col-sm-2 control-label">Номер паспорта</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.passportNumber" class="form-control" id="passportNumber" name="passportNumber" placeholder="Номер паспорта">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="identificationNo" class="col-sm-2 control-label">Идентификационный номер</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.identificationNo" class="form-control" id="identificationNo" name="identificationNo" placeholder="Идентификационный номер">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="placeOfBirth" class="col-sm-2 control-label">Место рождения</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.placeOfBirth" class="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="Место рождения">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="identificationNo" class="col-sm-2 control-label">Дата рождения</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           ng-model="clientViewModel.dateOfBirth"
+                           is-open="dateOfBirth.opened"
+                           ng-required="true"
+                           close-text="Close"
+                           required="required" style="">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dateOfBirth.opened = !dateOfBirth.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+                
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="authority" class="col-sm-2 control-label">Паспорт выдан</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.authority" class="form-control" id="authority" name="authority" placeholder="Паспорт выдан">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfIssue" class="col-sm-2 control-label">Дата</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           ng-model="clientViewModel.dateOfIssue"
+                           is-open="dateOfIssue.opened"
+                           ng-required="true"
+                           close-text="Close"
+                           required="required" style="">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dateOfIssue.opened = !dateOfIssue.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfExpiry" class="col-sm-2 control-label">Дата2</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           ng-model="clientViewModel.dateOfBirth"
+                           is-open="dateOfExpiry.opened"
+                           ng-required="true"
+                           close-text="Close"
+                           required="required" style="">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dateOfExpiry.opened = !dateOfExpiry.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="createUser()">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
