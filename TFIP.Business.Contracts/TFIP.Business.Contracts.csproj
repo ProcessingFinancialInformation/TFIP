@@ -79,6 +79,7 @@
     <Compile Include="IRolePermissionService.cs" />
     <Compile Include="IServiceFactory.cs" />
     <Compile Include="IJuridicalClientsService.cs" />
+    <Compile Include="IValidationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
