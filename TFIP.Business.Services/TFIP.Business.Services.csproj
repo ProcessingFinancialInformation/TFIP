@@ -83,6 +83,7 @@
     <Compile Include="ActiveDirectory\ActiveDirectoryManager.cs" />
     <Compile Include="AutomapperConfigurator.cs" />
     <Compile Include="IndividualClientsService.cs" />
+    <Compile Include="JuridicalClientsService.cs" />
     <Compile Include="Mapper\MapperProfile.cs" />
     <Compile Include="Mapper\MapperProfileService.cs" />
     <Compile Include="NotificationService.cs" />
