@@ -1,0 +1,12 @@
+﻿Control Panel -> Administrative Tools -> Computer Management -> Local User and Groups
+
+Create Groups:
+Operators
+CreditComission
+Admins
+Securities
+
+Groups must not have child groups!
+
+When creating users:
+- Description should be email address.

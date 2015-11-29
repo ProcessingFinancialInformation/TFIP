@@ -15,8 +15,9 @@ namespace TFIP.Web.Api.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = ActiveDirectoryHelper.GetActiveDirectoryUser(User.Identity.Name);
-            
+            var a = ActiveDirectoryHelper.GetActiveDirectoryUser(User.Identity.Name);
+
+            ViewBag.Title = a.UserAccount;
             return View();
         }
     }
