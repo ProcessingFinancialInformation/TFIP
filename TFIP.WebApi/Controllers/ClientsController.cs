@@ -1,15 +1,12 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Mvc;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Common.Resources;
 
 namespace TFIP.Web.Api.Controllers
 {
-    public class ClientsController : ApiController
+    public class ClientsController : BaseApiController
     {
         private readonly IIndividualClientsService individualClientsService;
 

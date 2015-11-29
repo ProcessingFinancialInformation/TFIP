@@ -185,7 +185,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jQuery\jquery-1.10.2.min.map" />
-    <Content Include="Views\Clients\ClientSelection.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\IndividualClient.cshtml" />
   </ItemGroup>
@@ -199,7 +198,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
-    <TypeScriptCompile Include="Scripts\Clients\ClientsController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />

@@ -104,8 +104,8 @@
                             messages: messages,
                             icon: icon,
                             button: button,
-                            cancel: null,
-                            //additionMessage: additionMessage
+                            cancel: null
+                            // additionMessage: additionMessage
                         };
                     }
                 },

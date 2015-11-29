@@ -5,6 +5,7 @@ using System.DirectoryServices.AccountManagement;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Runtime.Caching;
+using System.Security.Policy;
 using System.Security.Principal;
 
 namespace TFIP.Business.Services.ActiveDirectory
@@ -15,19 +16,11 @@ namespace TFIP.Business.Services.ActiveDirectory
 
         private static List<ActiveDirectoryUser> GetAllMembers(this GroupPrincipal groupPrincipal)
         {
-            var users = new List<ActiveDirectoryUser>();
+            var users = groupPrincipal.Members
+                .Where(it => !string.IsNullOrEmpty(it.Name))
+                .Select(CreateActiveDirectoryUser)
+                .ToList();
 
-            foreach (var group in groupPrincipal.GetMembers(false))
-            {
-                if (group.StructuralObjectClass.Equals("group"))
-                {
-                    users.AddRange(((GroupPrincipal)group).GetAllMembers());
-                }
-                else
-                {
-                    users.Add(CreateActiveDirectoryUser(group));
-                }
-            }
             groupPrincipal.Dispose();
             return users;
         }
@@ -40,16 +33,10 @@ namespace TFIP.Business.Services.ActiveDirectory
             {
                 result.Add(principal);
             }
+
             return result;
-            //return groupPrincipal.GetMembers(true);
         }
 
-        /// <summary>
-        /// Checks if a particular user belongs to particular group
-        /// </summary>
-        /// <param name="userAccount">User account</param>
-        /// <param name="groupName">Group name</param>
-        /// <returns>Check result</returns>
         public static bool IsUserInRole(string userAccount, string groupName)
         {
             CheckCacheForGroup(groupName);
@@ -111,9 +98,7 @@ namespace TFIP.Business.Services.ActiveDirectory
                         UserAccount = userPrincipal.SamAccountName,
                         DisplayName = userPrincipal.DisplayName,
                         Sid = userPrincipal.Sid,
-                        Email = userPrincipal.EmailAddress,
-                        LastName = userPrincipal.Surname,
-                        FirstName = userPrincipal.GivenName
+                        Email = userPrincipal.Description // TODO: If use AD, than map from EmailAddress field.
                     };
             }
         }
@@ -129,7 +114,7 @@ namespace TFIP.Business.Services.ActiveDirectory
         {
             var userPrincipal = GetUserPrincipal(userAccount);
 
-            return userPrincipal != null ? userPrincipal.EmailAddress : null;
+            return userPrincipal != null ? userPrincipal.Description : null;
         }
 
         public static ActiveDirectoryUser GetActiveDirectoryUser(string userAccount)
@@ -140,29 +125,6 @@ namespace TFIP.Business.Services.ActiveDirectory
                 return null;
             }
             return CreateActiveDirectoryUser(userPrincipal);
-        }
-
-        /// <summary>
-        /// Gets email by user group
-        /// </summary>
-        /// <param name="userGroup">user group</param>
-        /// <returns>Group email if exist. Otherwise Users email</returns>
-        public static List<string> GetEmailByGroup(string userGroup)
-        {
-            using (DirectorySearcher searcher = new DirectorySearcher(CreateDirectoryEntry()))
-            {
-                searcher.Filter = string.Format("(&(objectClass=group)(sAMAccountName={0}))", userGroup.Split('\\').Last());
-                var searchResult = searcher.FindOne();
-                if (searchResult != null && searchResult.Properties["mail"].Count != 0)
-                {
-                    return (from object mail in searchResult.Properties["mail"] select mail.ToString()).ToList();
-                }
-
-            }
-            CheckCacheForGroup(userGroup);
-            return GetUserAccounts(userGroup)
-                .Select(user => user.Email)
-                .ToList();
         }
         #endregion
 
@@ -184,15 +146,11 @@ namespace TFIP.Business.Services.ActiveDirectory
 
         }
 
-        private static DirectoryEntry CreateDirectoryEntry()
-        {
-            return new DirectoryEntry("LDAP://" + Domain.GetCurrentDomain().Name);
-        }
-
         private static PrincipalContext CreatePrincipalContext()
         {
-            var domain = Domain.GetCurrentDomain();
-            return new PrincipalContext(ContextType.Domain, domain.Name);
+            // var domain = Domain.GetCurrentDomain();
+            // return new PrincipalContext(ContextType.Domain, domain.Name);
+            return new PrincipalContext(ContextType.Machine, null);
         }
 
         public static void ClearCache()
@@ -206,11 +164,8 @@ namespace TFIP.Business.Services.ActiveDirectory
 
     public class ActiveDirectoryUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string UserAccount { get; set; }
         public string DisplayName { get; set; }
-
         public SecurityIdentifier Sid { get; set; }
         public string Email { get; set; }
     }
