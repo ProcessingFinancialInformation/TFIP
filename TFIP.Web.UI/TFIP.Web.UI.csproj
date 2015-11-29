@@ -19,7 +19,7 @@
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
@@ -45,14 +45,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="dotless.Core, Version=1.5.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.5.1\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
@@ -215,16 +207,6 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\_references.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TFIP.Business.Contracts\TFIP.Business.Contracts.csproj">
-      <Project>{EB93E46A-EA8C-4C47-A746-DBC19DD6E607}</Project>
-      <Name>TFIP.Business.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TFIP.Web.Infrastructure\TFIP.Web.Infrastructure.csproj">
-      <Project>{A444BA0D-0EB7-4483-9316-17341236F8CA}</Project>
-      <Name>TFIP.Web.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

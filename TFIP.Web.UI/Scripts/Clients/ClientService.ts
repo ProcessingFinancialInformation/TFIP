@@ -24,8 +24,8 @@
             var deferred = this.$q.defer();
             if (clientId && clientType) {
                 var url = this.urlBuilderService.buildQuery(this.apiUrlService.clientApi.exist, { clientType: clientType, individualNumber: clientId });
-                this.$http.get(url).then((data: boolean) => {
-                    deferred.resolve(data);
+                this.$http.get(url).then((data: any) => {
+                    deferred.resolve(data.data);
                 }, (reason: any) => {
                     deferred.reject(reason);
                 });

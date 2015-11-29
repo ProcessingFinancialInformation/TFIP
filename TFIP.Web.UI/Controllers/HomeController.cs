@@ -1,16 +1,9 @@
 ﻿using System.Web.Mvc;
-using TFIP.Business.Contracts;
 
 namespace TFIP.Web.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly INotificationService notificationService;
-
-        public HomeController(INotificationService notificationService)
-        {
-            this.notificationService = notificationService;
-        }
 
         public ActionResult Index()
         {

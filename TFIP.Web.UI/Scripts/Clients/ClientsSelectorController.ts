@@ -39,10 +39,10 @@
 
                 promise.then((data: boolean) => {
                     if (data) {
-                        this.$location.url("" + "/" + this.$scope.clientInput.clientId);
+                        this.$location.path("" + "/" + this.$scope.clientInput.clientId);
                     } else {
                         this.messageBox.confirm("Клиенты", "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?").then(() => {
-                            this.$location.url("/");
+                            window.location.href = "/";
                         });
                     }
                 }, (reason: any) => {
