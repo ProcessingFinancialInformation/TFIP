@@ -90,6 +90,10 @@
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Business.Models\TFIP.Business.Models.csproj">
+      <Project>{D9719710-959E-4CF5-B749-3EA24AD8CF01}</Project>
+      <Name>TFIP.Business.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}</Project>
       <Name>TFIP.Common.Helpers</Name>

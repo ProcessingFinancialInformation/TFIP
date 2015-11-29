@@ -2,6 +2,7 @@
 using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
+using TFIP.Business.Models;
 using TFIP.Common.Resources;
 
 namespace TFIP.Web.Api.Controllers
@@ -31,6 +32,13 @@ namespace TFIP.Web.Api.Controllers
                 default:
                         return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
             }
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage CreateIndividualClient(IndividualClientModel individualClient)
+        {
+            individualClientsService.CreateClient(individualClient);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 

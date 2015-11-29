@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using TFIP.Business.Contracts;
+using TFIP.Business.Entities;
+using TFIP.Business.Models;
 
 namespace TFIP.Business.Services.Mapper
 {
@@ -19,6 +21,10 @@ namespace TFIP.Business.Services.Mapper
 
         protected override void Configure()
         {
+            AutoMapper.Mapper.CreateMap<IndividualClientModel, IndividualClient>()
+                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
+                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
+                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
         }

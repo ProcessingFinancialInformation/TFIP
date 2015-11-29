@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
+using TFIP.Business.Models;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services
@@ -23,6 +24,12 @@ namespace TFIP.Business.Services
             return
                 creditUow.IndividualClients.Get(client => client.IdentificationNo.Equals(individualNumber))
                     .FirstOrDefault() != null;
+        }
+
+        public void CreateClient(IndividualClientModel client)
+        {
+            var individualClient = AutoMapper.Mapper.Map<IndividualClientModel,IndividualClient>(client);
+            creditUow.IndividualClients.InsertOrUpdate(individualClient);
         }
     }
 }

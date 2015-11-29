@@ -239,6 +239,10 @@
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Business.Models\TFIP.Business.Models.csproj">
+      <Project>{d9719710-959e-4cf5-b749-3ea24ad8cf01}</Project>
+      <Name>TFIP.Business.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Business.Services\TFIP.Business.Services.csproj">
       <Project>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</Project>
       <Name>TFIP.Business.Services</Name>
