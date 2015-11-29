@@ -38,7 +38,7 @@
         constructor(basePath: string) {
             super(basePath);
 
-            this.exist = this.getBasePath() + "api/client/exist";;
+            this.exist = this.getBasePath() + "api/clients/isclientExist";
         }
     }
 
