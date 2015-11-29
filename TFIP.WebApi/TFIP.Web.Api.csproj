@@ -241,6 +241,10 @@
       <Project>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</Project>
       <Name>TFIP.Business.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Resources\TFIP.Common.Resources.csproj">
+      <Project>{6b049560-b01b-47c4-afd1-272f90c7fa34}</Project>
+      <Name>TFIP.Common.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Web.Infrastructure\TFIP.Web.Infrastructure.csproj">
       <Project>{a444ba0d-0eb7-4483-9316-17341236f8ca}</Project>
       <Name>TFIP.Web.Infrastructure</Name>

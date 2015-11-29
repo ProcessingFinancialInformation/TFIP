@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
+using TFIP.Common.Resources;
 
 namespace TFIP.Web.Api.Controllers
 {
@@ -31,8 +32,10 @@ namespace TFIP.Web.Api.Controllers
                     case ClientType.JuridicalPerson:
                         return this.Request.CreateResponse(HttpStatusCode.OK, juridicalClientsService.IsClientExist(individualNumber));
                 default:
-                    return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Неверный тип клиента");
+                        return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
             }
         }
+
+
     }
 }

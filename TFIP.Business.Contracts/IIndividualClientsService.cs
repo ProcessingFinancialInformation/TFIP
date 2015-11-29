@@ -10,5 +10,7 @@ namespace TFIP.Business.Contracts
     public interface IIndividualClientsService
     {
         bool IsClientExist(string IndividualNumber);
+
+
     }
 }

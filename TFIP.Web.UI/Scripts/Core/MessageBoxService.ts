@@ -105,7 +105,7 @@
                             icon: icon,
                             button: button,
                             cancel: null,
-                            additionMessage: additionMessage
+                            //additionMessage: additionMessage
                         };
                     }
                 },
