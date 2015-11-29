@@ -30,6 +30,7 @@ namespace TFIP.Business.Services
         {
             var individualClient = AutoMapper.Mapper.Map<IndividualClientModel,IndividualClient>(client);
             creditUow.IndividualClients.InsertOrUpdate(individualClient);
+            creditUow.Commit();
         }
     }
 }

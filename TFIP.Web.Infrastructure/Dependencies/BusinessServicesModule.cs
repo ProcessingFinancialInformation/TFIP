@@ -1,7 +1,9 @@
 ﻿using Autofac;
+using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.NotificationModule.EmailTransport;
 using TFIP.Business.Services;
+using TFIP.Business.Services.Mapper;
 
 namespace TFIP.Web.Infrastructure.Dependencies
 {
@@ -22,6 +24,8 @@ namespace TFIP.Web.Infrastructure.Dependencies
             builder.RegisterAssemblyTypes(typeof (NotificationService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces();
+
+            builder.RegisterType(typeof (MapperProfile)).AsImplementedInterfaces().As(typeof (Profile));
 
             builder.RegisterType(typeof(AutomapperConfigurator))
                 .AsSelf();
