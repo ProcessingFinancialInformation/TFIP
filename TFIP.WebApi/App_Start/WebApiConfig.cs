@@ -10,7 +10,7 @@ namespace TFIP.Web.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            var cors = new EnableCorsAttribute("http://localhost:59691", "*", "*");
             config.EnableCors(cors);
 
             // Web API routes

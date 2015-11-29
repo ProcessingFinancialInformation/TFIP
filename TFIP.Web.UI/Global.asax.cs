@@ -2,13 +2,14 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using TFIP.Web.Infrastructure;
 
 namespace TFIP.Web.UI
 {
+    using System.Web;
+
     public class MvcApplication : HttpApplication
     {
-        protected override void Register()
+        protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -16,7 +17,7 @@ namespace TFIP.Web.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        protected override Assembly GetWebAssembly()
+        protected Assembly GetWebAssembly()
         {
             return Assembly.GetExecutingAssembly();
         }
