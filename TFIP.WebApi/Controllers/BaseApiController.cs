@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using TFIP.Business.Contracts;
+using TFIP.Common.Helpers;
 using TFIP.Web.Api.Models;
 
 namespace TFIP.Web.Api.Controllers
@@ -14,6 +15,11 @@ namespace TFIP.Web.Api.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (validationService == null)
+                {
+                    return CreateAjaxViewModel(processFunc(viewModel), List.Of<string>());    
+                }
+
                 var errors = validationService.Validate(viewModel)
                     .ToList();
                 if (errors.Any())
