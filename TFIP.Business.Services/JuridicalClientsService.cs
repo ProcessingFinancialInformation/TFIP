@@ -9,19 +9,19 @@ using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services
 {
-    public class IndividualClientsService: IIndividualClientsService
+    public class JuridicalClientsService: IJuridicalClientsService
     {
         private readonly ICreditUow creditUow;
 
-        public IndividualClientsService(ICreditUow creditUow)
+        public JuridicalClientsService(ICreditUow creditUow)
         {
             this.creditUow = creditUow;
         }
 
-        bool IIndividualClientsService.IsClientExist(string individualNumber)
+        bool IJuridicalClientsService.IsClientExist(string individualNumber)
         {
             return
-                creditUow.IndividualClients.Get(client => client.IdentificationNo.Equals(individualNumber))
+                creditUow.JuridicalClients.Get(client => client.IdentificationNo.Equals(individualNumber))
                     .FirstOrDefault() != null;
         }
     }

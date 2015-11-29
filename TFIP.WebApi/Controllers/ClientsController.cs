@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 using TFIP.Business.Contracts;
@@ -11,15 +12,27 @@ namespace TFIP.Web.Api.Controllers
     {
         private readonly IIndividualClientsService individualClientsService;
 
-        public ClientsController(IIndividualClientsService individualClientsService)
+        private readonly IJuridicalClientsService juridicalClientsService;
+
+        public ClientsController(IIndividualClientsService individualClientsService, IJuridicalClientsService juridicalClientsService)
         {
             this.individualClientsService = individualClientsService;
+            this.juridicalClientsService = juridicalClientsService;
         }
 
         [System.Web.Http.HttpGet]
-        public bool IsClientExist(ClientType clientType, string individualNumber)
+        public HttpResponseMessage IsClientExist(ClientType clientType, string individualNumber)
         {
-            return individualClientsService.IsClientExist(individualNumber);
+            switch (clientType)
+            {
+                    case ClientType.Individual:
+                        return this.Request.CreateResponse(HttpStatusCode.OK,individualClientsService.IsClientExist(individualNumber));
+
+                    case ClientType.JuridicalPerson:
+                        return this.Request.CreateResponse(HttpStatusCode.OK, juridicalClientsService.IsClientExist(individualNumber));
+                default:
+                    return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Неверный тип клиента");
+            }
         }
     }
 }
