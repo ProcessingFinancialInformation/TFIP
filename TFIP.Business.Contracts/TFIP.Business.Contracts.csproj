@@ -78,6 +78,7 @@
     <Compile Include="INotificationService.cs" />
     <Compile Include="IRolePermissionService.cs" />
     <Compile Include="IServiceFactory.cs" />
+    <Compile Include="IJuridicalClientsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -59,9 +59,28 @@
                 .service("apiUrlService", Core.ApiUrlService)
                 .service("urlBuilderService", Core.UrlBuilderService)
                 .service("clientService", Clients.ClientService)
-                .controller("ClientsController", TFIP.Web.UI.Clients.ClientsController)
+                .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
-                .controller("HomeController", TFIP.Web.UI.Home.HomeController);
+                .controller("HomeController", TFIP.Web.UI.Home.HomeController)
+                .config([
+                    "$httpProvider", ($httpProvider: ng.IHttpProvider) => {
+                        $httpProvider.interceptors.push(() => {
+                            return {
+                                'request': (config) => {
+                                    if (!config) {
+                                        config = {
+                                            withCredentials: true
+                                        };
+                                    } else {
+                                        config.withCredentials = true;
+                                    }
+
+                                    return config;
+                                }
+                            };
+                        });
+                    }
+                ]);
 
             return new ModuleBootstrapper(mainModule, "body");
         }

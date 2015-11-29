@@ -23,11 +23,11 @@
         public isClientExist(clientId: string, clientType: string): ng.IPromise<any> {
             var deferred = this.$q.defer();
             if (clientId && clientType) {
-                var url = this.urlBuilderService.buildQuery(this.apiUrlService.clientApi.exist, { clientType: clientType, clientId: clientId });
-                this.$http.get(url).then(() => {
-                    deferred.resolve();
-                }, () => {
-                    deferred.reject();
+                var url = this.urlBuilderService.buildQuery(this.apiUrlService.clientApi.exist, { clientType: clientType, individualNumber: clientId });
+                this.$http.get(url).then((data: boolean) => {
+                    deferred.resolve(data);
+                }, (reason: any) => {
+                    deferred.reject(reason);
                 });
             } else {
                 deferred.reject();

@@ -4,12 +4,6 @@
 
     public class ClientsController : Controller
     {
-
-        public ActionResult ClientSelection()
-        {
-            return this.PartialView("ClientSelection");
-        }
-
         public ActionResult Index()
         {
             return View();

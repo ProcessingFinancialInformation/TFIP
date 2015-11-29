@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{85B83380-DE3D-4CFF-9958-4D10B2D12C77}"
 	ProjectSection(SolutionItems) = preProject
@@ -41,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Common.Resources", "TFIP.Common.Resources\TFIP.Common.Resources.csproj", "{6B049560-B01B-47C4-AFD1-272F90C7FA34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.NotificationModule", "TFIP.Business.NotificationModule\TFIP.Business.NotificationModule.csproj", "{C0279E21-0B66-492A-A498-044194155D12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.Models", "TFIP.Business.Models\TFIP.Business.Models.csproj", "{D9719710-959E-4CF5-B749-3EA24AD8CF01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,10 @@ Global
 		{C0279E21-0B66-492A-A498-044194155D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0279E21-0B66-492A-A498-044194155D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0279E21-0B66-492A-A498-044194155D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9719710-959E-4CF5-B749-3EA24AD8CF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9719710-959E-4CF5-B749-3EA24AD8CF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9719710-959E-4CF5-B749-3EA24AD8CF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9719710-959E-4CF5-B749-3EA24AD8CF01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,5 +129,6 @@ Global
 		{73F0F204-7C1D-483D-96A1-5303C5C8A767} = {85B83380-DE3D-4CFF-9958-4D10B2D12C77}
 		{6B049560-B01B-47C4-AFD1-272F90C7FA34} = {319700B1-4B14-40D8-AD7B-B007409BFFFA}
 		{C0279E21-0B66-492A-A498-044194155D12} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
+		{D9719710-959E-4CF5-B749-3EA24AD8CF01} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
 	EndGlobalSection
 EndGlobal

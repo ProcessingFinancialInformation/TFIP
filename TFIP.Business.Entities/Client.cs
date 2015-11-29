@@ -6,8 +6,6 @@ namespace TFIP.Business.Entities
 {
     public class Client : Entity, IEntityWithAttachments
     {
-        public virtual ClientType ClientType { get; set; }
-
         [Key]
         public string IdentificationNo { get; set; }
 
