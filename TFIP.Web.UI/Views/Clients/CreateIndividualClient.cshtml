@@ -28,8 +28,8 @@
             <label for="gender" class="col-sm-2 control-label">Пол</label>
             <div class="col-sm-10">
                 <select ng-model="clientViewModel.gender" class="form-control" id="gender" name="gender">
-                    <option ng-value="genders.male">Мужской</option>
-                    <option ng-value="genders.female">Женский</option>
+                    <option ng-value="male">Мужской</option>
+                    <option ng-value="female">Женский</option>
                 </select>
             </div>
         </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="identificationNo" class="col-sm-2 control-label">Дата рождения</label>
+            <label for="dateOfBirth" class="col-sm-2 control-label">Дата рождения</label>
             <div class="col-sm-10">
                 <p class="input-group">
                     <input type="text"
@@ -76,7 +76,8 @@
                            is-open="dateOfBirth.opened"
                            ng-required="true"
                            close-text="Close"
-                           required="required" style="">
+                           required="required" style=""
+                           id="dateOfBirth">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="dateOfBirth.opened = !dateOfBirth.opened"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -102,7 +103,8 @@
                            is-open="dateOfIssue.opened"
                            ng-required="true"
                            close-text="Close"
-                           required="required" style="">
+                           required="required" style=""
+                           id="dateOfIssue">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="dateOfIssue.opened = !dateOfIssue.opened"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -110,6 +112,7 @@
 
             </div>
         </div>
+
         <div class="form-group">
             <label for="dateOfExpiry" class="col-sm-2 control-label">Дата2</label>
             <div class="col-sm-10">
@@ -117,11 +120,12 @@
                     <input type="text"
                            class="form-control"
                            uib-datepicker-popup="dd-MMMM-yyyy"
-                           ng-model="clientViewModel.dateOfBirth"
+                           ng-model="clientViewModel.dateOfExpiry"
                            is-open="dateOfExpiry.opened"
                            ng-required="true"
                            close-text="Close"
-                           required="required" style="">
+                           required="required" style=""
+                           id="dateOfExpiry">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="dateOfExpiry.opened = !dateOfExpiry.opened"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
@@ -130,6 +134,61 @@
             </div>
         </div>
         
+        <div class="form-group">
+            <label for="registrationCountry" class="col-sm-2 control-label">Страна</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.registrationCountry" class="form-control" id="registrationCountry" name="registrationCountry" placeholder="Страна">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="registrationRegion" class="col-sm-2 control-label">Область</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.registrationRegion" class="form-control" id="registrationRegion" name="registrationRegion" placeholder="Область">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="registrationCity" class="col-sm-2 control-label">Город</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.registrationCity" class="form-control" id="registrationCity" name="registrationCity" placeholder="Город">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="houseNo" class="col-sm-2 control-label">Дом</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.houseNo" class="form-control" id="houseNo" name="houseNo" placeholder="Дом">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="flatNo" class="col-sm-2 control-label">Квартира</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="clientViewModel.flatNo" class="form-control" id="flatNo" name="flatNo" placeholder="Квартира">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="registrationDate" class="col-sm-2 control-label">Дата регистрацииь</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           ng-model="clientViewModel.registrationDate"
+                           is-open="registrationDate.opened"
+                           ng-required="true"
+                           close-text="Close"
+                           required="required" style=""
+                           id="registrationDate">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="registrationDate.opened = !registrationDate.opened"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

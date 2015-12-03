@@ -2,6 +2,7 @@
 
     export interface IClientService {
         isClientExist(clientId: string, clientType: string): ng.IPromise<any>;
+        createClient(model: ClientViewModel): ng.IPromise<Shared.AjaxViewModel<any>>;
     }
 
     export class ClientService implements IClientService {
@@ -20,6 +21,10 @@
             
         }
 
+        public getInitInfo() {
+            
+        }
+
         public isClientExist(clientId: string, clientType: string): ng.IPromise<any> {
             var deferred = this.$q.defer();
             if (clientId && clientType) {
@@ -32,6 +37,18 @@
             } else {
                 deferred.reject();
             }
+
+            return deferred.promise;
+        }
+
+        public createClient(model: ClientViewModel): ng.IPromise<Shared.AjaxViewModel<any>> {
+            var deferred = this.$q.defer();
+
+            this.$http.post(this.apiUrlService.clientApi.createClient, model).then((data) => {
+                deferred.resolve(data);
+            }, (reason: any) => {
+                deferred.reject(reason);
+            });
 
             return deferred.promise;
         }

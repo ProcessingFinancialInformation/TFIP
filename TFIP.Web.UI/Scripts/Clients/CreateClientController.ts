@@ -4,7 +4,8 @@
         clientViewModel: ClientViewModel;
         createUser: () => void;
 
-        genders: Gender;
+        male: Gender;
+        female: Gender;
 
         createClientForm: ng.IFormController;
     }
@@ -24,12 +25,39 @@
             private $location: ng.ILocationService) {
 
             this.$scope.clientViewModel = new ClientViewModel();
-            this.$scope.genders = new Gender();
+            this.$scope.male = Gender.Male;
+            this.$scope.female = Gender.Female;
             this.$scope.createUser = () => this.createUser();
+
+            this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
+                for (var prop in this.$scope.clientViewModel) {
+                    
+                    if (typeof (this.$scope.clientViewModel[prop]) == "string") {
+                        this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
+                    }
+                }
+            }, true);
         }
 
         private createUser() {
-            console.log(this.$scope.clientViewModel);
+            if (this.$scope.createClientForm.$valid) {
+                var promsie = this.clientService.createClient(this.$scope.clientViewModel);
+
+                promsie.then((data: Shared.AjaxViewModel<any>) => {
+                    if (data.isValid) {
+                        window.location.href = '/';
+                    } else {
+                        this.messageBox.showErrorMulty("Клиенты", data.errors);
+                    }
+                }, (reason: any) => {
+                    this.messageBox.showError("Клиенты", reason.message);
+                });
+            } else {
+                for (var i = 0; i < this.$scope.createClientForm.$error.required.length; i++) {
+                    this.$scope.createClientForm.$error.required[i].$dirty = true;
+                }
+                this.messageBox.showError("Клиенты", "Введены неверные данные");
+            }
         }
        
     }

@@ -34,11 +34,13 @@
     export class ClientApi extends UrlHelperBase {
 
         public exist: string;
+        public createClient: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.exist = this.getBasePath() + "api/clients/isclientExist";
+            this.createClient = this.getBasePath() + "api/clients/createIndividualClient";
         }
     }
 

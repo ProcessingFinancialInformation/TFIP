@@ -212,3 +212,5 @@ TFIP.Web.UI/Scripts/_references.js
 TFIP.Web.UI/Scripts/_references.js.map
 TFIP.Web.UI/Scripts/Clients/CreateClientController.js
 TFIP.Web.UI/Scripts/Clients/CreateClientController.js.map
+TFIP.Web.UI/Scripts/Shared/ValidationModel.js
+TFIP.Web.UI/Scripts/Shared/ValidationModel.js.map
