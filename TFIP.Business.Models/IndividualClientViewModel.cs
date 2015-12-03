@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TFIP.Business.Entities;
 using System.ComponentModel.DataAnnotations;
+using TFIP.Common.Constants;
 
 namespace TFIP.Business.Models
 {
@@ -14,32 +15,32 @@ namespace TFIP.Business.Models
         public long Id { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z 0-9]{2,14}")]
+        [RegularExpression("[A-Z0-9]{2,14}")]
         public string IdentificationNo { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z 0-9]{2,9}")]
+        [RegularExpression("[A-Z0-9]{2,9}")]
         public int PassportNo { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
+        [RegularExpression(RegexConstants.BigLetters)]
         public string FirstName { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z '-]+")]
+        [RegularExpression("[A-ZА-Я'-]+")]
         public string LastName { get; set; }
 
-        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
+        [RegularExpression(RegexConstants.BigLetters)]
         public string Patronymic { get; set; }
 
         public Gender Gender { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
+        [RegularExpression(RegexConstants.BigLetters)]
         public string Nationality { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
+        [RegularExpression(RegexConstants.BigLetters)]
         public string PlaceOfBirth { get; set; }
 
         [Required]
@@ -58,18 +59,18 @@ namespace TFIP.Business.Models
         public int CoutryId { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z 0-9 '-]+")]
+        [RegularExpression("[A-ZА-Я0-9'-]+")]
         public string RegistrationCity { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z 0-9 '-]+")]
+        [RegularExpression("[A-ZА-Я0-9'-]+")]
         public string RegistrationRegion { get; set; }
 
         [Required]
         public string Street { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я а-я  a-z 0-9 . '-]+")]
+        [RegularExpression("[A-ZА-Я0-9.'-]+")]
         public string HouseNo { get; set; }
 
         [Required]
