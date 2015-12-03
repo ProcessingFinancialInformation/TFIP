@@ -23,5 +23,7 @@
         public const string OperatorGroup = "Groups.Operator";
 
         public const string SecurityAgentGroup = "Groups.Security";
+
+        public const string WebApiUrl = "WebApiUrl";
     }
 }

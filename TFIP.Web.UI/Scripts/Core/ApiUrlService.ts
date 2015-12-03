@@ -12,7 +12,7 @@
         public clientApi: ClientApi;
 
         constructor(private $window: ng.IWindowService) {
-            var baseUrl = this.$window["ApiRootUrl"];
+            var baseUrl = this.$window["consts"].webApiRoot;
 
             this.clientApi = new ClientApi(baseUrl);
         }

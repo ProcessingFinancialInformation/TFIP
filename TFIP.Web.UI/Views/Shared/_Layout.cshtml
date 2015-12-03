@@ -4,9 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title | Bank System</title>
-    <script>
-        ApiRootUrl = "http://localhost:42484/";
-    </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/libs")
     @Styles.Render("~/Content/common")
@@ -43,9 +40,10 @@
             @RenderBody()
         </div>
         @*<footer>
-            <p>&copy; @DateTime.Now.Year - Bank System</p>
-        </footer>*@
+                <p>&copy; @DateTime.Now.Year - Bank System</p>
+            </footer>*@
     </div>
+    @Html.Partial("_CommonJs")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")

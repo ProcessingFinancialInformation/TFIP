@@ -153,6 +153,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\TFIP.pubxml" />
     <None Include="Scripts\jQuery\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jQuery\jquery.validate.js" />
@@ -180,6 +181,7 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Clients\IndividualClient.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClient.cshtml" />
+    <Content Include="Views\Shared\_CommonJs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -209,6 +211,12 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\_references.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
+      <Project>{4124f2f0-d0df-403f-a2ce-b645c61c5d30}</Project>
+      <Name>TFIP.Common.Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

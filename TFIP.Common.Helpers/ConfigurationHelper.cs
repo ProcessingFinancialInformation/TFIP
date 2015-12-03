@@ -7,6 +7,11 @@ namespace TFIP.Common.Helpers
 {
     public class ConfigurationHelper
     {
+        public static string GetWebApiUrl()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.WebApiUrl);
+        }
+
         public static string GetSMTPUser()
         {
             return GetSettingFromConfig(ConfigurationKeys.SMTPUser);
