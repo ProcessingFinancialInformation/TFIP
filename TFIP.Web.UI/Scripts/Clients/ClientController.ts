@@ -8,7 +8,5 @@
         public static $inject = [
             "$scope"
         ];
-
-        constructor()
     }
 } 
