@@ -10,10 +10,13 @@
         Female
     }
 
+    export class IndividualClientFormViewModel {
+        countries: Shared.ListItem[];
+    }
+
     export class ClientViewModel {
         identificationNo: string;
-        passportSeries: string;
-        passportNumber: number;
+        passportNo: string;
         firstName: string;
         lastName: string;
         patronymic: string;
@@ -24,11 +27,14 @@
         dateOfIssue: Date | string | number;
         dateOfExpiry: Date | string | number;
         dateOfBirth: Date | string | number;
-        registrationCountry: string;
+        coutryId: number;
         registrationCity: string;
         registrationRegion: string;
+        street: string;
         houseNo: string;
         flatNo: string;
         registrationDate: Date | string | number;
+        contactEmail: string;
+        contactPhone: string;
     }
 }    

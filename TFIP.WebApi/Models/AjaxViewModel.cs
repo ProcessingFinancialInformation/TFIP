@@ -11,7 +11,7 @@ namespace TFIP.Web.Api.Models
 
         public bool IsValid
         {
-            get { return Errors.Any(); }
+            get { return !Errors.Any(); }
         }
 
         public AjaxViewModel()

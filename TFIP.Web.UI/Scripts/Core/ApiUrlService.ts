@@ -35,12 +35,14 @@
 
         public exist: string;
         public createClient: string;
+        public getIndividualClientFormInfo: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.exist = this.getBasePath() + "api/clients/isclientExist";
             this.createClient = this.getBasePath() + "api/clients/createIndividualClient";
+            this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
         }
     }
 

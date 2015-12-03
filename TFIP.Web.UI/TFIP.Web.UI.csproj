@@ -185,6 +185,7 @@
     <Content Include="Views\Clients\IndividualClient.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClient.cshtml" />
     <Content Include="Views\Shared\_CommonJs.cshtml" />
+    <Content Include="Views\Clients\CreateJuridicalPersonClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -196,10 +197,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
-    <TypeScriptCompile Include="Scripts\Clients\CreateClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />

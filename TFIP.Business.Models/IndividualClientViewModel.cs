@@ -14,11 +14,11 @@ namespace TFIP.Business.Models
         public long Id { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z 1-9]{2,14}")]
+        [RegularExpression("[A-Z 0-9]{2,14}")]
         public string IdentificationNo { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z 1-9]{2,9}")]
+        [RegularExpression("[A-Z 0-9]{2,9}")]
         public int PassportNo { get; set; }
 
         [Required]
@@ -58,18 +58,18 @@ namespace TFIP.Business.Models
         public int CoutryId { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z 1-9 '-]+")]
+        [RegularExpression("[A-Z А-Я][а-я  a-z 0-9 '-]+")]
         public string RegistrationCity { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я][а-я  a-z 1-9 '-]+")]
+        [RegularExpression("[A-Z А-Я][а-я  a-z 0-9 '-]+")]
         public string RegistrationRegion { get; set; }
 
         [Required]
         public string Street { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z А-Я а-я  a-z 1-9 . '-]+")]
+        [RegularExpression("[A-Z А-Я а-я  a-z 0-9 . '-]+")]
         public string HouseNo { get; set; }
 
         [Required]
