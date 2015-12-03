@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,8 @@ namespace TFIP.Data.Configurations
     {
         public JuridicalClientConfiguration()
         {
-            HasKey(x => new { x.Id, x.IdentificationNo });
+            Property(t => t.IdentificationNo).
+                 HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));
         }
     }
 }

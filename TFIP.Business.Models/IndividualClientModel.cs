@@ -14,12 +14,12 @@ namespace TFIP.Business.Models
         public long Id { get; set; }
 
         [Required]
+        [RegularExpression("[A-Z 1-9]{2,14}")]
         public string IdentificationNo { get; set; }
 
         [Required]
-        public string PassportSeries { get; set; }
-
-        public int PassportNumber { get; set; }
+        [RegularExpression("[A-Z 1-9]{2,9}")]
+        public int PassportNo { get; set; }
 
         [Required]
         [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
@@ -39,29 +39,40 @@ namespace TFIP.Business.Models
         public string Nationality { get; set; }
 
         [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
         public string PlaceOfBirth { get; set; }
 
         [Required]
         public string Authority { get; set; }
 
+        [Required]
         public DateTime DateOfIssue { get; set; }
 
+        [Required]
         public DateTime DateOfExpiry { get; set; }
 
         [Required]
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public string RegistrationCountry { get; set; }
+        public int CoutryId { get; set; }
 
         [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z 1-9 '-]+")]
         public string RegistrationCity { get; set; }
 
+        [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z 1-9 '-]+")]
         public string RegistrationRegion { get; set; }
 
         [Required]
+        public string Street { get; set; }
+
+        [Required]
+        [RegularExpression("[A-Z А-Я а-я  a-z 1-9 . '-]+")]
         public string HouseNo { get; set; }
 
+        [Required]
         public string FlatNo { get; set; }
 
         public DateTime RegistrationDate { get; set; }
