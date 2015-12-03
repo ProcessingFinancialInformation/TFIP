@@ -86,5 +86,14 @@ namespace TFIP.Common.Resources {
                 return ResourceManager.GetString("NewRequestCreated", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необработанная ошибка!.
+        /// </summary>
+        public static string UnhandledError {
+            get {
+                return ResourceManager.GetString("UnhandledError", resourceCulture);
+            }
+        }
     }
 }

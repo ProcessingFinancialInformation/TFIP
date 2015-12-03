@@ -4,6 +4,7 @@
     {
         NewCreditRequest = 0,
         CreditRequestIsProccessedBySecurity = 1,
-        CreditRequestIsProcessed = 2
+        CreditRequestIsProcessed = 2,
+        UnhandledError = 255
     }
 }

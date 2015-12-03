@@ -2,6 +2,7 @@
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using TFIP.Web.Api.Filters;
 
 namespace TFIP.Web.Api
 {
@@ -21,6 +22,8 @@ namespace TFIP.Web.Api
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new LogExceptionFilterAttribute());
 
             var formatters = GlobalConfiguration.Configuration.Formatters;
             formatters.JsonFormatter.SerializerSettings.ContractResolver =

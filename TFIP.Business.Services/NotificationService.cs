@@ -17,6 +17,8 @@ namespace TFIP.Business.Services
             this.notificationService = notificationService;
         }
 
+        // TODO: Save into database!
+
         public bool SendNewCreditRequestCreated(long requestId, string requestNumber)
         {
             dynamic data = new ExpandoObject();
@@ -58,6 +60,19 @@ namespace TFIP.Business.Services
 
             return SendNotification(NotificationType.CreditRequestIsProccessedBySecurity, 
                 new Addressee("", NotificationAccountType.Email), data);
+        }
+
+        public bool SendNotificationWithException(IEnumerable<string> recepients, Exception exception, string url, string data)
+        {
+            dynamic obj = new ExpandoObject();
+            obj.Exception = exception.ToString();
+            obj.Url = url;
+            obj.Data = data;
+
+            obj.Subject = EmailTemplatesSubjects.UnhandledError;
+
+            return SendNotification(NotificationType.UnhandledError,
+                new Addressee(recepients, NotificationAccountType.Email), obj);
         }
 
         private string GenerateLinkToRequest(long requestId)

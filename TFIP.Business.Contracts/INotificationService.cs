@@ -1,4 +1,6 @@
-﻿using TFIP.Business.Entities;
+﻿using System;
+using System.Collections.Generic;
+using TFIP.Business.Entities;
 
 namespace TFIP.Business.Contracts
 {
@@ -10,5 +12,8 @@ namespace TFIP.Business.Contracts
             CreditRequestStatus requestStatus);
 
         bool SendCreditRequestIsProcessedBySecurity(long requestId, string requestNumber);
+
+        bool SendNotificationWithException(IEnumerable<string> recepients, Exception exception,
+            string url, string data);
     }
 }

@@ -126,4 +126,7 @@
   <data name="NewRequestCreated" xml:space="preserve">
     <value>Добавлена новая заявка на кредит</value>
   </data>
+  <data name="UnhandledError" xml:space="preserve">
+    <value>Необработанная ошибка!</value>
+  </data>
 </root>
