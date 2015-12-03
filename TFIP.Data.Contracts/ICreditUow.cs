@@ -7,6 +7,7 @@ namespace TFIP.Data.Contracts
     {
         IBaseRepository<Attachment> Attachments { get; }
         IBaseRepository<AttachmentHeader> AttachmentHeaders { get; }
+        IBaseRepository<Country> Countries { get; }
         IBaseRepository<CreditRequest> CreditRequests { get; }
         IBaseRepository<CreditType> CreditTypes { get; }
         IBaseRepository<IndividualClient> IndividualClients { get; }

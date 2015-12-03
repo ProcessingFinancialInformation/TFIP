@@ -1,25 +1,40 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
 using TFIP.Common.Resources;
+using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {
     public class ClientsController : BaseApiController
     {
         private readonly IIndividualClientsService individualClientsService;
-
         private readonly IJuridicalClientsService juridicalClientsService;
+        private readonly ICountryService countryService;
 
-        public ClientsController(IIndividualClientsService individualClientsService, IJuridicalClientsService juridicalClientsService)
+        public ClientsController(
+            IIndividualClientsService individualClientsService, 
+            IJuridicalClientsService juridicalClientsService,
+            ICountryService countryService)
         {
             this.individualClientsService = individualClientsService;
             this.juridicalClientsService = juridicalClientsService;
+            this.countryService = countryService;
         }
 
-        [System.Web.Http.HttpGet]
+        [HttpGet]
+        public HttpResponseMessage GetIndividualClientFormInfo()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, new IndividualClientFormViewModel()
+            {
+                Countries = countryService.GetCountries()
+            });
+        }
+
+        [HttpGet]
         public HttpResponseMessage IsClientExist(ClientType clientType, string individualNumber)
         {
             switch (clientType)
@@ -34,8 +49,8 @@ namespace TFIP.Web.Api.Controllers
             }
         }
 
-        [System.Web.Http.HttpPost]
-        public HttpResponseMessage CreateIndividualClient(IndividualClientModel individualClient)
+        [HttpPost]
+        public HttpResponseMessage CreateIndividualClient(IndividualClientViewModel individualClient)
         {
             var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK,model);

@@ -82,6 +82,7 @@
     <Compile Include="ActiveDirectory\ActiveDirectoryHelper.cs" />
     <Compile Include="ActiveDirectory\ActiveDirectoryManager.cs" />
     <Compile Include="AutomapperConfigurator.cs" />
+    <Compile Include="CountryService.cs" />
     <Compile Include="IndividualClientsService.cs" />
     <Compile Include="JuridicalClientsService.cs" />
     <Compile Include="Mapper\MapperProfile.cs" />
