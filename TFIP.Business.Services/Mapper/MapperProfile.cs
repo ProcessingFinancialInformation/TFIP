@@ -25,8 +25,22 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
+
+            ConfigureCountry();
+
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
+        }
+
+        private void ConfigureCountry()
+        {
+            AutoMapper.Mapper.CreateMap<Country, ListItem>()
+                .ForMember(dest => dest.Id, x => x.MapFrom(source => source.Id))
+                .ForMember(dest => dest.Value, x => x.MapFrom(source => source.Name));
+
+            AutoMapper.Mapper.CreateMap<ListItem, Country>()
+                .ForMember(dest => dest.Id, x => x.MapFrom(source => source.Id))
+                .ForMember(dest => dest.Name, x => x.MapFrom(source => source.Value));
         }
     }
 }

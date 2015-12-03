@@ -57,6 +57,14 @@ namespace TFIP.Data
             }
         }
 
+        public IBaseRepository<Country> Countries
+        {
+            get
+            {
+                return GetBaseRepo<Country>();
+            }
+        }
+
         public IBaseRepository<CreditRequest> CreditRequests
         {
             get
