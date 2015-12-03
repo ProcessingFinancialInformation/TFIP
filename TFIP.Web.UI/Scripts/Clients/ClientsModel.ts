@@ -5,9 +5,9 @@
         juridicalPerson = "JuridicalPerson";
     }
 
-    export class Gender {
-        male = "Male";
-        female = "Female";
+    export enum Gender {
+        Male,
+        Female
     }
 
     export class ClientViewModel {
@@ -17,7 +17,7 @@
         firstName: string;
         lastName: string;
         patronymic: string;
-        gender: string;
+        gender: Gender;
         nationality: string;
         placeOfBirth: string;
         authority: string;

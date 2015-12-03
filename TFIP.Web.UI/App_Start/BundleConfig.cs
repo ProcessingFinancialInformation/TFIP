@@ -14,8 +14,9 @@ namespace TFIP.Web.UI
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/libs").Include(
-                "~/Content/bootstrap.min.css"));
+            bundles.Add(
+                new StyleBundle("~/Content/libs").Include("~/Content/bootstrap.min.css")
+                    .Include("~/Content/blockui/angular-block-ui.css"));
 
             bundles.Add(new LessBundle("~/Content/common").Include(
                 "~/Content/app/variables.less",
@@ -31,7 +32,8 @@ namespace TFIP.Web.UI
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .IncludeDirectory("~/Scripts/Angular", "*.js")
                 .IncludeDirectory("~/Scripts/angular-sanitize", "*.js")
-                .IncludeDirectory("~/Scripts/angular-ui", "*.js"));
+                .IncludeDirectory("~/Scripts/angular-ui", "*.js")
+                .IncludeDirectory("~/Scripts/blockui", "*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             "~/Scripts/modernizr/modernizr-*"));

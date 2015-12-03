@@ -52,7 +52,7 @@
 
         public static main(modules: ModuleBootstrapper[]) {
             var modulesNames: string[] = modules.asEnumerable().select((m: ModuleBootstrapper, index: number) => { return m.module.name; }).toArray();
-            modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize"]);
+            modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI']);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
                 .service("messageBox", Core.MessageBoxService)
