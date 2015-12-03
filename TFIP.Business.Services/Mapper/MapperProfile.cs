@@ -21,7 +21,7 @@ namespace TFIP.Business.Services.Mapper
 
         protected override void Configure()
         {
-            AutoMapper.Mapper.CreateMap<IndividualClientModel, IndividualClient>()
+            AutoMapper.Mapper.CreateMap<IndividualClientViewModel, IndividualClient>()
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());

@@ -51,7 +51,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage CreateIndividualClient(IndividualClientModel individualClient)
+        public HttpResponseMessage CreateIndividualClient(IndividualClientViewModel individualClient)
         {
             var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK,model);

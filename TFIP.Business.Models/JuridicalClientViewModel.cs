@@ -1,32 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TFIP.Business.Entities;
 
-namespace TFIP.Business.Entities
+namespace TFIP.Business.Models
 {
-    public class JuridicalClient : Client
+    public class JuridicalClientViewModel
     {
+
+        public string IdentificationNo { get; set; }
         /// <summary>
         /// Название организации
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
         /// Имя представителя
         /// </summary>
+        [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
         public string RepresenterFirstName { get; set; }
 
         /// <summary>
         /// Фамилия представителя
         /// </summary>
+        [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
         public string RepresenterLastName { get; set; }
 
         /// <summary>
         /// Отчество представителя
         /// </summary>
+        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
         public string RepresenterPatronymic { get; set; }
 
         /// <summary>
         /// Должность представителя
         /// </summary>
+        [Required]
+        [RegularExpression("[A-Z А-Я][а-я  a-z ]+")]
         public string RepresenterPosition { get; set; }
 
         /// <summary>
@@ -69,5 +85,22 @@ namespace TFIP.Business.Entities
 
         public string ContactFax { get; set; }
 
+        public int CoutryId { get; set; }
+
+        public string RegistrationCity { get; set; }
+
+        public string RegistrationRegion { get; set; }
+
+        public string RegistrationStreet { get; set; }
+
+        public string HouseNo { get; set; }
+
+        public string FlatNo { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+        public string ContactEmail { get; set; }
+
+        public string ContactPhone { get; set; }
     }
 }
