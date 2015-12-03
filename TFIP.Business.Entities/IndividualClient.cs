@@ -1,12 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TFIP.Business.Entities
 {
     public class IndividualClient : Client
     {
-        public string PassportSeries { get; set; }
-
-        public int PassportNumber { get; set; }
+        [MaxLength(9)]
+        public string PassportNo { get; set; }
 
         public string FirstName { get; set; }
 
@@ -27,17 +27,5 @@ namespace TFIP.Business.Entities
         public DateTime DateOfExpiry { get; set; }
 
         public DateTime DateOfBirth { get; set; }
-
-        public string RegistrationCountry { get; set; }
-
-        public string RegistrationCity { get; set; }
-
-        public string RegistrationRegion { get; set; }
-
-        public string HouseNo { get; set; }
-
-        public string FlatNo { get; set; }
-
-        public DateTime RegistrationDate { get; set; }
     }
 }

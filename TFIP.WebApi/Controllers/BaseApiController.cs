@@ -35,6 +35,33 @@ namespace TFIP.Web.Api.Controllers
                 .Select(it => it.ErrorMessage));
         }
 
+        public AjaxViewModel ProcessViewModel<TViewModel>(TViewModel viewModel,
+            IValidationService<TViewModel> validationService, Action<TViewModel> processFunc)
+        {
+            if (ModelState.IsValid)
+            {
+                if (validationService == null)
+                {
+                    processFunc(viewModel);
+                    return CreateAjaxViewModel(null, List.Of<string>());
+                }
+
+                var errors = validationService.Validate(viewModel)
+                    .ToList();
+                if (errors.Any())
+                {
+                    return CreateAjaxViewModel(viewModel, errors);
+                }
+
+                processFunc(viewModel);
+                return CreateAjaxViewModel(null, errors);
+            }
+
+            return CreateAjaxViewModel(viewModel, ModelState.Values
+                .SelectMany(it => it.Errors)
+                .Select(it => it.ErrorMessage));
+        }
+
         private AjaxViewModel CreateAjaxViewModel(object data, IEnumerable<string> errors)
         {
             return new AjaxViewModel

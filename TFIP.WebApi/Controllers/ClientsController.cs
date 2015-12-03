@@ -37,8 +37,8 @@ namespace TFIP.Web.Api.Controllers
         [System.Web.Http.HttpPost]
         public HttpResponseMessage CreateIndividualClient(IndividualClientModel individualClient)
         {
-            individualClientsService.CreateClient(individualClient);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
+            return Request.CreateResponse(HttpStatusCode.OK,model);
         }
 
 
