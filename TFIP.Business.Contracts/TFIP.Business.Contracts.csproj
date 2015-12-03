@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICountryService.cs" />
     <Compile Include="IIndividualClientsService.cs" />
     <Compile Include="IMapperProfileService.cs" />
     <Compile Include="INotificationService.cs" />

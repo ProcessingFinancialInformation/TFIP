@@ -260,6 +260,10 @@
       <Project>{a444ba0d-0eb7-4483-9316-17341236f8ca}</Project>
       <Name>TFIP.Web.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Web.ViewModels\TFIP.Web.ViewModels.csproj">
+      <Project>{A436B070-81EF-4A49-BB71-85AF4503FF8C}</Project>
+      <Name>TFIP.Web.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
