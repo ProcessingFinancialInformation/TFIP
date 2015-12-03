@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TFIP.Business.Models
 {
-    public class IndividualClientModel
+    public class IndividualClientViewModel
     {
 
         public long Id { get; set; }
@@ -76,5 +76,13 @@ namespace TFIP.Business.Models
         public string FlatNo { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string ContactEmail { get; set; }
+
+        [Required]
+        [Phone]
+        public string ContactPhone { get; set; }
     }
 }

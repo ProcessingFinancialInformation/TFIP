@@ -12,6 +12,6 @@ namespace TFIP.Business.Contracts
     {
         bool IsClientExist(string IndividualNumber);
 
-        void CreateClient(IndividualClientModel client);
+        void CreateClient(IndividualClientViewModel client);
     }
 }

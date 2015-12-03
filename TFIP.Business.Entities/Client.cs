@@ -16,11 +16,13 @@ namespace TFIP.Business.Entities
 
         public virtual ICollection<CreditRequest> CreditRequests { get; set; }
 
+        public int CoutryId { get; set; }
+
         public string RegistrationCity { get; set; }
 
         public string RegistrationRegion { get; set; }
 
-        public string Street { get; set; }
+        public string RegistrationStreet { get; set; }
 
         public string HouseNo { get; set; }
 
@@ -28,6 +30,10 @@ namespace TFIP.Business.Entities
 
         public DateTime RegistrationDate { get; set; }
 
-        public string Email { get; set; }
+        public string ContactEmail { get; set; }
+
+        public virtual Country Country { get; set; }
+
+        public string ContactPhone { get; set; }
     }
 }

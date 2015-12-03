@@ -26,9 +26,9 @@ namespace TFIP.Business.Services
                     .FirstOrDefault() != null;
         }
 
-        public void CreateClient(IndividualClientModel client)
+        public void CreateClient(IndividualClientViewModel client)
         {
-            var individualClient = AutoMapper.Mapper.Map<IndividualClientModel,IndividualClient>(client);
+            var individualClient = AutoMapper.Mapper.Map<IndividualClientViewModel,IndividualClient>(client);
             creditUow.IndividualClients.InsertOrUpdate(individualClient);
             creditUow.Commit();
         }
