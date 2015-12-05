@@ -90,7 +90,7 @@ namespace TFIP.Business.Models
         public byte BankCode { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z-]+")]
+        [RegularExpression(RegexConstants.ZipCode)]
         public string Zip { get; set; }
 
         [Required]
@@ -119,18 +119,26 @@ namespace TFIP.Business.Models
         [Required]
         public int CoutryId { get; set; }
 
+        [Required]
+        [RegularExpression(RegexConstants.Address)]
         public string RegistrationCity { get; set; }
 
+        [Required]
+        [RegularExpression(RegexConstants.Address)]
         public string RegistrationRegion { get; set; }
 
+        [Required]
         public string RegistrationStreet { get; set; }
 
+        [Required]
+        [RegularExpression(RegexConstants.AddressNo)]
         public string HouseNo { get; set; }
 
+        [RegularExpression(RegexConstants.AddressNo)]
         public string FlatNo { get; set; }
 
+        [Required]
         public DateTime RegistrationDate { get; set; }
 
-        
     }
 }
