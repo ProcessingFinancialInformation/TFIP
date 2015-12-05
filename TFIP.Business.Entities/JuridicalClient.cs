@@ -34,14 +34,16 @@ namespace TFIP.Business.Entities
         /// <summary>
         /// УНП
         /// </summary>
+        [StringLength(20)]
         [Index(IsUnique = true)]
-        public int PAN { get; set; }
+        public string PAN { get; set; }
 
         /// <summary>
         /// Регистрационный номер
         /// </summary>
+        [StringLength(20)]
         [Index(IsUnique = true)]
-        public int RegistrationNumber { get; set; }
+        public string RegistrationNumber { get; set; }
 
         /// <summary>
         /// Регистрирующий орган

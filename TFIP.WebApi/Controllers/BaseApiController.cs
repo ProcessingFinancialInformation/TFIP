@@ -43,7 +43,7 @@ namespace TFIP.Web.Api.Controllers
                 if (validationService == null)
                 {
                     processFunc(viewModel);
-                    return CreateAjaxViewModel(null, List.Of<string>());
+                    return CreateAjaxViewModel(viewModel, List.Of<string>());
                 }
 
                 var errors = validationService.Validate(viewModel)
@@ -54,7 +54,7 @@ namespace TFIP.Web.Api.Controllers
                 }
 
                 processFunc(viewModel);
-                return CreateAjaxViewModel(null, errors);
+                return CreateAjaxViewModel(viewModel, errors);
             }
 
             return CreateAjaxViewModel(viewModel, ModelState.Values

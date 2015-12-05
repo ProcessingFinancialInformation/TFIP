@@ -27,6 +27,7 @@ namespace TFIP.Business.Services
             var juridicalClient = AutoMapper.Mapper.Map<JuridicalClientViewModel, JuridicalClient>(client);
             creditUow.JuridicalClients.InsertOrUpdate(juridicalClient);
             creditUow.Commit();
+            client.Id = juridicalClient.Id;
         }
     }
 }

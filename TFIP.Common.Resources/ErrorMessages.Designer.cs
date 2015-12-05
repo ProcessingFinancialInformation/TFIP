@@ -61,11 +61,29 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Клиенты младше {0} лет не обслуживаются.
+        /// </summary>
+        public static string Adulthood {
+            get {
+                return ResourceManager.GetString("Adulthood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неверный тип клиента.
         /// </summary>
         public static string InvalidClientType {
             get {
                 return ResourceManager.GetString("InvalidClientType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Клиенты старше {0} лет не обслуживаются.
+        /// </summary>
+        public static string MaxAge {
+            get {
+                return ResourceManager.GetString("MaxAge", resourceCulture);
             }
         }
     }

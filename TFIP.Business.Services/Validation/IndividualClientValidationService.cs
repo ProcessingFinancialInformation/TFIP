@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Common.Resources;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services.Validation
@@ -24,11 +25,27 @@ namespace TFIP.Business.Services.Validation
             var errors = new List<string>();
             var adulthoodSetting =
                 creditUow.Settings.Get(s => s.SettingName == SettingsNames.Adulthood).FirstOrDefault();
-            //if (adulthoodSetting != null)
-            //{
-            //    var adultHood = 
-            //   if(viewModel.DateOfBirth< DateTime.Now.AddYears())
-            //}
+            if (adulthoodSetting != null)
+            {
+                int adulthood;
+                if (int.TryParse(adulthoodSetting.SettingValue, out adulthood) &&
+                    viewModel.DateOfBirth < DateTime.Today.AddYears(-adulthood))
+                {
+                    errors.Add(String.Format(ErrorMessages.Adulthood, adulthood));
+                }
+               
+            }
+            var maxAgeSetting = creditUow.Settings.Get(s => s.SettingName == SettingsNames.MaxAge).FirstOrDefault();
+            if (maxAgeSetting != null)
+            {
+                int maxAge;
+                if (int.TryParse(maxAgeSetting.SettingValue, out maxAge) &&
+                    viewModel.DateOfBirth < DateTime.Today.AddYears(-maxAge))
+                {
+                    errors.Add(String.Format(ErrorMessages.MaxAge, maxAge));
+                }
+            }
+
             return errors;
         }
     }

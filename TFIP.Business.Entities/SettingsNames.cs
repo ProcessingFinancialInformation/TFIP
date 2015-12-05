@@ -10,6 +10,8 @@ namespace TFIP.Business.Entities
     public enum SettingsNames
     {
         [Description("Возраст совершеннолетия")]
-        Adulthood = 0
+        Adulthood = 0,
+        [Description("Максимально допустимый возраст")]
+        MaxAge = 1
     }
 }

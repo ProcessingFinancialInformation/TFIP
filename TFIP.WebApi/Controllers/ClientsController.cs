@@ -31,6 +31,7 @@ namespace TFIP.Web.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new IndividualClientFormViewModel()
             {
                 Countries = countryService.GetCountries()
+
             });
         }
 

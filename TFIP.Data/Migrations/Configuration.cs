@@ -16,6 +16,7 @@ namespace TFIP.Data.Migrations
         protected override void Seed(CreditDbContext context)
         {
             AddDefaultSetting(context, SettingsNames.Adulthood, "18");
+            AddDefaultSetting(context, SettingsNames.MaxAge, "100");
         }
 
         private void AddDefaultSetting(CreditDbContext context, SettingsNames settingName, string defaultValue)

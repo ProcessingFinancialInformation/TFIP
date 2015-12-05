@@ -49,14 +49,14 @@ namespace TFIP.Business.Models
         /// </summary>
         [Required]
         [RegularExpression(RegexConstants.Number)]
-        public int PAN { get; set; }
+        public string PAN { get; set; }
 
         /// <summary>
         /// Регистрационный номер
         /// </summary>
         [Required]
         [RegularExpression(RegexConstants.Number)]
-        public int RegistrationNumber { get; set; }
+        public string RegistrationNumber { get; set; }
 
         /// <summary>
         /// Регистрирующий орган
