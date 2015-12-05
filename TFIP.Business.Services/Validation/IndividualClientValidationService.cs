@@ -29,7 +29,7 @@ namespace TFIP.Business.Services.Validation
             {
                 int adulthood;
                 if (int.TryParse(adulthoodSetting.SettingValue, out adulthood) &&
-                    viewModel.DateOfBirth < DateTime.Today.AddYears(-adulthood))
+                    viewModel.DateOfBirth > DateTime.Today.AddYears(-adulthood))
                 {
                     errors.Add(String.Format(ErrorMessages.Adulthood, adulthood));
                 }
@@ -45,7 +45,15 @@ namespace TFIP.Business.Services.Validation
                     errors.Add(String.Format(ErrorMessages.MaxAge, maxAge));
                 }
             }
-
+            if (creditUow.IndividualClients.Get(c => c.IdentificationNo == viewModel.IdentificationNo)
+                .FirstOrDefault() !=null)
+            {
+                errors.Add(String.Format(ErrorMessages.UniqueIndividualClientIdentificationNumber,viewModel.IdentificationNo));
+            }
+            if (viewModel.DateOfIssue > viewModel.DateOfExpiry)
+            {
+                errors.Add(ErrorMessages.InvalidIssueAndExpiryDate);
+            }
             return errors;
         }
     }

@@ -123,7 +123,22 @@
   <data name="InvalidClientType" xml:space="preserve">
     <value>Неверный тип клиента</value>
   </data>
+  <data name="InvalidIssueAndExpiryDate" xml:space="preserve">
+    <value>Дата выдачи должна быть меньше срока действия</value>
+  </data>
   <data name="MaxAge" xml:space="preserve">
     <value>Клиенты старше {0} лет не обслуживаются</value>
+  </data>
+  <data name="UniqueIndividualClientIdentificationNumber" xml:space="preserve">
+    <value>Клиент с идентификационным номером {0} уже существует</value>
+  </data>
+  <data name="UniqueJuridicalClientIdentificationNumber" xml:space="preserve">
+    <value>Клиент с ОКПО {0} уже существует</value>
+  </data>
+  <data name="UniquePan" xml:space="preserve">
+    <value>Клиетн с УНП {0} уже существует</value>
+  </data>
+  <data name="UniqueRegistrationNumber" xml:space="preserve">
+    <value>Клиент с регистрационным номером {0} уже существует</value>
   </data>
 </root>
