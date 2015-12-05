@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using TFIP.Business.Contracts;
-using TFIP.Business.Entities;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services

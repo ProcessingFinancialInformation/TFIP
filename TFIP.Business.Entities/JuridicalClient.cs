@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TFIP.Business.Entities
+﻿namespace TFIP.Business.Entities
 {
     public class JuridicalClient : Client
     {

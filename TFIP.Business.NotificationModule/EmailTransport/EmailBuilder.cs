@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.CSharp.RuntimeBinder;
 using RazorEngine;
 using TFIP.Business.Entities;
 using TFIP.Common.Helpers;

@@ -1,12 +1,9 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http.Results;
 using System.Web.Mvc;
 using TFIP.Business.Contracts;
 using TFIP.Business.Models;
-using TFIP.Common.Helpers;
-using TFIP.Web.Api.Models;
 
 namespace TFIP.Web.Api.Controllers
 {
