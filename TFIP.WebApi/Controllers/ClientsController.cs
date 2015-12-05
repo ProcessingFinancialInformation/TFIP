@@ -14,15 +14,18 @@ namespace TFIP.Web.Api.Controllers
         private readonly IIndividualClientsService individualClientsService;
         private readonly IJuridicalClientsService juridicalClientsService;
         private readonly ICountryService countryService;
+        private readonly ISettingsService settingsService;
 
         public ClientsController(
             IIndividualClientsService individualClientsService, 
             IJuridicalClientsService juridicalClientsService,
-            ICountryService countryService)
+            ICountryService countryService,
+            ISettingsService settingsService)
         {
             this.individualClientsService = individualClientsService;
             this.juridicalClientsService = juridicalClientsService;
             this.countryService = countryService;
+            this.settingsService = settingsService;
         }
 
         [HttpGet]
@@ -51,14 +54,14 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage CreateIndividualClient(IndividualClientViewModel individualClient)
+        public HttpResponseMessage CreateOrUpdateIndividualClient(IndividualClientViewModel individualClient)
         {
             var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 
         [HttpPost]
-        public HttpResponseMessage CreateJuridicalClient(JuridicalClientViewModel juridicalClient)
+        public HttpResponseMessage CreateOrUpdateJuridicalClient(JuridicalClientViewModel juridicalClient)
         {
             var model = ProcessViewModel(juridicalClient, null, juridicalClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);

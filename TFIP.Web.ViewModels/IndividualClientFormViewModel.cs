@@ -6,5 +6,7 @@ namespace TFIP.Web.ViewModels
     public class IndividualClientFormViewModel
     {
         public IEnumerable<ListItem> Countries { get; set; }
+
+        public IEnumerable<ListItem> AgeSettings { get; set; } 
     }
 }

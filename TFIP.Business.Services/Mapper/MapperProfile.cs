@@ -3,6 +3,7 @@ using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Common.Helpers;
 
 namespace TFIP.Business.Services.Mapper
 {
@@ -34,6 +35,7 @@ namespace TFIP.Business.Services.Mapper
 
             ConfigureCountry();
             ConfigureAttachments();
+            ConfigureSettings();
 
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
@@ -56,6 +58,15 @@ namespace TFIP.Business.Services.Mapper
             AutoMapper.Mapper.CreateMap<ListItem, Country>()
                 .ForMember(dest => dest.Id, x => x.MapFrom(source => source.Id))
                 .ForMember(dest => dest.Name, x => x.MapFrom(source => source.Value));
+        }
+
+        private void ConfigureSettings()
+        {
+            AutoMapper.Mapper.CreateMap<Setting, ListItem>()
+                .ForMember(dest => dest.Id, x => x.MapFrom(source => source.Id))
+                .ForMember(dest => dest.AdditionalInfo,
+                    x => x.MapFrom(source => EnumHelper.GetEnumDescription(source.SettingName)))
+                .ForMember(dest => dest.Value, x => x.MapFrom(source => source.SettingValue));
         }
     }
 }

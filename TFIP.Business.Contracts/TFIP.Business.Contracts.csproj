@@ -85,7 +85,7 @@
     <Compile Include="IJuridicalClientsService.cs" />
     <Compile Include="IValidationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsService.cs" />
+    <Compile Include="ISettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

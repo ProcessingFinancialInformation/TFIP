@@ -7,8 +7,8 @@ using TFIP.Business.Models;
 
 namespace TFIP.Business.Contracts
 {
-    public interface SettingsService
+    public interface ISettingsService
     {
-       // IEnumerable<ListItem> 
+        IEnumerable<ListItem> GetAgeSettings();
     }
 }
