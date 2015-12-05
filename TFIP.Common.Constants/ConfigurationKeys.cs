@@ -25,5 +25,9 @@
         public const string SecurityAgentGroup = "Groups.Security";
 
         public const string WebApiUrl = "WebApiUrl";
+
+        public const string TemporaryFilesFolder = "Files.TemporaryFolder";
+
+        public const string FilesStorageFolder = "Files.StorageFolder";
     }
 }

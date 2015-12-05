@@ -7,6 +7,16 @@ namespace TFIP.Common.Helpers
 {
     public class ConfigurationHelper
     {
+        public static string GetFilesStorageFolder()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.FilesStorageFolder);
+        }
+
+        public static string GetTemporaryFilesFolder()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.TemporaryFilesFolder);
+        }
+
         public static string GetWebApiUrl()
         {
             return GetSettingFromConfig(ConfigurationKeys.WebApiUrl);

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
@@ -27,9 +28,18 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
 
             ConfigureCountry();
+            ConfigureAttachments();
 
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
+        }
+
+        private void ConfigureAttachments()
+        {
+            AutoMapper.Mapper.CreateMap<Attachment, ListItem>()
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(m => m.UniqueFolder.ToString()))
+                .ForMember(vm => vm.Value, opt => opt.MapFrom(m => m.FileName))
+                .ForMember(vm => vm.AdditionalInfo, opt => opt.MapFrom(m => new List<string> {m.Id.ToString()}));
         }
 
         private void ConfigureCountry()

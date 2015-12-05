@@ -81,8 +81,12 @@
   <ItemGroup>
     <Compile Include="ActiveDirectory\ActiveDirectoryHelper.cs" />
     <Compile Include="ActiveDirectory\ActiveDirectoryManager.cs" />
+    <Compile Include="AttachmentService.cs" />
     <Compile Include="AutomapperConfigurator.cs" />
+    <Compile Include="CollectionModificationResolver.cs" />
     <Compile Include="CountryService.cs" />
+    <Compile Include="FileManagementService.cs" />
+    <Compile Include="FileService.cs" />
     <Compile Include="IndividualClientsService.cs" />
     <Compile Include="JuridicalClientsService.cs" />
     <Compile Include="Mapper\MapperProfile.cs" />
@@ -116,6 +120,10 @@
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}</Project>
       <Name>TFIP.Common.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Logging\TFIP.Common.Logging.csproj">
+      <Project>{C59E2682-EDFA-465A-B703-7E618C737BD3}</Project>
+      <Name>TFIP.Common.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Resources\TFIP.Common.Resources.csproj">
       <Project>{6B049560-B01B-47C4-AFD1-272F90C7FA34}</Project>
