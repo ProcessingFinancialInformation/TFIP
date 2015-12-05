@@ -9,7 +9,7 @@ namespace TFIP.Business.Contracts
 {
     public interface IJuridicalClientsService
     {
-        bool IsClientExist(string individualNumber);
+        long IsClientExist(string identificationNo);
 
         void CreateClient(JuridicalClientViewModel client);
     }

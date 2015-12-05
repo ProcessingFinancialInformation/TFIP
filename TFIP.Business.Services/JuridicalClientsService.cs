@@ -15,11 +15,11 @@ namespace TFIP.Business.Services
             this.creditUow = creditUow;
         }
 
-        bool IJuridicalClientsService.IsClientExist(string individualNumber)
+        long IJuridicalClientsService.IsClientExist(string identificationNo)
         {
-            return
-                creditUow.JuridicalClients.Get(client => client.IdentificationNo.Equals(individualNumber))
-                    .FirstOrDefault() != null;
+            var client = creditUow.JuridicalClients.Get(c => c.IdentificationNo.Equals(identificationNo))
+                .FirstOrDefault();
+            return client != null ? client.Id : 0;
         }
 
         public void CreateClient(JuridicalClientViewModel client)
