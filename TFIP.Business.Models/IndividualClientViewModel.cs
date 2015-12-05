@@ -40,7 +40,7 @@ namespace TFIP.Business.Models
         public string Nationality { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я\\s]+")]
+        [RegularExpression(RegexConstants.BigLettersWhiteSpace)]
         public string PlaceOfBirth { get; set; }
 
         [Required]
@@ -59,22 +59,21 @@ namespace TFIP.Business.Models
         public int CoutryId { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я0-9'-\\s]+")]
+        [RegularExpression("[A-ZА-Я0-9'-]+")]
         public string RegistrationCity { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я0-9'-\\s]+")]
+        [RegularExpression("[A-ZА-Я0-9'-]+")]
         public string RegistrationRegion { get; set; }
 
         [Required]
         public string Street { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я0-9\\.]+")]
+        [RegularExpression("[A-ZА-Я0-9.'-]+")]
         public string HouseNo { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я0-9\\.]+")]
         public string FlatNo { get; set; }
 
         public DateTime RegistrationDate { get; set; }

@@ -56,7 +56,5 @@ namespace TFIP.Web.Api.Controllers
             var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
-
-
     }
 }
