@@ -55,34 +55,21 @@
             modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI']);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
+                .directive("textFieldInput", () => new Directives.TextFieldInputDirective)
+                .directive("dateFieldInput",() => new Directives.DateFieldInputDirective)
+                .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)
                 .service("urlBuilderService", Core.UrlBuilderService)
                 .service("clientService", Clients.ClientService)
+                .service("locationHelperService", Core.LocationHelperService)
+                .service("httpWrapper", Core.CustomHttpService)
+                .controller("ClientController", TFIP.Web.UI.Clients.ClientController)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("CreateClientConroller", Clients.CreateIndividualClientController)
                 .controller("CreateJuridicalClientController", Clients.CreateJuridicalClientController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
-                .controller("HomeController", TFIP.Web.UI.Home.HomeController)
-                .config([
-                    "$httpProvider", ($httpProvider: ng.IHttpProvider) => {
-                        $httpProvider.interceptors.push(["$q", ($q: ng.IQService) => {
-                            return {
-                                'request': (config) => {
-                                    if (!config) {
-                                        config = {
-                                            withCredentials: true
-                                        };
-                                    } else {
-                                        config.withCredentials = true;
-                                    }
-
-                                    return config;
-                                }
-                            };
-                        }]);
-                    }
-                ]);
+                .controller("HomeController", TFIP.Web.UI.Home.HomeController);
 
             return new ModuleBootstrapper(mainModule, "body");
         }

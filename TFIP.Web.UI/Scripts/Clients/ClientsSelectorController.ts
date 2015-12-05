@@ -18,14 +18,18 @@
             "$scope",
             "messageBox",
             "clientService",
-            "$location"
+            "$location",
+            "locationHelperService",
+            "urlBuilderService"
         ];
 
         constructor(
             private $scope: IClientsSelectorScope,
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
-            private $location: ng.ILocationService) {
+            private $location: ng.ILocationService,
+            private locationHelperService: Core.LocationHelperService,
+            private urlBuilderService: Core.IUrlBuilderService) {
 
             this.$scope.clientTypes = new ClientType();
             this.$scope.clientInput = new ClientSelectorInput();
@@ -37,12 +41,17 @@
             if (this.$scope.clientSelectionForm.$valid) {
                 var promise = this.clientService.isClientExist(this.$scope.clientInput.clientId, this.$scope.clientInput.clientType);
 
-                promise.then((data: boolean) => {
-                    if (data) {
-                        this.$location.path("" + "/" + this.$scope.clientInput.clientId);
+                promise.then((data: number) => {
+                    if (data && data > 0) {
+                        this.locationHelperService.redirect(this.urlBuilderService.buildQuery("clients", { clientId: data, clientType: this.$scope.clientInput.clientType }));
+                        //this.$location.path("" + "/" + this.$scope.clientInput.clientId);
                     } else {
                         this.messageBox.confirm("Клиенты", "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?").then(() => {
-                            window.location.href = "/Clients/CreateIndividualClient";
+                            if (this.$scope.clientInput.clientType == this.$scope.clientTypes.individualClient) {
+                                window.location.href = "/Clients/CreateIndividualClient";
+                            } else {
+                                window.location.href = "/Clients/CreateJuridicalPersonClient";
+                            }
                         });
                     }
                 }, (reason: any) => {

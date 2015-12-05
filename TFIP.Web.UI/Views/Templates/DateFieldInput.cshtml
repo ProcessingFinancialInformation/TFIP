@@ -1,0 +1,20 @@
+﻿<div class="form-group">
+    <label for="{{name}}" class="col-sm-2 control-label">{{labelText}}</label>
+    <div class="col-sm-10">
+        <p class="input-group">
+            <input type="text"
+                   class="form-control"
+                   uib-datepicker-popup="dd-MMMM-yyyy"
+                   ng-model="model"
+                   is-open="isOpened"
+                   ng-required="true"
+                   close-text="Close"
+                   required="required" style=""
+                   id="{{name}}">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="isOpened = !isOpened"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+
+    </div>
+</div>

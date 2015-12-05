@@ -7,6 +7,52 @@
 <div ng-controller="CreateJuridicalClientController">
     <div class="form-horizontal">
         
+        <h4>Сведения об организации</h4>
+        
+        <div text-field-input name="'name'" label-text="'Имя организаци'" model="clientViewModel.name"></div>
+        <div text-field-input name="'identificationNo'" label-text="'ОКПО'" model="clientViewModel.identificationNo"></div>
+        <div text-field-input name="'pAN'" label-text="'УНП'" model="clientViewModel.pAN"></div>
+        <div text-field-input name="'registrationOrganisation'" label-text="'Регистрирующий орган'" model="clientViewModel.registrationOrganisation"></div>
+        <div date-field-input name="'registrationDate'" label-text="'Дата регистрации'" model="clientViewModel.registrationDate"></div>
+        
+        <h4>Данные представителя организации</h4>
+
+        <div text-field-input name="'representerLastName'" label-text="'Фамилия'" model="clientViewModel.representerLastName"></div>
+        <div text-field-input name="'representerFirstName'" label-text="'Имя'" model="clientViewModel.representerFirstName"></div>
+        <div text-field-input name="'representerPatronymic'" label-text="'Отчество'" model="clientViewModel.representerPatronymic"></div>
+        <div text-field-input name="'representerPosition'" label-text="'Занимаемая должность'" model="clientViewModel.representerPosition"></div>
+        
+        <h4>Банковсике реквизиты</h4>
+
+        <div text-field-input name="'bankName'" label-text="'Название банка'" model="clientViewModel.bankName"></div>
+        <div text-field-input name="'bankCode'" label-text="'Код'" model="clientViewModel.bankCode"></div>
+        <div text-field-input name="'checkingAccount'" label-text="'Номер счета'" model="clientViewModel.checkingAccount"></div>
+        
+        <h4>Юридический адрес </h4>
+        
+        <div select-field-input name="'coutryId'" label-text="'Страна'" model="clientViewModel.countryId" model-values="countries"></div>
+        <div text-field-input name="'registrationRegion'" label-text="'Область'" model="clientViewModel.registrationRegion"></div>
+        <div text-field-input name="'registrationCity'" label-text="'Населенный пункт'" model="clientViewModel.registrationCity"></div>
+        <div text-field-input name="'registrationStreet'" label-text="'Улица'" model="clientViewModel.registrationStreet"></div>
+        <div text-field-input name="'houseNo'" label-text="'Дом'" model="clientViewModel.houseNo"></div>
+        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo"></div>
+        <div text-field-input name="'zip'" label-text="'Почтовый индекс'" model="clientViewModel.zip"></div>
+
+        <h4>Контактные данные</h4>
+
+        <div text-field-input name="'contactLastName'" label-text="'Фамилия'" model="clientViewModel.contactLastName"></div>
+        <div text-field-input name="'contactFirstName'" label-text="'Имя'" model="clientViewModel.contactFirstName"></div>
+        <div text-field-input name="'contactPatronymic'" label-text="'Отчество'" model="clientViewModel.contactPatronymic"></div>
+        <div text-field-input name="'contactFax'" label-text="'Факс'" model="clientViewModel.contactFax"></div>
+        <div text-field-input name="'contactPhone'" label-text="'Телефон'" model="clientViewModel.contactPhone"></div>
+        <div text-field-input name="'contactEmail'" label-text="'Электронная почта'" model="clientViewModel.contactEmail"></div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="createUser()">Создать</button>
+            </div>
+        </div>
+
     </div>
 </div>
 

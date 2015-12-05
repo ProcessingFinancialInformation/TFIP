@@ -5,206 +5,42 @@
 }
 
 <div ng-controller="CreateClientConroller" ng-form="createClientForm">
+    
+
     <div class="form-horizontal">
-        <div class="form-group">
-            <label for="lastName" class="col-sm-2 control-label">Фамилия</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.lastName" class="form-control" id="lastName" name="lastName" placeholder="Фамилия">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="firstName" class="col-sm-2 control-label">Имя</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.firstName" class="form-control" id="firstName" name="firstName" placeholder="Имя">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="patronymic" class="col-sm-2 control-label">Отчество</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.patronymic" class="form-control" id="patronymic" name="patronymic" placeholder="Отчество">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="gender" class="col-sm-2 control-label">Пол</label>
-            <div class="col-sm-10">
-                <select ng-model="clientViewModel.gender" class="form-control" id="gender" name="gender">
-                    <option ng-value="male">Мужской</option>
-                    <option ng-value="female">Женский</option>
-                </select>
-            </div>
-        </div>
         
-        <div class="form-group">
-            <label for="nationality" class="col-sm-2 control-label">Гражданство</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.nationality" class="form-control" id="nationality" name="nationality" placeholder="Гражданство">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="passportNo" class="col-sm-2 control-label">Номер паспорта</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.passportNo" class="form-control" id="passportNo" name="passportNo" placeholder="Номер паспорта">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="identificationNo" class="col-sm-2 control-label">Идентификационный номер</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.identificationNo" class="form-control" id="identificationNo" name="identificationNo" placeholder="Идентификационный номер">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="placeOfBirth" class="col-sm-2 control-label">Место рождения</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.placeOfBirth" class="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="Место рождения">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="dateOfBirth" class="col-sm-2 control-label">Дата рождения</label>
-            <div class="col-sm-10">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           uib-datepicker-popup="dd-MMMM-yyyy"
-                           ng-model="clientViewModel.dateOfBirth"
-                           is-open="dateOfBirth.opened"
-                           ng-required="true"
-                           close-text="Close"
-                           required="required" style=""
-                           id="dateOfBirth">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="dateOfBirth.opened = !dateOfBirth.opened"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
-                
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="authority" class="col-sm-2 control-label">Паспорт выдан</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.authority" class="form-control" id="authority" name="authority" placeholder="Паспорт выдан">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="dateOfIssue" class="col-sm-2 control-label">Дата</label>
-            <div class="col-sm-10">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           uib-datepicker-popup="dd-MMMM-yyyy"
-                           ng-model="clientViewModel.dateOfIssue"
-                           is-open="dateOfIssue.opened"
-                           ng-required="true"
-                           close-text="Close"
-                           required="required" style=""
-                           id="dateOfIssue">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="dateOfIssue.opened = !dateOfIssue.opened"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
+        <h4>Данные о клиенте</h4>
 
-            </div>
-        </div>
+        <div text-field-input name="'lastName'" label-text="'Фамилия'" model="clientViewModel.lastName"></div>
+        <div text-field-input name="'firstName'" label-text="'Имя'" model="clientViewModel.firstName"></div>
+        <div text-field-input name="'patronymic'" label-text="'Отчество'" model="clientViewModel.patronymic"></div>
+        <div date-field-input name="'dateOfBirth'" label-text="'Дата рождения'" model="clientViewModel.dateOfBirth"></div>
+        <div text-field-input name="'placeOfBirth'" label-text="'Место рождения'" model="clientViewModel.placeOfBirth"></div>
+        <div select-field-input name="'gender'" label-text="'Пол'" model="clientViewModel.gender" model-values="genders"></div>
+        
+        <h4>Паспортные данные</h4>
 
-        <div class="form-group">
-            <label for="dateOfExpiry" class="col-sm-2 control-label">Действителен до</label>
-            <div class="col-sm-10">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           uib-datepicker-popup="dd-MMMM-yyyy"
-                           ng-model="clientViewModel.dateOfExpiry"
-                           is-open="dateOfExpiry.opened"
-                           ng-required="true"
-                           close-text="Close"
-                           required="required" style=""
-                           id="dateOfExpiry">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="dateOfExpiry.opened = !dateOfExpiry.opened"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
+        <div text-field-input name="'nationality'" label-text="'Гражданство'" model="clientViewModel.nationality"></div>
+        <div text-field-input name="'passportNo'" label-text="'Номер паспорта'" model="clientViewModel.passportNo"></div>
+        <div text-field-input name="'identificationNo'" label-text="'Идентификационный номер'" model="clientViewModel.identificationNo"></div>
+        <div text-field-input name="'authority'" label-text="'Выдан'" model="clientViewModel.authority"></div>
+        <div date-field-input name="'dateOfIssue'" label-text="'Дата выдачи'" model="clientViewModel.dateOfIssue"></div>
+        <div date-field-input name="'dateOfExpiry'" label-text="'Срок выдачи'" model="clientViewModel.dateOfExpiry"></div>
+        
+        <h4>Сведения о регистрации</h4>
+        
+        <div select-field-input name="'countryId'" label-text="'Страна'" model="clientViewModel.nationality" model-values="countries"></div>
+        <div text-field-input name="'registrationRegion'" label-text="'Область'" model="clientViewModel.registrationRegion"></div>
+        <div text-field-input name="'registrationCity'" label-text="'Город'" model="clientViewModel.registrationCity"></div>
+        <div text-field-input name="'registrationStreet'" label-text="'Улица'" model="clientViewModel.registrationStreet"></div>
+        <div text-field-input name="'houseNo'" label-text="'Дом'" model="clientViewModel.houseNo"></div>
+        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo"></div>
+        <div date-field-input name="'registrationDate'" label-text="'Дата регистрации'" model="clientViewModel.registrationDate"></div>
+        
+        <h4>Контактные данные</h4>
 
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="countryId" class="col-sm-2 control-label">Страна</label>
-            <div class="col-sm-10">
-                <select ng-options="country.id as country.value for country in countries" ng-model="clientViewModel.countryId" class="form-control" id="countryId" name="countryId"></select>
-                <!--<input type="text" ng-model="clientViewModel.registrationCountry" class="form-control" id="registrationCountry" name="registrationCountry" placeholder="Страна">-->
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="registrationRegion" class="col-sm-2 control-label">Область</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.registrationRegion" class="form-control" id="registrationRegion" name="registrationRegion" placeholder="Область">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="registrationCity" class="col-sm-2 control-label">Город</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.registrationCity" class="form-control" id="registrationCity" name="registrationCity" placeholder="Город">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="street" class="col-sm-2 control-label">Улица</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.street" class="form-control" id="street" name="street" placeholder="Улица">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="houseNo" class="col-sm-2 control-label">Дом</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.houseNo" class="form-control" id="houseNo" name="houseNo" placeholder="Дом">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="flatNo" class="col-sm-2 control-label">Квартира</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.flatNo" class="form-control" id="flatNo" name="flatNo" placeholder="Квартира">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="registrationDate" class="col-sm-2 control-label">Дата регистрацииь</label>
-            <div class="col-sm-10">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           uib-datepicker-popup="dd-MMMM-yyyy"
-                           ng-model="clientViewModel.registrationDate"
-                           is-open="registrationDate.opened"
-                           ng-required="true"
-                           close-text="Close"
-                           required="required" style=""
-                           id="registrationDate">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="registrationDate.opened = !registrationDate.opened"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
-
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="contactEmail" class="col-sm-2 control-label">Почтовый ящик</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.contactEmail" class="form-control" id="contactEmail" name="contactEmail" placeholder="Почтовый ящик">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="contactPhone" class="col-sm-2 control-label">Телефон</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="clientViewModel.contactPhone" class="form-control" id="contactPhone" name="contactPhone" placeholder="Телефон">
-            </div>
-        </div>
+        <div text-field-input name="'contactEmail'" label-text="'Почтовый ящик'" model="clientViewModel.contactEmail"></div>
+        <div text-field-input name="'contactPhone'" label-text="'Телефон'" model="clientViewModel.contactPhone"></div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

@@ -1,0 +1,7 @@
+﻿<div class="form-group">
+    <label for="{{name}}" class="col-sm-2 control-label">{{labelText}}</label>
+    <div class="col-sm-10">
+        <select ng-options="modelValue.id as modelValue.value for modelValue in modelValues" ng-model="model" class="form-control" id="{{name}}" name="{{name}}"></select>
+        <!--<input type="text" ng-model="clientViewModel.registrationCountry" class="form-control" id="registrationCountry" name="registrationCountry" placeholder="Страна">-->
+    </div>
+</div>
