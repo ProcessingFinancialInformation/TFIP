@@ -51,6 +51,10 @@
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
+      <Project>{8483aae7-5e1c-4d74-91f9-b44878f83359}</Project>
+      <Name>TFIP.Common.Constants</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -214,3 +214,9 @@ TFIP.Web.UI/Scripts/Clients/CreateClientController.js
 TFIP.Web.UI/Scripts/Clients/CreateClientController.js.map
 TFIP.Web.UI/Scripts/Shared/ValidationModel.js
 TFIP.Web.UI/Scripts/Shared/ValidationModel.js.map
+TFIP.Web.UI/Scripts/Clients/ClientController.js
+TFIP.Web.UI/Scripts/Clients/ClientController.js.map
+TFIP.Web.UI/Scripts/Clients/CreateIndividualClientController.js
+TFIP.Web.UI/Scripts/Clients/CreateIndividualClientController.js.map
+TFIP.Web.UI/Scripts/Clients/CreateJuridicalClientController.js
+TFIP.Web.UI/Scripts/Clients/CreateJuridicalClientController.js.map

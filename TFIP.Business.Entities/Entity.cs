@@ -3,6 +3,8 @@ using System.Xml.Serialization;
 
 namespace TFIP.Business.Entities
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     /// <summary>
     /// Base class for all database entities.
     /// </summary>
@@ -13,6 +15,7 @@ namespace TFIP.Business.Entities
         /// </summary>
         [XmlIgnore]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         public bool IsNew()

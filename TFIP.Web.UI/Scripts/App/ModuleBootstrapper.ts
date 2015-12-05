@@ -60,12 +60,13 @@
                 .service("urlBuilderService", Core.UrlBuilderService)
                 .service("clientService", Clients.ClientService)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
-                .controller("CreateClientConroller", Clients.CreateClientController)
+                .controller("CreateClientConroller", Clients.CreateIndividualClientController)
+                .controller("CreateJuridicalClientController", Clients.CreateJuridicalClientController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController)
                 .config([
                     "$httpProvider", ($httpProvider: ng.IHttpProvider) => {
-                        $httpProvider.interceptors.push(() => {
+                        $httpProvider.interceptors.push(["$q", ($q: ng.IQService) => {
                             return {
                                 'request': (config) => {
                                     if (!config) {
@@ -79,7 +80,7 @@
                                     return config;
                                 }
                             };
-                        });
+                        }]);
                     }
                 ]);
 

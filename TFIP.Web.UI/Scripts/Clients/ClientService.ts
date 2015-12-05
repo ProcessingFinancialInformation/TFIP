@@ -3,6 +3,7 @@
     export interface IClientService {
         isClientExist(clientId: string, clientType: string): ng.IPromise<any>;
         createClient(model: ClientViewModel): ng.IPromise<Shared.AjaxViewModel<any>>;
+        getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel>;
     }
 
     export class ClientService implements IClientService {
@@ -21,8 +22,16 @@
             
         }
 
-        public getInitInfo() {
-            
+        public getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel> {
+            var deferred = this.$q.defer();
+
+            this.$http.get(this.apiUrlService.clientApi.getIndividualClientFormInfo).then((data) => {
+                deferred.resolve(data.data);
+            }, (reason) => {
+                deferred.reject(reason);
+            });
+
+            return deferred.promise;
         }
 
         public isClientExist(clientId: string, clientType: string): ng.IPromise<any> {
@@ -45,7 +54,7 @@
             var deferred = this.$q.defer();
 
             this.$http.post(this.apiUrlService.clientApi.createClient, model).then((data) => {
-                deferred.resolve(data);
+                deferred.resolve(data.data);
             }, (reason: any) => {
                 deferred.reject(reason);
             });

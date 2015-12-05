@@ -1,16 +1,17 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export interface ICreateClientScope extends ng.IScope {
+    export interface ICreateIndividualClientScope extends ng.IScope {
         clientViewModel: ClientViewModel;
         createUser: () => void;
 
         male: Gender;
         female: Gender;
+        countries: Shared.ListItem[];
 
         createClientForm: ng.IFormController;
     }
 
-    export class CreateClientController {
+    export class CreateIndividualClientController {
         public static $inject = [
             "$scope",
             "messageBox",
@@ -19,10 +20,14 @@
         ];
 
         constructor(
-            private $scope: ICreateClientScope,
+            private $scope: ICreateIndividualClientScope,
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
             private $location: ng.ILocationService) {
+
+            this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
+                this.$scope.countries = data.countries;
+            });
 
             this.$scope.clientViewModel = new ClientViewModel();
             this.$scope.male = Gender.Male;

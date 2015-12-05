@@ -78,6 +78,7 @@
     <Compile Include="CreditRequestStatusConstants.cs" />
     <Compile Include="DataAccessLayerConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
