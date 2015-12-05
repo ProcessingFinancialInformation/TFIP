@@ -12,5 +12,7 @@ namespace TFIP.Common.Constants
         /// [A-ZА-Я]+
         /// </summary>
         public const string BigLetters = "[A-ZА-Я]+";
+
+        public const string BigLettersWhiteSpace = @"[A-ZА-Я\s]+";
     }
 }
