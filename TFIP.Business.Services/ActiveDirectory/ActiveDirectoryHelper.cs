@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Runtime.Caching;
-using System.Security.Policy;
 using System.Security.Principal;
 
 namespace TFIP.Business.Services.ActiveDirectory
