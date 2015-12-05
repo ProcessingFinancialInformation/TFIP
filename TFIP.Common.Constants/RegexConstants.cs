@@ -47,5 +47,10 @@ namespace TFIP.Common.Constants
         /// [A-ZА-Я0-9'-\\s]+
         /// </summary>
         public const string Address = "[A-ZА-Я0-9'-\\s]+";
+
+        /// <summary>
+        /// [A-ZА-Я0-9.'-]+
+        /// </summary>
+        public const string AddressNo = "[A-ZА-Я0-9.'-]+";
     }
 }
