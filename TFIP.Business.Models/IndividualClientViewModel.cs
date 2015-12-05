@@ -15,28 +15,28 @@ namespace TFIP.Business.Models
         public long Id { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z0-9]{2,14}")]
+        [RegularExpression(RegexConstants.NumberWithCharacters2_14)]
         public string IdentificationNo { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z0-9]{2,9}")]
+        [RegularExpression(RegexConstants.NumberWithCharacters2_9)]
         public string PassportNo { get; set; }
 
         [Required]
-        [RegularExpression(RegexConstants.BigLetters)]
+        [RegularExpression(RegexConstants.Characters)]
         public string FirstName { get; set; }
 
         [Required]
         [RegularExpression("[A-ZА-Я'-]+")]
         public string LastName { get; set; }
 
-        [RegularExpression(RegexConstants.BigLetters)]
+        [RegularExpression(RegexConstants.Characters)]
         public string Patronymic { get; set; }
 
         public Gender Gender { get; set; }
 
         [Required]
-        [RegularExpression(RegexConstants.BigLetters)]
+        [RegularExpression(RegexConstants.Characters)]
         public string Nationality { get; set; }
 
         [Required]
