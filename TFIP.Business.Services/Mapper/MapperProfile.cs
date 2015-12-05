@@ -27,6 +27,11 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
 
+            AutoMapper.Mapper.CreateMap<JuridicalClientViewModel, JuridicalClient>()
+                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
+                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
+                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
+
             ConfigureCountry();
             ConfigureAttachments();
 

@@ -117,7 +117,7 @@ namespace TFIP.Business.Models
         public string ContactEmail { get; set; }
 
         [Required]
-        public int CoutryId { get; set; }
+        public int CountryId { get; set; }
 
         [Required]
         [RegularExpression(RegexConstants.Address)]

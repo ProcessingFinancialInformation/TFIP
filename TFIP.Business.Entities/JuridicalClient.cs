@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TFIP.Business.Entities
 {
@@ -32,11 +34,13 @@ namespace TFIP.Business.Entities
         /// <summary>
         /// УНП
         /// </summary>
+        [Index(IsUnique = true)]
         public int PAN { get; set; }
 
         /// <summary>
         /// Регистрационный номер
         /// </summary>
+        [Index(IsUnique = true)]
         public int RegistrationNumber { get; set; }
 
         /// <summary>

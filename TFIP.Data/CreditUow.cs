@@ -113,6 +113,11 @@ namespace TFIP.Data
             }
         }
 
+        public IBaseRepository<Setting> Settings
+        {
+            get { return GetBaseRepo<Setting>(); }
+        }
+
         /// <summary>
         /// Commits info from DbContext to database
         /// </summary>

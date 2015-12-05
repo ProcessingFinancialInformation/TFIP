@@ -27,7 +27,7 @@ namespace TFIP.Business.Models
         public string FirstName { get; set; }
 
         [Required]
-        [RegularExpression("[A-ZА-Я'-]+")]
+        [RegularExpression(RegexConstants.LastName)]
         public string LastName { get; set; }
 
         [RegularExpression(RegexConstants.Characters)]
@@ -56,7 +56,7 @@ namespace TFIP.Business.Models
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public int CoutryId { get; set; }
+        public int CountryId { get; set; }
 
         [Required]
         [RegularExpression(RegexConstants.Address)]

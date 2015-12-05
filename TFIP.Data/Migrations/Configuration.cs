@@ -1,4 +1,7 @@
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Linq;
+using TFIP.Business.Entities;
 
 namespace TFIP.Data.Migrations
 {
@@ -12,7 +15,21 @@ namespace TFIP.Data.Migrations
 
         protected override void Seed(CreditDbContext context)
         {
+            AddDefaultSetting(context, SettingsNames.Adulthood, "18");
+        }
 
+        private void AddDefaultSetting(CreditDbContext context, SettingsNames settingName, string defaultValue)
+        {
+            var setting = context.Settings
+                .AsNoTracking()
+                .SingleOrDefault(x => x.SettingName == settingName);
+
+            if (setting == null)
+                context.Settings.Add(new Setting
+                {
+                    SettingName = settingName,
+                    SettingValue = defaultValue
+                });
         }
     }
 }

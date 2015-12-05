@@ -42,15 +42,17 @@ namespace TFIP.Data
 
         public IDbSet<Payment> Payments { get; set; }
 
+        public IDbSet<Setting> Settings { get; set; } 
+
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Configurations.Add(new IndividualClientConfiguration());
+            //modelBuilder.Configurations.Add(new IndividualClientConfiguration());
 
-            modelBuilder.Configurations.Add(new JuridicalClientConfiguration());
+            //modelBuilder.Configurations.Add(new JuridicalClientConfiguration());
         }
     }
 }

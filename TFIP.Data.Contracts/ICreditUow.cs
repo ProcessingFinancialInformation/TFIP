@@ -14,6 +14,7 @@ namespace TFIP.Data.Contracts
         IBaseRepository<JuridicalClient> JuridicalClients { get; }
         IBaseRepository<Notification> Notifications { get; }
         IBaseRepository<Payment> Payments { get; }
+        IBaseRepository<Setting> Settings { get; } 
 
         /// <summary>
         /// Commits info from DbContext to database

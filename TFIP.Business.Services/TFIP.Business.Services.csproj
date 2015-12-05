@@ -99,6 +99,7 @@
     <Compile Include="Permissions\Roles\Operator.cs" />
     <Compile Include="Permissions\Roles\SecurityAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\IndividualClientValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TFIP.Business.Contracts\TFIP.Business.Contracts.csproj">
