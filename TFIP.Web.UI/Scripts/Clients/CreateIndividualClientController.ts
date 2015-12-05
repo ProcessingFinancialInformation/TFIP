@@ -6,6 +6,7 @@
 
         male: Gender;
         female: Gender;
+        genders: Shared.ListItem[];
         countries: Shared.ListItem[];
 
         createClientForm: ng.IFormController;
@@ -16,32 +17,44 @@
             "$scope",
             "messageBox",
             "clientService",
-            "$location"
+            "$location",
+            "locationHelperService",
+            "urlBuilderService"
         ];
 
         constructor(
             private $scope: ICreateIndividualClientScope,
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
-            private $location: ng.ILocationService) {
+            private $location: ng.ILocationService,
+            private locationHelperService: Core.LocationHelperService,
+            private urlBuilderService: Core.IUrlBuilderService) {
 
-            this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
+            this.init();
+        }
+
+        private init() {
+            var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
                 this.$scope.countries = data.countries;
             });
 
-            this.$scope.clientViewModel = new ClientViewModel();
-            this.$scope.male = Gender.Male;
-            this.$scope.female = Gender.Female;
-            this.$scope.createUser = () => this.createUser();
+            promsie.then(() => {
+                this.$scope.clientViewModel = new ClientViewModel();
+                
+                this.$scope.genders = [{ id: "male", value: "Мужской" }, { id: "female", value: "Женский" }];
+                this.$scope.male = Gender.Male;
+                this.$scope.female = Gender.Female;
+                this.$scope.createUser = () => this.createUser();
 
-            this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
-                for (var prop in this.$scope.clientViewModel) {
-                    
-                    if (typeof (this.$scope.clientViewModel[prop]) == "string") {
-                        this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
+                this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
+                    for (var prop in this.$scope.clientViewModel) {
+
+                        if (typeof (this.$scope.clientViewModel[prop]) == "string") {
+                            this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
+                        }
                     }
-                }
-            }, true);
+                }, true);
+            });
         }
 
         private createUser() {
@@ -50,7 +63,7 @@
 
                 promsie.then((data: Shared.AjaxViewModel<any>) => {
                     if (data.isValid) {
-                        window.location.href = '/';
+                        this.locationHelperService.redirect(this.urlBuilderService.buildQuery("/Clients", { clientId: data.data.id, clientType: new ClientType().individualClient }));
                     } else {
                         this.messageBox.showErrorMulty("Клиенты", data.errors);
                     }

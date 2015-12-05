@@ -220,3 +220,15 @@ TFIP.Web.UI/Scripts/Clients/CreateIndividualClientController.js
 TFIP.Web.UI/Scripts/Clients/CreateIndividualClientController.js.map
 TFIP.Web.UI/Scripts/Clients/CreateJuridicalClientController.js
 TFIP.Web.UI/Scripts/Clients/CreateJuridicalClientController.js.map
+TFIP.Web.UI/Scripts/Core/CustomHttpService.js
+TFIP.Web.UI/Scripts/Core/CustomHttpService.js.map
+TFIP.Web.UI/Scripts/Core/LocationHelperService.js
+TFIP.Web.UI/Scripts/Core/LocationHelperService.js.map
+TFIP.Web.UI/Scripts/Directives/BaseFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/BaseFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Directives/DataFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/DataFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Directives/SelectFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/SelectFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Directives/TextFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/TextFieldInputDirective.js.map

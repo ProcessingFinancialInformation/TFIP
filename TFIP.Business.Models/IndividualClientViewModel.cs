@@ -67,7 +67,7 @@ namespace TFIP.Business.Models
         public string RegistrationRegion { get; set; }
 
         [Required]
-        public string Street { get; set; }
+        public string RegistrationStreet { get; set; }
 
         [Required]
         [RegularExpression(RegexConstants.AddressNo)]

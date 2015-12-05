@@ -35,14 +35,18 @@
 
         public exist: string;
         public createClient: string;
+        public createJuridicalClient: string;
         public getIndividualClientFormInfo: string;
+        public getClient: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.exist = this.getBasePath() + "api/clients/isclientExist";
-            this.createClient = this.getBasePath() + "api/clients/createIndividualClient";
+            this.createClient = this.getBasePath() + "api/clients/createOrUpdateIndividualClient";
             this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
+            this.createJuridicalClient = this.getBasePath() + "api/clients/createOrUpdateJuridicalClient";
+            this.getClient = this.getBasePath() + "/api/clients";
         }
     }
 
