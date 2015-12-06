@@ -59,10 +59,6 @@
     <Compile Include="CreditUow.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />
     <Compile Include="Helpers\RepositoryProvider.cs" />
-    <Compile Include="Migrations\201512061738115_CountryList.cs" />
-    <Compile Include="Migrations\201512061738115_CountryList.Designer.cs">
-      <DependentUpon>201512061738115_CountryList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,11 +83,6 @@
       <Project>{A197E930-7FD3-4AE8-94B3-9F8BA135B467}</Project>
       <Name>TFIP.Data.Repositories</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512061738115_CountryList.resx">
-      <DependentUpon>201512061738115_CountryList.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
