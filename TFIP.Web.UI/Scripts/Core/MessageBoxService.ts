@@ -14,9 +14,9 @@
 
     export class MessageBoxService implements IMessageBoxService {
 
-        public static $inject = ["$modal", "$q"];
+        public static $inject = ["$uibModal", "$q"];
 
-        constructor(private $modal: ng.ui.bootstrap.IModalService, private $q: ng.IQService) {
+        constructor(private $uibModal: ng.ui.bootstrap.IModalService, private $q: ng.IQService) {
         }
 
         public show(title: string, message: string, additionMessage?: string): ng.IPromise<any> {
@@ -75,7 +75,7 @@
         }
 
         private showModalMulty(title: string, messages: string[], icon: string, button: string): ng.ui.bootstrap.IModalServiceInstance {
-            return this.$modal.open({
+            return this.$uibModal.open({
                 template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message">{{msg}}</div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
@@ -94,7 +94,7 @@
         }
 
         private showModalMultyMessages(title: string, messages: string[], icon: string, button: string, additionMessage?: string): ng.ui.bootstrap.IModalServiceInstance {
-            return this.$modal.open({
+            return this.$uibModal.open({
                 template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message"><div>{{msg}}</div><br></div><div ng-show="model.additionMessage"><div>{{model.additionMessage}}</div></div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
@@ -114,7 +114,7 @@
         }
 
         private showModal(title: string, message: string, icon: string, button: string, cancel: string, additionMessage?: string): ng.ui.bootstrap.IModalServiceInstance {
-            return this.$modal.open({
+            return this.$uibModal.open({
                 template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div class="cell"><div class="icon {{model.icon}}" styles="margin: 18px;"></div></div><div style="max-width:418px;" class="cell message" ng-bind-html="model.message"></div><div ng-show="model.additionMessage"><br><div>{{model.additionMessage}}</div></div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button><button ng-show="model.cancel" class="defBtn secondary" ng-click="$dismiss()">{{model.cancel}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
@@ -147,7 +147,7 @@
             template += '       </div> ';
             template += ' ';
            
-            return this.$modal.open({
+            return this.$uibModal.open({
                 template: template,
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
