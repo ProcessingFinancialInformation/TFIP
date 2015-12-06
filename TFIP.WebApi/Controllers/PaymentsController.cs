@@ -25,5 +25,11 @@ namespace TFIP.Web.Api.Controllers
             var balance = ProcessViewModel<PaymentViewModel,decimal>(payment, null, paymentService.MakePayment);
             return Request.CreateResponse(HttpStatusCode.OK, balance);
         }
+
+        [HttpGet]
+        public HttpResponseMessage GetBalanceInformation(long creditRequestId)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, new BalanceInformationViewModel());
+        }
     }
 }

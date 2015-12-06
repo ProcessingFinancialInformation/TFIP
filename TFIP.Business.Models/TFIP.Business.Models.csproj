@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BalanceInformationViewModel.cs" />
     <Compile Include="ClientViewModel.cs" />
     <Compile Include="CreditRequestListItemViewModel.cs" />
     <Compile Include="CreditTypeViewModel.cs" />
