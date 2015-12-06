@@ -10,6 +10,8 @@
         countries: Shared.ListItem[];
 
         createClientForm: ng.IFormController;
+
+        regex: Const.RegularExpressions;
     }
 
     export class CreateIndividualClientController {
@@ -36,17 +38,11 @@
         private init() {
             var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
                 this.$scope.countries = data.countries;
-            });
-
-            promsie.then(() => {
                 this.$scope.clientViewModel = new ClientViewModel();
-                
-                this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
-                this.$scope.male = Gender.Male;
-                this.$scope.female = Gender.Female;
-                this.$scope.createUser = () => this.createUser();
 
-                this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
+                
+
+                this.$scope.$watch("clientViewModel",(newVal, oldVal) => {
                     for (var prop in this.$scope.clientViewModel) {
 
                         if (typeof (this.$scope.clientViewModel[prop]) == "string") {
@@ -55,6 +51,12 @@
                     }
                 }, true);
             });
+
+            this.$scope.regex = new Const.RegularExpressions();
+            this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
+            this.$scope.male = Gender.Male;
+            this.$scope.female = Gender.Female;
+            this.$scope.createUser = () => this.createUser();
         }
 
         private createUser() {
