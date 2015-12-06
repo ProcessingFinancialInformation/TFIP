@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="ICountryService.cs" />
+    <Compile Include="ICreditTypeService.cs" />
     <Compile Include="IFileManagementService.cs" />
     <Compile Include="IFileService.cs" />
     <Compile Include="IIndividualClientsService.cs" />

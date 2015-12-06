@@ -36,6 +36,10 @@ namespace TFIP.Business.Services.Mapper
         private void ConfigureCreditTypes()
         {
             AutoMapper.Mapper.CreateMap<CreditTypeViewModel, CreditType>();
+            AutoMapper.Mapper.CreateMap<CreditType, CreditTypeViewModel>()
+                .ForMember(vm => vm.DisplayCreditKind, opt => opt.MapFrom(m => EnumHelper.GetEnumDescription(m.CreditKind)))
+                .ForMember(vm => vm.DisplayCurrency, opt => opt.MapFrom(m => EnumHelper.GetEnumDescription(m.Currency)))
+                .ForMember(vm => vm.DisplayMoneyType, opt => opt.MapFrom(m => EnumHelper.GetEnumDescription(m.MoneyType)));
         }
 
         private void ConfigureAttachments()

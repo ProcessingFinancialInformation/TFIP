@@ -35,5 +35,7 @@
         /// In hours.
         /// </summary>
         public int TermOfApplication { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }
