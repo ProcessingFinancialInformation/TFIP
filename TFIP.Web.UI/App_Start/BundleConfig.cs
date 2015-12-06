@@ -45,6 +45,7 @@ namespace TFIP.Web.UI
 
             bundles.Add(
                 new ScriptBundle("~/bundles/main").IncludeDirectory("~/Scripts/App/", "*.js")
+                    .IncludeDirectory("~/Scripts/Const/", "*.js")
                     .IncludeDirectory("~/Scripts/Directives/", "*.js")
                     .IncludeDirectory("~/Scripts/Core/", "*.js")
                     .IncludeDirectory("~/Scripts/Extensions/", "*.js")

@@ -210,6 +210,7 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Const\RegularExpressions.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
     <TypeScriptCompile Include="Scripts\Core\CustomHttpService.ts" />
     <TypeScriptCompile Include="Scripts\Core\LocationHelperService.ts" />

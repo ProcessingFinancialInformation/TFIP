@@ -36,7 +36,6 @@ namespace TFIP.Business.Models
         [Required]
         public DateTime RegistrationDate { get; set; }
 
-        [Required]
         [EmailAddress]
         public string ContactEmail { get; set; }
 
