@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TFIP.Business.Contracts;
@@ -13,8 +14,8 @@ namespace TFIP.Web.Api.Controllers
     {
         private readonly IIndividualClientsService individualClientsService;
         private readonly IJuridicalClientsService juridicalClientsService;
-        private readonly IValidationService<IndividualClientViewModel> individualClientValidationService;
-        private readonly IValidationService<JuridicalClientViewModel> juridicalClientValidationService;
+        private readonly IValidationService<CreateIndividualClientViewModel> individualClientValidationService;
+        private readonly IValidationService<CreateJuridicalClientViewModel> juridicalClientValidationService;
         private readonly ICountryService countryService;
         private readonly ISettingsService settingsService;
 
@@ -23,8 +24,8 @@ namespace TFIP.Web.Api.Controllers
             IJuridicalClientsService juridicalClientsService,
             ICountryService countryService,
             ISettingsService settingsService,
-            IValidationService<IndividualClientViewModel> individualClientValidationService,
-            IValidationService<JuridicalClientViewModel> juridicalClientValidationService)
+            IValidationService<CreateIndividualClientViewModel> individualClientValidationService,
+            IValidationService<CreateJuridicalClientViewModel> juridicalClientValidationService)
         {
             this.individualClientsService = individualClientsService;
             this.juridicalClientsService = juridicalClientsService;
@@ -49,25 +50,25 @@ namespace TFIP.Web.Api.Controllers
         {
             switch (clientType)
             {
-                    case ClientType.Individual:
-                        return this.Request.CreateResponse(HttpStatusCode.OK,individualClientsService.IsClientExist(individualNumber));
+                case ClientType.Individual:
+                    return this.Request.CreateResponse(HttpStatusCode.OK,individualClientsService.IsClientExist(individualNumber));
 
-                    case ClientType.JuridicalPerson:
-                        return this.Request.CreateResponse(HttpStatusCode.OK, juridicalClientsService.IsClientExist(individualNumber));
+                case ClientType.JuridicalPerson:
+                    return this.Request.CreateResponse(HttpStatusCode.OK, juridicalClientsService.IsClientExist(individualNumber));
                 default:
-                        return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
+                    return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
             }
         }
 
         [HttpPost]
-        public HttpResponseMessage CreateOrUpdateIndividualClient(IndividualClientViewModel individualClient)
+        public HttpResponseMessage CreateOrUpdateIndividualClient(CreateIndividualClientViewModel individualClient)
         {
             var model = ProcessViewModel(individualClient, individualClientValidationService, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 
         [HttpPost]
-        public HttpResponseMessage CreateOrUpdateJuridicalClient(JuridicalClientViewModel juridicalClient)
+        public HttpResponseMessage CreateOrUpdateJuridicalClient(CreateJuridicalClientViewModel juridicalClient)
         {
             var model = ProcessViewModel(juridicalClient, juridicalClientValidationService, juridicalClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
@@ -76,9 +77,25 @@ namespace TFIP.Web.Api.Controllers
         [HttpGet]
         public HttpResponseMessage Get(long clientId, ClientType clientType)
         {
-            return this.Request.CreateResponse(
-                HttpStatusCode.OK,
-                new { FirstName = "Полигаф", Patronymic = "Полиграфович", IdentificationNo = "123123" });
+            ClientViewModel client;
+            switch (clientType)
+            { 
+                case ClientType.Individual:
+                {
+                    client = individualClientsService.GetIndividualClient(clientId);
+                    return client != null?this.Request.CreateResponse(HttpStatusCode.OK, client):
+                        this.Request.CreateResponse(HttpStatusCode.BadRequest,String.Format(ErrorMessages.InvalidClientId,clientId));
+                }
+
+                case ClientType.JuridicalPerson:
+                {
+                    client = juridicalClientsService.GetJuridicalClient(clientId);
+                    return client != null ? this.Request.CreateResponse(HttpStatusCode.OK, client) : 
+                        this.Request.CreateResponse(HttpStatusCode.BadRequest, String.Format(ErrorMessages.InvalidClientId, clientId));
+                }
+                default:
+                    return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
+            }
         }
     }
 }

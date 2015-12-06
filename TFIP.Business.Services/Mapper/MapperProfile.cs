@@ -23,20 +23,11 @@ namespace TFIP.Business.Services.Mapper
 
         protected override void Configure()
         {
-            AutoMapper.Mapper.CreateMap<IndividualClientViewModel, IndividualClient>()
-                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
-                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
-                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-
-            AutoMapper.Mapper.CreateMap<JuridicalClientViewModel, JuridicalClient>()
-                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
-                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
-                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-
+            ConfigureJuridicalClient();
+            ConfigureIndividualClient();
             ConfigureCountry();
             ConfigureAttachments();
             ConfigureSettings();
-
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
         }
@@ -67,6 +58,24 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(dest => dest.AdditionalInfo,
                     x => x.MapFrom(source => EnumHelper.GetEnumDescription(source.SettingName)))
                 .ForMember(dest => dest.Value, x => x.MapFrom(source => source.SettingValue));
+        }
+
+        private void ConfigureIndividualClient()
+        {
+            AutoMapper.Mapper.CreateMap<CreateIndividualClientViewModel, IndividualClient>()
+                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
+                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
+                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
+            AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>();
+        }
+
+        private void ConfigureJuridicalClient()
+        {
+            AutoMapper.Mapper.CreateMap<CreateJuridicalClientViewModel, JuridicalClient>()
+                .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
+                .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
+                .ForMember(ic => ic.CreditRequests, option => option.Ignore());
+            AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>();
         }
     }
 }

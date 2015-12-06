@@ -40,9 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientViewModel.cs" />
+    <Compile Include="CreditRequestListItemViewModel.cs" />
     <Compile Include="FileViewModel.cs" />
-    <Compile Include="IndividualClientViewModel.cs" />
-    <Compile Include="JuridicalClientViewModel.cs" />
+    <Compile Include="CreateIndividualClientViewModel.cs" />
+    <Compile Include="CreateJuridicalClientViewModel.cs" />
+    <Compile Include="IndividualClientInfoViewModel.cs" />
+    <Compile Include="JuridicalClientInfoViewModel.cs" />
     <Compile Include="ListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

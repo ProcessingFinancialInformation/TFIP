@@ -6,6 +6,8 @@ namespace TFIP.Business.Contracts
     {
         long IsClientExist(string identificationNo);
 
-        void CreateClient(IndividualClientViewModel client);
+        void CreateClient(CreateIndividualClientViewModel client);
+
+        IndividualClientInfoViewModel GetIndividualClient(long id);
     }
 }

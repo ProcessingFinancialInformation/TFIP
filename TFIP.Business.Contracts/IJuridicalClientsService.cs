@@ -11,6 +11,8 @@ namespace TFIP.Business.Contracts
     {
         long IsClientExist(string identificationNo);
 
-        void CreateClient(JuridicalClientViewModel client);
+        void CreateClient(CreateJuridicalClientViewModel client);
+
+        JuridicalClientInfoViewModel GetJuridicalClient(long id);
     }
 }

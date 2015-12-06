@@ -9,11 +9,8 @@ using TFIP.Common.Constants;
 
 namespace TFIP.Business.Models
 {
-    public class IndividualClientViewModel
+    public class CreateIndividualClientViewModel: ClientViewModel
     {
-
-        public long Id { get; set; }
-
         [Required]
         [RegularExpression(RegexConstants.NumberWithCharacters2_14)]
         public string IdentificationNo { get; set; }
@@ -55,36 +52,6 @@ namespace TFIP.Business.Models
         [Required]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
-        public int CountryId { get; set; }
-
-        [Required]
-        [RegularExpression(RegexConstants.Address)]
-        public string RegistrationCity { get; set; }
-
-        [Required]
-        [RegularExpression(RegexConstants.Address)]
-        public string RegistrationRegion { get; set; }
-
-        [Required]
-        public string RegistrationStreet { get; set; }
-
-        [Required]
-        [RegularExpression(RegexConstants.AddressNo)]
-        public string HouseNo { get; set; }
-
-        [RegularExpression(RegexConstants.AddressNo)]
-        public string FlatNo { get; set; }
-
-        [Required]
-        public DateTime RegistrationDate { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string ContactEmail { get; set; }
-
-        [Required]
-        [Phone]
-        public string ContactPhone { get; set; }
+        
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
 using TFIP.Common.Resources;
@@ -10,7 +11,7 @@ using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services.Validation
 {
-    public class JuridicalClientsValidationService
+    public class JuridicalClientsValidationService: IValidationService<CreateJuridicalClientViewModel>
     {
         private readonly ICreditUow creditUow;
 
@@ -19,7 +20,7 @@ namespace TFIP.Business.Services.Validation
             this.creditUow = creditUow;
         }
 
-        public IEnumerable<string> Validate(JuridicalClientViewModel viewModel)
+        public IEnumerable<string> Validate(CreateJuridicalClientViewModel viewModel)
         {
             var errors = new List<string>();
             if (creditUow.JuridicalClients.Get(c => c.IdentificationNo == viewModel.IdentificationNo)

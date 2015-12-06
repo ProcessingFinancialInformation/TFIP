@@ -120,6 +120,9 @@
   <data name="Adulthood" xml:space="preserve">
     <value>Клиенты младше {0} лет не обслуживаются</value>
   </data>
+  <data name="InvalidClientId" xml:space="preserve">
+    <value>Клиент с Id={0} не существует</value>
+  </data>
   <data name="InvalidClientType" xml:space="preserve">
     <value>Неверный тип клиента</value>
   </data>

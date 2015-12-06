@@ -11,7 +11,7 @@ using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services.Validation
 {
-    public class IndividualClientValidationService: IValidationService<IndividualClientViewModel>
+    public class IndividualClientValidationService: IValidationService<CreateIndividualClientViewModel>
     {
         private readonly ICreditUow creditUow;
 
@@ -20,7 +20,7 @@ namespace TFIP.Business.Services.Validation
             this.creditUow = creditUow;
         }
 
-        public IEnumerable<string> Validate(IndividualClientViewModel viewModel)
+        public IEnumerable<string> Validate(CreateIndividualClientViewModel viewModel)
         {
             var errors = new List<string>();
             var adulthoodSetting =

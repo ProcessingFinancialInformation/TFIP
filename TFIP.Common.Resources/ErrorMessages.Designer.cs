@@ -70,6 +70,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Клиент с Id={0} не существует.
+        /// </summary>
+        public static string InvalidClientId {
+            get {
+                return ResourceManager.GetString("InvalidClientId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неверный тип клиента.
         /// </summary>
         public static string InvalidClientType {

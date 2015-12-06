@@ -22,12 +22,18 @@ namespace TFIP.Business.Services
             return client != null ? client.Id : 0;
         }
 
-        public void CreateClient(JuridicalClientViewModel client)
+        public void CreateClient(CreateJuridicalClientViewModel client)
         {
-            var juridicalClient = AutoMapper.Mapper.Map<JuridicalClientViewModel, JuridicalClient>(client);
+            var juridicalClient = AutoMapper.Mapper.Map<CreateJuridicalClientViewModel, JuridicalClient>(client);
             creditUow.JuridicalClients.InsertOrUpdate(juridicalClient);
             creditUow.Commit();
             client.Id = juridicalClient.Id;
+        }
+
+        public JuridicalClientInfoViewModel GetJuridicalClient(long id)
+        {
+            var client = creditUow.JuridicalClients.GetById(id);
+            return AutoMapper.Mapper.Map<JuridicalClient, JuridicalClientInfoViewModel>(client);
         }
     }
 }
