@@ -43,7 +43,6 @@ namespace TFIP.Data
         public IDbSet<Payment> Payments { get; set; }
 
         public IDbSet<Setting> Settings { get; set; } 
-
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

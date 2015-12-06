@@ -85,6 +85,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientType.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="CreditAccount.cs" />
     <Compile Include="CreditKind.cs" />
     <Compile Include="CreditRequest.cs" />
     <Compile Include="CreditRequestStatus.cs" />

@@ -18,6 +18,15 @@ namespace TFIP.Business.Entities
         Approved = 30,
 
         [Description(CreditRequestStatusConstants.Denied)]
-        Denied = 31
+        Denied = 31,
+
+        [Description(CreditRequestStatusConstants.InProgress)]
+        InProgress = 50,
+
+        [Description(CreditRequestStatusConstants.Extinguished)]
+        Extinguished = 100,
+
+        [Description(CreditRequestStatusConstants.Overdued)]
+        Overdued = 101
     }
 }
