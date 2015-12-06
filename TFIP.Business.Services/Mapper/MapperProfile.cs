@@ -66,7 +66,11 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-            AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>();
+            AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestListItemViewModel>()
+                .ForMember(i => i.CreditKind, source => source.MapFrom(x => EnumHelper.GetEnumDescription(x.CreditType.CreditKind)))
+                .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
+            AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
+                .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
         }
 
         private void ConfigureJuridicalClient()
