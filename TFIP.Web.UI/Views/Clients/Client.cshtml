@@ -5,8 +5,46 @@
 }
 
 <div ng-controller="ClientController">
-    <h3 ng-if="clientViewModel.firstName">{{clientViewModel.firstName}}</h3>
-    <h3 ng-if="clientViewModel.lastname">{{clientViewModel.lastname}}</h3>
-    <h3 ng-if="clientViewModel.firstName">{{clientViewModel.firstName}}</h3>
+    <div class="row">
+        <div class="col-lg-10 col-md-9 col-xs-12">
+            <h3 ng-if="clientViewModel.lastName" ng-bind="clientViewModel.lastName"></h3>
+            <h3 ng-if="clientViewModel.firstName" ng-bind="clientViewModel.firstName"></h3>
+            <h3 ng-if="clientViewModel.patronymic" ng-bind="clientViewModel.patronymic"></h3>
+            <h3 ng-if="clientViewModel.name" ng-bind="clientViewModel.name"></h3>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xs-12">
+            <input class="btn btn-primary col-xs-12" value="Оформить заявку" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <uib-accordion>
+                <uib-accordion-group heading="Дополнительная информация">
+                    <div>
+                        <h4 ng-if="clientViewModel.passportNo">Паспортные данные</h4>
+                        <div simple-metadata ng-if="clientViewModel.passportNo" field-name="'Номер паспорта'" field-value="clientViewModel.passportNo"></div>
+                        <div simple-metadata ng-if="clientViewModel.dateOfIssue" field-name="'Выдан'" field-value="clientViewModel.dateOfIssue" is-date="'true'"></div>
+                        <div simple-metadata ng-if="clientViewModel.authority" field-name="'Орган выдавший паспорт'" field-value="clientViewModel.authority"></div>
+
+                        <h4 ng-if="clientViewModel.representerFirstName">Даныне о представителе</h4>
+                        <div simple-metadata ng-if="clientViewModel.representerLastName" field-name="'Фамилия'" field-value="clientViewModel.representerLastName"></div>
+                        <div simple-metadata ng-if="clientViewModel.representerFirstName" field-name="'Имя'" field-value="clientViewModel.representerFirstName" ></div>
+                        <div simple-metadata ng-if="clientViewModel.representerPatronymic" field-name="'Отчество'" field-value="clientViewModel.representerPatronymic" ></div>
+                        
+                        <h4 ng-if="clientViewModel.contactEmail">Контактные данные</h4>
+                        <div simple-metadata ng-if="clientViewModel.contactLastName" field-name="'Фамилия'" field-value="clientViewModel.contactLastName"></div>
+                        <div simple-metadata ng-if="clientViewModel.contactFirstName" field-name="'Имя'" field-value="clientViewModel.contactFirstName"></div>
+                        <div simple-metadata ng-if="clientViewModel.contactPatronymic" field-name="'Отчество'" field-value="clientViewModel.contactPatronymic"></div>
+                        <div simple-metadata ng-if="clientViewModel.contactEmail" field-name="'Почтовый ящик'" field-value="clientViewModel.contactEmail"></div>
+                        <div simple-metadata ng-if="clientViewModel.contactPhone" field-name="'Телефон'" field-value="clientViewModel.contactPhone"></div>
+                        <div simple-metadata ng-if="clientViewModel.contactFax" field-name="'Факс'" field-value="clientViewModel.contactFax"></div>
+
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+        </div>
+        
+    </div>
+    
 </div>
 

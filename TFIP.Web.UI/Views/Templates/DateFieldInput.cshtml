@@ -5,11 +5,11 @@
             <input type="text"
                    class="form-control"
                    uib-datepicker-popup="dd-MMMM-yyyy"
-                   ng-model="model"
+                   ng-model="inputModel"
                    is-open="isOpened"
-                   ng-required="true"
                    close-text="Close"
-                   required="required" style=""
+                   ng-required="isRequired" 
+                   style=""
                    id="{{name}}">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="isOpened = !isOpened"><i class="glyphicon glyphicon-calendar"></i></button>

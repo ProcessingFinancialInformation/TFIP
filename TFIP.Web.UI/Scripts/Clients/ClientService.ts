@@ -5,7 +5,7 @@
         createClient(model: ClientViewModel): ng.IPromise<Shared.AjaxViewModel<ClientViewModel>>;
         getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel>;
         createJuridicalClient(model: JuridicalClientViewModel): ng.IPromise<Shared.AjaxViewModel<JuridicalClientViewModel>>;
-        getClient(clientId: string, clientType: string): ng.IPromise<any>;
+        getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase>;
     }
 
     export class ClientService implements IClientService {
@@ -24,10 +24,10 @@
             
         }
 
-        public getClient(clientId: string, clientType: string): ng.IPromise<any> {
+        public getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase> {
             var deferred = this.$q.defer();
             var url = this.urlBuilderService.buildQuery(this.apiUrlService.clientApi.getClient, { clientId: clientId, clientType: clientType });
-            this.httpWrapper.get(url).then((data) => {
+            this.httpWrapper.get(url).then((data: ClientViewModelBase) => {
                 deferred.resolve(data);
             }, (reason) => {
                     deferred.reject(reason);
