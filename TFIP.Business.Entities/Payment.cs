@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TFIP.Business.Entities
 {
@@ -11,5 +12,9 @@ namespace TFIP.Business.Entities
         public DateTime ProcessedAt { get; set; }
 
         public MoneyType MoneyType { get; set; }
+
+        public virtual CreditRequest CreditRequest { get; set; }
+
+        public long CreditRequestId { get; set; }
     }
 }

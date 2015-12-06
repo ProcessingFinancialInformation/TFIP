@@ -85,7 +85,6 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientType.cs" />
     <Compile Include="Country.cs" />
-    <Compile Include="CreditAccount.cs" />
     <Compile Include="CreditKind.cs" />
     <Compile Include="CreditRequest.cs" />
     <Compile Include="CreditRequestStatus.cs" />
@@ -94,9 +93,11 @@
     <Compile Include="EmailStatus.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Gender.cs" />
+    <Compile Include="Guarantor.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityWithAttachments.cs" />
     <Compile Include="IndividualClient.cs" />
+    <Compile Include="PersonClient.cs" />
     <Compile Include="JuridicalClient.cs" />
     <Compile Include="MoneyType.cs" />
     <Compile Include="Notification.cs" />

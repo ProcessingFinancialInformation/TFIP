@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Infrastructure.Annotations;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 using TFIP.Business.Entities;
 
 namespace TFIP.Data.Configurations
@@ -9,8 +7,9 @@ namespace TFIP.Data.Configurations
     {
         public IndividualClientConfiguration()
         {
-             Property(t => t.IdentificationNo).
-                 HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute()));
+            this.HasMany(it => it.CreditRequests)
+                .WithOptional(it => it.IndividualClient)
+                .HasForeignKey(it => it.IndividualClientId);
         }
     }
 }

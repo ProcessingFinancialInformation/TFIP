@@ -8,7 +8,7 @@ namespace TFIP.Business.Entities
     public class Client : Entity, IEntityWithAttachments
     {
         [StringLength(20)]
-        [Index(IsUnique = true)]
+        // [Index(IsUnique = true)]
         public string IdentificationNo { get; set; }
 
         public virtual AttachmentHeader AttachmentHeader { get; set; }
@@ -17,7 +17,7 @@ namespace TFIP.Business.Entities
 
         public virtual ICollection<CreditRequest> CreditRequests { get; set; }
 
-        public int CountryId { get; set; }
+        public long CountryId { get; set; }
 
         public string RegistrationCity { get; set; }
 
@@ -32,7 +32,7 @@ namespace TFIP.Business.Entities
         public DateTime RegistrationDate { get; set; }
 
         public string ContactEmail { get; set; }
-
+        
         public virtual Country Country { get; set; }
 
         public string ContactPhone { get; set; }

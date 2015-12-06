@@ -35,23 +35,25 @@ namespace TFIP.Data
         public IDbSet<CreditType> CreditTypes { get; set; }
 
         public IDbSet<IndividualClient> IndividualClients { get; set; }
-
         public IDbSet<JuridicalClient> JuridicalClients { get; set; }
-
+        public IDbSet<Guarantor> Guarantors { get; set; }
+        
         public IDbSet<Notification> Notifications { get; set; }
 
         public IDbSet<Payment> Payments { get; set; }
 
-        public IDbSet<Setting> Settings { get; set; } 
+        public IDbSet<Setting> Settings { get; set; }  
+        
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Configurations.Add(new IndividualClientConfiguration());
-
-            //modelBuilder.Configurations.Add(new JuridicalClientConfiguration());
+            modelBuilder.Entity<IndividualClient>().ToTable("IndividualClient");
+            modelBuilder.Entity<JuridicalClient>().ToTable("JuridicalClient");
+            modelBuilder.Entity<Guarantor>().ToTable("Guarantor");
+            modelBuilder.Configurations.Add(new IndividualClientConfiguration());
+            modelBuilder.Configurations.Add(new GuarantorConfiguration());
         }
     }
 }

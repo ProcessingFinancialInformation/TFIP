@@ -97,6 +97,14 @@ namespace TFIP.Data
             }
         }
 
+        public IBaseRepository<Guarantor> Guarantors
+        {
+            get
+            {
+                return GetBaseRepo<Guarantor>();
+            }
+        }
+
         public IBaseRepository<Notification> Notifications
         {
             get

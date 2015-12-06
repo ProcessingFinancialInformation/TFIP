@@ -50,8 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\CreditRequestConfiguration.cs" />
+    <Compile Include="Configurations\GuarantorConfiguration.cs" />
     <Compile Include="Configurations\IndividualClientConfiguration.cs" />
     <Compile Include="Configurations\JuridicalClientConfiguration.cs" />
+    <Compile Include="Configurations\PaymentConfiguration.cs" />
     <Compile Include="CreditDbContext.cs" />
     <Compile Include="CreditUow.cs" />
     <Compile Include="Helpers\RepositoryFactories.cs" />
