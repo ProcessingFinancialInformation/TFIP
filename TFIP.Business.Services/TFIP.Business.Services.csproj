@@ -93,6 +93,7 @@
     <Compile Include="Mapper\MapperProfile.cs" />
     <Compile Include="Mapper\MapperProfileService.cs" />
     <Compile Include="NotificationService.cs" />
+    <Compile Include="PaymentService.cs" />
     <Compile Include="Permissions\PermissionService.cs" />
     <Compile Include="Permissions\Roles\Admin.cs" />
     <Compile Include="Permissions\Roles\BaseRole.cs" />

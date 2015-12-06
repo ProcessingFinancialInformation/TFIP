@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
+using TFIP.Business.Models;
 using TFIP.Common.Resources;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services.Validation
 {
-    public class CreditTypeValidationService: IValidationService<CreditType>
+    public class CreditTypeValidationService: IValidationService<CreditTypeViewModel>
     {
          private readonly ICreditUow creditUow;
 
@@ -19,7 +20,7 @@ namespace TFIP.Business.Services.Validation
             this.creditUow = creditUow;
         }
 
-        public IEnumerable<string> Validate(CreditType viewModel)
+         public IEnumerable<string> Validate(CreditTypeViewModel viewModel)
         {
             var errors = new List<string>();
             if (viewModel.IsDocumentsRequired && String.IsNullOrEmpty(viewModel.RequiredDocuments))

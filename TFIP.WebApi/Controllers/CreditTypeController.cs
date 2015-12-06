@@ -4,6 +4,7 @@ using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Business.Services.Validation;
 using TFIP.Web.Api.Helpers;
 using TFIP.Web.ViewModels;
 
@@ -12,10 +13,13 @@ namespace TFIP.Web.Api.Controllers
     public class CreditTypeController : BaseApiController
     {
         private readonly ICreditTypeService creditTypeService;
+        private readonly IValidationService<CreditTypeViewModel> creditTypeValidationService;
 
-        public CreditTypeController(ICreditTypeService creditTypeService)
+
+        public CreditTypeController(ICreditTypeService creditTypeService, IValidationService<CreditTypeViewModel> creditTypeValidationService)
         {
             this.creditTypeService = creditTypeService;
+            this.creditTypeValidationService = creditTypeValidationService;
         }
 
         public HttpResponseMessage GetPage()
@@ -43,7 +47,7 @@ namespace TFIP.Web.Api.Controllers
 
         public HttpResponseMessage SaveCreditType(CreditTypeViewModel model)
         {
-            var result = ProcessViewModel(model, null, creditTypeService.CreateOrUpdateCreditType);
+            var result = ProcessViewModel(model, creditTypeValidationService, creditTypeService.CreateOrUpdateCreditType);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 

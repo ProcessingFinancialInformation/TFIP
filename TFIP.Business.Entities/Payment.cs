@@ -11,8 +11,6 @@ namespace TFIP.Business.Entities
 
         public DateTime ProcessedAt { get; set; }
 
-        public MoneyType MoneyType { get; set; }
-
         public virtual CreditRequest CreditRequest { get; set; }
 
         public long CreditRequestId { get; set; }
