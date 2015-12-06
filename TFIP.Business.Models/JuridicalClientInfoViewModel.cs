@@ -8,5 +8,6 @@ namespace TFIP.Business.Models
 {
     public class JuridicalClientInfoViewModel: CreateJuridicalClientViewModel
     {
+        public ICollection<CreditRequestListItemViewModel> Credits;
     }
 }

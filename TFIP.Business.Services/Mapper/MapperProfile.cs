@@ -89,7 +89,8 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-            AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>();
+            AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>()
+                .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
         }
     }
 }

@@ -8,6 +8,8 @@ namespace TFIP.Business.Models
 {
     public class CreditRequestListItemViewModel
     {
+        public long Id { get; set; }
+
         public string CreditName { get; set; }
 
         public string CreditKind { get; set; }

@@ -81,19 +81,19 @@ namespace TFIP.Data
             }
         }
 
-        public IBaseRepository<IndividualClient> IndividualClients
+        public IClientRepository<IndividualClient> IndividualClients
         {
             get
             {
-                return GetBaseRepo<IndividualClient>();
+                return GetRepo<IClientRepository<IndividualClient>>();
             }
         }
 
-        public IBaseRepository<JuridicalClient> JuridicalClients
+        public IClientRepository<JuridicalClient> JuridicalClients
         {
             get
             {
-                return GetBaseRepo<JuridicalClient>();
+                return GetRepo<IClientRepository<JuridicalClient>>();
             }
         }
 

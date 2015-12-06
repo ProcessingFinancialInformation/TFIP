@@ -18,7 +18,8 @@ namespace TFIP.Data.Helpers
             return new Dictionary<Type, Func<DbContext, object>>
                 {
                    // {typeof(ISomeRepository), dbContext => new SomeRepository(dbContext)},
-                   
+                   {typeof(IClientRepository<IndividualClient>), creditDbContext => new ClientRepository<IndividualClient>(creditDbContext)},
+                   {typeof(IClientRepository<JuridicalClient>), creditDbContext => new ClientRepository<JuridicalClient>(creditDbContext)}
                 };
         }
 
