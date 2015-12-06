@@ -15,6 +15,13 @@
     }
     
     export class ClientViewModelBase {
+
+        firstName: string;
+        lastName: string;
+        patronymic: string;
+
+        name: string;
+
         identificationNo: string;
         coutryId: number;
         registrationCity: string;
@@ -54,9 +61,6 @@
         }
 
         passportNo: string;
-        firstName: string;
-        lastName: string;
-        patronymic: string;
         gender: Gender;
         nationality: string;
         placeOfBirth: string;
@@ -68,7 +72,6 @@
     }
 
     export class JuridicalClientViewModel extends ClientViewModelBase {
-        name: string;
         representerFirstName: string;
         representerLastName: string;
         representerPatronymic: string;

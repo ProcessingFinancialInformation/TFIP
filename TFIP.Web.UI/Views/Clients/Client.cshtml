@@ -5,8 +5,8 @@
 }
 
 <div ng-controller="ClientController">
-    <div>{{clientViewModel.firstName}}</div>
-    <div>{{clientViewModel.lastname}}</div>
-    <div>{{clientViewModel.firstName}}</div>
+    <h3 ng-if="clientViewModel.firstName">{{clientViewModel.firstName}}</h3>
+    <h3 ng-if="clientViewModel.lastname">{{clientViewModel.lastname}}</h3>
+    <h3 ng-if="clientViewModel.firstName">{{clientViewModel.firstName}}</h3>
 </div>
 

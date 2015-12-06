@@ -66,5 +66,13 @@ namespace TFIP.Web.Api.Controllers
             var model = ProcessViewModel(juridicalClient, null, juridicalClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
+
+        [HttpGet]
+        public HttpResponseMessage Get(long clientId, ClientType clientType)
+        {
+            return this.Request.CreateResponse(
+                HttpStatusCode.OK,
+                new { FirstName = "Полигаф", Patronymic = "Полиграфович", IdentificationNo = "123123" });
+        }
     }
 }

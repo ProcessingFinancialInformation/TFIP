@@ -46,7 +46,7 @@
             this.createClient = this.getBasePath() + "api/clients/createOrUpdateIndividualClient";
             this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
             this.createJuridicalClient = this.getBasePath() + "api/clients/createOrUpdateJuridicalClient";
-            this.getClient = this.getBasePath() + "/api/clients";
+            this.getClient = this.getBasePath() + "api/clients/get";
         }
     }
 
