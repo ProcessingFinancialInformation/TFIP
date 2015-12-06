@@ -13,6 +13,8 @@ namespace TFIP.Web.Api.Controllers
     {
         private readonly IIndividualClientsService individualClientsService;
         private readonly IJuridicalClientsService juridicalClientsService;
+        private readonly IValidationService<IndividualClientViewModel> individualClientValidationService;
+        private readonly IValidationService<JuridicalClientViewModel> juridicalClientValidationService;
         private readonly ICountryService countryService;
         private readonly ISettingsService settingsService;
 
@@ -20,12 +22,16 @@ namespace TFIP.Web.Api.Controllers
             IIndividualClientsService individualClientsService, 
             IJuridicalClientsService juridicalClientsService,
             ICountryService countryService,
-            ISettingsService settingsService)
+            ISettingsService settingsService,
+            IValidationService<IndividualClientViewModel> individualClientValidationService,
+            IValidationService<JuridicalClientViewModel> juridicalClientValidationService)
         {
             this.individualClientsService = individualClientsService;
             this.juridicalClientsService = juridicalClientsService;
             this.countryService = countryService;
             this.settingsService = settingsService;
+            this.individualClientValidationService = individualClientValidationService;
+            this.juridicalClientValidationService = juridicalClientValidationService;
         }
 
         [HttpGet]
@@ -56,14 +62,14 @@ namespace TFIP.Web.Api.Controllers
         [HttpPost]
         public HttpResponseMessage CreateOrUpdateIndividualClient(IndividualClientViewModel individualClient)
         {
-            var model = ProcessViewModel(individualClient, null, individualClientsService.CreateClient);
+            var model = ProcessViewModel(individualClient, individualClientValidationService, individualClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 
         [HttpPost]
         public HttpResponseMessage CreateOrUpdateJuridicalClient(JuridicalClientViewModel juridicalClient)
         {
-            var model = ProcessViewModel(juridicalClient, null, juridicalClientsService.CreateClient);
+            var model = ProcessViewModel(juridicalClient, juridicalClientValidationService, juridicalClientsService.CreateClient);
             return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 

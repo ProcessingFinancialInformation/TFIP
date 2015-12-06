@@ -79,11 +79,56 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дата выдачи должна быть меньше срока действия.
+        /// </summary>
+        public static string InvalidIssueAndExpiryDate {
+            get {
+                return ResourceManager.GetString("InvalidIssueAndExpiryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Клиенты старше {0} лет не обслуживаются.
         /// </summary>
         public static string MaxAge {
             get {
                 return ResourceManager.GetString("MaxAge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Клиент с идентификационным номером {0} уже существует.
+        /// </summary>
+        public static string UniqueIndividualClientIdentificationNumber {
+            get {
+                return ResourceManager.GetString("UniqueIndividualClientIdentificationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Клиент с ОКПО {0} уже существует.
+        /// </summary>
+        public static string UniqueJuridicalClientIdentificationNumber {
+            get {
+                return ResourceManager.GetString("UniqueJuridicalClientIdentificationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Клиетн с УНП {0} уже существует.
+        /// </summary>
+        public static string UniquePan {
+            get {
+                return ResourceManager.GetString("UniquePan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Клиент с регистрационным номером {0} уже существует.
+        /// </summary>
+        public static string UniqueRegistrationNumber {
+            get {
+                return ResourceManager.GetString("UniqueRegistrationNumber", resourceCulture);
             }
         }
     }
