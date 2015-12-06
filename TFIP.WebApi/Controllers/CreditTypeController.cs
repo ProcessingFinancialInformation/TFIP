@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
@@ -23,7 +24,8 @@ namespace TFIP.Web.Api.Controllers
             {
                 CreditKinds = ListItemHelper.GetFromEnum(typeof (CreditKind)),
                 Currencies = ListItemHelper.GetFromEnum(typeof (Currency)),
-                MoneyTypes = ListItemHelper.GetFromEnum(typeof (MoneyType))
+                MoneyTypes = ListItemHelper.GetFromEnum(typeof (MoneyType)),
+                PaymentTypes = ListItemHelper.GetFromEnum(typeof(CreditType))
             });
         }
 

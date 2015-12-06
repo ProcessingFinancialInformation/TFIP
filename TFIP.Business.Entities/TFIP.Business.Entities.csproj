@@ -97,6 +97,7 @@
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityWithAttachments.cs" />
     <Compile Include="IndividualClient.cs" />
+    <Compile Include="PaymentType.cs" />
     <Compile Include="PersonClient.cs" />
     <Compile Include="JuridicalClient.cs" />
     <Compile Include="MoneyType.cs" />

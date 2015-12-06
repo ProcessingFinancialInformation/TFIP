@@ -70,6 +70,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не указан перечень документов..
+        /// </summary>
+        public static string DocumentsRequired {
+            get {
+                return ResourceManager.GetString("DocumentsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Клиент с Id={0} не существует.
         /// </summary>
         public static string InvalidClientId {

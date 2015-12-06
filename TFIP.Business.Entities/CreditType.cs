@@ -37,5 +37,7 @@
         public int TermOfApplication { get; set; }
 
         public bool IsActive { get; set; }
+
+        public PaymentType PaymentType { get; set; }
     }
 }
