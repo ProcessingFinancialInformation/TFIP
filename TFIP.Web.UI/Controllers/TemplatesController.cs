@@ -14,7 +14,13 @@
         {
             return this.PartialView();
         }
+
         public ActionResult SelectFieldInput()
+        {
+            return this.PartialView();
+        }
+
+        public ActionResult SimpleMetadataTemplate()
         {
             return this.PartialView();
         }

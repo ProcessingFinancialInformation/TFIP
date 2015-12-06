@@ -1,0 +1,9 @@
+﻿<div class="row">
+    <div class="col-xs-6">
+        <p ng-bind="fieldName"></p>
+    </div>
+    <div class="col-xs-6">
+        <p ng-if="isDate">{{fieldValue | date : 'dd-MMMM-yyyy' }}</p>
+        <p ng-if="!isDate">{{fieldValue}}</p>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export interface IClientScope {
-        
+    export interface IClientScope extends ng.IScope {
+        clientViewModel: ClientViewModelBase;
     }
 
     export class ClientController {
@@ -13,7 +13,7 @@
         ];
 
         constructor(
-            private $scope: ng.IScope,
+            private $scope: IClientScope,
             private locationHelperService: Core.LocationHelperService,
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService) {
@@ -31,7 +31,14 @@
         }
 
         private init(clientId: string, clientType: string) {
-            this.clientService.getClient(clientId, clientType);
+            var promise = this.clientService.getClient(clientId, clientType);
+            promise.then((data: ClientViewModelBase) => {
+                this.$scope.clientViewModel = data;
+            }, (reason: Core.IRejectionReason) => {
+                if (!reason.aborted) {
+                    this.messageBox.showError("Клиенты", reason.message);
+                }
+            });
         }
     }
 } 

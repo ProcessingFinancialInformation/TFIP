@@ -58,6 +58,7 @@
                 .directive("textFieldInput", () => new Directives.TextFieldInputDirective)
                 .directive("dateFieldInput",() => new Directives.DateFieldInputDirective)
                 .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
+                .directive("simpleMetadata",() => new Directives.SimpleMetadataDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)
                 .service("urlBuilderService", Core.UrlBuilderService)

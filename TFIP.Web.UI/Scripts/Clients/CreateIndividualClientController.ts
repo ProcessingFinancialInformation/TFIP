@@ -41,7 +41,7 @@
             promsie.then(() => {
                 this.$scope.clientViewModel = new ClientViewModel();
                 
-                this.$scope.genders = [{ id: "male", value: "Мужской" }, { id: "female", value: "Женский" }];
+                this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
                 this.$scope.male = Gender.Male;
                 this.$scope.female = Gender.Female;
                 this.$scope.createUser = () => this.createUser();

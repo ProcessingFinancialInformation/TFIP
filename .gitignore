@@ -232,3 +232,5 @@ TFIP.Web.UI/Scripts/Directives/SelectFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/SelectFieldInputDirective.js.map
 TFIP.Web.UI/Scripts/Directives/TextFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/TextFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Directives/SimpleMetadataDirective.js
+TFIP.Web.UI/Scripts/Directives/SimpleMetadataDirective.js.map

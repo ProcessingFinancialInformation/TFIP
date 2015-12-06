@@ -135,12 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\blockui\angular-block-ui.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-sanitize\angular-sanitize.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-custom-tpls-0.14.3.js" />
@@ -149,17 +149,18 @@
     <Content Include="Scripts\Angular\angular.min.js" />
     <Content Include="Scripts\blockui\angular-block-ui.js" />
     <Content Include="Scripts\blockui\angular-block-ui.min.js" />
-    <Content Include="Scripts\bootstrap\bootstrap.js" />
-    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Content\app\common.less" />
     <Content Include="Content\app\colors.less" />
     <Content Include="Content\app\variables.less" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\TFIP.pubxml" />
     <None Include="Scripts\jQuery\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\jQuery\jquery.validate.js" />
     <Content Include="Scripts\jQuery\jquery.validate.min.js" />
     <Content Include="Scripts\jQuery\jquery-1.10.2.js" />
@@ -168,6 +169,7 @@
     <Content Include="Scripts\linq\2.linq.jquery.js" />
     <Content Include="Scripts\linq\3.linq.min.js" />
     <None Include="Scripts\linq\linq-vsdoc.js" />
+    <Content Include="Scripts\locale\ru-by\angular-locale_ru-by.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -190,6 +192,7 @@
     <Content Include="Views\Templates\TextFieldInput.cshtml" />
     <Content Include="Views\Templates\DateFieldInput.cshtml" />
     <Content Include="Views\Templates\SelectFieldInput.cshtml" />
+    <Content Include="Views\Templates\SimpleMetadataTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -216,6 +219,7 @@
     <TypeScriptCompile Include="Scripts\Directives\DataFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\BaseFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\SelectFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\SimpleMetadataDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\TextFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
