@@ -28,8 +28,14 @@ namespace TFIP.Business.Services.Mapper
             ConfigureCountry();
             ConfigureAttachments();
             ConfigureSettings();
+            ConfigureCreditTypes();
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
+        }
+
+        private void ConfigureCreditTypes()
+        {
+            AutoMapper.Mapper.CreateMap<CreditTypeViewModel, CreditType>();
         }
 
         private void ConfigureAttachments()
