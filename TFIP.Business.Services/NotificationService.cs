@@ -34,7 +34,7 @@ namespace TFIP.Business.Services
         public bool SendCreditRequestIsProcessed(string clientName, string clientEmail,
             CreditRequestStatus requestStatus)
         {
-            if (requestStatus != CreditRequestStatus.Denied && requestStatus != CreditRequestStatus.Approved)
+            if (requestStatus != CreditRequestStatus.Denied && requestStatus != CreditRequestStatus.InProgress)
             {
                 throw new Exception("Wrong method usage.");
             }
