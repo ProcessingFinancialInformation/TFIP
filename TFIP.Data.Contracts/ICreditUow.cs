@@ -10,8 +10,8 @@ namespace TFIP.Data.Contracts
         IBaseRepository<Country> Countries { get; }
         IBaseRepository<CreditRequest> CreditRequests { get; }
         IBaseRepository<CreditType> CreditTypes { get; }
-        IBaseRepository<IndividualClient> IndividualClients { get; }
-        IBaseRepository<JuridicalClient> JuridicalClients { get; }
+        IClientRepository<IndividualClient> IndividualClients { get; }
+        IClientRepository<JuridicalClient> JuridicalClients { get; }
         IBaseRepository<Guarantor> Guarantors { get; }
         IBaseRepository<Notification> Notifications { get; }
         IBaseRepository<Payment> Payments { get; }

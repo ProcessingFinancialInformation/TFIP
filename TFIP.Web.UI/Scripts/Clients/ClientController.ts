@@ -2,6 +2,7 @@
     
     export interface IClientScope extends ng.IScope {
         clientViewModel: ClientViewModelBase;
+        createCreditRequest: () => void;
     }
 
     export class ClientController {
@@ -20,7 +21,7 @@
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
             var clientType = this.locationHelperService.getParameterValue("clientType");
-
+            
             if (clientId && clientType) {
                 this.init(clientId, clientType);
             } else {
@@ -28,6 +29,8 @@
                     this.locationHelperService.redirect("/Clients");
                 });
             }
+
+            this.$scope.createCreditRequest = () => this.createCreditRequest();
         }
 
         private init(clientId: string, clientType: string) {
@@ -36,9 +39,15 @@
                 this.$scope.clientViewModel = data;
             }, (reason: Core.IRejectionReason) => {
                 if (!reason.aborted) {
-                    this.messageBox.showError("Клиенты", reason.message);
+                    this.messageBox.showError("Клиенты", reason.message).finally(() => {
+                        this.locationHelperService.redirect("/Clients");
+                    });
                 }
             });
+        }
+
+        private createCreditRequest() {
+            
         }
     }
 } 

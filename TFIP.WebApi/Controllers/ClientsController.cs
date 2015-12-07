@@ -83,8 +83,11 @@ namespace TFIP.Web.Api.Controllers
                 case ClientType.Individual:
                 {
                     client = individualClientsService.GetIndividualClient(clientId);
-                    return client != null?this.Request.CreateResponse(HttpStatusCode.OK, client):
-                        this.Request.CreateResponse(HttpStatusCode.BadRequest,String.Format(ErrorMessages.InvalidClientId,clientId));
+                    return client != null
+                               ? this.Request.CreateResponse(HttpStatusCode.OK, client)
+                               : this.Request.CreateResponse(
+                                   HttpStatusCode.BadRequest,
+                                   String.Format(ErrorMessages.InvalidClientId, clientId));
                 }
 
                 case ClientType.JuridicalPerson:

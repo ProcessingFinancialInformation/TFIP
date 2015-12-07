@@ -23,7 +23,7 @@
         name: string;
 
         identificationNo: string;
-        coutryId: number;
+        countryId: number;
         registrationCity: string;
         registrationRegion: string;
         registrationStreet: string;
@@ -49,7 +49,7 @@
             this.dateOfIssue = "";
             this.dateOfExpiry = "";
             this.dateOfBirth = "";
-            this.coutryId = null;
+            this.countryId = null;
             this.registrationCity = "";
             this.registrationRegion = "";
             this.registrationStreet = "";

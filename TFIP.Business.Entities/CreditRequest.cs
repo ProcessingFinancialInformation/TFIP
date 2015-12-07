@@ -24,8 +24,6 @@ namespace TFIP.Business.Entities
 
         public long CreditTypeId { get; set; }
 
-        // public virtual ICollection<IndividualClient> Guarantors { get; set; }
-
         public DateTime CreationDate { get; set; }
 
         public DateTime ApprovalDate { get; set; }

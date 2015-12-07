@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace TFIP.Business.Models
 {
-    public class JuridicalClientInfoViewModel: CreateJuridicalClientViewModel
+    public class PaymentViewModel
     {
-        public ICollection<CreditRequestListItemViewModel> Credits;
+        public decimal Amount { get; set; }
+
+        public long CreditRequestId { get; set; }
     }
 }

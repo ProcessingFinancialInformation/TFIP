@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IClientRepository.cs" />
     <Compile Include="ICreditUow.cs" />
     <Compile Include="IRepositoryProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

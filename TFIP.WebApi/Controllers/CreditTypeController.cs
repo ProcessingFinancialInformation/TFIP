@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Business.Services.Validation;
 using TFIP.Web.Api.Helpers;
 using TFIP.Web.ViewModels;
 
@@ -11,10 +13,13 @@ namespace TFIP.Web.Api.Controllers
     public class CreditTypeController : BaseApiController
     {
         private readonly ICreditTypeService creditTypeService;
+        private readonly IValidationService<CreditTypeViewModel> creditTypeValidationService;
 
-        public CreditTypeController(ICreditTypeService creditTypeService)
+
+        public CreditTypeController(ICreditTypeService creditTypeService, IValidationService<CreditTypeViewModel> creditTypeValidationService)
         {
             this.creditTypeService = creditTypeService;
+            this.creditTypeValidationService = creditTypeValidationService;
         }
 
         public HttpResponseMessage GetPage()
@@ -23,7 +28,8 @@ namespace TFIP.Web.Api.Controllers
             {
                 CreditKinds = ListItemHelper.GetFromEnum(typeof (CreditKind)),
                 Currencies = ListItemHelper.GetFromEnum(typeof (Currency)),
-                MoneyTypes = ListItemHelper.GetFromEnum(typeof (MoneyType))
+                MoneyTypes = ListItemHelper.GetFromEnum(typeof (MoneyType)),
+                PaymentTypes = ListItemHelper.GetFromEnum(typeof(CreditType))
             });
         }
 
@@ -33,7 +39,7 @@ namespace TFIP.Web.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        public HttpResponseMessage GetCreditTypes(bool? isActive)
+        public HttpResponseMessage GetCreditTypes(bool? isActive = null)
         {
             var result = creditTypeService.GetCreditTypes(isActive);
             return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -41,7 +47,7 @@ namespace TFIP.Web.Api.Controllers
 
         public HttpResponseMessage SaveCreditType(CreditTypeViewModel model)
         {
-            var result = ProcessViewModel(model, null, creditTypeService.CreateOrUpdateCreditType);
+            var result = ProcessViewModel(model, creditTypeValidationService, creditTypeService.CreateOrUpdateCreditType);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 

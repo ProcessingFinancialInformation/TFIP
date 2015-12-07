@@ -29,6 +29,7 @@ namespace TFIP.Business.Services.Mapper
             ConfigureAttachments();
             ConfigureSettings();
             ConfigureCreditTypes();
+            ConfigurePayment();
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
         }
@@ -89,7 +90,13 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-            AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>();
+            AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>()
+                .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
+        }
+
+        private void ConfigurePayment()
+        {
+            AutoMapper.Mapper.CreateMap<PaymentViewModel, Payment>();
         }
     }
 }

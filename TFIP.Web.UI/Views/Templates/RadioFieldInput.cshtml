@@ -1,0 +1,13 @@
+﻿<div class="form-group" ng-form="fieldInputForm">
+    <div class="col-sm-offset-2 col-sm-10">
+        <div ng-repeat="modelValue in modelValues">
+            <label>
+                <input id="{{modelValue.value + $index}}"
+                       name="fieldInput"
+                       type="radio"
+                       ng-model="model"
+                       ng-value="modelValue.id"> {{modelValue.value}}
+            </label>
+        </div>
+    </div>
+</div>
