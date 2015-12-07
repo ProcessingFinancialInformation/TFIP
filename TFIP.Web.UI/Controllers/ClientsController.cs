@@ -23,5 +23,10 @@
         {
             return this.View();
         }
+
+        public ActionResult CreateIndividualClientForm()
+        {
+            return this.PartialView();
+        }
     }
 }

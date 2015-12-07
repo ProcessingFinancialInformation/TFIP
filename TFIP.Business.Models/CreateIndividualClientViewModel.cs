@@ -29,7 +29,7 @@ namespace TFIP.Business.Models
         public Gender Gender { get; set; }
 
         [Required]
-        [RegularExpression(RegexConstants.Characters)]
+        [RegularExpression(RegexConstants.CharactersWithSpace)]
         public string Nationality { get; set; }
 
         [Required]

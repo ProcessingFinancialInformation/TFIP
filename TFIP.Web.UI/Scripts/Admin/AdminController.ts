@@ -5,8 +5,9 @@
         creditTypePage: Credit.CreditTypePageModel;
         createCreditType: () => void;
         active: (val: boolean) => void;
-        changeActivity: (id: number, active: boolean, index: number) => void;
+        changeActivity: (id: number, active: boolean) => void;
         getCreditKindName: (kind: number) => string;
+        count: (active: boolean) => number;
     }
 
     export class AdminController {
@@ -36,8 +37,9 @@
             this.$scope.active = (val: boolean) => {
                 return val ? 'Да' : 'Нет';
             }
-            this.$scope.changeActivity = (id: number, active: boolean, index: number) => this.changeActivity(id, active, index);
+            this.$scope.changeActivity = (id: number, active: boolean) => this.changeActivity(id, active);
             this.$scope.getCreditKindName = (kind: number) => this.getCreditKindName(kind);
+            this.$scope.count = (active: boolean) => this.count(active);
         }
 
         private createCreditType() {
@@ -58,16 +60,16 @@
             });
         }
 
-        private changeActivity(id: number, active: boolean, index: number) {
+        private changeActivity(id: number, active: boolean) {
             if (id) {
                 var promise = this.creditTypeService.changeActivity(id, active);
                 promise.then(() => {
                     var message = (active) ? Const.Messages.creditTypeStatusActiveChanged : Const.Messages.creditTypeStatusNotActiveChanged;
                     this.messageBox.show(Const.Messages.admin, message)["finally"](() => {
-                        this.$scope.creditTypes[index].isActive = active;
+                        var creditType = this.$scope.creditTypes.asEnumerable().firstOrDefault((ct) => { return ct.id == id; });
+                        creditType.isActive = active;
                     });
-                    
-                },(reason: Core.IRejectionReason) => {
+                }, (reason: Core.IRejectionReason) => {
                         this.messageBox.showError(Const.Messages.admin, reason.message);
                 });
             }
@@ -79,6 +81,14 @@
             } else {
                 return "";
             }
+        }
+
+        private count(active: boolean) {
+            if (this.$scope.creditTypes) {
+                return this.$scope.creditTypes.filter((t) => t.isActive == active).length;
+            }
+
+            return 0;
         }
     }
 }
