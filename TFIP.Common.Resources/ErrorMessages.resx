@@ -129,6 +129,9 @@
   <data name="InvalidClientType" xml:space="preserve">
     <value>Неверный тип клиента</value>
   </data>
+  <data name="InvalidCreditRequestId" xml:space="preserve">
+    <value>Кредит с Id={0} не существует</value>
+  </data>
   <data name="InvalidIssueAndExpiryDate" xml:space="preserve">
     <value>Дата выдачи должна быть меньше срока действия</value>
   </data>

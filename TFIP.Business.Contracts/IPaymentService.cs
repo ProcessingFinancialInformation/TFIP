@@ -10,5 +10,7 @@ namespace TFIP.Business.Contracts
     public interface IPaymentService
     {
         decimal MakePayment(PaymentViewModel paymnet);
+
+        BalanceInformationViewModel GetBalanceInformationViewModel(long creditRequestId);
     }
 }

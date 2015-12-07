@@ -97,6 +97,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Кредит с Id={0} не существует.
+        /// </summary>
+        public static string InvalidCreditRequestId {
+            get {
+                return ResourceManager.GetString("InvalidCreditRequestId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата выдачи должна быть меньше срока действия.
         /// </summary>
         public static string InvalidIssueAndExpiryDate {
