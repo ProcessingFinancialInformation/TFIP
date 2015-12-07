@@ -8,7 +8,7 @@ namespace TFIP.Business.Services.CreditCalculation
     {
         public decimal CalculateCurrentMonthAmount(int creditTerm, decimal creditRate, decimal totalAmount, IEnumerable<Payment> payments)
         {
-            return (totalAmount/creditTerm)*(CalculateBalance(totalAmount, payments)*(creditRate/MonthsInYear));
+            return (totalAmount/creditTerm) + (CalculateBalance(totalAmount, payments)*((creditRate/MonthsInYear)/100));
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Services.CreditCalculation;
 using TFIP.Common.Logging;
 using TFIP.Data;
-using TFIP.Data.Contracts;
-using TFIP.Data.Helpers;
 
 namespace TFIP.Business.CalculationService
 {
@@ -18,24 +15,27 @@ namespace TFIP.Business.CalculationService
         private IAnnuityCreditCalculationService annuityCalculationService;
         private IDifferentialCreditCalculationService differentialCalculationService;
 
-        public void Execute()
+        public void Execute(Action<string> notify)
         {
             Initialize();
-            Process();
+            Process(notify);
             Deinitialize();
         }
 
-        private void Process()
+        private void Process(Action<string> notify)
         {
+            
             var creditRequests = dbContext.CreditRequests
                 .Where(it => it.Status == CreditRequestStatus.InProgress)
                 .Where(it => it.NextPaymentDate.HasValue)
-                .Where(it => it.NextPaymentDate == DateTime.Now.Date)
+                .Where(it => it.NextPaymentDate == DateTime.Today)
                 .Include(it => it.Payments)
-                .Include(it => it.CreditType);
+                .Include(it => it.CreditType)
+                .ToList();
 
             foreach (var creditRequest in creditRequests)
             {
+                notify(string.Format("Processing credit request {0}", creditRequest.Id));
                 switch (creditRequest.CreditType.CalculationType)
                 {
                     case CalculationType.Annuity:
@@ -52,9 +52,9 @@ namespace TFIP.Business.CalculationService
                 }
 
                 AttachForUpdate(creditRequest);
+                dbContext.SaveChanges();
+                notify(string.Format("Credit request {0} processed", creditRequest.Id));
             }
-
-            dbContext.SaveChanges();
         }
 
         private void CalculateBalance(CreditRequest creditRequest, ICreditCalculationService creditCalculationService)
@@ -62,12 +62,15 @@ namespace TFIP.Business.CalculationService
             creditRequest.CurrentBalance += creditCalculationService.CalculateCurrentMonthAmount(
                 creditRequest.CreditType.Term, creditRequest.CreditType.Rate, creditRequest.TotalAmount, creditRequest.Payments);
 
+            creditRequest.CurrentBalanceOnPercents += creditCalculationService.CalculateCurrentPercentAmount(
+                creditRequest.CreditType.Rate, creditRequest.TotalAmount, creditRequest.Payments);
+
             creditRequest.NextPaymentDate = creditRequest.NextPaymentDate.Value.AddMonths(1);
         }
 
         private void Initialize()
         {
-            dbContext = new CreditDbContext();
+            dbContext = new CreditDbContext("CreditDbConnection");
             annuityCalculationService = new AnnuityCreditCalculationService();
             differentialCalculationService = new DifferentialCreditCalculationService();
         }

@@ -8,5 +8,7 @@ namespace TFIP.Business.Contracts
         decimal CalculateCurrentMonthAmount(int creditTerm, decimal creditRate, decimal totalAmount, IEnumerable<Payment> payments);
 
         decimal CalculateBalance(decimal totalAmount, IEnumerable<Payment> payments);
+
+        decimal CalculateCurrentPercentAmount(decimal creditRate, decimal totalAmount, IEnumerable<Payment> payments);
     }
 }

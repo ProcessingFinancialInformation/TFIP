@@ -33,6 +33,8 @@ namespace TFIP.Business.Entities
 
         public decimal CurrentBalance { get; set; }
 
+        public decimal CurrentBalanceOnPercents { get; set; }
+
         public CreditRequestStatus Status { get; set; }
         
         public virtual ICollection<Guarantor> Guarantors { get; set; }

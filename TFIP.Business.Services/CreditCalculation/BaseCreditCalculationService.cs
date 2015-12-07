@@ -17,5 +17,10 @@ namespace TFIP.Business.Services.CreditCalculation
 
             return totalAmount;
         }
+        
+        public decimal CalculateCurrentPercentAmount(decimal creditRate, decimal totalAmount, IEnumerable<Payment> payments)
+        {
+            return CalculateBalance(totalAmount, payments) * creditRate / (MonthsInYear * 100);
+        }
     }
 }
