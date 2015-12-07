@@ -250,3 +250,15 @@ TFIP.Web.UI/Scripts/Credit/CreditTypeService.js
 TFIP.Web.UI/Scripts/Credit/CreditTypeService.js.map
 TFIP.Web.UI/Scripts/Directives/RadioFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/RadioFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Const/Messages.js
+TFIP.Web.UI/Scripts/Const/Messages.js.map
+TFIP.Web.UI/Scripts/Core/Business.js
+TFIP.Web.UI/Scripts/Core/Business.js.map
+TFIP.Web.UI/Scripts/Core/Validation.js
+TFIP.Web.UI/Scripts/Core/Validation.js.map
+TFIP.Web.UI/Scripts/Directives/CheckBoxFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/CheckBoxFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Directives/TextAreaFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/TextAreaFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Shared/SharedModel.js
+TFIP.Web.UI/Scripts/Shared/SharedModel.js.map

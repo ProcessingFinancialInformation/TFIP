@@ -46,7 +46,7 @@
                         this.locationHelperService.redirect(this.urlBuilderService.buildQuery("clients", { clientId: data, clientType: this.$scope.clientInput.clientType }));
                         //this.$location.path("" + "/" + this.$scope.clientInput.clientId);
                     } else {
-                        this.messageBox.confirm("Клиенты", "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?").then(() => {
+                        this.messageBox.confirm(Const.Messages.clients, Const.Messages.clientNotExist).then(() => {
                             if (this.$scope.clientInput.clientType == this.$scope.clientTypes.individualClient) {
                                 window.location.href = "/Clients/CreateIndividualClient";
                             } else {
@@ -55,11 +55,11 @@
                         });
                     }
                 }, (reason: any) => {
-                    this.messageBox.showError("Клиенты", reason.message);
+                    this.messageBox.showError(Const.Messages.clients, reason.message);
                 });
             } else {
                 this.$scope.clientSelectionForm.$error.required[0].$dirty = true;
-                this.messageBox.showError("Клиенты", "Введены неверные данные");
+                this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             }
         }
 

@@ -76,7 +76,7 @@
 
         private showModalMulty(title: string, messages: string[], icon: string, button: string): ng.ui.bootstrap.IModalServiceInstance {
             return this.$uibModal.open({
-                template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message">{{msg}}</div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button></div>',
+                template: '<div ng-if="model.title.length>0" class="modal-header"><h4>{{model.title}}</h4></div><div class="modal-body"> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message">{{msg}}</div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="$close()">{{model.button}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
                     model: (): IMultyMessageBoxModel => {
@@ -95,7 +95,7 @@
 
         private showModalMultyMessages(title: string, messages: string[], icon: string, button: string, additionMessage?: string): ng.ui.bootstrap.IModalServiceInstance {
             return this.$uibModal.open({
-                template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message"><div>{{msg}}</div><br></div><div ng-show="model.additionMessage"><div>{{model.additionMessage}}</div></div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button></div>',
+                template: '<div ng-if="model.title.length>0" class="modal-header"><h4>{{model.title}}</h4></div><div class="modal-body"> <div style="float: left" class="cell"><div class="icon {{model.icon}}"></div></div><div style="display: table-row; word-wrap: break-word;max-width:418px;" ng-repeat="msg in model.messages" class="cell message"><div>{{msg}}</div><br></div><div ng-show="model.additionMessage"><div>{{model.additionMessage}}</div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="$close()">{{model.button}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
                     model: (): IMultyMessageBoxModel => {
@@ -115,7 +115,7 @@
 
         private showModal(title: string, message: string, icon: string, button: string, cancel: string, additionMessage?: string): ng.ui.bootstrap.IModalServiceInstance {
             return this.$uibModal.open({
-                template: '<div ng-if="model.title.length>0"><h1>{{model.title}}</h1></div> <div class="cell"><div class="icon {{model.icon}}" styles="margin: 18px;"></div></div><div style="max-width:418px;" class="cell message" ng-bind-html="model.message"></div><div ng-show="model.additionMessage"><br><div>{{model.additionMessage}}</div></div><div class="btn"><button class="defBtn" ng-click="$close()">{{model.button}}</button><button ng-show="model.cancel" class="defBtn secondary" ng-click="$dismiss()">{{model.cancel}}</button></div>',
+                template: '<div ng-if="model.title.length>0" class="modal-header"><h4>{{model.title}}</h4></div><div class="modal-body"> <div class="cell"><div class="icon {{model.icon}}" styles="margin: 18px;"></div></div><div style="max-width:418px;" class="cell message" ng-bind-html="model.message"></div><div ng-show="model.additionMessage"><br><div>{{model.additionMessage}}</div></div></div><div class="modal-footer"><button ng-show="model.cancel" class="btn btn=default" ng-click="$dismiss()">{{model.cancel}}</button><button class="btn btn-primary" ng-click="$close()">{{model.button}}</button></div>',
                 controller: TFIP.Web.UI.Core.MessageBoxController,
                 resolve: {
                     model: (): IMessageBoxModel => {
@@ -135,15 +135,15 @@
 
         private showModalWithInput(title: string, message: string, icon: string, button: string, cancel: string, additionMessage?: string): ng.ui.bootstrap.IModalServiceInstance {
             var template = '';
-            template += '       <div ng-if="model.title.length>0">	<h1>{{model.title}}</h1></div> ';
-            template += '       <div style="max-width:418px;" class="cell message" ng-bind-html="model.message"></div>';
+            template += '       <div ng-if="model.title.length>0" class="modal-header">	<h4>{{model.title}}</h4></div> ';
+            template += '       <div class="modal-body"><div style="max-width:418px;" class="cell message" ng-bind-html="model.message"></div>';
             template += '       <div ng-show="model.additionMessage"><br><div>{{model.additionMessage}}</div></div> ';
             template += '       <br><form name="msbForm"><div class="cell">';
             template += '           <input ng-required="true" name="text" class="ng-pristine ng-valid"type="text"ng-model="model.value">';
-            template += '           <span class="error" ng-show="msbForm.text.$invalid && msbForm.text.$dirty">*</span></div> </form>';
-            template += '       <div class="btn">';
-            template += '           <button class="defBtn" ng-click="$close(model.value)" ng-disabled="msbForm.$invalid" >{{model.button}}</button>';
-            template += '           <button ng-show="model.cancel" class="defBtn secondary" ng-click="$dismiss()">{{model.cancel}}</button>';
+            template += '           <span class="error" ng-show="msbForm.text.$invalid && msbForm.text.$dirty">*</span></div> </form></div>';
+            template += '       <div class="modal-footer">';
+            template += '           <button ng-show="model.cancel" class="btn btn-default" ng-click="$dismiss()">{{model.cancel}}</button>';
+            template += '        <button class="btn btn-primary" ng-click="$close(model.value)" ng-disabled="msbForm.$invalid" >{{model.button}}</button>';
             template += '       </div> ';
             template += ' ';
            

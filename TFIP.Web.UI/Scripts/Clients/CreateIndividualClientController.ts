@@ -1,9 +1,5 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export interface ICreateClientFormController extends ng.IFormController {
-        fieldInputForm: ng.IFormController;
-    }
-
     export interface ICreateIndividualClientScope extends ng.IScope {
         clientViewModel: ClientViewModel;
         createUser: () => void;
@@ -13,7 +9,7 @@
         genders: Shared.ListItem[];
         countries: Shared.ListItem[];
 
-        createClientForm: ICreateClientFormController;
+        createClientForm: Core.ICustomFormController
 
         regex: Const.RegularExpressions;
     }
@@ -56,7 +52,6 @@
                 }, true);
             });
 
-            this.$scope.regex = new Const.RegularExpressions();
             this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
             this.$scope.male = Gender.Male;
             this.$scope.female = Gender.Female;
@@ -71,10 +66,10 @@
                     if (data.isValid) {
                         this.locationHelperService.redirect(this.urlBuilderService.buildQuery("/Clients", { clientId: data.data.id, clientType: new ClientType().individualClient }));
                     } else {
-                        this.messageBox.showErrorMulty("Клиенты", data.errors);
+                        this.messageBox.showErrorMulty(Const.Messages.clients, data.errors);
                     }
                 }, (reason: any) => {
-                    this.messageBox.showError("Клиенты", reason.message);
+                        this.messageBox.showError(Const.Messages.clients, reason.message);
                 });
             } else {
                 //this.$scope.createClientForm.fieldInputForm.$setDirty();
@@ -93,8 +88,8 @@
                         }
                     }
                 }
-                
-                this.messageBox.showError("Клиенты", "Введены неверные данные");
+
+                this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             }
         }
        

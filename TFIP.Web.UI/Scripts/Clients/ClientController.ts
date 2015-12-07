@@ -25,7 +25,7 @@
             if (clientId && clientType) {
                 this.init(clientId, clientType);
             } else {
-                this.messageBox.showError("Клиенты", "Идентификатор и/или тип клиента не определен").finally(() => {
+                this.messageBox.showError(Const.Messages.clients, "Идентификатор и/или тип клиента не определен").finally(() => {
                     this.locationHelperService.redirect("/Clients");
                 });
             }
@@ -39,7 +39,7 @@
                 this.$scope.clientViewModel = data;
             }, (reason: Core.IRejectionReason) => {
                 if (!reason.aborted) {
-                    this.messageBox.showError("Клиенты", reason.message).finally(() => {
+                    this.messageBox.showError(Const.Messages.clients, reason.message).finally(() => {
                         this.locationHelperService.redirect("/Clients");
                     });
                 }

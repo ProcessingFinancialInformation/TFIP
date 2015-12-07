@@ -5,6 +5,7 @@
         isRequired: boolean;
         pattern: string;
         name: string;
+        isDisabled: boolean;
     }
 
     export class FieldInputDirective implements ng.IDirective {
@@ -15,7 +16,8 @@
                 labelText: "=",
                 model: "=",
                 isRequired: "=",
-                pattern: "="
+                pattern: "=",
+                isDisabled: "="
             }
         }
     }

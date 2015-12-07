@@ -29,5 +29,15 @@
         {
             return this.PartialView();
         }
+
+        public ActionResult CheckBoxFieldInput()
+        {
+            return this.PartialView();
+        }
+
+        public ActionResult TextAreaFieldInput()
+        {
+            return this.PartialView();
+        }
     }
 }

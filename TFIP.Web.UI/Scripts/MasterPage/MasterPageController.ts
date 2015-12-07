@@ -1,6 +1,7 @@
 ﻿module TFIP.Web.UI.MasterPage {
 
     export interface IMasterPageScope extends ng.IScope {
+        regex: Const.RegularExpressions;
     }
 
     export class MasterPageController {
@@ -9,6 +10,7 @@
         ];
 
         constructor(private $scope: IMasterPageScope) {
+            this.$scope.regex = new Const.RegularExpressions();
         }
     }
 }  

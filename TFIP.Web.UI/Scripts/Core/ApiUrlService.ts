@@ -57,6 +57,7 @@
         public getCredtTypes: string;
         public getCredtType: string;
         public getPage: string;
+        public saveCreditType: string;
 
         constructor(basePath: string) {
             super(basePath);
@@ -64,6 +65,7 @@
             this.getCredtTypes = this.getBasePath() + "api/creditType/getCreditTypes";
             this.getCredtType = this.getBasePath() + "api/creditType/getCreditType";
             this.getPage = this.getBasePath() + "api/creditType/getPage";
+            this.saveCreditType = this.getBasePath() + "api/creditType/saveCreditType";
         }
     }
 

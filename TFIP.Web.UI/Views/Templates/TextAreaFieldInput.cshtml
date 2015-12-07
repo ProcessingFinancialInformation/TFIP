@@ -1,0 +1,18 @@
+﻿<div class="form-group"
+     ng-form="fieldInputForm"
+     ng-class="{'has-error': (fieldInputForm.fieldInput.$error.required || fieldInputForm.fieldInput.$error.pattern) && fieldInputForm.fieldInput.$dirty}">
+
+    <label for="{{name}}" class="col-sm-2 control-label">{{labelText}}</label>
+    <div class="col-sm-10">
+        <textarea rows="3"
+                  ng-model="model"
+                  class="form-control"
+                  id="{{name}}"
+                  name="fieldInput"
+                  placeholder="{{labelText}}"
+                  ng-required="isRequired"
+                  ng-pattern="pattern"
+                  ng-disabled="isDisabled"></textarea>
+    </div>
+
+</div>

@@ -5,6 +5,7 @@
         getCreditType(id: number): ng.IPromise<CreditTypeModel>;
         getPage(): ng.IPromise<CreditTypePageModel>;
         showCreateCreditType(): ng.IPromise<any>;
+        saveCreditType(model: CreditTypeModel): ng.IPromise<Shared.AjaxViewModel<CreditTypeModel>>;
     }
 
     export class CreditTypeService implements ICreditTypeService {
@@ -28,28 +29,73 @@
 
         }
 
-        public showCreateCreditType(creditTypeId?: number): ng.IPromise<any> {
+        public saveCreditType(model: CreditTypeModel): ng.IPromise<Shared.AjaxViewModel<CreditTypeModel>> {
             var deferred = this.$q.defer();
 
-            this.httpWrapper.get<CreditTypePageModel>(this.apiUrlService.creditTypeApi.getPage).then((data: CreditTypePageModel) => {
-                var modalInstance = this.$uibModal.open({
-                    templateUrl: "/Credit/CreateCreditType",
-                    controller: CreateCreditTypeController,
-                    resolve : {
-                        creditTypePage: () => data,
-                        creditTypeId: () => creditTypeId
-                    }
-                });
+            var promise = this.httpWrapper.post<CreditTypeModel, ng.IPromise<Shared.AjaxViewModel<CreditTypeModel>>>(this.apiUrlService.creditTypeApi.saveCreditType, model);
 
-                modalInstance.result.then(() => {
-                    deferred.resolve();
-                }, (reason) => {
-                    deferred.reject(reason);
-                });
-            },(reason) => {
-                this.messageBox.showError("Создание кредита", reason.message);
+            promise.then((data: ng.IPromise<Shared.AjaxViewModel<CreditTypeModel>>) => {
+                deferred.resolve(data);
+            }, (reason: Core.IRejectionReason) => {
                 deferred.reject(reason);
             });
+
+            return deferred.promise;
+        }
+
+        public showCreateCreditType(creditTypeId?: number): ng.IPromise<any> {
+            var deferred = this.$q.defer();
+            var p1;
+            if (creditTypeId) {
+                p1 = this.getCreditType(creditTypeId);
+                p1.then((model: CreditTypeModel) => {
+                    this.httpWrapper.get<CreditTypePageModel>(this.apiUrlService.creditTypeApi.getPage).then((data: CreditTypePageModel) => {
+                        this.openModal(data, model).then((modalData: any) => {
+                            deferred.resolve(modalData);
+                        }, () => {
+                            deferred.reject();
+                        });
+                    }, (reason) => {
+                        this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                        deferred.reject(reason);
+                    });
+                }, (reason) => {
+                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                    deferred.reject(reason);
+                });
+            } else {
+                this.httpWrapper.get<CreditTypePageModel>(this.apiUrlService.creditTypeApi.getPage).then((data: CreditTypePageModel) => {
+                    this.openModal(data).then((modalData: any) => {
+                        deferred.resolve(modalData);
+                    }, () => {
+                        deferred.reject();
+                    });
+                }, (reason) => {
+                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                    deferred.reject(reason);
+                });
+            }
+
+            return deferred.promise;
+        }
+
+        private openModal(creditTypePage: any, creditTypeModel?: any) {
+            var deferred = this.$q.defer();
+            var modalInstance = this.$uibModal.open({
+                animation: true,
+                templateUrl: "/Credit/CreateCreditType",
+                controller: CreateCreditTypeController,
+                resolve: {
+                    creditTypePage: () => creditTypePage,
+                    creditTypeModel: () => creditTypeModel
+                }
+            });
+
+            modalInstance.result.then((modalData: any) => {
+                deferred.resolve(modalData);
+            },(reason) => {
+                    deferred.reject(reason);
+                });
 
             return deferred.promise;
         }

@@ -24,26 +24,26 @@
         }
 
         private init() {
+            this.initCreditTypes();
             this.$scope.createCreditType = () => this.createCreditType();
-
-            var p1 = this.creditTypeService.getPage().then((data: Credit.CreditTypePageModel) => {
-                this.$scope.creditTypePage = data;
-            });
-            var p2 = this.creditTypeService.getCreditTypes().then((data: Credit.CreditTypeModel[]) => {
-                this.$scope.creditTypes = data;
-            });
-
-            this.$q.all([p1, p2])["catch"]((reason) => {
-                this.messageBox.showError("Администрирование", reason.message);
-            });
         }
 
         private createCreditType() {
             var promise = this.creditTypeService.showCreateCreditType();
 
-            //promise["catch"]((reason: Core.IRejectionReason) => {
-            //    this.messageBox.showError("Администрирование", reason.message);
-            //});
+            promise.then((data: any) => {
+                this.initCreditTypes();
+            });
+        }
+
+        private initCreditTypes() {
+            var p2 = this.creditTypeService.getCreditTypes().then((data: Credit.CreditTypeModel[]) => {
+                this.$scope.creditTypes = data;
+            });
+
+            this.$q.all([p2])["catch"]((reason) => {
+                this.messageBox.showError(Const.Messages.admin, reason.message);
+            });
         }
     }
 }

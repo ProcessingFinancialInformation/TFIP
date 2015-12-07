@@ -8,6 +8,8 @@
 
         public number = /^[\d]+$/;
 
+        public decimalNumber = /[0-9]+([\.\,][0-9][0-9]?)?/;
+
         public numberWithCharacters2_14 = /^[A-Za-z0-9]{2,14}$/;
 
         public numberWithCharacters2_9 = /^[A-Za-z0-9]{2,9}$/;
