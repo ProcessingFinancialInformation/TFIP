@@ -5,12 +5,12 @@
         /// <summary>
         /// [A-ZА-Я]+
         /// </summary>
-        public const string Characters = "[A-ZА-Я]+";
+        public const string Characters = "[A-ZА-Яa-zа-я]+";
 
         /// <summary>
         /// [A-ZА-Я\\s
         /// </summary>
-        public const string CharactersWithSpace = "[A-ZА-Я\\s]+";
+        public const string CharactersWithSpace = "[A-ZА-Яa-zа-я\\s]+";
 
         /// <summary>
         /// [\\d]+
@@ -35,16 +35,16 @@
         /// <summary>
         /// [A-ZА-Я'-]+
         /// </summary>
-        public const string LastName = "[A-ZА-Я'-]+";
+        public const string LastName = "[A-ZА-Яa-zа-я'-]+";
 
         /// <summary>
         /// [A-ZА-Я0-9'-\\s]+
         /// </summary>
-        public const string Address = @"[A-ZА-Я0-9\'\-\s]+";
+        public const string Address = @"[A-ZА-Яa-zа-я0-9\'\-\s]+";
 
         /// <summary>
         /// [A-ZА-Я0-9.'-]+
         /// </summary>
-        public const string AddressNo = "[A-ZА-Я0-9.'-]+";
+        public const string AddressNo = "[A-ZА-Яa-zа-я0-9.'-]+";
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Администрирование";
 }
 
 <div ng-controller="AdminController">
@@ -20,14 +20,20 @@
                     <th>Наименование</th>
                     <th>Тип</th>
                     <th>Активен</th>
+                    <th>Сменить активность</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="creditType in creditTypes">
-                    <td ng-bind="$index"></td>
+                    <td ng-bind="$index + 1"></td>
                     <td ng-bind="creditType.name"></td>
-                    <td ng-bind="creditType.creditKind"></td>
-                    <td ng-bind="creditType.isActive"></td>
+                    <td ng-bind="getCreditKindName(creditType.creditKind)"></td>
+                    <td>
+                        {{active(creditType.isActive)}}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-bind="creditType.isActive ? 'Сделать неактивным' : 'Сделать активным'" ng-click="changeActivity(creditType.id, !creditType.isActive, $index)"></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

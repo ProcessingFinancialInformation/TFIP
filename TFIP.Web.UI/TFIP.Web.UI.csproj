@@ -199,6 +199,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Credit\CreateCreditType.cshtml" />
     <Content Include="Views\Templates\RadioFieldInput.cshtml" />
+    <Content Include="Views\Templates\CheckBoxFieldInput.cshtml" />
+    <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -217,6 +219,7 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Const\Messages.ts" />
     <TypeScriptCompile Include="Scripts\Const\RegularExpressions.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
     <TypeScriptCompile Include="Scripts\Core\CustomHttpService.ts" />
@@ -224,23 +227,26 @@
     <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />
     <TypeScriptCompile Include="Scripts\Core\UrlBuilderService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\Business.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestController.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestService.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditTypeController.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditModels.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditTypeService.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\CheckBoxFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\DataFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\BaseFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\RadioFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\SelectFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\SimpleMetadataDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\TextAreaFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\TextFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\MasterPage\MasterPageController.ts" />
-    <TypeScriptCompile Include="Scripts\Shared\ValidationModel.ts" />
+    <TypeScriptCompile Include="Scripts\Shared\SharedModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />

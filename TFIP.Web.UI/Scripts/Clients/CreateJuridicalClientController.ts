@@ -50,10 +50,10 @@
                 if (data.isValid) {
                     this.locationHelperService.redirect(this.urlBuilderService.buildQuery("/Clients", { clientId: data.data.id, clientType: new ClientType().individualClient }));
                 } else {
-                    this.messageBox.showErrorMulty("Клиенты", data.errors);
+                    this.messageBox.showErrorMulty(Const.Messages.clients, data.errors);
                 }
-            }, (reason: any) => {
-                    this.messageBox.showError("Клиенты", reason.message);
+            },(reason: any) => {
+                    this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             });
         }
 

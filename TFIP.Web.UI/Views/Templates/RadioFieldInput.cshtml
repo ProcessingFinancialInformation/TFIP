@@ -1,12 +1,14 @@
-﻿<div class="form-group" ng-form="fieldInputForm">
+﻿<div class="form-group" ng-form="fieldInputForm"
+     ng-class="{'has-error': fieldInputForm.fieldInput.$error.required && fieldInputForm.fieldInput.$dirty}">
     <div class="col-sm-offset-2 col-sm-10">
         <div ng-repeat="modelValue in modelValues">
             <label>
-                <input id="{{modelValue.value + $index}}"
+                <input id="{{name + '_' + $index}}"
                        name="fieldInput"
                        type="radio"
                        ng-model="model"
-                       ng-value="modelValue.id"> {{modelValue.value}}
+                       ng-value="modelValue.id"
+                       ng-change="radioUpdate(modelValue.id)"> {{modelValue.value}}
             </label>
         </div>
     </div>

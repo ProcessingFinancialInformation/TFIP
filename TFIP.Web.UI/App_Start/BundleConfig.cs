@@ -40,8 +40,8 @@ namespace TFIP.Web.UI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             "~/Scripts/modernizr/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").IncludeDirectory(
-                      "~/Scripts/bootstrap/", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap/bootstrap.min.js"));
 
             bundles.Add(
                 new ScriptBundle("~/bundles/main").IncludeDirectory("~/Scripts/App/", "*.js")

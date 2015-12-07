@@ -1,7 +1,32 @@
-﻿<h4>Создание нового типа кредита</h4>
-<div>
-    <div class="form-horizontal">
-        <div text-field-input name="'name'" model="creditTypeModel.name" label-text="'Наименование'" is-required="true"></div>
-        <div radio-field-input name="'isIndividual'" model="creditTypeModel.isIndividual" is-required="true" model-values="isIndividualValues"></div>
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button> 
+    <h4 class="modal-title" id="myModalLabel">Создание нового типа кредита</h4> 
+</div>
+<div class="modal-body" ng-form="createCreditTypeForm">
+    <div>
+        <div class="form-horizontal">
+            <div text-field-input name="'name'" model="creditTypeModel.name" label-text="'Наименование'" is-required="true" pattern="regex.charactersWithSpace"></div>
+            <div radio-field-input name="'isIndividual'" model="creditTypeModel.isIndividual" is-required="true" model-values="isIndividualValues"></div>
+            <div select-field-input name="'creditKind'" label-text="'Цель кредита'" model="creditTypeModel.creditKind" is-required="true" model-values="creditTypePage.creditKinds"></div>
+            <div select-field-input name="'calculationType'" label-text="'Тип выплат'" model="creditTypeModel.calculationType" is-required="true" model-values="creditTypePage.calculationTypes"></div>
+            <div select-field-input name="'сurrency'" label-text="'Валюта кредита'" model="creditTypeModel.currency" is-required="true" model-values="creditTypePage.currencies"></div>
+            <div select-field-input name="'moneyType'" label-text="'Варианты выдачи'" model="creditTypeModel.moneyType" is-required="true" model-values="creditTypePage.moneyTypes"></div>
+            <div text-area-field-input name="'description'" model="creditTypeModel.description" label-text="'Описание'" is-required="true"></div>
+            <div text-field-input name="'term'" model="creditTypeModel.term" label-text="'Срок (месяцев)'" is-required="true" pattern="regex.number"></div>
+            <div text-field-input name="'rate'" model="creditTypeModel.rate" label-text="'Процентная ставка годовых'" is-required="true" pattern="regex.decimalNumber"></div>
+            <div text-field-input name="'amount'" model="creditTypeModel.amount" label-text="'Сумма'" is-required="true" pattern="regex.decimalNumber"></div>
+            <div check-box-field-input name="'isGuarantorRequired'" label-text="'Необходимы поручители'" model="creditTypeModel.isGuarantorRequired"></div>
+            <div check-box-field-input name="'isDocumentsRequired'" label-text="'Необходимы справки'" model="creditTypeModel.isDocumentsRequired"></div>
+            <div text-area-field-input name="'requiredDocuments'" label-text="'Список необходимых документов'" model="creditTypeModel.requiredDocuments" is-disabled="!creditTypeModel.isDocumentsRequired"></div>
+            <div text-area-field-input name="'conditions'" model="creditTypeModel.conditions" label-text="'Условия получения'" is-required="true"></div>
+            <div text-field-input name="'termOfApplication'" model="creditTypeModel.termOfApplication" label-text="'Срок рассмотрения заявки (часов)'" is-required="true" pattern="regex.number"></div>
+        </div>
     </div>
 </div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$close()">Закрыть</button> 
+    <button type="button" class="btn btn-primary" ng-click="onSaveClick()">Сохранить</button>
+</div>
+

@@ -55,10 +55,12 @@
             modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI']);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
-                .directive("textFieldInput", () => new Directives.TextFieldInputDirective)
+                .directive("textFieldInput",() => new Directives.TextFieldInputDirective)
+                .directive("textAreaFieldInput",() => new Directives.TextAreaFieldInputDirective)
                 .directive("dateFieldInput",() => new Directives.DateFieldInputDirective)
                 .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
                 .directive("radioFieldInput",() => new Directives.RadioFieldInputDirective)
+                .directive("checkBoxFieldInput",() => new Directives.CheckBoxFieldInputDirective)
                 .directive("simpleMetadata",() => new Directives.SimpleMetadataDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)

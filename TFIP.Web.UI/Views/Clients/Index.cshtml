@@ -14,7 +14,7 @@
                 <input type="radio" ng-model="clientInput.clientType" ng-value="clientTypes.juridicalPerson" name="clientType" /> Юридическое лицо
             </label>
         </div>
-        <div class="form-group" ng-class="{ 'has-error': clientSelectionForm.clientId.$error.required && clientSelectionForm.clientId.$dirty}">
+        <div class="form-group" ng-class="{ 'has-error': clientSelectionForm.clientId.$error.required && clientSelectionForm.clientId.$dirty }">
             <label for="clientId">Введите номер клиента</label>
             <input type="text" class="form-control" id="clientId" name="clientId" ng-model="clientInput.clientId" ng-required="true">
         </div>
