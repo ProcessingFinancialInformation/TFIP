@@ -236,3 +236,17 @@ TFIP.Web.UI/Scripts/Directives/SimpleMetadataDirective.js
 TFIP.Web.UI/Scripts/Directives/SimpleMetadataDirective.js.map
 TFIP.Web.UI/Scripts/Const/RegularExpressions.js
 TFIP.Web.UI/Scripts/Const/RegularExpressions.js.map
+TFIP.Web.UI/Scripts/Admin/AdminController.js
+TFIP.Web.UI/Scripts/Admin/AdminController.js.map
+TFIP.Web.UI/Scripts/Credit/CreateCreditRequestController.js
+TFIP.Web.UI/Scripts/Credit/CreateCreditRequestController.js.map
+TFIP.Web.UI/Scripts/Credit/CreateCreditRequestService.js
+TFIP.Web.UI/Scripts/Credit/CreateCreditRequestService.js.map
+TFIP.Web.UI/Scripts/Credit/CreateCreditTypeController.js
+TFIP.Web.UI/Scripts/Credit/CreateCreditTypeController.js.map
+TFIP.Web.UI/Scripts/Credit/CreditModels.js
+TFIP.Web.UI/Scripts/Credit/CreditModels.js.map
+TFIP.Web.UI/Scripts/Credit/CreditTypeService.js
+TFIP.Web.UI/Scripts/Credit/CreditTypeService.js.map
+TFIP.Web.UI/Scripts/Directives/RadioFieldInputDirective.js
+TFIP.Web.UI/Scripts/Directives/RadioFieldInputDirective.js.map

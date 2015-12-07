@@ -1,5 +1,9 @@
 ﻿module TFIP.Web.UI.Clients {
     
+    export interface ICreateClientFormController extends ng.IFormController {
+        fieldInputForm: ng.IFormController;
+    }
+
     export interface ICreateIndividualClientScope extends ng.IScope {
         clientViewModel: ClientViewModel;
         createUser: () => void;
@@ -9,7 +13,7 @@
         genders: Shared.ListItem[];
         countries: Shared.ListItem[];
 
-        createClientForm: ng.IFormController;
+        createClientForm: ICreateClientFormController;
 
         regex: Const.RegularExpressions;
     }
@@ -73,9 +77,23 @@
                     this.messageBox.showError("Клиенты", reason.message);
                 });
             } else {
-                for (var i = 0; i < this.$scope.createClientForm.$error.required.length; i++) {
-                    this.$scope.createClientForm.$error.required[i].$dirty = true;
+                //this.$scope.createClientForm.fieldInputForm.$setDirty();
+
+                if (this.$scope.createClientForm.$error.required) {
+                    for (var i = 0; i < this.$scope.createClientForm.$error.required.length; i++) {
+                        if (this.$scope.createClientForm.$error.required[i].fieldInput) {
+                            this.$scope.createClientForm.$error.required[i].fieldInput.$dirty = true;
+                        }
+                    }
                 }
+                if (this.$scope.createClientForm.$error.pattern) {
+                    for (var i = 0; i < this.$scope.createClientForm.$error.pattern.length; i++) {
+                        if (this.$scope.createClientForm.$error.pattern[i].fieldInput) {
+                            this.$scope.createClientForm.$error.pattern[i].fieldInput.$dirty = true;
+                        }
+                    }
+                }
+                
                 this.messageBox.showError("Клиенты", "Введены неверные данные");
             }
         }

@@ -125,7 +125,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CreditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +195,10 @@
     <Content Include="Views\Templates\DateFieldInput.cshtml" />
     <Content Include="Views\Templates\SelectFieldInput.cshtml" />
     <Content Include="Views\Templates\SimpleMetadataTemplate.cshtml" />
+    <Content Include="Views\Credit\CreateCreditRequest.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Credit\CreateCreditType.cshtml" />
+    <Content Include="Views\Templates\RadioFieldInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -202,6 +208,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Admin\AdminController.ts" />
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientController.ts" />
@@ -217,8 +224,14 @@
     <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxService.ts" />
     <TypeScriptCompile Include="Scripts\Core\UrlBuilderService.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestController.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestService.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreateCreditTypeController.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreditModels.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreditTypeService.ts" />
     <TypeScriptCompile Include="Scripts\Directives\DataFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\BaseFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\RadioFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\SelectFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\SimpleMetadataDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\TextFieldInputDirective.ts" />

@@ -58,6 +58,7 @@
                 .directive("textFieldInput", () => new Directives.TextFieldInputDirective)
                 .directive("dateFieldInput",() => new Directives.DateFieldInputDirective)
                 .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
+                .directive("radioFieldInput",() => new Directives.RadioFieldInputDirective)
                 .directive("simpleMetadata",() => new Directives.SimpleMetadataDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)
@@ -65,10 +66,12 @@
                 .service("clientService", Clients.ClientService)
                 .service("locationHelperService", Core.LocationHelperService)
                 .service("httpWrapper", Core.CustomHttpService)
+                .service("creditTypeService", Credit.CreditTypeService)
                 .controller("ClientController", TFIP.Web.UI.Clients.ClientController)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("CreateClientConroller", Clients.CreateIndividualClientController)
                 .controller("CreateJuridicalClientController", Clients.CreateJuridicalClientController)
+                .controller("AdminController", Admin.AdminController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController);
 

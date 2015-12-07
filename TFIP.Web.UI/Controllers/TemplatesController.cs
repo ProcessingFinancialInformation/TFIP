@@ -24,5 +24,10 @@
         {
             return this.PartialView();
         }
+
+        public ActionResult RadioFieldInput()
+        {
+            return this.PartialView();
+        }
     }
 }

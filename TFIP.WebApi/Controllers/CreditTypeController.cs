@@ -39,7 +39,7 @@ namespace TFIP.Web.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        public HttpResponseMessage GetCreditTypes(bool? isActive)
+        public HttpResponseMessage GetCreditTypes(bool? isActive = null)
         {
             var result = creditTypeService.GetCreditTypes(isActive);
             return Request.CreateResponse(HttpStatusCode.OK, result);

@@ -85,6 +85,7 @@
     <Compile Include="AutomapperConfigurator.cs" />
     <Compile Include="CollectionModificationResolver.cs" />
     <Compile Include="CountryService.cs" />
+    <Compile Include="CreditCalculation\AnnuityCreditCalculationService.cs" />
     <Compile Include="CreditTypeService.cs" />
     <Compile Include="FileManagementService.cs" />
     <Compile Include="FileService.cs" />

@@ -7,6 +7,8 @@ namespace TFIP.Business.Entities
     {
         public decimal Amount { get; set; }
 
+        public decimal MainDeptAmount { get; set; }
+
         public string ProcessedBy { get; set; }
 
         public DateTime ProcessedAt { get; set; }

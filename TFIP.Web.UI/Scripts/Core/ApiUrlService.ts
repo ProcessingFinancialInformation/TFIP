@@ -2,6 +2,7 @@
 
     export interface IApiUrlService {
         clientApi: ClientApi;
+        creditTypeApi: CreditTypeApi;
     }
 
     export class ApiUrlService {
@@ -10,11 +11,13 @@
         ];
 
         public clientApi: ClientApi;
+        public creditTypeApi: CreditTypeApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
 
             this.clientApi = new ClientApi(baseUrl);
+            this.creditTypeApi = new CreditTypeApi(baseUrl);
         }
     }
 
@@ -47,6 +50,20 @@
             this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
             this.createJuridicalClient = this.getBasePath() + "api/clients/createOrUpdateJuridicalClient";
             this.getClient = this.getBasePath() + "api/clients/get";
+        }
+    }
+
+    export class CreditTypeApi extends UrlHelperBase {
+        public getCredtTypes: string;
+        public getCredtType: string;
+        public getPage: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.getCredtTypes = this.getBasePath() + "api/creditType/getCreditTypes";
+            this.getCredtType = this.getBasePath() + "api/creditType/getCreditType";
+            this.getPage = this.getBasePath() + "api/creditType/getPage";
         }
     }
 
