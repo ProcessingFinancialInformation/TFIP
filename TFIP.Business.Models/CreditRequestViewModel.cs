@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using TFIP.Business.Entities;
 
 namespace TFIP.Business.Models
@@ -16,6 +17,12 @@ namespace TFIP.Business.Models
 
         public CreditTypeViewModel CreditType { get; set; }
 
+        public long CreditTypeId { get; set; }
+
+        public long? ClientId { get; set; }
+
+        public ClientType ClientType { get; set; }
+
         public DateTime CreationDate { get; set; }
 
         public DateTime? ApprovalDate { get; set; }
@@ -26,6 +33,7 @@ namespace TFIP.Business.Models
 
         public string DisplayStatus { get; set; }
 
+        [Range(0, int.MaxValue)]
         public decimal TotalAmount { get; set; }
     }
 }

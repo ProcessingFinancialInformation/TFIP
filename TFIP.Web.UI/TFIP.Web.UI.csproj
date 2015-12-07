@@ -201,6 +201,7 @@
     <Content Include="Views\Templates\RadioFieldInput.cshtml" />
     <Content Include="Views\Templates\CheckBoxFieldInput.cshtml" />
     <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
+    <Content Include="Views\Clients\CreateIndividualClientForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

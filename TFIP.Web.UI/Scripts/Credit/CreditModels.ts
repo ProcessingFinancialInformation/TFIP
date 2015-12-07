@@ -21,6 +21,7 @@
         amount: number;
         calculationType: number;
         isActive: boolean;
+        id: number;
     }
 
     export class CreditTypePageModel {

@@ -120,6 +120,9 @@
   <data name="Adulthood" xml:space="preserve">
     <value>Клиенты младше {0} лет не обслуживаются</value>
   </data>
+  <data name="AmountToLessThanAmountFrom" xml:space="preserve">
+    <value>Верхняя граница суммы кредита должна быть больше нижней границы</value>
+  </data>
   <data name="DocumentsRequired" xml:space="preserve">
     <value>Не указан перечень документов.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="InvalidCreditRequestId" xml:space="preserve">
     <value>Кредит с Id={0} не существует</value>
+  </data>
+  <data name="InvalidCreditTypeAmountRange" xml:space="preserve">
+    <value>Не указаны границы суммы кредита</value>
   </data>
   <data name="InvalidIssueAndExpiryDate" xml:space="preserve">
     <value>Дата выдачи должна быть меньше срока действия</value>
