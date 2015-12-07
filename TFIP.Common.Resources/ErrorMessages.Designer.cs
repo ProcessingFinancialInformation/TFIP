@@ -70,6 +70,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Верхняя граница суммы кредита должна быть больше нижней границы.
+        /// </summary>
+        public static string AmountToLessThanAmountFrom {
+            get {
+                return ResourceManager.GetString("AmountToLessThanAmountFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не указан перечень документов..
         /// </summary>
         public static string DocumentsRequired {
@@ -102,6 +111,15 @@ namespace TFIP.Common.Resources {
         public static string InvalidCreditRequestId {
             get {
                 return ResourceManager.GetString("InvalidCreditRequestId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не указаны границы суммы кредита.
+        /// </summary>
+        public static string InvalidCreditTypeAmountRange {
+            get {
+                return ResourceManager.GetString("InvalidCreditTypeAmountRange", resourceCulture);
             }
         }
         

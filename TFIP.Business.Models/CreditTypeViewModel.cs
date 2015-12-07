@@ -36,11 +36,6 @@
         public CreditKind CreditKind { get; set; }
 
         /// <summary>
-        /// Gets or sets the currency.
-        /// </summary>
-        public Currency Currency { get; set; }
-
-        /// <summary>
         /// Gets or sets the description.
         /// </summary>
         [Required]
@@ -50,6 +45,16 @@
         /// Gets or sets the display credit kind.
         /// </summary>
         public string DisplayCreditKind { get; set; }
+
+
+        [Range(0, double.MaxValue)]
+        public decimal? AmountFrom { get; set; }
+
+        
+        [Range(0, double.MaxValue)]
+        public decimal? AmountTo { get; set; }
+
+        public Currency Currency { get; set; }
 
         /// <summary>
         /// Gets or sets the display currency.

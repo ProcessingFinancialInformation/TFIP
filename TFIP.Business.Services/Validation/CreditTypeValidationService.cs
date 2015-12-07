@@ -27,6 +27,18 @@ namespace TFIP.Business.Services.Validation
             {
                 errors.Add(ErrorMessages.DocumentsRequired);
             }
+
+            if (!viewModel.AmountFrom.HasValue && !viewModel.AmountTo.HasValue)
+            {
+                errors.Add(ErrorMessages.InvalidCreditTypeAmountRange);
+            }
+
+            if (viewModel.AmountFrom.HasValue && viewModel.AmountTo.HasValue &&
+                viewModel.AmountFrom.Value >= viewModel.AmountTo)
+            {
+                errors.Add(ErrorMessages.AmountToLessThanAmountFrom);
+            }
+
             return errors;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using TFIP.Business.Contracts;
+using TFIP.Business.Models;
 
 namespace TFIP.Web.Api.Controllers
 {
@@ -24,6 +25,12 @@ namespace TFIP.Web.Api.Controllers
         {
             creditRequestService.ApproveByCreditComission(id);
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        public HttpResponseMessage CreateCreditRequest(CreditRequestViewModel creditRequest)
+        {
+            var creditItemViewModel =  creditRequestService.CreateCreditRequest(creditRequest);
+            return Request.CreateResponse(HttpStatusCode.OK, creditItemViewModel);
         }
     }
 }

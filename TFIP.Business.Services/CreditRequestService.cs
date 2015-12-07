@@ -46,5 +46,14 @@ namespace TFIP.Business.Services
                     creditRequest.IndividualClient.ContactEmail, CreditRequestStatus.InProgress);
             }
         }
+
+        public CreditRequestListItemViewModel CreateCreditRequest(CreditRequestViewModel creditRequestViewModel)
+        {
+            var creditRequest = AutoMapper.Mapper.Map<CreditRequestViewModel, CreditRequest>(creditRequestViewModel);
+            creditUow.CreditRequests.InsertOrUpdate(creditRequest);
+            creditUow.Commit();
+            return AutoMapper.Mapper.
+                Map<CreditRequest, CreditRequestListItemViewModel>(creditUow.CreditRequests.GetFullCreditRequest(creditRequest.Id));
+        }
     }
 }

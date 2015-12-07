@@ -19,7 +19,9 @@
         /// </summary>
         public int Term { get; set; }
 
-        public decimal Amount { get; set; }
+        public decimal? AmountFrom { get; set; }
+
+        public decimal? AmountTo { get; set; }
 
         public Currency Currency { get; set; }
 

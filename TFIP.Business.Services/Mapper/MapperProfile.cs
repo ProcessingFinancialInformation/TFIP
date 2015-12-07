@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using TFIP.Business.Contracts;
@@ -79,9 +80,6 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
-            AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestListItemViewModel>()
-                .ForMember(i => i.CreditKind, source => source.MapFrom(x => EnumHelper.GetEnumDescription(x.CreditType.CreditKind)))
-                .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
             AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
             AutoMapper.Mapper.CreateMap<IndividualClient, CreateIndividualClientViewModel>();
@@ -105,11 +103,34 @@ namespace TFIP.Business.Services.Mapper
 
         private void ConfigureCreditRequests()
         {
+            AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestListItemViewModel>()
+                .ForMember(i => i.CreditKind, source => source.MapFrom(x => EnumHelper.GetEnumDescription(x.CreditType.CreditKind)))
+                .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
             AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestViewModel>()
                 .ForMember(dest => dest.Attachments,
                     opt => opt.MapFrom(src => src.AttachmentHeader != null ? src.AttachmentHeader.Attachments : List.Of<Attachment>()))
                 .ForMember(dest => dest.DisplayStatus,
                     opt => opt.MapFrom(src => EnumHelper.GetEnumDescription(src.Status)));
+
+            AutoMapper.Mapper.CreateMap<CreditRequestViewModel, CreditRequest>()
+                .ForMember(dest => dest.IndividualClientId,
+                    opt =>
+                        opt.MapFrom(
+                            src =>
+                                src.ClientType == ClientType.Individual ? src.ClientId : null))
+                .ForMember(dest => dest.IndividualClientId,
+                    opt =>
+                        opt.MapFrom(
+                            src =>
+                                src.ClientType == ClientType.JuridicalPerson ? src.ClientId : null))
+                .ForMember(dest => dest.CreationDate,
+                    opt =>
+                        opt.MapFrom(src => DateTime.Now));
+            //.ForMember(dest => dest.AttachmentHeader,
+            //    opt =>
+            //        opt.MapFrom(
+            //            src =>
+            //                src.ClientType == ClientType.JuridicalPerson ? src.ClientId : null));
         }
     }
 }
