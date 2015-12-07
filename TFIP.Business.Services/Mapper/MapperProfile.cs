@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
@@ -30,6 +31,7 @@ namespace TFIP.Business.Services.Mapper
             ConfigureSettings();
             ConfigureCreditTypes();
             ConfigurePayment();
+            ConfigureCreditRequests();
             // Use mapper profile service to get info from database if necessary.
             // Mapper.CreateMap ...
         }
@@ -82,6 +84,7 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
             AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
+            AutoMapper.Mapper.CreateMap<IndividualClient, CreateIndividualClientViewModel>();
         }
 
         private void ConfigureJuridicalClient()
@@ -97,6 +100,16 @@ namespace TFIP.Business.Services.Mapper
         private void ConfigurePayment()
         {
             AutoMapper.Mapper.CreateMap<PaymentViewModel, Payment>();
+            AutoMapper.Mapper.CreateMap<Payment, PaymentViewModel>();
+        }
+
+        private void ConfigureCreditRequests()
+        {
+            AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestViewModel>()
+                .ForMember(dest => dest.Attachments,
+                    opt => opt.MapFrom(src => src.AttachmentHeader != null ? src.AttachmentHeader.Attachments : List.Of<Attachment>()))
+                .ForMember(dest => dest.DisplayStatus,
+                    opt => opt.MapFrom(src => EnumHelper.GetEnumDescription(src.Status)));
         }
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ClientViewModel.cs" />
     <Compile Include="CreditRequestListItemViewModel.cs" />
+    <Compile Include="CreditRequestViewModel.cs" />
     <Compile Include="CreditTypeViewModel.cs" />
     <Compile Include="FileViewModel.cs" />
     <Compile Include="CreateIndividualClientViewModel.cs" />

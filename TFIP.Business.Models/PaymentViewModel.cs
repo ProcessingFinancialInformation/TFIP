@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TFIP.Business.Models
 {
     public class PaymentViewModel
     {
+        public long Id { get; set; }
+
         public decimal Amount { get; set; }
+
+        public string ProcessedBy { get; set; }
+
+        public DateTime ProcessedAt { get; set; }
 
         public long CreditRequestId { get; set; }
     }

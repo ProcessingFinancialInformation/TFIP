@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AttachmentController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CreditRequestController.cs" />
     <Compile Include="Controllers\CreditTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />

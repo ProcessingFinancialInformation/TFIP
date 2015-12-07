@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TFIP.Business.Entities
 {
@@ -22,15 +21,20 @@ namespace TFIP.Business.Entities
 
         public virtual CreditType CreditType { get; set; }
 
+        public decimal TotalAmount { get; set; }
+
         public long CreditTypeId { get; set; }
 
         public DateTime CreationDate { get; set; }
 
-        public DateTime ApprovalDate { get; set; }
+        public DateTime? ApprovalDate { get; set; }
 
-        public virtual CreditRequestStatus CreditRequestStatus { get; set; }
+        public DateTime? NextPaymentDate { get; set; }
+
+        public decimal CurrentBalance { get; set; }
+
+        public CreditRequestStatus Status { get; set; }
         
         public virtual ICollection<Guarantor> Guarantors { get; set; }
-
     }
 }

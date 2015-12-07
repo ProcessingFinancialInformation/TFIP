@@ -77,6 +77,7 @@
     <Compile Include="IAttachmentService.cs" />
     <Compile Include="ICountryService.cs" />
     <Compile Include="ICreditCalculationService.cs" />
+    <Compile Include="ICreditRequestService.cs" />
     <Compile Include="ICreditTypeService.cs" />
     <Compile Include="IDifferentialCreditCalculationService.cs" />
     <Compile Include="IFileManagementService.cs" />

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ClientRepository.cs" />
+    <Compile Include="CreditRequestRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

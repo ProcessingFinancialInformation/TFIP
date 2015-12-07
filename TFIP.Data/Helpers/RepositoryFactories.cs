@@ -19,7 +19,8 @@ namespace TFIP.Data.Helpers
                 {
                    // {typeof(ISomeRepository), dbContext => new SomeRepository(dbContext)},
                    {typeof(IClientRepository<IndividualClient>), creditDbContext => new ClientRepository<IndividualClient>(creditDbContext)},
-                   {typeof(IClientRepository<JuridicalClient>), creditDbContext => new ClientRepository<JuridicalClient>(creditDbContext)}
+                   {typeof(IClientRepository<JuridicalClient>), creditDbContext => new ClientRepository<JuridicalClient>(creditDbContext)},
+                   {typeof(ICreditRequestRepository), creditDbContext => new CreditRequestRepository(creditDbContext)}
                 };
         }
 

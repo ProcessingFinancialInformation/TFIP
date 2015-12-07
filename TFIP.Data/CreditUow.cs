@@ -65,11 +65,11 @@ namespace TFIP.Data
             }
         }
 
-        public IBaseRepository<CreditRequest> CreditRequests
+        public ICreditRequestRepository CreditRequests
         {
             get
             {
-                return GetBaseRepo<CreditRequest>();
+                return GetRepo<ICreditRequestRepository>();
             }
         }
 
