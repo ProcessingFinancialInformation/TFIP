@@ -81,7 +81,8 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
             AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestListItemViewModel>()
                 .ForMember(i => i.CreditKind, source => source.MapFrom(x => EnumHelper.GetEnumDescription(x.CreditType.CreditKind)))
-                .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
+                .ForMember(i => i.CreditTypeName, source => source.MapFrom(x => x.CreditType.Name))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => EnumHelper.GetEnumDescription(src.Status)));
             AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
             AutoMapper.Mapper.CreateMap<IndividualClient, CreateIndividualClientViewModel>();

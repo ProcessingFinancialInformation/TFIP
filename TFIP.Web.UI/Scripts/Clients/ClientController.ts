@@ -3,6 +3,8 @@
     export interface IClientScope extends ng.IScope {
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
+        makePayment: () => void;
+        getCreditRequestDetails: () => void;
     }
 
     export class ClientController {
@@ -31,6 +33,8 @@
             }
 
             this.$scope.createCreditRequest = () => this.createCreditRequest();
+            this.$scope.makePayment = () => this.makePayment();
+            this.$scope.getCreditRequestDetails = () => this.getCreditRequestDetails();
         }
 
         private init(clientId: string, clientType: string) {
@@ -48,6 +52,14 @@
 
         private createCreditRequest() {
             
+        }
+
+        private makePayment() {
+            alert('make payment');
+        }
+
+        private getCreditRequestDetails() {
+            alert('credit request details');
         }
     }
 } 

@@ -1,13 +1,21 @@
-﻿namespace TFIP.Web.UI.Controllers
+﻿using TFIP.Business.Entities;
+using TFIP.Common.Helpers;
+
+namespace TFIP.Web.UI.Controllers
 {
     using System.Web.Mvc;
 
     public class ClientsController : Controller
     {
-        public ActionResult Index(long? clientId)
+        public ActionResult Index(long? clientId, ClientType? clientType)
         {
             if (clientId.HasValue)
             {
+                if (clientType.HasValue)
+                {
+                    ViewBag.Title = EnumHelper.GetEnumDescription(clientType.Value);
+                }
+
                 return this.View("Client");
             }
 

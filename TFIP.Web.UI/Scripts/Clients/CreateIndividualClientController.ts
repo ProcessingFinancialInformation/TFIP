@@ -1,6 +1,6 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export interface ICreateIndividualClientScope extends ng.IScope {
+    export interface ICreateIndividualClientScope extends MasterPage.IMasterPageScope {
         clientViewModel: ClientViewModel;
         createUser: () => void;
 
@@ -9,9 +9,7 @@
         genders: Shared.ListItem[];
         countries: Shared.ListItem[];
 
-        createClientForm: Core.ICustomFormController
-
-        regex: Const.RegularExpressions;
+        createClientForm: Core.ICustomFormController;
     }
 
     export class CreateIndividualClientController {

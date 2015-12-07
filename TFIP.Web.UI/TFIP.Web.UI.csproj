@@ -254,6 +254,10 @@
     <TypeScriptCompile Include="Scripts\_references.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
+      <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
+      <Name>TFIP.Business.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124f2f0-d0df-403f-a2ce-b645c61c5d30}</Project>
       <Name>TFIP.Common.Helpers</Name>
