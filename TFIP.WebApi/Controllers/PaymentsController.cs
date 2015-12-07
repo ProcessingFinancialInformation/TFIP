@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Models;
+using TFIP.Common.Resources;
 
 namespace TFIP.Web.Api.Controllers
 {
@@ -29,7 +30,10 @@ namespace TFIP.Web.Api.Controllers
         [HttpGet]
         public HttpResponseMessage GetBalanceInformation(long creditRequestId)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, new BalanceInformationViewModel());
+            var balanceInfo = paymentService.GetBalanceInformationViewModel(creditRequestId);
+            return balanceInfo != null ? 
+                Request.CreateResponse(HttpStatusCode.OK, balanceInfo) : 
+                Request.CreateResponse(HttpStatusCode.BadRequest, String.Format(ErrorMessages.InvalidCreditRequestId,creditRequestId));
         }
     }
 }

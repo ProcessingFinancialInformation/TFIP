@@ -13,6 +13,7 @@ namespace TFIP.Business.Services
     public class PaymentService: IPaymentService
     {
         private readonly ICreditUow creditUow;
+        private readonly IAnnuityCreditCalculationService annuityCreditCalculationService;
 
         public PaymentService(ICreditUow creditUow)
         {
@@ -26,6 +27,16 @@ namespace TFIP.Business.Services
             creditUow.Payments.InsertOrUpdate(payment);
             creditUow.Commit();
             return 0;
+        }
+
+        public BalanceInformationViewModel GetBalanceInformationViewModel(long creditRequestId)
+        {
+            var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(creditRequestId);
+            return new BalanceInformationViewModel
+            {
+                CurrentMonthFee = creditRequest.CurrentBalance,
+                MainDebtBalance = annuityCreditCalculationService.CalculateBalance(creditRequest.TotalAmount,creditRequest.Payments)
+            };
         }
     }
 }
