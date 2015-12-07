@@ -10,6 +10,8 @@ using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {
+    using System.Web.Http;
+
     public class CreditTypeController : BaseApiController
     {
         private readonly ICreditTypeService creditTypeService;
@@ -50,16 +52,11 @@ namespace TFIP.Web.Api.Controllers
             var result = ProcessViewModel(model, creditTypeValidationService, creditTypeService.CreateOrUpdateCreditType);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
-        public HttpResponseMessage Deactivate(long creditTypeId)
+        
+        [HttpGet]
+        public HttpResponseMessage ChangeActivity(long creditTypeId, bool active)
         {
-            creditTypeService.ChangeCreditTypeStatus(creditTypeId, false);
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        public HttpResponseMessage Activate(long creditTypeId)
-        {
-            creditTypeService.ChangeCreditTypeStatus(creditTypeId, true);
+            creditTypeService.ChangeCreditTypeStatus(creditTypeId, active);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

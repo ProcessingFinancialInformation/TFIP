@@ -20,10 +20,11 @@
         rate: number;
         amount: number;
         calculationType: number;
+        isActive: boolean;
     }
 
     export class CreditTypePageModel {
-        
+        creditKinds: Shared.ListItem[];
     }
 
 } 

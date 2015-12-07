@@ -14,5 +14,9 @@
 
         public static creditCreation = "Создание кредита";
 
+        public static creditTypeStatusActiveChanged = "Кредит переведен в статус \"активен\".";
+
+        public static creditTypeStatusNotActiveChanged = "Кредит переведен в статус \"неактивен\".";
+
     }
 } 

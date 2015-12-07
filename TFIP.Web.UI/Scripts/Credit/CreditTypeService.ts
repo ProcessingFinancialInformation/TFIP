@@ -6,6 +6,8 @@
         getPage(): ng.IPromise<CreditTypePageModel>;
         showCreateCreditType(): ng.IPromise<any>;
         saveCreditType(model: CreditTypeModel): ng.IPromise<Shared.AjaxViewModel<CreditTypeModel>>;
+        changeActivity(id: number, active: boolean): ng.IPromise<any>;
+        getCreditTypePage(): ng.IPromise<CreditTypePageModel>;
     }
 
     export class CreditTypeService implements ICreditTypeService {
@@ -124,6 +126,18 @@
             return deferred.promise;
         }
 
+        public getCreditTypePage(): ng.IPromise<CreditTypePageModel> {
+            var deferred = this.$q.defer();
+            var url = this.apiUrlService.creditTypeApi.getPage;
+            this.httpWrapper.get(url).then((data: CreditTypePageModel) => {
+                deferred.resolve(data);
+            },(reason) => {
+                    deferred.reject(reason);
+                });
+
+            return deferred.promise;
+        }
+
         public getPage(): ng.IPromise<CreditTypePageModel> {
             var deferred = this.$q.defer();
             var url = this.apiUrlService.creditTypeApi.getPage;
@@ -132,6 +146,18 @@
             }, (reason) => {
                 deferred.reject(reason);
             });
+
+            return deferred.promise;
+        }
+
+        public changeActivity(id: number, active: boolean): ng.IPromise<any> {
+            var deferred = this.$q.defer();
+            var url = this.urlBuilderService.buildQuery(this.apiUrlService.creditTypeApi.changeActivity, { creditTypeId: id, active: active });
+            this.httpWrapper.get(url).then((data: CreditTypePageModel) => {
+                deferred.resolve(data);
+            },(reason) => {
+                    deferred.reject(reason);
+                });
 
             return deferred.promise;
         }
