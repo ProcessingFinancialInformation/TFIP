@@ -38,6 +38,6 @@
 
         public bool IsActive { get; set; }
 
-        public PaymentType PaymentType { get; set; }
+        public CalculationType CalculationType { get; set; }
     }
 }

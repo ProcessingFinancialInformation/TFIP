@@ -29,7 +29,7 @@ namespace TFIP.Web.Api.Controllers
                 CreditKinds = ListItemHelper.GetFromEnum(typeof (CreditKind)),
                 Currencies = ListItemHelper.GetFromEnum(typeof (Currency)),
                 MoneyTypes = ListItemHelper.GetFromEnum(typeof (MoneyType)),
-                PaymentTypes = ListItemHelper.GetFromEnum(typeof(CreditType))
+                CalculationTypes = ListItemHelper.GetFromEnum(typeof(CalculationType))
             });
         }
 

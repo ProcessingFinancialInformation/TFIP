@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Attachment.cs" />
     <Compile Include="AttachmentHeader.cs" />
+    <Compile Include="CalculationType.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientType.cs" />
     <Compile Include="Country.cs" />

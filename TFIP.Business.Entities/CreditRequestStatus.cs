@@ -14,9 +14,6 @@ namespace TFIP.Business.Entities
         [Description(CreditRequestStatusConstants.AwaitingCreditCommissionValidation)]
         AwaitingCreditCommissionValidation = 2,
 
-        [Description(CreditRequestStatusConstants.Approved)]
-        Approved = 30,
-
         [Description(CreditRequestStatusConstants.Denied)]
         Denied = 31,
 
@@ -24,9 +21,6 @@ namespace TFIP.Business.Entities
         InProgress = 50,
 
         [Description(CreditRequestStatusConstants.Extinguished)]
-        Extinguished = 100,
-
-        [Description(CreditRequestStatusConstants.Overdued)]
-        Overdued = 101
+        Extinguished = 100
     }
 }

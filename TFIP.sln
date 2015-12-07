@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Web.ViewModels", "TFIP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Common.Logging", "TFIP.Common.Logging\TFIP.Common.Logging.csproj", "{C59E2682-EDFA-465A-B703-7E618C737BD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFIP.Business.CalculationService", "TFIP.Business.CalculationService\TFIP.Business.CalculationService.csproj", "{7936A186-8A35-489E-BA0C-238A3DB50F4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{C59E2682-EDFA-465A-B703-7E618C737BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59E2682-EDFA-465A-B703-7E618C737BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59E2682-EDFA-465A-B703-7E618C737BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7936A186-8A35-489E-BA0C-238A3DB50F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7936A186-8A35-489E-BA0C-238A3DB50F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7936A186-8A35-489E-BA0C-238A3DB50F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7936A186-8A35-489E-BA0C-238A3DB50F4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,5 +143,6 @@ Global
 		{D9719710-959E-4CF5-B749-3EA24AD8CF01} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
 		{A436B070-81EF-4A49-BB71-85AF4503FF8C} = {85B83380-DE3D-4CFF-9958-4D10B2D12C77}
 		{C59E2682-EDFA-465A-B703-7E618C737BD3} = {319700B1-4B14-40D8-AD7B-B007409BFFFA}
+		{7936A186-8A35-489E-BA0C-238A3DB50F4E} = {F0A457B4-FFAE-40D9-A674-661AEF627C69}
 	EndGlobalSection
 EndGlobal

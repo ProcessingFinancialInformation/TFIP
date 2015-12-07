@@ -19,5 +19,11 @@ namespace TFIP.Web.Api.Controllers
             var creditRequest = creditRequestService.GetCreditRequestInfo(id);
             return Request.CreateResponse(HttpStatusCode.OK, creditRequest);
         }
+
+        public HttpResponseMessage ApproveByCreditComission(long id)
+        {
+            creditRequestService.ApproveByCreditComission(id);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

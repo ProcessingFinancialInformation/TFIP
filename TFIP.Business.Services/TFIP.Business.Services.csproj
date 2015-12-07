@@ -86,6 +86,8 @@
     <Compile Include="CollectionModificationResolver.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="CreditCalculation\AnnuityCreditCalculationService.cs" />
+    <Compile Include="CreditCalculation\BaseCreditCalculationService.cs" />
+    <Compile Include="CreditCalculation\DifferentialCreditCalculationService.cs" />
     <Compile Include="CreditRequestService.cs" />
     <Compile Include="CreditTypeService.cs" />
     <Compile Include="FileManagementService.cs" />

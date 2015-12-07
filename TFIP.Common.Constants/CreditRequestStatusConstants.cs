@@ -12,7 +12,7 @@
 
         public const string Denied = "Отклонена";
 
-        public const string InProgress = "В процессе выплаты";
+        public const string InProgress = "Одобрена, в процессе выплаты";
 
         public const string Extinguished = "Погашен";
 

@@ -5,5 +5,7 @@ namespace TFIP.Business.Contracts
     public interface ICreditRequestService
     {
         CreditRequestViewModel GetCreditRequestInfo(long id);
+
+        void ApproveByCreditComission(long id);
     }
 }

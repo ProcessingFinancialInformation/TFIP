@@ -10,7 +10,7 @@ namespace TFIP.Web.ViewModels
         public IEnumerable<ListItem> Currencies { get; set; }
         
         public IEnumerable<ListItem> MoneyTypes { get; set; }
-
-        public IEnumerable<ListItem> PaymentTypes { get; set; }
+        
+        public IEnumerable<ListItem> CalculationTypes { get; set; }
     }
 }
