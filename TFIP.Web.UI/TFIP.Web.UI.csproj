@@ -202,6 +202,7 @@
     <Content Include="Views\Templates\CheckBoxFieldInput.cshtml" />
     <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClientForm.cshtml" />
+    <Content Include="Views\Clients\FindClients.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -218,8 +219,10 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\FindClientController.ts" />
     <TypeScriptCompile Include="Scripts\Const\Messages.ts" />
     <TypeScriptCompile Include="Scripts\Const\RegularExpressions.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />

@@ -5,7 +5,17 @@
     <h4 class="modal-title">Создание кредитной заявки</h4> 
 </div>
 <div class="modal-body">
+    <div class="form-horizontal">
+        <div select-field-input name="'creditTypeId'" label-text="'Наименование кредита'" model="creditRequestModel.creditTypeId" is-required="true" model-values=""></div>
 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="addGuarantor()">Добавить поручителя</button>
+            </div>
+        </div>
+        
+        <div ng-repeat="guarantor in creditRequestModel.guarantors"></div>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$close()">Закрыть</button>

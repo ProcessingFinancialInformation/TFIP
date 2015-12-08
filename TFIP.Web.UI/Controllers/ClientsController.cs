@@ -36,5 +36,10 @@ namespace TFIP.Web.UI.Controllers
         {
             return this.PartialView();
         }
+
+        public ActionResult FindClients()
+        {
+            return this.PartialView();
+        }
     }
 }

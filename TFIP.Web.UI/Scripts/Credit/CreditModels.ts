@@ -28,4 +28,8 @@
         creditKinds: Shared.ListItem[];
     }
 
+    export class CreditRequestModel {
+        guarantors: Clients.ClientViewModel[];
+    }
+
 } 
