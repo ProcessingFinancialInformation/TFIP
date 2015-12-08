@@ -7,6 +7,12 @@
             super();
             this.scope.modelValues = "=";
         }
+
+        public link(scope?: any, $elment?: ng.IAugmentedJQuery, attrs?: any) {
+            scope.radioUpdate = function(id) {
+                scope.model = id;
+            }
+        }
     }
 
 }  
