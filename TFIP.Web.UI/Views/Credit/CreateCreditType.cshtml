@@ -16,7 +16,14 @@
             <div text-area-field-input name="'description'" model="creditTypeModel.description" label-text="'Описание'" is-required="true"></div>
             <div text-field-input name="'term'" model="creditTypeModel.term" label-text="'Срок (месяцев)'" is-required="true" pattern="regex.number"></div>
             <div text-field-input name="'rate'" model="creditTypeModel.rate" label-text="'Процентная ставка годовых'" is-required="true" pattern="regex.decimalNumber"></div>
-            <div text-field-input name="'amount'" model="creditTypeModel.amount" label-text="'Сумма'" is-required="true" pattern="regex.decimalNumber"></div>
+            
+            <div text-field-input name="'amountFrom'" model="creditTypeModel.amountFrom" label-text="'Минимальная сумма кредита'" pattern="regex.decimalNumber"></div>
+            
+            <div text-field-input name="'amountTo'" model="creditTypeModel.amountTo" label-text="'Максимальная сумма кредита'" pattern="regex.decimalNumber"></div>
+            
+            <!--<div text-field-input name="'amount'" model="creditTypeModel.amount" label-text="'Сумма'" is-required="true" pattern="regex.decimalNumber"></div>-->
+            
+            
             <div check-box-field-input name="'isGuarantorRequired'" label-text="'Необходимы поручители'" model="creditTypeModel.isGuarantorRequired"></div>
             <div check-box-field-input name="'isDocumentsRequired'" label-text="'Необходимы справки'" model="creditTypeModel.isDocumentsRequired"></div>
             <div text-area-field-input name="'requiredDocuments'" label-text="'Список необходимых документов'" model="creditTypeModel.requiredDocuments" is-disabled="!creditTypeModel.isDocumentsRequired"></div>

@@ -18,6 +18,10 @@
         termOfApplication: number
         term: number;
         rate: number;
+
+        amountFrom: number;
+        amountTo: number;
+
         amount: number;
         calculationType: number;
         isActive: boolean;

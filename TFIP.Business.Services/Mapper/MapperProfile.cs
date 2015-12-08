@@ -110,7 +110,7 @@ namespace TFIP.Business.Services.Mapper
         {
             AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestListItemViewModel>()
                 .ForMember(i => i.CreditKind, source => source.MapFrom(x => EnumHelper.GetEnumDescription(x.CreditType.CreditKind)))
-                .ForMember(i => i.CreditName, source => source.MapFrom(x => x.CreditType.Name));
+                .ForMember(i => i.CreditTypeName, source => source.MapFrom(x => x.CreditType.Name));
             AutoMapper.Mapper.CreateMap<CreditRequest, CreditRequestViewModel>()
                 .ForMember(dest => dest.Attachments,
                     opt => opt.MapFrom(src => src.AttachmentHeader != null ? src.AttachmentHeader.Attachments : List.Of<Attachment>()))
