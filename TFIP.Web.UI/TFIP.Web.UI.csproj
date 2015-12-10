@@ -129,6 +129,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CreditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +204,9 @@
     <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClientForm.cshtml" />
     <Content Include="Views\Clients\FindClients.cshtml" />
+    <Content Include="Views\Clients\FindClientsModal.cshtml" />
+    <Content Include="Views\Payments\MakePaymentModal.cshtml" />
+    <Content Include="Views\Payments\MakePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -250,6 +254,9 @@
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\MasterPage\MasterPageController.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\MakePaymentController.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\PaymentsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\PaymentsService.ts" />
     <TypeScriptCompile Include="Scripts\Shared\SharedModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />

@@ -18,5 +18,7 @@
 
         public static creditTypeStatusNotActiveChanged = "Кредит переведен в статус \"неактивен\".";
 
+        public static payment = "Платёж";
+
     }
 } 

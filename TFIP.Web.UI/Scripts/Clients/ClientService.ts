@@ -32,7 +32,7 @@
             var deferred = this.$q.defer();
 
             var modalPromise = this.$uibModal.open({
-                templateUrl: "/Clients/FindClients",
+                templateUrl: "/Clients/FindClientsModal",
                 controller: FindClientController
             });
 

@@ -1,5 +1,4 @@
 ﻿module TFIP.Web.UI.Clients {
-    
     export interface IClientScope extends ng.IScope {
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
@@ -15,6 +14,7 @@
             "locationHelperService",
             "messageBox",
             "clientService",
+            "paymentsService",
             "createCreditRequestService"
         ];
 
@@ -23,6 +23,7 @@
             private locationHelperService: Core.LocationHelperService,
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
+            private paymentsService: Payments.IPaymentsService,
             private createCreditRequestService: Credit.ICreateCreditRequestService) {
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
@@ -60,7 +61,7 @@
         }
 
         private makePayment() {
-            alert('make payment');
+            this.paymentsService.showMakePayment(0);
         }
 
         private getCreditRequestDetails() {

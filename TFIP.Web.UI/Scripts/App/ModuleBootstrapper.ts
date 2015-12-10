@@ -70,6 +70,7 @@
                 .service("httpWrapper", Core.CustomHttpService)
                 .service("creditTypeService", Credit.CreditTypeService)
                 .service("createCreditRequestService", Credit.CreateCreditRequestService)
+                .service("paymentsService", Payments.PaymentsService)
                 .controller("ClientController", TFIP.Web.UI.Clients.ClientController)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("CreateClientConroller", Clients.CreateIndividualClientController)
