@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using TFIP.Business.Entities;
 using TFIP.Common.Helpers;
 using TFIP.Business.NotificationModule.EmailTransport;
+using TFIP.Business.Services.ActiveDirectory;
 using TFIP.Common.Resources;
 
 namespace TFIP.Business.Services
@@ -26,9 +28,12 @@ namespace TFIP.Business.Services
 
             data.RequestNumber = requestNumber;
             data.LinkToRequest = GenerateLinkToRequest(requestId);
-            // TODO: Get emails
+
+            var securityDeparmentEmails =
+                ActiveDirectoryHelper.GetGroupEmails(ConfigurationHelper.GetSecurityAgentGroup());
+
             return SendNotification(NotificationType.NewCreditRequest,
-                new Addressee("gromilich@gmail.com", NotificationAccountType.Email), data);
+                new Addressee(securityDeparmentEmails, NotificationAccountType.Email), data);
         }
 
         public bool SendCreditRequestIsProcessed(string clientName, string clientEmail,
@@ -56,10 +61,12 @@ namespace TFIP.Business.Services
 
             data.RequestNumber = requestNumber;
             data.LinkToRequest = GenerateLinkToRequest(requestId);
-            // TODO: Email!
+
+            var creditComissionEmail =
+                ActiveDirectoryHelper.GetGroupEmails(ConfigurationHelper.GetCreditComissionGroup());
 
             return SendNotification(NotificationType.CreditRequestIsProccessedBySecurity, 
-                new Addressee("", NotificationAccountType.Email), data);
+                new Addressee(creditComissionEmail, NotificationAccountType.Email), data);
         }
 
         public bool SendNotificationWithException(IEnumerable<string> recepients, Exception exception, string url, string data)

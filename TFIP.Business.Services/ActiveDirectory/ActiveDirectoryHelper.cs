@@ -107,6 +107,11 @@ namespace TFIP.Business.Services.ActiveDirectory
             return userAccounts;
         }
 
+        public static IEnumerable<string> GetGroupEmails(string groupName)
+        {
+            return GetGroupUsers(groupName).Select(it => it.Email);
+        } 
+
         public static string GetEmailByUser(string userAccount)
         {
             var userPrincipal = GetUserPrincipal(userAccount);
