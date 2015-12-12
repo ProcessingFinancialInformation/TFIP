@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TFIP.Common.Constants;
 
 namespace TFIP.Business.Models
@@ -36,7 +32,6 @@ namespace TFIP.Business.Models
         [Required]
         public DateTime RegistrationDate { get; set; }
 
-        [EmailAddress]
         public string ContactEmail { get; set; }
 
         [Required]

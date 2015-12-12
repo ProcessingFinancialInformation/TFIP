@@ -15,6 +15,7 @@
     }
     
     export class ClientViewModelBase {
+        id: number;
 
         firstName: string;
         lastName: string;

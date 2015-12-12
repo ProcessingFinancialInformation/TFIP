@@ -9,43 +9,44 @@
 
         <h4>Сведения об организации</h4>
 
-        <div text-field-input name="'name'" label-text="'Имя организаци'" model="clientViewModel.name"></div>
-        <div text-field-input name="'identificationNo'" label-text="'ОКПО'" model="clientViewModel.identificationNo"></div>
-        <div text-field-input name="'pAN'" label-text="'УНП'" model="clientViewModel.pAN"></div>
-        <div text-field-input name="'registrationOrganisation'" label-text="'Регистрирующий орган'" model="clientViewModel.registrationOrganisation"></div>
-        <div date-field-input name="'registrationDate'" label-text="'Дата регистрации'" model="clientViewModel.registrationDate"></div>
+        <div text-field-input name="'name'" label-text="'Имя организации'" model="clientViewModel.name" is-required="true" pattern="regex.charactersWithSpace"></div>
+        <div text-field-input name="'identificationNo'" label-text="'ОКПО'" model="clientViewModel.identificationNo" is-required="true" pattern="regex.number"></div>
+        <div text-field-input name="'pAN'" label-text="'УНП'" model="clientViewModel.pAN" is-required="true" pattern="regex.number"></div>
+        <div text-field-input name="'registrationNumber'" label-text="'Регистрационный номер'" model="clientViewModel.registrationNumber" is-required="true" pattern="regex.number"></div>
+        <div text-field-input name="'registrationOrganisation'" label-text="'Регистрирующий орган'" model="clientViewModel.registrationOrganisation" is-required="true" pattern="regex.address"></div>
+        <div date-field-input name="'registrationDate'" label-text="'Дата регистрации'" model="clientViewModel.registrationDate" is-required="true"></div>
 
         <h4>Данные представителя организации</h4>
 
-        <div text-field-input name="'representerLastName'" label-text="'Фамилия'" model="clientViewModel.representerLastName"></div>
-        <div text-field-input name="'representerFirstName'" label-text="'Имя'" model="clientViewModel.representerFirstName"></div>
+        <div text-field-input name="'representerLastName'" label-text="'Фамилия'" model="clientViewModel.representerLastName" is-required="true" pattern="regex.lastName"></div>
+        <div text-field-input name="'representerFirstName'" label-text="'Имя'" model="clientViewModel.representerFirstName" is-required="true" pattern="regex.charactersWithSpace"></div>
         <div text-field-input name="'representerPatronymic'" label-text="'Отчество'" model="clientViewModel.representerPatronymic"></div>
-        <div text-field-input name="'representerPosition'" label-text="'Занимаемая должность'" model="clientViewModel.representerPosition"></div>
+        <div text-field-input name="'representerPosition'" label-text="'Занимаемая должность'" model="clientViewModel.representerPosition" is-required="true" pattern="regex.charactersWithSpace"></div>
 
-        <h4>Банковсике реквизиты</h4>
+        <h4>Банковские реквизиты</h4>
 
-        <div text-field-input name="'bankName'" label-text="'Название банка'" model="clientViewModel.bankName"></div>
-        <div text-field-input name="'bankCode'" label-text="'Код'" model="clientViewModel.bankCode"></div>
-        <div text-field-input name="'checkingAccount'" label-text="'Номер счета'" model="clientViewModel.checkingAccount"></div>
+        <div text-field-input name="'bankName'" label-text="'Название банка'" model="clientViewModel.bankName" is-required="true" pattern="regex.charactersWithSpace"></div>
+        <div text-field-input name="'bankCode'" label-text="'Код'" model="clientViewModel.bankCode" is-required="true" pattern="regex.number"></div>
+        <div text-field-input name="'checkingAccount'" label-text="'Номер счета'" model="clientViewModel.checkingAccount" is-required="true" pattern="regex.number"></div>
 
         <h4>Юридический адрес </h4>
 
-        <div select-field-input name="'coutryId'" label-text="'Страна'" model="clientViewModel.countryId" model-values="countries"></div>
-        <div text-field-input name="'registrationRegion'" label-text="'Область'" model="clientViewModel.registrationRegion"></div>
-        <div text-field-input name="'registrationCity'" label-text="'Населенный пункт'" model="clientViewModel.registrationCity"></div>
-        <div text-field-input name="'registrationStreet'" label-text="'Улица'" model="clientViewModel.registrationStreet"></div>
-        <div text-field-input name="'houseNo'" label-text="'Дом'" model="clientViewModel.houseNo"></div>
-        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo"></div>
-        <div text-field-input name="'zip'" label-text="'Почтовый индекс'" model="clientViewModel.zip"></div>
+        <div select-field-input name="'coutryId'" label-text="'Страна'" model="clientViewModel.countryId" model-values="countries" is-required="true"></div>
+        <div text-field-input name="'registrationRegion'" label-text="'Область'" model="clientViewModel.registrationRegion" is-required="true" pattern="regex.address"></div>
+        <div text-field-input name="'registrationCity'" label-text="'Населенный пункт'" model="clientViewModel.registrationCity" is-required="true" pattern="regex.address"></div>
+        <div text-field-input name="'registrationStreet'" label-text="'Улица'" model="clientViewModel.registrationStreet" is-required="true" pattern="regex.address"></div>
+        <div text-field-input name="'houseNo'" label-text="'Дом'" model="clientViewModel.houseNo" is-required="true" pattern="regex.addressNo"></div>
+        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo" is-required="true" pattern="regex.addressNo"></div>
+        <div text-field-input name="'zip'" label-text="'Почтовый индекс'" model="clientViewModel.zip" is-required="true" pattern="regex.zipCode"></div>
 
         <h4>Контактные данные</h4>
 
-        <div text-field-input name="'contactLastName'" label-text="'Фамилия'" model="clientViewModel.contactLastName"></div>
-        <div text-field-input name="'contactFirstName'" label-text="'Имя'" model="clientViewModel.contactFirstName"></div>
+        <div text-field-input name="'contactLastName'" label-text="'Фамилия'" model="clientViewModel.contactLastName" is-required="true" pattern="regex.lastName"></div>
+        <div text-field-input name="'contactFirstName'" label-text="'Имя'" model="clientViewModel.contactFirstName" is-required="true" pattern="regex.charactersWithSpace"></div>
         <div text-field-input name="'contactPatronymic'" label-text="'Отчество'" model="clientViewModel.contactPatronymic"></div>
-        <div text-field-input name="'contactFax'" label-text="'Факс'" model="clientViewModel.contactFax"></div>
-        <div text-field-input name="'contactPhone'" label-text="'Телефон'" model="clientViewModel.contactPhone"></div>
-        <div text-field-input name="'contactEmail'" label-text="'Электронная почта'" model="clientViewModel.contactEmail"></div>
+        <div text-field-input name="'contactFax'" label-text="'Факс'" model="clientViewModel.contactFax" pattern="regex.phone" is-required="true"></div>
+        <div text-field-input name="'contactPhone'" label-text="'Телефон'" model="clientViewModel.contactPhone" is-required="true" pattern="regex.phone"></div>
+        <div text-field-input name="'contactEmail'" label-text="'Электронная почта'" model="clientViewModel.contactEmail" pattern="regex.email"></div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

@@ -1,8 +1,11 @@
 ﻿module TFIP.Web.UI.Clients {
-    
     export interface IClientScope extends ng.IScope {
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
+        clientType: string;
+        makePayment: () => void;
+        getCreditRequestDetails: () => void;
+
     }
 
     export class ClientController {
@@ -10,20 +13,25 @@
             "$scope",
             "locationHelperService",
             "messageBox",
-            "clientService"
+            "clientService",
+            "paymentsService",
+            "createCreditRequestService"
         ];
 
         constructor(
             private $scope: IClientScope,
             private locationHelperService: Core.LocationHelperService,
             private messageBox: Core.IMessageBoxService,
-            private clientService: IClientService) {
+            private clientService: IClientService,
+            private paymentsService: Payments.IPaymentsService,
+            private createCreditRequestService: Credit.ICreateCreditRequestService) {
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
             var clientType = this.locationHelperService.getParameterValue("clientType");
             
             if (clientId && clientType) {
                 this.init(clientId, clientType);
+                this.$scope.clientType = clientType;
             } else {
                 this.messageBox.showError(Const.Messages.clients, "Идентификатор и/или тип клиента не определен").finally(() => {
                     this.locationHelperService.redirect("/Clients");
@@ -31,6 +39,8 @@
             }
 
             this.$scope.createCreditRequest = () => this.createCreditRequest();
+            this.$scope.makePayment = () => this.makePayment();
+            this.$scope.getCreditRequestDetails = () => this.getCreditRequestDetails();
         }
 
         private init(clientId: string, clientType: string) {
@@ -47,7 +57,15 @@
         }
 
         private createCreditRequest() {
-            
+            this.createCreditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType);
+        }
+
+        private makePayment() {
+            this.paymentsService.showMakePayment(0);
+        }
+
+        private getCreditRequestDetails() {
+            alert('credit request details');
         }
     }
 } 

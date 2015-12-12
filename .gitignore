@@ -262,3 +262,11 @@ TFIP.Web.UI/Scripts/Directives/TextAreaFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/TextAreaFieldInputDirective.js.map
 TFIP.Web.UI/Scripts/Shared/SharedModel.js
 TFIP.Web.UI/Scripts/Shared/SharedModel.js.map
+TFIP.Web.UI/Scripts/Clients/FindClientController.js
+TFIP.Web.UI/Scripts/Clients/FindClientController.js.map
+/TFIP.Web.UI/Scripts/Payments/*.map
+/TFIP.Web.UI/Scripts/Payments/MakePaymentController.js
+/TFIP.Web.UI/Scripts/Payments/PaymentsModel.js
+/TFIP.Web.UI/Scripts/Payments/PaymentsService.js
+/TFIP.Web.UI/Scripts/Clients/ClientsController.js
+/TFIP.Web.UI/Scripts/Clients/ClientsController.js.map

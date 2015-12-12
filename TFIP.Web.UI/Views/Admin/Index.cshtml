@@ -12,6 +12,17 @@
             <button class="btn btn-primary col-xs-12" ng-click="createCreditType()">Добавить новый кредит</button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-left">
+                <ol class="breadcrumb  pull-left">
+                    <li><a href="#" ng-click="activeFilter = {}">Все ({{creditTypes.length}})</a></li>
+                    <li><a href="#" ng-click="activeFilter = {isActive:true}">Активные ({{count(true)}})</a></li> 
+                    <li><a href="#" ng-click="activeFilter = {isActive: false}">Неактивные ({{count(false)}})</a></li> 
+                </ol>
+            </div>
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -24,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="creditType in creditTypes">
+                <tr ng-repeat="creditType in creditTypes | filter : activeFilter">
                     <td ng-bind="$index + 1"></td>
                     <td ng-bind="creditType.name"></td>
                     <td ng-bind="getCreditKindName(creditType.creditKind)"></td>
@@ -32,7 +43,7 @@
                         {{active(creditType.isActive)}}
                     </td>
                     <td>
-                        <button class="btn btn-primary" ng-bind="creditType.isActive ? 'Сделать неактивным' : 'Сделать активным'" ng-click="changeActivity(creditType.id, !creditType.isActive, $index)"></button>
+                        <button class="btn btn-primary" ng-bind="creditType.isActive ? 'Сделать неактивным' : 'Сделать активным'" ng-click="changeActivity(creditType.id, !creditType.isActive)"></button>
                     </td>
                 </tr>
             </tbody>

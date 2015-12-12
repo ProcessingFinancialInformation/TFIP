@@ -1,0 +1,7 @@
+﻿<div ng-form="makePaymentForm">
+    <div class="form-group" ng-class="{ 'has-error': makePaymentForm.amount.$error.required && makePaymentForm.amount.$dirty }">
+        <label for="amount">Введите сумму платежа</label>
+        <input type="text" class="form-control" id="amount" name="amount" ng-model="paymentInput.amount" ng-required="true">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="makePayment()">Отправить</button>
+</div>

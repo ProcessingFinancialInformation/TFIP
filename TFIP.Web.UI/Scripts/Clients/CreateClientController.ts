@@ -1,25 +1,14 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export interface ICreateIndividualClientScope extends MasterPage.IMasterPageScope {
-        clientViewModel: ClientViewModel;
-        createUser: () => void;
-
-        male: Gender;
-        female: Gender;
-        genders: Shared.ListItem[];
-        countries: Shared.ListItem[];
-
-        createClientForm: Core.ICustomFormController;
-    }
-
-    export class CreateIndividualClientController {
+    export class CreateClientController {
         public static $inject = [
             "$scope",
             "messageBox",
             "clientService",
             "$location",
             "locationHelperService",
-            "urlBuilderService"
+            "urlBuilderService",
+            "$uibModalInstance"
         ];
 
         constructor(
@@ -28,7 +17,8 @@
             private clientService: IClientService,
             private $location: ng.ILocationService,
             private locationHelperService: Core.LocationHelperService,
-            private urlBuilderService: Core.IUrlBuilderService) {
+            private urlBuilderService: Core.IUrlBuilderService,
+            private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance) {
 
             this.init();
         }
@@ -38,9 +28,8 @@
                 this.$scope.countries = data.countries;
                 this.$scope.clientViewModel = new ClientViewModel();
 
-                
 
-                this.$scope.$watch("clientViewModel",(newVal, oldVal) => {
+                this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
                     for (var prop in this.$scope.clientViewModel) {
 
                         if (typeof (this.$scope.clientViewModel[prop]) == "string") {
@@ -58,17 +47,7 @@
 
         private createUser() {
             if (this.$scope.createClientForm.$valid) {
-                var promsie = this.clientService.createClient(this.$scope.clientViewModel);
-
-                promsie.then((data: Shared.AjaxViewModel<any>) => {
-                    if (data.isValid) {
-                        this.locationHelperService.redirect(this.urlBuilderService.buildQuery("/Clients", { clientId: data.data.id, clientType: new ClientType().individualClient }));
-                    } else {
-                        this.messageBox.showErrorMulty(Const.Messages.clients, data.errors);
-                    }
-                }, (reason: any) => {
-                        this.messageBox.showError(Const.Messages.clients, reason.message);
-                });
+                this.$uibModalInstance.close(this.$scope.clientViewModel);
             } else {
                 //this.$scope.createClientForm.fieldInputForm.$setDirty();
 
@@ -90,6 +69,6 @@
                 this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             }
         }
-       
+
     }
 }    

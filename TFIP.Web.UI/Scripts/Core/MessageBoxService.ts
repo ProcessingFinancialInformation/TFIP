@@ -51,25 +51,25 @@
 
         public confirm(title: string, message: string): ng.IPromise<any> {
             var deferred = this.$q.defer<any>();
-            this.showModal(title, message, "confirm", "OK", "Cancel").result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
+            this.showModal(title, message, "confirm", "OK", "Отмена").result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
             return deferred.promise;
         }
 
         public confirmWarning(title: string, message: string): ng.IPromise<any> {
             var deferred = this.$q.defer<any>();
-            this.showModal(title, message, "warning", "OK", "Cancel").result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
+            this.showModal(title, message, "warning", "OK", "Отмена").result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
             return deferred.promise;
         }
 
         public confirmWarningWithNote(title: string, message: string, additionMessage?: string): ng.IPromise<any> {
             var deferred = this.$q.defer<any>();
-            this.showModal(title, message, "warning", "OK", "Cancel", additionMessage).result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
+            this.showModal(title, message, "warning", "OK", "Отмена", additionMessage).result.then(() => { deferred.resolve(); }, () => { deferred.reject(); });
             return deferred.promise;
         }
 
         public inputMessage(title: string, message: string): ng.IPromise<any> {
             var deferred = this.$q.defer<any>();
-            this.showModalWithInput(title, message, "confirm", "OK", "Cancel").result
+            this.showModalWithInput(title, message, "confirm", "OK", "Отмена").result
                 .then((result) => { deferred.resolve(result); }, (reason) => { deferred.reject(reason); });
             return deferred.promise;
         }

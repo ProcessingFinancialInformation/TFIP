@@ -1,7 +1,7 @@
 ﻿module TFIP.Web.UI.Credit {
     
     export interface ICreateCreditRequestService {
-        
+        showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<any>;
     }
 
     export class CreateCreditRequestService implements ICreateCreditRequestService {
@@ -23,11 +23,11 @@
             
         }
 
-        public showCreateCreditPopup(clientId: number, clientType: string) {
+        public showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<any> {
             var deferred = this.$q.defer();
 
             if (clientId && clientType) {
-                this.httpWrapper.get(this.apiUrlService.creditTypeApi.getCredtType);
+                //this.httpWrapper.get(this.apiUrlService.creditTypeApi.getCredtType);
 
                 var modalInstance = this.$uibModal.open({
                     templateUrl: "/Credit/CreateCreditRequest",

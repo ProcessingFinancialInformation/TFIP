@@ -129,6 +129,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CreditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,6 +202,11 @@
     <Content Include="Views\Templates\RadioFieldInput.cshtml" />
     <Content Include="Views\Templates\CheckBoxFieldInput.cshtml" />
     <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
+    <Content Include="Views\Clients\CreateIndividualClientForm.cshtml" />
+    <Content Include="Views\Clients\FindClients.cshtml" />
+    <Content Include="Views\Clients\FindClientsModal.cshtml" />
+    <Content Include="Views\Payments\MakePaymentModal.cshtml" />
+    <Content Include="Views\Payments\MakePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -217,8 +223,10 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\FindClientController.ts" />
     <TypeScriptCompile Include="Scripts\Const\Messages.ts" />
     <TypeScriptCompile Include="Scripts\Const\RegularExpressions.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
@@ -246,6 +254,9 @@
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\MasterPage\MasterPageController.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\MakePaymentController.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\PaymentsModel.ts" />
+    <TypeScriptCompile Include="Scripts\Payments\PaymentsService.ts" />
     <TypeScriptCompile Include="Scripts\Shared\SharedModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
@@ -254,6 +265,10 @@
     <TypeScriptCompile Include="Scripts\_references.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
+      <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
+      <Name>TFIP.Business.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124f2f0-d0df-403f-a2ce-b645c61c5d30}</Project>
       <Name>TFIP.Common.Helpers</Name>

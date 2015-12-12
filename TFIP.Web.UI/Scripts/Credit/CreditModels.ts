@@ -18,13 +18,22 @@
         termOfApplication: number
         term: number;
         rate: number;
+
+        amountFrom: number;
+        amountTo: number;
+
         amount: number;
         calculationType: number;
         isActive: boolean;
+        id: number;
     }
 
     export class CreditTypePageModel {
         creditKinds: Shared.ListItem[];
+    }
+
+    export class CreditRequestModel {
+        guarantors: Clients.ClientViewModel[];
     }
 
 } 

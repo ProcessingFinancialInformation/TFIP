@@ -95,9 +95,9 @@
 
             modalInstance.result.then((modalData: any) => {
                 deferred.resolve(modalData);
-            },(reason) => {
-                    deferred.reject(reason);
-                });
+            }, (reason) => {
+                deferred.reject(reason);
+            });
 
             return deferred.promise;
         }

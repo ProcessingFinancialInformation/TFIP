@@ -6,6 +6,8 @@
         getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel>;
         createJuridicalClient(model: JuridicalClientViewModel): ng.IPromise<Shared.AjaxViewModel<JuridicalClientViewModel>>;
         getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase>;
+        showFindClients(): ng.IPromise<ClientViewModel>;
+        showCreateClients(clientType: string): ng.IPromise<ClientViewModel>;
     }
 
     export class ClientService implements IClientService {
@@ -13,15 +15,51 @@
             "httpWrapper",
             "apiUrlService",
             "urlBuilderService",
-            "$q"
+            "$q",
+            "$uibModal"
         ];
 
         constructor(
             private httpWrapper: Core.ICustomHttpService,
             private apiUrlService: Core.ApiUrlService,
             private urlBuilderService: Core.IUrlBuilderService,
-            private $q: ng.IQService) {
+            private $q: ng.IQService,
+            private $uibModal: ng.ui.bootstrap.IModalService) {
             
+        }
+
+        public showFindClients(): ng.IPromise<ClientViewModel> {
+            var deferred = this.$q.defer();
+
+            var modalPromise = this.$uibModal.open({
+                templateUrl: "/Clients/FindClientsModal",
+                controller: FindClientController
+            });
+
+            modalPromise.result.then((data: ClientViewModel) => {
+                deferred.resolve(data);
+            }, (reason) => {
+                deferred.reject(reason);
+            });
+
+            return deferred.promise;
+        }
+
+        public showCreateClients(clientType: string): ng.IPromise<ClientViewModel> {
+            var deferred = this.$q.defer();
+            var url = (clientType == (new ClientType()).individualClient) ? "/Clients/CreateIndividualClientForm" : "/Clients/CreateJuridicalClientForm";
+            var modalPromise = this.$uibModal.open({
+                templateUrl: url,
+                controller: CreateClientController
+            });
+
+            modalPromise.result.then((data: ClientViewModel) => {
+                deferred.resolve(data);
+            }, () => {
+                deferred.reject();
+            });
+
+            return deferred.promise;
         }
 
         public getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase> {

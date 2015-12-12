@@ -10,7 +10,7 @@ namespace TFIP.Business.Models
     {
         public long Id { get; set; }
 
-        public string CreditName { get; set; }
+        public string CreditTypeName { get; set; }
 
         public string CreditKind { get; set; }
 

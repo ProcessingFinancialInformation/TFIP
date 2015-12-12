@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculationTypeConstants.cs" />
+    <Compile Include="ClientTypeConstants.cs" />
     <Compile Include="ConfigurationKeys.cs" />
     <Compile Include="CreditKindsConstants.cs" />
     <Compile Include="CreditRequestStatusConstants.cs" />

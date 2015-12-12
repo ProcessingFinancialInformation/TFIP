@@ -1,4 +1,4 @@
-USE CreditDb
+USE TFIP
 INSERT INTO [dbo].[Country] (Name) VALUES
 (N'Абхазия'),
 (N'Австралия'),
