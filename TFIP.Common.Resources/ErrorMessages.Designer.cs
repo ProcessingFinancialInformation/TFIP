@@ -79,11 +79,38 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Клиент не может быть поручителем у самого себя.
+        /// </summary>
+        public static string ClientAsGuarantor {
+            get {
+                return ResourceManager.GetString("ClientAsGuarantor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не указан клиент.
+        /// </summary>
+        public static string ClienttIdRequired {
+            get {
+                return ResourceManager.GetString("ClienttIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не указан перечень документов..
         /// </summary>
         public static string DocumentsRequired {
             get {
                 return ResourceManager.GetString("DocumentsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не указаны поручители..
+        /// </summary>
+        public static string GuarantorsRequired {
+            get {
+                return ResourceManager.GetString("GuarantorsRequired", resourceCulture);
             }
         }
         
@@ -106,6 +133,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Страна с Id = {0} не существует.
+        /// </summary>
+        public static string InvalidCountryId {
+            get {
+                return ResourceManager.GetString("InvalidCountryId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Кредит с Id={0} не существует.
         /// </summary>
         public static string InvalidCreditRequestId {
@@ -124,11 +160,29 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Тип кредита с Id={0} не существует.
+        /// </summary>
+        public static string InvalidCreditTypeId {
+            get {
+                return ResourceManager.GetString("InvalidCreditTypeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата выдачи должна быть меньше срока действия.
         /// </summary>
         public static string InvalidIssueAndExpiryDate {
             get {
                 return ResourceManager.GetString("InvalidIssueAndExpiryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сумма кредита должна быть в диапазоне от {0} до {1}.
+        /// </summary>
+        public static string InvalidTotalAmountRange {
+            get {
+                return ResourceManager.GetString("InvalidTotalAmountRange", resourceCulture);
             }
         }
         

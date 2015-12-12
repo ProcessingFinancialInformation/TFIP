@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Models;
+using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {
@@ -9,10 +11,14 @@ namespace TFIP.Web.Api.Controllers
     {
         private readonly ICreditRequestService creditRequestService;
 
+        private readonly IValidationService<CreditRequestViewModel> creditRequestValidationService;
+
         public CreditRequestController(
-            ICreditRequestService creditRequestService)
+            ICreditRequestService creditRequestService,
+            IValidationService<CreditRequestViewModel> creditRequestValidationService)
         {
             this.creditRequestService = creditRequestService;
+            this.creditRequestValidationService = creditRequestValidationService;
         }
 
         public HttpResponseMessage GetCreditRequestInfo(long id)
@@ -29,7 +35,8 @@ namespace TFIP.Web.Api.Controllers
 
         public HttpResponseMessage CreateCreditRequest(CreditRequestViewModel creditRequest)
         {
-            var creditItemViewModel =  creditRequestService.CreateCreditRequest(creditRequest);
+            var creditItemViewModel = ProcessViewModel<CreditRequestViewModel, CreditRequestListItemViewModel>(creditRequest, creditRequestValidationService,
+                creditRequestService.CreateCreditRequest);
             return Request.CreateResponse(HttpStatusCode.OK, creditItemViewModel);
         }
     }

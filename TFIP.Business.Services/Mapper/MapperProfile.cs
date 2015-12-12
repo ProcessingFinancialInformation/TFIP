@@ -80,6 +80,7 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.AttachmentHeader, option => option.Ignore())
                 .ForMember(ic => ic.AttachmentHeaderId, option => option.Ignore())
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
+            AutoMapper.Mapper.CreateMap<CreateIndividualClientViewModel, Guarantor>();
             AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
             AutoMapper.Mapper.CreateMap<IndividualClient, CreateIndividualClientViewModel>();

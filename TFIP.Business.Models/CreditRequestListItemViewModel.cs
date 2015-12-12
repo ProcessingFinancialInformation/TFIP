@@ -16,7 +16,7 @@ namespace TFIP.Business.Models
 
         public DateTime CreationDate { get; set; }
 
-        public DateTime ApprovalDate { get; set; }
+        public DateTime? ApprovalDate { get; set; }
 
         public string Status { get; set; }
     }

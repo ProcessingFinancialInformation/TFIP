@@ -45,6 +45,10 @@ namespace TFIP.Business.Services.Validation
                     errors.Add(String.Format(ErrorMessages.MaxAge, maxAge));
                 }
             }
+            if (creditUow.Countries.GetById(viewModel.CountryId) == null)
+            {
+                errors.Add(String.Format(ErrorMessages.InvalidCountryId, viewModel.CountryId));
+            }
             if (creditUow.IndividualClients.Get(c => c.IdentificationNo == viewModel.IdentificationNo)
                 .FirstOrDefault() !=null)
             {
@@ -53,6 +57,10 @@ namespace TFIP.Business.Services.Validation
             if (viewModel.DateOfIssue > viewModel.DateOfExpiry)
             {
                 errors.Add(ErrorMessages.InvalidIssueAndExpiryDate);
+            }
+            if (creditUow.Countries.GetById(viewModel.CountryId) == null)
+            {
+                errors.Add(String.Format(ErrorMessages.InvalidCountryId, viewModel.CountryId));
             }
             return errors;
         }

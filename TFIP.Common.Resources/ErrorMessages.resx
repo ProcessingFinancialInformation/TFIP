@@ -123,8 +123,17 @@
   <data name="AmountToLessThanAmountFrom" xml:space="preserve">
     <value>Верхняя граница суммы кредита должна быть больше нижней границы</value>
   </data>
+  <data name="ClientAsGuarantor" xml:space="preserve">
+    <value>Клиент не может быть поручителем у самого себя</value>
+  </data>
+  <data name="ClienttIdRequired" xml:space="preserve">
+    <value>Не указан клиент</value>
+  </data>
   <data name="DocumentsRequired" xml:space="preserve">
     <value>Не указан перечень документов.</value>
+  </data>
+  <data name="GuarantorsRequired" xml:space="preserve">
+    <value>Не указаны поручители.</value>
   </data>
   <data name="InvalidClientId" xml:space="preserve">
     <value>Клиент с Id={0} не существует</value>
@@ -132,14 +141,23 @@
   <data name="InvalidClientType" xml:space="preserve">
     <value>Неверный тип клиента</value>
   </data>
+  <data name="InvalidCountryId" xml:space="preserve">
+    <value>Страна с Id = {0} не существует</value>
+  </data>
   <data name="InvalidCreditRequestId" xml:space="preserve">
     <value>Кредит с Id={0} не существует</value>
   </data>
   <data name="InvalidCreditTypeAmountRange" xml:space="preserve">
     <value>Не указаны границы суммы кредита</value>
   </data>
+  <data name="InvalidCreditTypeId" xml:space="preserve">
+    <value>Тип кредита с Id={0} не существует</value>
+  </data>
   <data name="InvalidIssueAndExpiryDate" xml:space="preserve">
     <value>Дата выдачи должна быть меньше срока действия</value>
+  </data>
+  <data name="InvalidTotalAmountRange" xml:space="preserve">
+    <value>Сумма кредита должна быть в диапазоне от {0} до {1}</value>
   </data>
   <data name="MaxAge" xml:space="preserve">
     <value>Клиенты старше {0} лет не обслуживаются</value>

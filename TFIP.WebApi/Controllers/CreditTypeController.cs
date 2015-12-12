@@ -1,10 +1,8 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
-using TFIP.Business.Services.Validation;
 using TFIP.Web.Api.Helpers;
 using TFIP.Web.ViewModels;
 
