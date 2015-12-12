@@ -290,3 +290,9 @@ TFIP.Web.UI/Scripts/Directives/FieldInputs/TextAreaFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/FieldInputs/TextAreaFieldInputDirective.js.map
 TFIP.Web.UI/Scripts/Directives/FieldInputs/TextFieldInputDirective.js
 TFIP.Web.UI/Scripts/Directives/FieldInputs/TextFieldInputDirective.js.map
+TFIP.Web.UI/Scripts/Clients/ClientModalController.js
+TFIP.Web.UI/Scripts/Clients/ClientModalController.js.map
+TFIP.Web.UI/Scripts/Clients/CreateClientBaseController.js
+TFIP.Web.UI/Scripts/Clients/CreateClientBaseController.js.map
+TFIP.Web.UI/Scripts/Clients/CreateClientModalController.js
+TFIP.Web.UI/Scripts/Clients/CreateClientModalController.js.map

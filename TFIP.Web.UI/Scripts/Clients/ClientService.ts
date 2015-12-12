@@ -3,7 +3,7 @@
     export interface IClientService {
         isClientExist(clientId: string, clientType: string): ng.IPromise<any>;
         createClient(model: ClientViewModel): ng.IPromise<Shared.AjaxViewModel<ClientViewModel>>;
-        getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel>;
+        getClientFormViewModel(): ng.IPromise<ClientFormViewModel>;
         createJuridicalClient(model: JuridicalClientViewModel): ng.IPromise<Shared.AjaxViewModel<JuridicalClientViewModel>>;
         getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase>;
         showFindClients(): ng.IPromise<ClientViewModel>;
@@ -50,7 +50,7 @@
             var url = (clientType == (new ClientType()).individualClient) ? "/Clients/CreateIndividualClientModal" : "/Clients/CreateJuridicalClientForm";
             var modalPromise = this.$uibModal.open({
                 templateUrl: url,
-                controller: CreateClientController,
+                controller: CreateClientModalController,
                 resolve: {
                     clientModel: () => clientModel
                 }
@@ -77,7 +77,7 @@
             return deferred.promise;
         }
 
-        public getClientFormViewModel(): ng.IPromise<IndividualClientFormViewModel> {
+        public getClientFormViewModel(): ng.IPromise<ClientFormViewModel> {
             var deferred = this.$q.defer();
 
             this.httpWrapper.get(this.apiUrlService.clientApi.getIndividualClientFormInfo).then((data) => {

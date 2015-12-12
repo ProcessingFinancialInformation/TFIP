@@ -225,7 +225,8 @@
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
-    <TypeScriptCompile Include="Scripts\Clients\CreateClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateClientBaseController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\CreateClientModalController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateJuridicalClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\FindClientController.ts" />

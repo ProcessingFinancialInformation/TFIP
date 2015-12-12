@@ -9,11 +9,11 @@
 
         <h4>Сведения об организации</h4>
 
-        <div text-field-input name="'name'" label-text="'Имя организации'" model="clientViewModel.name" is-required="true" pattern="regex.charactersWithSpace"></div>
+        <div text-field-input name="'name'" label-text="'Имя организации'" model="clientViewModel.name" is-required="true"></div>
         <div text-field-input name="'identificationNo'" label-text="'ОКПО'" model="clientViewModel.identificationNo" is-required="true" pattern="regex.number"></div>
         <div text-field-input name="'pAN'" label-text="'УНП'" model="clientViewModel.pAN" is-required="true" pattern="regex.number"></div>
         <div text-field-input name="'registrationNumber'" label-text="'Регистрационный номер'" model="clientViewModel.registrationNumber" is-required="true" pattern="regex.number"></div>
-        <div text-field-input name="'registrationOrganisation'" label-text="'Регистрирующий орган'" model="clientViewModel.registrationOrganisation" is-required="true" pattern="regex.address"></div>
+        <div text-field-input name="'registrationOrganisation'" label-text="'Регистрирующий орган'" model="clientViewModel.registrationOrganisation" is-required="true"></div>
         <div date-field-input name="'registrationDate'" label-text="'Дата регистрации'" model="clientViewModel.registrationDate" is-required="true"></div>
 
         <h4>Данные представителя организации</h4>
@@ -25,7 +25,7 @@
 
         <h4>Банковские реквизиты</h4>
 
-        <div text-field-input name="'bankName'" label-text="'Название банка'" model="clientViewModel.bankName" is-required="true" pattern="regex.charactersWithSpace"></div>
+        <div text-field-input name="'bankName'" label-text="'Название банка'" model="clientViewModel.bankName" is-required="true"></div>
         <div text-field-input name="'bankCode'" label-text="'Код'" model="clientViewModel.bankCode" is-required="true" pattern="regex.number"></div>
         <div text-field-input name="'checkingAccount'" label-text="'Номер счета'" model="clientViewModel.checkingAccount" is-required="true" pattern="regex.number"></div>
 

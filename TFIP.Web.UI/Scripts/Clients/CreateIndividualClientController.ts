@@ -1,18 +1,11 @@
-﻿module TFIP.Web.UI.Clients {
-    
-    export interface ICreateIndividualClientScope extends MasterPage.IMasterPageScope {
-        clientViewModel: ClientViewModel;
-        createUser: () => void;
+﻿
+module TFIP.Web.UI.Clients {
 
-        male: Gender;
-        female: Gender;
+    export interface ICreateIndividualClientScope extends ICreateClientBaseScope {
         genders: Shared.ListItem[];
-        countries: Shared.ListItem[];
-
-        createClientForm: Core.ICustomFormController;
     }
 
-    export class CreateIndividualClientController extends Core.BaseController {
+    export class CreateIndividualClientController extends CreateClientBaseController {
         public static $inject = [
             "$scope",
             "messageBox",
@@ -23,57 +16,18 @@
         ];
 
         constructor(
-            private $scope: ICreateIndividualClientScope,
-            private messageBox: Core.IMessageBoxService,
-            private clientService: IClientService,
-            private $location: ng.ILocationService,
-            private locationHelperService: Core.LocationHelperService,
-            private urlBuilderService: Core.IUrlBuilderService) {
-            super();
-            this.init();
-        }
+            public $scope: ICreateIndividualClientScope,
+            public messageBox: Core.IMessageBoxService,
+            public clientService: IClientService,
+            public $location: ng.ILocationService,
+            public locationHelperService: Core.LocationHelperService,
+            public urlBuilderService: Core.IUrlBuilderService) {
+            super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService);
 
-        private init() {
-            var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
-                this.$scope.countries = data.countries;
-                this.$scope.clientViewModel = new ClientViewModel();
-
-                this.$scope.$watch("clientViewModel",(newVal, oldVal) => {
-                    for (var prop in this.$scope.clientViewModel) {
-
-                        if (typeof (this.$scope.clientViewModel[prop]) == "string") {
-                            this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
-                        }
-                    }
-                }, true);
-            });
-
+            this.$scope.clientViewModel = new JuridicalClientViewModel();
+            this.$scope.createClient = () => this.clientService.createClient(<ClientViewModel>this.$scope.clientViewModel);
             this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
-            this.$scope.male = Gender.Male;
-            this.$scope.female = Gender.Female;
-            this.$scope.createUser = () => this.createUser();
         }
 
-        private createUser() {
-            if (this.$scope.createClientForm.$valid) {
-                var promsie = this.clientService.createClient(this.$scope.clientViewModel);
-
-                promsie.then((data: Shared.AjaxViewModel<any>) => {
-                    if (data.isValid) {
-                        this.locationHelperService.redirect(this.urlBuilderService.buildQuery("/Clients", { clientId: data.data.id, clientType: new ClientType().individualClient }));
-                    } else {
-                        this.messageBox.showErrorMulty(Const.Messages.clients, data.errors);
-                    }
-                }, (reason: any) => {
-                        this.messageBox.showError(Const.Messages.clients, reason.message);
-                });
-            } else {
-                //this.$scope.createClientForm.fieldInputForm.$setDirty();
-                this.makeFormDirty(this.$scope.createClientForm);
-
-                this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
-            }
-        }
-       
     }
 }    

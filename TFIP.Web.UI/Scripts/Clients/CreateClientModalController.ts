@@ -1,6 +1,6 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export class CreateClientController extends Core.BaseController {
+    export class CreateClientModalController extends Core.BaseController {
         public static $inject = [
             "$scope",
             "messageBox",
@@ -26,7 +26,7 @@
         }
 
         private init() {
-            var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
+            var promsie = this.clientService.getClientFormViewModel().then((data: TFIP.Web.UI.Clients.ClientFormViewModel) => {
                 this.$scope.countries = data.countries;
                 if (this.clientModel) {
                     this.$scope.clientViewModel = this.clientModel;
@@ -46,8 +46,6 @@
             });
 
             this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
-            this.$scope.male = Gender.Male;
-            this.$scope.female = Gender.Female;
             this.$scope.createUser = () => this.createUser();
             this.$scope.regex = new Const.RegularExpressions();
         }

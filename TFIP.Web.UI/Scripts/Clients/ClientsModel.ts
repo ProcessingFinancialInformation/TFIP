@@ -10,7 +10,7 @@
         Female
     }
 
-    export class IndividualClientFormViewModel {
+    export class ClientFormViewModel {
         countries: Shared.ListItem[];
     }
     
