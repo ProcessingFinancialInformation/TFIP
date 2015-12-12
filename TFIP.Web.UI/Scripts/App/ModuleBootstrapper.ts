@@ -61,6 +61,7 @@
                 .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
                 .directive("radioFieldInput",() => new Directives.RadioFieldInputDirective)
                 .directive("checkBoxFieldInput",() => new Directives.CheckBoxFieldInputDirective)
+                .directive("numericFieldInput",() => new Directives.NumericFieldInputDirective)
                 .directive("simpleMetadata",() => new Directives.SimpleMetadataDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)

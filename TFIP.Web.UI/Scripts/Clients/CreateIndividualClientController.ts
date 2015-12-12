@@ -12,7 +12,7 @@
         createClientForm: Core.ICustomFormController;
     }
 
-    export class CreateIndividualClientController {
+    export class CreateIndividualClientController extends Core.BaseController {
         public static $inject = [
             "$scope",
             "messageBox",
@@ -29,7 +29,7 @@
             private $location: ng.ILocationService,
             private locationHelperService: Core.LocationHelperService,
             private urlBuilderService: Core.IUrlBuilderService) {
-
+            super();
             this.init();
         }
 
@@ -37,8 +37,6 @@
             var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
                 this.$scope.countries = data.countries;
                 this.$scope.clientViewModel = new ClientViewModel();
-
-                
 
                 this.$scope.$watch("clientViewModel",(newVal, oldVal) => {
                     for (var prop in this.$scope.clientViewModel) {
@@ -71,21 +69,7 @@
                 });
             } else {
                 //this.$scope.createClientForm.fieldInputForm.$setDirty();
-
-                if (this.$scope.createClientForm.$error.required) {
-                    for (var i = 0; i < this.$scope.createClientForm.$error.required.length; i++) {
-                        if (this.$scope.createClientForm.$error.required[i].fieldInput) {
-                            this.$scope.createClientForm.$error.required[i].fieldInput.$dirty = true;
-                        }
-                    }
-                }
-                if (this.$scope.createClientForm.$error.pattern) {
-                    for (var i = 0; i < this.$scope.createClientForm.$error.pattern.length; i++) {
-                        if (this.$scope.createClientForm.$error.pattern[i].fieldInput) {
-                            this.$scope.createClientForm.$error.pattern[i].fieldInput.$dirty = true;
-                        }
-                    }
-                }
+                this.makeFormDirty(this.$scope.createClientForm);
 
                 this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             }

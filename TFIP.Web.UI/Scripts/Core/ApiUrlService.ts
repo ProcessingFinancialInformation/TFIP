@@ -3,6 +3,7 @@
     export interface IApiUrlService {
         clientApi: ClientApi;
         creditTypeApi: CreditTypeApi;
+        creditRequestApi: CreditRequestApi;
     }
 
     export class ApiUrlService {
@@ -12,12 +13,14 @@
 
         public clientApi: ClientApi;
         public creditTypeApi: CreditTypeApi;
+        public creditRequestApi: CreditRequestApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
 
             this.clientApi = new ClientApi(baseUrl);
             this.creditTypeApi = new CreditTypeApi(baseUrl);
+            this.creditRequestApi = new CreditRequestApi(baseUrl);
         }
     }
 
@@ -59,6 +62,7 @@
         public getPage: string;
         public saveCreditType: string;
         public changeActivity: string;
+        public saveCreditRequest: string;
 
         constructor(basePath: string) {
             super(basePath);
@@ -68,6 +72,17 @@
             this.getPage = this.getBasePath() + "api/creditType/getPage";
             this.saveCreditType = this.getBasePath() + "api/creditType/saveCreditType";
             this.changeActivity = this.getBasePath() + "api/creditType/changeActivity";
+            this.saveCreditRequest = this.getBasePath() + "api/creditRequest/createCreditRequest";
+        }
+    }
+
+    export class CreditRequestApi extends UrlHelperBase {
+        public saveCreditRequest: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.saveCreditRequest = this.getBasePath() + "api/creditRequest/createCreditRequest";
         }
     }
 

@@ -4,7 +4,7 @@
 
         public static clients = "Клиенты";
 
-        public static creditTypeCreation = "";
+        public static creditTypeCreation = "Создание кредита";
 
         public static invalidForm = "Некоторые поля заполнены неверно";
 
@@ -12,7 +12,9 @@
 
         public static admin = "Администрирование";
 
-        public static creditCreation = "Создание кредита";
+        public static creditCreation = "Заявка на кредит";
+
+        public static creditRequestNoGuarantors = "Для выбранного кредита необходимы поручители.";
 
         public static creditTypeStatusActiveChanged = "Кредит переведен в статус \"активен\".";
 

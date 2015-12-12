@@ -58,11 +58,11 @@
                             deferred.reject();
                         });
                     }, (reason) => {
-                        this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                        this.messageBox.showError(Const.Messages.creditTypeCreation, reason.message);
                         deferred.reject(reason);
                     });
                 }, (reason) => {
-                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                        this.messageBox.showError(Const.Messages.creditTypeCreation, reason.message);
                     deferred.reject(reason);
                 });
             } else {
@@ -73,7 +73,7 @@
                         deferred.reject();
                     });
                 }, (reason) => {
-                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                        this.messageBox.showError(Const.Messages.creditTypeCreation, reason.message);
                     deferred.reject(reason);
                 });
             }

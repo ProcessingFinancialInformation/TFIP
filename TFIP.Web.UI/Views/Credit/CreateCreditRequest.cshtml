@@ -5,16 +5,25 @@
     <h4 class="modal-title">Создание кредитной заявки</h4> 
 </div>
 <div class="modal-body">
-    <div class="form-horizontal">
-        <div select-field-input name="'creditTypeId'" label-text="'Наименование кредита'" model="creditRequestModel.creditTypeId" is-required="true" model-values=""></div>
+    <div class="form-horizontal" ng-form="creditRequestForm">
+        <div select-field-input name="'creditTypeId'" label-text="'Наименование кредита'" model="creditRequestModel.creditTypeId" is-required="true" model-values="creditTypesViewModel"></div>
 
-        <div class="form-group">
+        <div class="form-group" ng-if="guarantorRequired()">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default" ng-click="addGuarantor()">Добавить поручителя</button>
             </div>
         </div>
-        
-        <div ng-repeat="guarantor in creditRequestModel.guarantors"></div>
+
+        <div class="form-group" ng-repeat="guarantor in creditRequestModel.guarantors" ng-if="guarantorRequired()">
+            <div class="col-sm-2">Поручитель №{{$index + 1}}</div>
+            <div class="col-sm-10">
+                <p><span>{{guarantor.lastName}}</span><span>{{guarantor.firstName}}</span></p>
+                <p><span>{{guarantor.passportNo}}</span></p>
+                <button ng-if="!guarantor.id" class="btn btn-default" ng-click="editGuarantor($index)">Редактировать</button>
+            </div>
+        </div>
+
+        <div numeric-field-input name="'totalAmount'" label-text="'Сумма кредита'" model="creditRequestModel.totalAmount" is-required="true" min-value="{{getMinAmount()}}" max-value="{{getMaxAmount()}}"></div>
     </div>
 </div>
 <div class="modal-footer">

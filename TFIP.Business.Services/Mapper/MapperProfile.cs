@@ -124,7 +124,7 @@ namespace TFIP.Business.Services.Mapper
                         opt.MapFrom(
                             src =>
                                 src.ClientType == ClientType.Individual ? src.ClientId : null))
-                .ForMember(dest => dest.IndividualClientId,
+                .ForMember(dest => dest.JuridicalClientId,
                     opt =>
                         opt.MapFrom(
                             src =>

@@ -5,13 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-controller="ClientController">
+<div ng-controller="ClientController" ng-cloak>
     <div class="row">
         <div class="col-lg-10 col-md-9 col-xs-12">
-            <h3 ng-if="clientViewModel.lastName" ng-bind="clientViewModel.lastName"></h3>
-            <h3 ng-if="clientViewModel.firstName" ng-bind="clientViewModel.firstName"></h3>
-            <h3 ng-if="clientViewModel.patronymic" ng-bind="clientViewModel.patronymic"></h3>
-            <h3 ng-if="clientViewModel.name" ng-bind="clientViewModel.name"></h3>
+            <h3 ng-if="clientViewModel" ng-bind="getClientName()"></h3>
         </div>
         <div class="col-md-3 col-lg-2 col-xs-12">
             <button class="btn btn-primary col-xs-12" ng-click="createCreditRequest()">Оформить заявку</button>
@@ -41,7 +38,7 @@
                         <div simple-metadata ng-if="clientViewModel.contactFax" field-name="'Факс'" field-value="clientViewModel.contactFax"></div>
 
                     </div>
-                </uib-accordion-groupclass="panel-primary">
+                </uib-accordion-group>
             </uib-accordion>
         </div>
     </div>

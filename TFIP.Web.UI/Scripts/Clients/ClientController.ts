@@ -5,7 +5,8 @@
         clientType: string;
         makePayment: () => void;
         getCreditRequestDetails: () => void;
-
+        clientTypes: ClientType;
+        getClientName: () => string;
     }
 
     export class ClientController {
@@ -41,6 +42,8 @@
             this.$scope.createCreditRequest = () => this.createCreditRequest();
             this.$scope.makePayment = () => this.makePayment();
             this.$scope.getCreditRequestDetails = () => this.getCreditRequestDetails();
+            this.$scope.clientTypes = new ClientType();
+            this.$scope.getClientName = () => this.getClientName();
         }
 
         private init(clientId: string, clientType: string) {
@@ -57,7 +60,22 @@
         }
 
         private createCreditRequest() {
-            this.createCreditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType);
+            this.createCreditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType).then((data: Credit.CreditRequestModel) => {
+                if (data) {
+                    this.$scope.clientViewModel.credits.push(data);
+                }
+            });
+        }
+
+        private getClientName() {
+            if (this.$scope.clientViewModel) {
+                if (this.$scope.clientType.toLowerCase() == this.$scope.clientTypes.individualClient.toLowerCase()) {
+                    var name = [this.$scope.clientViewModel.lastName, this.$scope.clientViewModel.firstName, this.$scope.clientViewModel.patronymic].join(" ");
+                    return name;
+                } else {
+                    return this.$scope.clientViewModel.name;
+                }
+            }
         }
 
         private makePayment() {

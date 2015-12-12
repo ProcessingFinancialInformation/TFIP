@@ -33,7 +33,11 @@
     }
 
     export class CreditRequestModel {
+        clientId: number;
+        clientType: string;
+        creditTypeId: number;
         guarantors: Clients.ClientViewModel[];
+        totalAmount: number;
     }
 
 } 

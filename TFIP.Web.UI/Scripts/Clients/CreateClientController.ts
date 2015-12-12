@@ -1,6 +1,6 @@
 ﻿module TFIP.Web.UI.Clients {
     
-    export class CreateClientController {
+    export class CreateClientController extends Core.BaseController {
         public static $inject = [
             "$scope",
             "messageBox",
@@ -8,7 +8,8 @@
             "$location",
             "locationHelperService",
             "urlBuilderService",
-            "$uibModalInstance"
+            "$uibModalInstance",
+            "clientModel"
         ];
 
         constructor(
@@ -18,15 +19,20 @@
             private $location: ng.ILocationService,
             private locationHelperService: Core.LocationHelperService,
             private urlBuilderService: Core.IUrlBuilderService,
-            private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance) {
-
+            private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance,
+            private clientModel: ClientViewModel) {
+            super();
             this.init();
         }
 
         private init() {
             var promsie = this.clientService.getClientFormViewModel().then((data: IndividualClientFormViewModel) => {
                 this.$scope.countries = data.countries;
-                this.$scope.clientViewModel = new ClientViewModel();
+                if (this.clientModel) {
+                    this.$scope.clientViewModel = this.clientModel;
+                } else {
+                    this.$scope.clientViewModel = new ClientViewModel();
+                }
 
 
                 this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
@@ -43,6 +49,7 @@
             this.$scope.male = Gender.Male;
             this.$scope.female = Gender.Female;
             this.$scope.createUser = () => this.createUser();
+            this.$scope.regex = new Const.RegularExpressions();
         }
 
         private createUser() {
@@ -50,21 +57,7 @@
                 this.$uibModalInstance.close(this.$scope.clientViewModel);
             } else {
                 //this.$scope.createClientForm.fieldInputForm.$setDirty();
-
-                if (this.$scope.createClientForm.$error.required) {
-                    for (var i = 0; i < this.$scope.createClientForm.$error.required.length; i++) {
-                        if (this.$scope.createClientForm.$error.required[i].fieldInput) {
-                            this.$scope.createClientForm.$error.required[i].fieldInput.$dirty = true;
-                        }
-                    }
-                }
-                if (this.$scope.createClientForm.$error.pattern) {
-                    for (var i = 0; i < this.$scope.createClientForm.$error.pattern.length; i++) {
-                        if (this.$scope.createClientForm.$error.pattern[i].fieldInput) {
-                            this.$scope.createClientForm.$error.pattern[i].fieldInput.$dirty = true;
-                        }
-                    }
-                }
+                this.makeFormDirty(this.$scope.createClientForm);
 
                 this.messageBox.showError(Const.Messages.clients, Const.Messages.invalidForm);
             }

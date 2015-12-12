@@ -16,7 +16,14 @@
 
         constructor(
             private $scope: IDateFieldInputScope) {
-            this.$scope.inputModel = (this.$scope.model) ? new Date(<string>this.$scope.model) : null;
+            if (typeof (this.$scope.model) == "string") {
+                
+            }
+            this.$scope.inputModel = (this.$scope.model)
+                ? (typeof (this.$scope.model) == "string" || typeof (this.$scope.model) == "number")
+                    ? new Date(<string>this.$scope.model)
+                    : <Date>this.$scope.model
+                : null;
             this.$scope.$watch("inputModel", (newVal, oldval) => {
                 if (newVal) {
                     var date = new Date(this.$scope.inputModel.toUTCString());

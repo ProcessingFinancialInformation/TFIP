@@ -33,6 +33,8 @@
         registrationDate: Date | string | number;
         contactEmail: string;
         contactPhone: string;
+
+        credits: Credit.CreditRequestModel[];
     }
 
     export class ClientViewModel extends ClientViewModelBase {

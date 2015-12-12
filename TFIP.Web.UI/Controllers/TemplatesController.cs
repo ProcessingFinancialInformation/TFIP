@@ -39,5 +39,10 @@
         {
             return this.PartialView();
         }
+
+        public ActionResult NumericFieldInput()
+        {
+            return this.PartialView();
+        }
     }
 }

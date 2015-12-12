@@ -204,9 +204,11 @@
     <Content Include="Views\Templates\TextAreaFieldInput.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClientForm.cshtml" />
     <Content Include="Views\Clients\FindClients.cshtml" />
+    <Content Include="Views\Templates\NumericFieldInput.cshtml" />
     <Content Include="Views\Clients\FindClientsModal.cshtml" />
-    <Content Include="Views\Payments\MakePaymentModal.cshtml" />
     <Content Include="Views\Payments\MakePayment.cshtml" />
+    <Content Include="Views\Payments\MakePaymentModal.cshtml" />
+    <Content Include="Views\Clients\CreateIndividualClientModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,6 +232,7 @@
     <TypeScriptCompile Include="Scripts\Const\Messages.ts" />
     <TypeScriptCompile Include="Scripts\Const\RegularExpressions.ts" />
     <TypeScriptCompile Include="Scripts\Core\ApiUrlService.ts" />
+    <TypeScriptCompile Include="Scripts\Core\BaseController.ts" />
     <TypeScriptCompile Include="Scripts\Core\CustomHttpService.ts" />
     <TypeScriptCompile Include="Scripts\Core\LocationHelperService.ts" />
     <TypeScriptCompile Include="Scripts\Core\MessageBoxController.ts" />
@@ -241,14 +244,15 @@
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditTypeController.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditModels.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditTypeService.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\CheckBoxFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\DataFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\BaseFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\RadioFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\SelectFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\SimpleMetadataDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\TextAreaFieldInputDirective.ts" />
-    <TypeScriptCompile Include="Scripts\Directives\TextFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\CheckBoxFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\DataFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\BaseFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\NumericFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\RadioFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\SelectFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\SimpleMetadataDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\TextAreaFieldInputDirective.ts" />
+    <TypeScriptCompile Include="Scripts\Directives\FieldInputs\TextFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />

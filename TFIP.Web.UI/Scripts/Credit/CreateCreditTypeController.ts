@@ -55,11 +55,11 @@
                     if (data.isValid) {
                         this.$uibModalInstance.close(data.data);
                     } else {
-                        this.messageBox.showErrorMulty(Const.Messages.creditCreation, data.errors);
+                        this.messageBox.showErrorMulty(Const.Messages.creditTypeCreation, data.errors);
                     }
                 }, (reason: Core.IRejectionReason) => {
                     if (!reason.aborted) {
-                        this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                        this.messageBox.showError(Const.Messages.creditTypeCreation, reason.message);
                     }
                 });
             } else {
@@ -78,7 +78,7 @@
                     }
                 }
 
-                this.messageBox.showError(Const.Messages.creditCreation, Const.Messages.invalidForm);
+                this.messageBox.showError(Const.Messages.creditTypeCreation, Const.Messages.invalidForm);
             }
         }
     }

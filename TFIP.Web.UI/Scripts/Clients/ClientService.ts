@@ -7,7 +7,7 @@
         createJuridicalClient(model: JuridicalClientViewModel): ng.IPromise<Shared.AjaxViewModel<JuridicalClientViewModel>>;
         getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase>;
         showFindClients(): ng.IPromise<ClientViewModel>;
-        showCreateClients(clientType: string): ng.IPromise<ClientViewModel>;
+        showCreateClients(clientType: string, clientModel?: ClientViewModelBase): ng.IPromise<ClientViewModel>;
     }
 
     export class ClientService implements IClientService {
@@ -45,12 +45,15 @@
             return deferred.promise;
         }
 
-        public showCreateClients(clientType: string): ng.IPromise<ClientViewModel> {
+        public showCreateClients(clientType: string, clientModel?: ClientViewModelBase): ng.IPromise<ClientViewModel> {
             var deferred = this.$q.defer();
-            var url = (clientType == (new ClientType()).individualClient) ? "/Clients/CreateIndividualClientForm" : "/Clients/CreateJuridicalClientForm";
+            var url = (clientType == (new ClientType()).individualClient) ? "/Clients/CreateIndividualClientModal" : "/Clients/CreateJuridicalClientForm";
             var modalPromise = this.$uibModal.open({
                 templateUrl: url,
-                controller: CreateClientController
+                controller: CreateClientController,
+                resolve: {
+                    clientModel: () => clientModel
+                }
             });
 
             modalPromise.result.then((data: ClientViewModel) => {
@@ -68,7 +71,7 @@
             this.httpWrapper.get(url).then((data: ClientViewModelBase) => {
                 deferred.resolve(data);
             }, (reason) => {
-                    deferred.reject(reason);
+                deferred.reject(reason);
             });
 
             return deferred.promise;
