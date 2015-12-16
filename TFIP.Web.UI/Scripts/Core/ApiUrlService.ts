@@ -4,6 +4,7 @@
         clientApi: ClientApi;
         creditTypeApi: CreditTypeApi;
         creditRequestApi: CreditRequestApi;
+        paymentsApi: PaymentsApi;
     }
 
     export class ApiUrlService {
@@ -14,6 +15,7 @@
         public clientApi: ClientApi;
         public creditTypeApi: CreditTypeApi;
         public creditRequestApi: CreditRequestApi;
+        public paymentsApi: PaymentsApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
@@ -21,6 +23,7 @@
             this.clientApi = new ClientApi(baseUrl);
             this.creditTypeApi = new CreditTypeApi(baseUrl);
             this.creditRequestApi = new CreditRequestApi(baseUrl);
+            this.paymentsApi = new PaymentsApi(baseUrl);
         }
     }
 
@@ -84,6 +87,20 @@
 
             this.saveCreditRequest = this.getBasePath() + "api/creditRequest/createCreditRequest";
         }
+    }
+
+    export class PaymentsApi extends UrlHelperBase {
+        public getBalanceInformation: string;
+        public makePayment: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.getBalanceInformation = this.getBasePath() + "api/payments/getBalanceInformation";
+            this.makePayment = this.getBasePath() + "api/payments/makePayment";
+        }
+
+
     }
 
 } 

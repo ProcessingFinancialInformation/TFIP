@@ -19,5 +19,7 @@ namespace TFIP.Business.Models
         public DateTime? ApprovalDate { get; set; }
 
         public string Status { get; set; }
+
+        public int StatusId { get; set; }
     }
 }

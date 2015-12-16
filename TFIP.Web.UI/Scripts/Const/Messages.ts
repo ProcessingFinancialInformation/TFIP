@@ -22,5 +22,7 @@
 
         public static payment = "Платёж";
 
+        public static paymentDone = "Платёж успешно зарегистрирован. Текущий баланс: ";
+
     }
 } 

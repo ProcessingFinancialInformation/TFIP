@@ -31,6 +31,9 @@ namespace TFIP.Business.Entities
 
         public DateTime? NextPaymentDate { get; set; }
 
+        /// <summary>
+        /// Shows the amount of money to pay for current month
+        /// </summary>
         public decimal CurrentBalance { get; set; }
 
         public decimal CurrentBalanceOnPercents { get; set; }

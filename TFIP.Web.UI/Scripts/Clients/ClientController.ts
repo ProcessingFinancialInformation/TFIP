@@ -3,10 +3,11 @@
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
         clientType: string;
-        makePayment: () => void;
+        makePayment: (request: Credit.CreditRequestModel) => void;
         getCreditRequestDetails: () => void;
         clientTypes: ClientType;
         getClientName: () => string;
+        canMakePayment: (request: Credit.CreditRequestModel) => boolean;
     }
 
     export class ClientController {
@@ -40,10 +41,11 @@
             }
 
             this.$scope.createCreditRequest = () => this.createCreditRequest();
-            this.$scope.makePayment = () => this.makePayment();
+            this.$scope.makePayment = (request: Credit.CreditRequestModel) => this.makePayment(request);
             this.$scope.getCreditRequestDetails = () => this.getCreditRequestDetails();
             this.$scope.clientTypes = new ClientType();
             this.$scope.getClientName = () => this.getClientName();
+            this.$scope.canMakePayment = (request: Credit.CreditRequestModel) => this.canMakePayment(request);
         }
 
         private init(clientId: string, clientType: string) {
@@ -78,12 +80,20 @@
             }
         }
 
-        private makePayment() {
-            this.paymentsService.showMakePayment(0);
+        private makePayment(request: Credit.CreditRequestModel) {
+            this.paymentsService.showMakePayment(request.id).then((data: number) => {
+                if (data) {
+                    this.messageBox.show(Const.Messages.payment, Const.Messages.paymentDone + data);
+                }
+            });
         }
 
         private getCreditRequestDetails() {
             alert('credit request details');
+        }
+
+        private canMakePayment(request: Credit.CreditRequestModel): boolean {
+            return request.statusId == Credit.CreditRequestStatus.InProgress;
         }
     }
 } 

@@ -11,4 +11,9 @@
         processedAt: Date;
         creditRequestId: number;
     }
+
+    export class BalanceInformationModel {
+        mainDebtBalance: number;
+        currentMonthFee: number;
+    }
 }

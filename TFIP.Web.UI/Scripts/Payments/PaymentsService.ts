@@ -1,6 +1,8 @@
 ﻿module TFIP.Web.UI.Payments {
     export interface IPaymentsService {
-        showMakePayment(creditRequestId: number): ng.IPromise<PaymentViewModel>;
+        showMakePayment(creditRequestId: number): ng.IPromise<number>;
+        getBalanceInformation(creditRequestId: number): ng.IPromise<BalanceInformationModel>;
+        makePayment(payment: PaymentViewModel): ng.IPromise<Shared.AjaxViewModel<number>>;
     }
 
     export class PaymentsService implements IPaymentsService {
@@ -21,21 +23,35 @@
 
         }
 
-        showMakePayment(creditRequestId: number): ng.IPromise<PaymentViewModel> {
+        public showMakePayment(creditRequestId: number): ng.IPromise<number> {
             var deferred = this.$q.defer();
 
-            var modalPromise = this.$uibModal.open({
-                templateUrl: "/Payments/MakePaymentModal",
-                controller: MakePaymentController
-            });
+            this.getBalanceInformation(creditRequestId).then((data: BalanceInformationModel) => {
+                var modalPromise = this.$uibModal.open({
+                    templateUrl: "/Payments/MakePaymentModal",
+                    controller: MakePaymentController,
+                    resolve: {
+                        balanceInfo: () => data,
+                        creditRequestId: () => creditRequestId
+                    }
+                });
 
-            modalPromise.result.then((data: PaymentViewModel) => {
-                deferred.resolve(data);
-            }, (reason) => {
-                deferred.reject(reason);
+                modalPromise.result.then((data: number) => {
+                    deferred.resolve(data);
+                }, (reason) => {
+                    deferred.reject(reason);
+                });
             });
 
             return deferred.promise;
+        }
+
+        public getBalanceInformation(creditRequestId: number): ng.IPromise<BalanceInformationModel> {
+            return this.httpWrapper.get(this.apiUrlService.paymentsApi.getBalanceInformation + "?creditRequestId=" + creditRequestId);
+        }
+
+        public makePayment(payment: PaymentViewModel): ng.IPromise<Shared.AjaxViewModel<number>> {
+            return this.httpWrapper.post(this.apiUrlService.paymentsApi.makePayment, payment);
         }
     }
 }
