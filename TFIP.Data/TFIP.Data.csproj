@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201512161926043_MIAandNBRBTables.Designer.cs">
       <DependentUpon>201512161926043_MIAandNBRBTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512162137406_CHangeBankCodeType.cs" />
+    <Compile Include="Migrations\201512162137406_CHangeBankCodeType.Designer.cs">
+      <DependentUpon>201512162137406_CHangeBankCodeType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512161926043_MIAandNBRBTables.resx">
       <DependentUpon>201512161926043_MIAandNBRBTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512162137406_CHangeBankCodeType.resx">
+      <DependentUpon>201512162137406_CHangeBankCodeType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

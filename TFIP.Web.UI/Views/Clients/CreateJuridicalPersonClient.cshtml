@@ -18,7 +18,7 @@
 
         <h4>Данные представителя организации</h4>
 
-        <div text-field-input name="'representerLastName'" label-text="'Фамилия'" model="clientViewModel.representerLastName" is-required="true" pattern="regex.lastName"></div>
+        <div text-field-input name="'representerLastName'" label-text="'Фамилия'" model="clientViewModel.representerLastName" is-required="true" pattern="regex.charactersWithSpace"></div>
         <div text-field-input name="'representerFirstName'" label-text="'Имя'" model="clientViewModel.representerFirstName" is-required="true" pattern="regex.charactersWithSpace"></div>
         <div text-field-input name="'representerPatronymic'" label-text="'Отчество'" model="clientViewModel.representerPatronymic"></div>
         <div text-field-input name="'representerPosition'" label-text="'Занимаемая должность'" model="clientViewModel.representerPosition" is-required="true" pattern="regex.charactersWithSpace"></div>
@@ -36,7 +36,7 @@
         <div text-field-input name="'registrationCity'" label-text="'Населенный пункт'" model="clientViewModel.registrationCity" is-required="true" pattern="regex.address"></div>
         <div text-field-input name="'registrationStreet'" label-text="'Улица'" model="clientViewModel.registrationStreet" is-required="true" pattern="regex.address"></div>
         <div text-field-input name="'houseNo'" label-text="'Дом'" model="clientViewModel.houseNo" is-required="true" pattern="regex.addressNo"></div>
-        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo" is-required="true" pattern="regex.addressNo"></div>
+        <div text-field-input name="'flatNo'" label-text="'Квартира'" model="clientViewModel.flatNo" pattern="regex.addressNo"></div>
         <div text-field-input name="'zip'" label-text="'Почтовый индекс'" model="clientViewModel.zip" is-required="true" pattern="regex.zipCode"></div>
 
         <h4>Контактные данные</h4>

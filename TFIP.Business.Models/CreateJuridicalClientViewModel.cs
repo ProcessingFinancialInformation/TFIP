@@ -19,14 +19,14 @@ namespace TFIP.Business.Models
         /// Имя представителя
         /// </summary>
         [Required]
-        [RegularExpression(RegexConstants.Characters)]
+        [RegularExpression(RegexConstants.CharactersWithSpace)]
         public string RepresenterFirstName { get; set; }
 
         /// <summary>
         /// Фамилия представителя
         /// </summary>
         [Required]
-        [RegularExpression(RegexConstants.Characters)]
+        [RegularExpression(RegexConstants.CharactersWithSpace)]
         public string RepresenterLastName { get; set; }
 
         /// <summary>

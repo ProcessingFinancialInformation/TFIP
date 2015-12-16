@@ -25,7 +25,7 @@
         private init() {
             var promise = this.clientService.getClientFormViewModel().then((data: ClientFormViewModel) => {
                 this.$scope.countries = data.countries;
-                this.$scope.clientViewModel = new ClientViewModel();
+                //this.$scope.clientViewModel = new ClientViewModel();
 
                 this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
                     for (var prop in this.$scope.clientViewModel) {

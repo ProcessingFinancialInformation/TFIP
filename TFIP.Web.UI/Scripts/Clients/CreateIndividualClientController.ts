@@ -24,7 +24,7 @@ module TFIP.Web.UI.Clients {
             public urlBuilderService: Core.IUrlBuilderService) {
             super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService);
 
-            this.$scope.clientViewModel = new JuridicalClientViewModel();
+            this.$scope.clientViewModel = new ClientViewModel();
             this.$scope.createClient = () => this.clientService.createClient(<ClientViewModel>this.$scope.clientViewModel);
             this.$scope.genders = [{ id: Gender.Male.toString(), value: "Мужской" }, { id: Gender.Female.toString(), value: "Женский" }];
         }
