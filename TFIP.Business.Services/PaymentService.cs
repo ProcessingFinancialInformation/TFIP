@@ -15,9 +15,10 @@ namespace TFIP.Business.Services
         private readonly ICreditUow creditUow;
         private readonly IAnnuityCreditCalculationService annuityCreditCalculationService;
 
-        public PaymentService(ICreditUow creditUow)
+        public PaymentService(ICreditUow creditUow, IAnnuityCreditCalculationService annuityCreditCalculationService)
         {
             this.creditUow = creditUow;
+            this.annuityCreditCalculationService = annuityCreditCalculationService;
         }
 
         public decimal MakePayment(PaymentViewModel paymentViewModel)

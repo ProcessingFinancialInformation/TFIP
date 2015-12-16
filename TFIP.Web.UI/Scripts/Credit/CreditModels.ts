@@ -1,7 +1,12 @@
 ﻿module TFIP.Web.UI.Credit {
     
-    export class CreditTypeModelBase {
-        
+    export enum CreditRequestStatus {
+        Draft = 0,
+        AwaitingSecurityValidation = 1,
+        AwaitingCreditCommissionValidation = 2,
+        Denied = 31,
+        InProgress = 50,
+        Extinguished = 100
     }
 
     export class CreditTypeModel {
@@ -33,11 +38,14 @@
     }
 
     export class CreditRequestModel {
+        id: number;
         clientId: number;
         clientType: string;
         creditTypeId: number;
         guarantors: Clients.ClientViewModel[];
         totalAmount: number;
+        status: string;
+        statusId: number;
     }
 
 } 
