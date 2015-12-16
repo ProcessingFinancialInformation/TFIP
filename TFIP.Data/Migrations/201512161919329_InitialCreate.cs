@@ -177,7 +177,7 @@ namespace TFIP.Data.Migrations
                         RegistrationOrganisation = c.String(),
                         CheckingAccount = c.Long(nullable: false),
                         BankName = c.String(),
-                        BankCode = c.Byte(nullable: false),
+                        BankCode = c.Int(nullable: false),
                         Zip = c.String(),
                         ContactFirstName = c.String(),
                         ContactLastName = c.String(),

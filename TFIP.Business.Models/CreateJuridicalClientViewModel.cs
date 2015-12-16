@@ -79,8 +79,8 @@ namespace TFIP.Business.Models
         /// Код банка
         /// </summary>
         [Required]
-        [RegularExpression(RegexConstants.Number)]
-        public byte BankCode { get; set; }
+        [Range(100,999)]
+        public int BankCode { get; set; }
 
         [Required]
         [RegularExpression(RegexConstants.ZipCode)]

@@ -63,7 +63,7 @@ namespace TFIP.Business.Entities
         /// <summary>
         /// Код банка
         /// </summary>
-        public byte BankCode { get; set; }
+        public int BankCode { get; set; }
 
         public string Zip { get; set; }
 
