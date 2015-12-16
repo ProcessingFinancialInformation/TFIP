@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using TFIP.Business.Contracts;
 using TFIP.Business.Services.ActiveDirectory;
 
@@ -6,11 +10,11 @@ namespace TFIP.Web.Api.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly INotificationService notificationService;
+        private readonly IMiaService miaService;
 
-        public HomeController(INotificationService notificationService)
+        public HomeController(IMiaService miaService)
         {
-            this.notificationService = notificationService;
+            this.miaService = miaService;
         }
 
         public ActionResult Index()

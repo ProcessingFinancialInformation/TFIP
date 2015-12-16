@@ -98,6 +98,8 @@
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityWithAttachments.cs" />
     <Compile Include="IndividualClient.cs" />
+    <Compile Include="MIA\MiaInfo.cs" />
+    <Compile Include="NBRB\NbrbInfo.cs" />
     <Compile Include="PaymentType.cs" />
     <Compile Include="PersonClient.cs" />
     <Compile Include="JuridicalClient.cs" />

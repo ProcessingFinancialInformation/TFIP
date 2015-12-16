@@ -84,6 +84,8 @@
     <Compile Include="IFileService.cs" />
     <Compile Include="IIndividualClientsService.cs" />
     <Compile Include="IMapperProfileService.cs" />
+    <Compile Include="IMiaService.cs" />
+    <Compile Include="INbrbService.cs" />
     <Compile Include="INotificationService.cs" />
     <Compile Include="IPaymentService.cs" />
     <Compile Include="IRolePermissionService.cs" />

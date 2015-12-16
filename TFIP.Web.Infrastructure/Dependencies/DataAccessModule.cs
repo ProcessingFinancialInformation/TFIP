@@ -1,8 +1,11 @@
 ﻿using System.Data.Entity;
 using Autofac;
+using TFIP.Common.Constants;
 using TFIP.Data;
 using TFIP.Data.Contracts;
 using TFIP.Data.Helpers;
+using TFIP.Data.MIA;
+using TFIP.Data.NBRB;
 
 namespace TFIP.Web.Infrastructure.Dependencies
 {
@@ -15,7 +18,17 @@ namespace TFIP.Web.Infrastructure.Dependencies
 
             builder.RegisterType<CreditDbContext>()
                 .As<DbContext>()
-                .WithParameter("connectionStringName", "CreditDbConnection")
+                .WithParameter("connectionStringName", DataAccessLayerConstants.CreditDatabaseConnectionStringName)
+                .InstancePerRequest();
+
+            builder.RegisterType<MiaDbContext>()
+                .As<MiaDbContext>()
+                .WithParameter("connectionStringName", DataAccessLayerConstants.MIADatabaseConnectionStringName)
+                .InstancePerRequest();
+
+            builder.RegisterType<NbrbDbContext>()
+                .As<NbrbDbContext>()
+                .WithParameter("connectionStringName", DataAccessLayerConstants.NBRBDatabaseConnectionStringName)
                 .InstancePerRequest();
 
             builder.RegisterType<RepositoryFactories>()
@@ -23,6 +36,14 @@ namespace TFIP.Web.Infrastructure.Dependencies
                 .SingleInstance();
 
             builder.RegisterAssemblyTypes(typeof (CreditUow).Assembly)
+                .Where(t => t.Name.EndsWith("Uow"))
+                .AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(typeof(MiaUow).Assembly)
+                .Where(t => t.Name.EndsWith("Uow"))
+                .AsImplementedInterfaces();
+
+            builder.RegisterAssemblyTypes(typeof(NbrbUow).Assembly)
                 .Where(t => t.Name.EndsWith("Uow"))
                 .AsImplementedInterfaces();
         }

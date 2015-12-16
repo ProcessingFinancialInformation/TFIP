@@ -137,9 +137,21 @@
       <Project>{071DF80E-72B9-42DC-8F84-C24EAD6AD0B4}</Project>
       <Name>TFIP.Business.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
+      <Project>{8483AAE7-5E1C-4D74-91F9-B44878F83359}</Project>
+      <Name>TFIP.Common.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Data.Contracts\TFIP.Data.Contracts.csproj">
       <Project>{763FB63B-3BD0-4C29-BE50-E91913AF1E54}</Project>
       <Name>TFIP.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Data.MIA\TFIP.Data.MIA.csproj">
+      <Project>{DD02B160-2969-49B6-92DE-54DFF8F19E40}</Project>
+      <Name>TFIP.Data.MIA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Data.NBRB\TFIP.Data.NBRB.csproj">
+      <Project>{0FF06FDA-B776-404B-A9E4-CD294A39CED2}</Project>
+      <Name>TFIP.Data.NBRB</Name>
     </ProjectReference>
     <ProjectReference Include="..\TFIP.Data\TFIP.Data.csproj">
       <Project>{62A5BF44-2AA3-4731-82A7-4136470FEFA9}</Project>
