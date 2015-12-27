@@ -1,12 +1,19 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Mvc;
+
 using TFIP.Business.Contracts;
 using TFIP.Business.Models;
 
 namespace TFIP.Web.Api.Controllers
 {
+    using System.IO;
+    using System.Net.Http.Headers;
+    using System.Web.Http;
+    using System.Web.Util;
+
+    using TFIP.Web.Api.Models;
+
     public class AttachmentController : BaseApiController
     {
         private readonly IFileManagementService fileManagementService;
@@ -35,33 +42,25 @@ namespace TFIP.Web.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        public HttpResponseMessage Download(ListItem file)
+        [HttpGet]
+        public HttpResponseMessage Download([FromUri]ListItem file)
         {
-            //if (Request.IsAjaxRequest())
-            //{
-            //    if (fileManagementService.FileExists(file))
-            //    {
-            //        return Json(new AjaxViewModel()
-            //        {
-            //            Data = Url.Action("Download", "Attachment", new
-            //            {
-            //                file.Id,
-            //                file.Value,
-            //                AdditionalInfo = file.AdditionalInfo
-            //            })
-            //        });
-            //    }
+            if (fileManagementService.FileExists(file))
+            {
+                Stream fileStream = fileManagementService.GetFileStream(file);
 
-            //    return Json(new AjaxViewModel()
-            //    {
-            //        Data = false,
-            //        Message = "The file cannot be downloaded. Contact administrator for any questions."
-            //    });
-            //}
+                HttpResponseMessage response = this.Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new StreamContent(fileStream);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                response.Content.Headers.ContentDisposition.FileName = HttpUtility.UrlEncode(file.Value).Replace(@"+", @"%20");
 
-            //var file = fileManagementService.GetFileBytes(file);
-            //return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, file.Value);
-            return Request.CreateResponse(HttpStatusCode.OK, true);
+                return response;
+            }
+
+            return this.Request.CreateErrorResponse(
+                HttpStatusCode.BadRequest,
+                "The file cannot be downloaded. Contact administrator for any questions.");
         }
 
         [HttpPost]

@@ -83,6 +83,15 @@ namespace TFIP.Business.Services
             return ReadFileFromTemplateStorageBytes(file);
         }
 
+        public Stream GetFileStream(ListItem file)
+        {
+            if (IsAttachmentSaved(file))
+            {
+                return this.GetSavedAttachment(file);
+            }
+            return this.GetFileStreamFromTemplateStorage(file);
+        }
+
         public void RenameFile(ListItem file, string newName, string storage)
         {
             if (ExistsInStorage(file, storage))
@@ -174,6 +183,14 @@ namespace TFIP.Business.Services
             return null;
         }
 
+        private Stream GetFileStreamFromTemplateStorage(ListItem file)
+        {
+            var templateFilesFolder = ConfigurationHelper.GetTemporaryFilesFolder();
+            return this.ExistsInStorage(file, templateFilesFolder)
+                       ? this.fileService.GetFileStream(Path.Combine(templateFilesFolder, file.Id, file.Value))
+                       : null;
+        }
+
         private byte[] ReadFileFromNetworkStorageBytes(ListItem file)
         {
             var networkStorage = ConfigurationHelper.GetFilesStorageFolder();
@@ -184,6 +201,20 @@ namespace TFIP.Business.Services
             }
 
             return null;
+        }
+
+        private Stream GetFileStreamFromNetworkStorage(ListItem file)
+        {
+            var networkStorage = ConfigurationHelper.GetFilesStorageFolder();
+
+            return this.ExistsInStorage(file, networkStorage)
+                       ? this.fileService.GetFileStream(Path.Combine(networkStorage, file.Id, file.Value))
+                       : null;
+        }
+
+        private Stream GetSavedAttachment(ListItem file)
+        {
+            return this.GetFileStreamFromNetworkStorage(file) ?? this.GetFileStreamFromTemplateStorage(file);
         }
 
         private byte[] ReadSavedAttachment(ListItem file)

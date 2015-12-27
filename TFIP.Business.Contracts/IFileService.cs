@@ -13,5 +13,6 @@ namespace TFIP.Business.Contracts
         FileStream Create(string path);
         bool DeleteDirectoryIfExists(string path);
         void MoveFileTo(string sourceFileName, string destinationFolder);
+        Stream GetFileStream(string filePath);
     }
 }
