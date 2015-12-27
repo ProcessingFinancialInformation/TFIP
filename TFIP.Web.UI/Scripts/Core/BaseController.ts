@@ -1,6 +1,8 @@
 ﻿module TFIP.Web.UI.Core {
     
     export class BaseController {
+        
+
         public makeFormDirty(form: Core.ICustomFormController) {
             if (form.$error.required) {
                 for (var i = 0; i < form.$error.required.length; i++) {

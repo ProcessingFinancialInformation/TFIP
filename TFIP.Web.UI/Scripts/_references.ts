@@ -35,6 +35,7 @@
 /// <reference path="Directives\FieldInputs\TextAreaFieldInputDirective.ts"/>
 /// <reference path="Directives\FieldInputs\TextFieldInputDirective.ts"/>
 /// <reference path="Extensions\ArrayEx.ts"/>
+/// <reference path="FileUpload\FileUploadService.ts"/>
 /// <reference path="Home\HomeController.ts"/>
 /// <reference path="linq\linq.d.ts"/>
 /// <reference path="linq\linq.jquery.d.ts"/>

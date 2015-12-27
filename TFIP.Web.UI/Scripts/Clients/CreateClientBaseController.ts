@@ -8,6 +8,8 @@
         createUser: () => void;
         createClient: () => ng.IPromise<Shared.AjaxViewModel<any>> ;
         createClientForm: Core.ICustomFormController;
+        today: Date;
+        min18AgeDate: Date;
     }
 
     export class CreateClientBaseController extends Core.BaseController {
@@ -37,6 +39,8 @@
                 }, true);
             });
             this.$scope.createUser = () => this.createUser();
+            this.$scope.today = moment();
+            this.$scope.min18AgeDate = moment().subtract("years", 18);
         }
 
         private createUser() {

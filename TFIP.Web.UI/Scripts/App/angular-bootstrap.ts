@@ -1,6 +1,7 @@
 /// <reference path="../_references.ts" />
 
 declare var window: Window;
+declare var moment;
 
 module TFIP.Web.UI.Bootstrap {
     

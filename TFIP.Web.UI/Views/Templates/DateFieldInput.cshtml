@@ -12,11 +12,12 @@
                    close-text="Close"
                    ng-required="isRequired"
                    style=""
-                   id="{{name}}">
+                   id="{{name}}"
+                   min-date="minDate"
+                   max-date="maxDate">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="isOpened = !isOpened"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
         </p>
-
     </div>
 </div>

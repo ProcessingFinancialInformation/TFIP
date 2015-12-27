@@ -2,11 +2,18 @@
     export interface IDateFieldInputScope extends IFieldInputScope {
         model: Date | string | number;
         inputModel: Date
+        minDate: Date;
+        maxDate: Date;
     }
 
     export class DateFieldInputDirective extends FieldInputDirective {
         templateUrl = "/Templates/DateFieldInput";
         controller = DateFieldInputDirectiveController;
+        constructor() {
+            super();
+            this.scope.minDate = "=";
+            this.scope.maxDate = "=";
+        }
     }
 
     export class DateFieldInputDirectiveController {
@@ -16,9 +23,6 @@
 
         constructor(
             private $scope: IDateFieldInputScope) {
-            if (typeof (this.$scope.model) == "string") {
-                
-            }
             this.$scope.inputModel = (this.$scope.model)
                 ? (typeof (this.$scope.model) == "string" || typeof (this.$scope.model) == "number")
                     ? new Date(<string>this.$scope.model)
@@ -29,6 +33,22 @@
                     var date = new Date(this.$scope.inputModel.toUTCString());
                     date.setMinutes(-date.getTimezoneOffset());
                     this.$scope.model = date;
+                } else {
+                    this.$scope.model = null;
+                }
+            });
+            this.$scope.$watch("minDate", (newVal, oldVal) => {
+                if (newVal) {
+                    if (this.$scope.inputModel < newVal) {
+                        this.$scope.inputModel = null;
+                    }
+                }
+            });
+            this.$scope.$watch("maxDate",(newVal, oldVal) => {
+                if (newVal) {
+                    if (this.$scope.inputModel > newVal) {
+                        this.$scope.inputModel = null;
+                    }
                 }
             });
         }
