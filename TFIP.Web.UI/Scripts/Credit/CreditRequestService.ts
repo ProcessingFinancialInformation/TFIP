@@ -1,12 +1,13 @@
 ﻿module TFIP.Web.UI.Credit {
     
-    export interface ICreateCreditRequestService {
+    export interface ICreditRequestService {
         showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<CreditRequestModel>;
+        showCreditRequestDetailsPopup(requestId: number): ng.IPromise<any>;
         createCreditRequest(creditRequest: CreditRequestModel): ng.IPromise<Shared.AjaxViewModel<CreditRequestModel>>;
         getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel>;
     }
 
-    export class CreateCreditRequestService implements ICreateCreditRequestService {
+    export class CreditRequestService implements ICreditRequestService {
         
         public static $inject = [
             "httpWrapper",
@@ -66,7 +67,7 @@
             this.getCreditRequestInfo(requestId).then((data: CreditRequestModel) => {
                 var modalInstance = this.$uibModal.open({
                     templateUrl: "/Credit/CreditRequestDetails",
-                    controller: CreateCreditRequestController,
+                    controller: CreditRequestDetailsController,
                     resolve: {
                         creditRequest: () => data
                     }

@@ -73,7 +73,7 @@
                                     <td>
                                         <a ng-if="canMakePayment(creditRequest)" ng-click="makePayment(creditRequest)" title="Внести платёж" class="glyphicon glyphicon-euro"></a>
                                         <span>&nbsp;</span>
-                                        <a ng-click="getCreditRequestDetails()" title="Подробнее" class="glyphicon glyphicon-list-alt"></a>
+                                        <a ng-click="getCreditRequestDetails(creditRequest)" title="Подробнее" class="glyphicon glyphicon-list-alt"></a>
                                     </td>
                                 </tr>
                             </tbody>

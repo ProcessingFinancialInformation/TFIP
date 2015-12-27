@@ -29,7 +29,7 @@
             "creditTypes",
             "clientId",
             "clientType",
-            "createCreditRequestService",
+            "creditRequestService",
             "customFileUploader",
             "apiUrlService",
             "$q"
@@ -45,7 +45,7 @@
             private creditTypes: CreditTypeModel[],
             private clientId: number,
             private clientType: string,
-            private createCreditRequestService: ICreateCreditRequestService,
+            private creditRequestService: ICreditRequestService,
             private customFileUploader: FileUploadModule.IFileUploadService,
             private apiUrlService: Core.IApiUrlService,
             private $q: ng.IQService) {
@@ -130,7 +130,7 @@
         }
 
         private createCreditRequestItself() {
-            var promise = this.createCreditRequestService.createCreditRequest(this.$scope.creditRequestModel);
+            var promise = this.creditRequestService.createCreditRequest(this.$scope.creditRequestModel);
 
             promise.then((data: Shared.AjaxViewModel<CreditRequestModel>) => {
                 if (data.isValid) {

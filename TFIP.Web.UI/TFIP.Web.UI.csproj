@@ -211,6 +211,7 @@
     <Content Include="Views\Payments\MakePayment.cshtml" />
     <Content Include="Views\Payments\MakePaymentModal.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClientModal.cshtml" />
+    <Content Include="Views\Credit\CreditRequestDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -243,7 +244,8 @@
     <TypeScriptCompile Include="Scripts\Core\UrlBuilderService.ts" />
     <TypeScriptCompile Include="Scripts\Core\Business.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestController.ts" />
-    <TypeScriptCompile Include="Scripts\Credit\CreateCreditRequestService.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreditRequestDetailsController.ts" />
+    <TypeScriptCompile Include="Scripts\Credit\CreditRequestService.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreateCreditTypeController.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditModels.ts" />
     <TypeScriptCompile Include="Scripts\Credit\CreditTypeService.ts" />

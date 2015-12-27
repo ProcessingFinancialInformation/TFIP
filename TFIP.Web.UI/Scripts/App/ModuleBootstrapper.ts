@@ -70,7 +70,7 @@
                 .service("locationHelperService", Core.LocationHelperService)
                 .service("httpWrapper", Core.CustomHttpService)
                 .service("creditTypeService", Credit.CreditTypeService)
-                .service("createCreditRequestService", Credit.CreateCreditRequestService)
+                .service("creditRequestService", Credit.CreditRequestService)
                 .service("paymentsService", Payments.PaymentsService)
                 .service("customFileUploader", FileUploadModule.FileUploadService)
                 .controller("ClientController", TFIP.Web.UI.Clients.ClientController)

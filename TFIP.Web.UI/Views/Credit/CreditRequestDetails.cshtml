@@ -1,0 +1,20 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title">Информация о кредитной заявке</h4>
+</div>
+<div class="modal-body">
+    <div simple-metadata ng-if="creditRequest.creditType.name" field-name="'Наименование кредита'" field-value="creditRequest.creditType.name"></div>
+    <div simple-metadata ng-if="creditRequest.creditType.displayCreditKind" field-name="'Вид'" field-value="creditRequest.creditType.displayCreditKind"></div>
+    <div ng-if="creditRequest.creditType.isDocumentsRequired">
+        <h4>Прикрепленные документы</h4>
+        <div ng-repeat="attachment in creditRequest.attachments"></div>
+    </div>
+    
+    <h4>Платежи</h4>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$close()">Закрыть</button>
+</div>

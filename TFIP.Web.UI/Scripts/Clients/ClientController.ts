@@ -4,7 +4,7 @@
         createCreditRequest: () => void;
         clientType: string;
         makePayment: (request: Credit.CreditRequestModel) => void;
-        getCreditRequestDetails: () => void;
+        getCreditRequestDetails: (creditRequest: Credit.CreditRequestModel) => void;
         clientTypes: ClientType;
         getClientName: () => string;
         canMakePayment: (request: Credit.CreditRequestModel) => boolean;
@@ -17,7 +17,7 @@
             "messageBox",
             "clientService",
             "paymentsService",
-            "createCreditRequestService"
+            "creditRequestService"
         ];
 
         constructor(
@@ -26,7 +26,7 @@
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
             private paymentsService: Payments.IPaymentsService,
-            private createCreditRequestService: Credit.ICreateCreditRequestService) {
+            private creditRequestService: Credit.ICreditRequestService) {
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
             var clientType = this.locationHelperService.getParameterValue("clientType");
@@ -42,7 +42,7 @@
 
             this.$scope.createCreditRequest = () => this.createCreditRequest();
             this.$scope.makePayment = (request: Credit.CreditRequestModel) => this.makePayment(request);
-            this.$scope.getCreditRequestDetails = () => this.getCreditRequestDetails();
+            this.$scope.getCreditRequestDetails = (creditRequest: Credit.CreditRequestModel) => this.getCreditRequestDetails(creditRequest);
             this.$scope.clientTypes = new ClientType();
             this.$scope.getClientName = () => this.getClientName();
             this.$scope.canMakePayment = (request: Credit.CreditRequestModel) => this.canMakePayment(request);
@@ -62,7 +62,7 @@
         }
 
         private createCreditRequest() {
-            this.createCreditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType).then((data: Credit.CreditRequestModel) => {
+            this.creditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType).then((data: Credit.CreditRequestModel) => {
                 if (data) {
                     this.$scope.clientViewModel.credits.push(data);
                 }
@@ -88,8 +88,8 @@
             });
         }
 
-        private getCreditRequestDetails() {
-            alert('credit request details');
+        private getCreditRequestDetails(creditRequest: Credit.CreditRequestModel) {
+            this.creditRequestService.showCreditRequestDetailsPopup(creditRequest.id);
         }
 
         private canMakePayment(request: Credit.CreditRequestModel): boolean {

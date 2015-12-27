@@ -14,5 +14,10 @@ namespace TFIP.Web.UI.Controllers
         {
             return this.PartialView();
         }
+
+        public ActionResult CreditRequestDetails()
+        {
+            return this.PartialView();
+        }
     }
 }

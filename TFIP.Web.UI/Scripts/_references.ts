@@ -21,7 +21,7 @@
 /// <reference path="Core\MessageBoxService.ts"/>
 /// <reference path="Core\UrlBuilderService.ts"/>
 /// <reference path="Credit\CreateCreditRequestController.ts"/>
-/// <reference path="Credit\CreateCreditRequestService.ts"/>
+/// <reference path="Credit\creditRequestService.ts"/>
 /// <reference path="Credit\CreateCreditTypeController.ts"/>
 /// <reference path="Credit\CreditModels.ts"/>
 /// <reference path="Credit\CreditTypeService.ts"/>
