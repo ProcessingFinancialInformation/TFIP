@@ -10,7 +10,6 @@ namespace TFIP.Web.Api.Controllers
     public class CreditRequestController : BaseApiController
     {
         private readonly ICreditRequestService creditRequestService;
-
         private readonly IValidationService<CreditRequestViewModel> creditRequestValidationService;
 
         public CreditRequestController(

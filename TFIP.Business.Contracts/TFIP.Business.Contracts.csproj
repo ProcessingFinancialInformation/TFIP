@@ -79,6 +79,7 @@
     <Compile Include="ICreditCalculationService.cs" />
     <Compile Include="ICreditRequestService.cs" />
     <Compile Include="ICreditTypeService.cs" />
+    <Compile Include="ICurrentUser.cs" />
     <Compile Include="IDifferentialCreditCalculationService.cs" />
     <Compile Include="IFileManagementService.cs" />
     <Compile Include="IFileService.cs" />

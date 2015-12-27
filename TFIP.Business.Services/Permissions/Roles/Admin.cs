@@ -9,7 +9,7 @@ namespace TFIP.Business.Services.Permissions.Roles
             
         }
 
-        public override bool CanTest()
+        public override bool HasAdminPermissions()
         {
             return true;
         }

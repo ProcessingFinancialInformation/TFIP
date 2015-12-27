@@ -24,6 +24,24 @@ namespace TFIP.Web.Api
             RegisterRoles();
         }
 
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            string httpOrigin = Request.Params["HTTP_ORIGIN"];
+            if (httpOrigin == null)
+            {
+                httpOrigin = "*";
+            }
+            
+            if (Request.HttpMethod == "OPTIONS")
+            {
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", httpOrigin);
+                HttpContext.Current.Response.StatusCode = 200;
+                var httpApplication = sender as HttpApplication;
+                httpApplication.CompleteRequest();
+            }
+        }
+
+
         protected void Application_Error(object sender, EventArgs e)
         {
             HttpContext context = HttpContext.Current;
@@ -72,8 +90,6 @@ namespace TFIP.Web.Api
         {
             return Assembly.GetExecutingAssembly();
         }
-
-        // TODO : Application_Error logging
 
         private void RegisterRoles()
         {

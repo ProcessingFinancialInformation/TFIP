@@ -3,7 +3,9 @@ using System.Net.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Common.Helpers;
 using TFIP.Web.Api.Helpers;
+using TFIP.Web.Api.Security;
 using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
@@ -22,6 +24,7 @@ namespace TFIP.Web.Api.Controllers
             this.creditTypeValidationService = creditTypeValidationService;
         }
 
+        [UserAuthorize(Capability.AdminPermissions)]
         public HttpResponseMessage GetPage()
         {
             return Request.CreateResponse(HttpStatusCode.OK, new CreditTypePageViewModel()

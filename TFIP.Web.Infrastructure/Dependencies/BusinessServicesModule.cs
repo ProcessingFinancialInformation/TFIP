@@ -33,6 +33,10 @@ namespace TFIP.Web.Infrastructure.Dependencies
             builder.RegisterType<ServiceFactory>()
                 .As<IServiceFactory>()
                 .SingleInstance();
+
+            builder.RegisterType<CurrentUser>()
+                .As<ICurrentUser>()
+                .InstancePerRequest();
         }
     }
 }

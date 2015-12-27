@@ -17,12 +17,14 @@ namespace TFIP.Web.Api.Controllers
         private readonly IValidationService<CreateIndividualClientViewModel> individualClientValidationService;
         private readonly IValidationService<CreateJuridicalClientViewModel> juridicalClientValidationService;
         private readonly ICountryService countryService;
+        private readonly ICurrentUser currentUser;
         private readonly ISettingsService settingsService;
 
         public ClientsController(
             IIndividualClientsService individualClientsService, 
             IJuridicalClientsService juridicalClientsService,
             ICountryService countryService,
+            ICurrentUser currentUser,
             ISettingsService settingsService,
             IValidationService<CreateIndividualClientViewModel> individualClientValidationService,
             IValidationService<CreateJuridicalClientViewModel> juridicalClientValidationService)
@@ -30,6 +32,7 @@ namespace TFIP.Web.Api.Controllers
             this.individualClientsService = individualClientsService;
             this.juridicalClientsService = juridicalClientsService;
             this.countryService = countryService;
+            this.currentUser = currentUser;
             this.settingsService = settingsService;
             this.individualClientValidationService = individualClientValidationService;
             this.juridicalClientValidationService = juridicalClientValidationService;

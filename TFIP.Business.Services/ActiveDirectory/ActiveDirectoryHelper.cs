@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Linq;
 using System.Runtime.Caching;
-using System.Security.Principal;
+using TFIP.Common.Helpers;
 
 namespace TFIP.Business.Services.ActiveDirectory
 {
@@ -73,6 +73,7 @@ namespace TFIP.Business.Services.ActiveDirectory
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(90)
                 };
+
                 var groupPrincipal = GroupPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName,
                                                            groupName);
                 if (groupPrincipal == null)
@@ -152,7 +153,7 @@ namespace TFIP.Business.Services.ActiveDirectory
         {
             // var domain = Domain.GetCurrentDomain();
             // return new PrincipalContext(ContextType.Domain, domain.Name);
-            return new PrincipalContext(ContextType.Machine, null);
+            return new PrincipalContext(ContextType.Machine);
         }
 
         public static void ClearCache()
@@ -164,11 +165,4 @@ namespace TFIP.Business.Services.ActiveDirectory
         }
     }
 
-    public class ActiveDirectoryUser
-    {
-        public string UserAccount { get; set; }
-        public string DisplayName { get; set; }
-        public SecurityIdentifier Sid { get; set; }
-        public string Email { get; set; }
-    }
 }

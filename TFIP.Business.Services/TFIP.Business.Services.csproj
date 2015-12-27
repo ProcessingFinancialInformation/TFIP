@@ -90,6 +90,7 @@
     <Compile Include="CreditCalculation\DifferentialCreditCalculationService.cs" />
     <Compile Include="CreditRequestService.cs" />
     <Compile Include="CreditTypeService.cs" />
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="FileManagementService.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="IndividualClientsService.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Mapper\MapperProfileService.cs" />
     <Compile Include="NotificationService.cs" />
     <Compile Include="PaymentService.cs" />
+    <Compile Include="Permissions\Context\CreditRequestContext.cs" />
     <Compile Include="Permissions\PermissionService.cs" />
     <Compile Include="Permissions\Roles\Admin.cs" />
     <Compile Include="Permissions\Roles\BaseRole.cs" />
