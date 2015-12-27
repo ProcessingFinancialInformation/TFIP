@@ -21,7 +21,7 @@ namespace TFIP.Web.Api.Controllers
         {
             if (HttpContext.Current.Request.Files.Count == 0)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "No files");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No files");
             }
 
             var file = HttpContext.Current.Request.Files[0];

@@ -85,7 +85,7 @@ namespace TFIP.Web.Api.Controllers
                     client = individualClientsService.GetIndividualClient(clientId);
                     return client != null
                                ? this.Request.CreateResponse(HttpStatusCode.OK, client)
-                               : this.Request.CreateResponse(
+                               : this.Request.CreateErrorResponse(
                                    HttpStatusCode.BadRequest,
                                    String.Format(ErrorMessages.InvalidClientId, clientId));
                 }
@@ -94,7 +94,7 @@ namespace TFIP.Web.Api.Controllers
                 {
                     client = juridicalClientsService.GetJuridicalClient(clientId);
                     return client != null ? this.Request.CreateResponse(HttpStatusCode.OK, client) : 
-                        this.Request.CreateResponse(HttpStatusCode.BadRequest, String.Format(ErrorMessages.InvalidClientId, clientId));
+                        this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, String.Format(ErrorMessages.InvalidClientId, clientId));
                 }
                 default:
                     return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);

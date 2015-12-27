@@ -6,18 +6,24 @@ using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services
 {
+    using System.Linq;
+
     public class CreditRequestService : ICreditRequestService
     {
         private readonly ICreditUow creditUow;
+
         private readonly INotificationService notificationService;
+
+        private readonly IAttachmentService attachmentService;
 
         public CreditRequestService(
             ICreditUow creditUow, 
-            INotificationService notificationService
-            )
+            INotificationService notificationService,
+            IAttachmentService attachmentService)
         {
             this.creditUow = creditUow;
             this.notificationService = notificationService;
+            this.attachmentService = attachmentService;
         }
 
         public CreditRequestViewModel GetCreditRequestInfo(long id)
@@ -50,6 +56,7 @@ namespace TFIP.Business.Services
         public CreditRequestListItemViewModel CreateCreditRequest(CreditRequestViewModel creditRequestViewModel)
         {
             var creditRequest = AutoMapper.Mapper.Map<CreditRequestViewModel, CreditRequest>(creditRequestViewModel);
+            this.attachmentService.SaveAttachmentHeader(creditRequestViewModel.Attachments.ToList(), creditRequest);
             creditUow.CreditRequests.InsertOrUpdate(creditRequest);
             creditUow.Commit();
             return AutoMapper.Mapper.
