@@ -84,11 +84,13 @@
 
     export class CreditRequestApi extends UrlHelperBase {
         public saveCreditRequest: string;
+        public getCreditRequest: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.saveCreditRequest = this.getBasePath() + "api/creditRequest/createCreditRequest";
+            this.getCreditRequest = this.getBasePath() + "api/creditRequest/getCreditRequestInfo";
         }
     }
 

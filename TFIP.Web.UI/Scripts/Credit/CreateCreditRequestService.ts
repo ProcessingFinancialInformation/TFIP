@@ -3,6 +3,7 @@
     export interface ICreateCreditRequestService {
         showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<CreditRequestModel>;
         createCreditRequest(creditRequest: CreditRequestModel): ng.IPromise<Shared.AjaxViewModel<CreditRequestModel>>;
+        getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel>;
     }
 
     export class CreateCreditRequestService implements ICreateCreditRequestService {
@@ -13,7 +14,8 @@
             "$q",
             "$uibModal",
             "apiUrlService",
-            "creditTypeService"
+            "creditTypeService",
+            "urlBuilderService"
         ];
 
         constructor(
@@ -22,7 +24,8 @@
             private $q: ng.IQService,
             private $uibModal: ng.ui.bootstrap.IModalService,
             private apiUrlService: Core.IApiUrlService,
-            private creditTypeService: Credit.ICreditTypeService) {
+            private creditTypeService: Credit.ICreditTypeService,
+            private urlBuilderService: Core.IUrlBuilderService) {
             
         }
 
@@ -57,8 +60,37 @@
             return deferred.promise;
         }
 
+        public showCreditRequestDetailsPopup(requestId: number): ng.IPromise<any> {
+            var deferred = this.$q.defer();
+
+            this.getCreditRequestInfo(requestId).then((data: CreditRequestModel) => {
+                var modalInstance = this.$uibModal.open({
+                    templateUrl: "/Credit/CreditRequestDetails",
+                    controller: CreateCreditRequestController,
+                    resolve: {
+                        creditRequest: () => data
+                    }
+                });
+
+                modalInstance.result.then((modalData: any) => {
+                    deferred.resolve(data);
+                }, (reason: any) => {
+                    deferred.reject(reason);
+                });
+            }, (reason: Core.IRejectionReason) => {
+                    this.messageBox.showError(Const.Messages.creditRequestInfo, reason.message);
+                deferred.reject();
+            });
+
+            return deferred.promise;
+        }
+
         public createCreditRequest(creditRequest: CreditRequestModel): ng.IPromise<Shared.AjaxViewModel<CreditRequestModel>> {
             return this.httpWrapper.post(this.apiUrlService.creditRequestApi.saveCreditRequest, creditRequest);
+        }
+
+        public getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel> {
+            return this.httpWrapper.get(this.urlBuilderService.buildQuery(this.apiUrlService.creditRequestApi.getCreditRequest, { id: id }));
         }
     }
 } 

@@ -104,7 +104,7 @@
 
         public getCreditTypes(isActive?: boolean): ng.IPromise<CreditTypeModel[]> {
             var deferred = this.$q.defer();
-            var url = this.apiUrlService.creditTypeApi.getCredtTypes;
+            var url = this.urlBuilderService.buildQuery(this.apiUrlService.creditTypeApi.getCredtTypes, { isActive: isActive });
             this.httpWrapper.get(url).then((data: CreditTypeModel[]) => {
                 deferred.resolve(data);
             }, (reason) => {

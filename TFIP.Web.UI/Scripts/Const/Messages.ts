@@ -12,6 +12,8 @@
 
         public static admin = "Администрирование";
 
+        public static creditRequestInfo = "Информация о кредитной заявке";
+
         public static creditCreation = "Заявка на кредит";
 
         public static creditRequestNoGuarantors = "Для выбранного кредита необходимы поручители.";

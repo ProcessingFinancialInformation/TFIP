@@ -8,6 +8,9 @@
         changeActivity: (id: number, active: boolean) => void;
         getCreditKindName: (kind: number) => string;
         count: (active: boolean) => number;
+        pageChanged: () => void;
+        currentPage: number;
+        totalCount: number;
     }
 
     export class AdminController {
@@ -40,6 +43,10 @@
             this.$scope.changeActivity = (id: number, active: boolean) => this.changeActivity(id, active);
             this.$scope.getCreditKindName = (kind: number) => this.getCreditKindName(kind);
             this.$scope.count = (active: boolean) => this.count(active);
+            this.$scope.pageChanged = () => {
+                console.log(this.$scope.currentPage);
+            }
+            this.$scope.totalCount = 100;
         }
 
         private createCreditType() {
