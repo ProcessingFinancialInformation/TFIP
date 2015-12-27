@@ -3,7 +3,9 @@
         <p ng-bind="fieldName"></p>
     </div>
     <div class="col-xs-6">
-        <p ng-if="isDate">{{fieldValue | date : 'dd-MMMM-yyyy' }}</p>
-        <p ng-if="!isDate">{{fieldValue}}</p>
+        
+        <p ng-if="isDate && !fieldAction">{{fieldValue | date : 'dd-MMMM-yyyy' }}</p>
+        <p ng-if="!isDate && !fieldAction">{{fieldValue}}</p>
+        <p ng-if="fieldAction">{{fieldAction(fieldValue)}}</p>
     </div>
 </div>

@@ -4,6 +4,7 @@
         scope = {
             fieldName: "=",
             fieldValue: "=",
+            fieldAction: "=",
             isDate: "="
         };
         templateUrl = "/Templates/SimpleMetadataTemplate";

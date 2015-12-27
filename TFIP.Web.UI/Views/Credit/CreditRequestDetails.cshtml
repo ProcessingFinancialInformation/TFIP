@@ -7,6 +7,8 @@
 <div class="modal-body">
     <div simple-metadata ng-if="creditRequest.creditType.name" field-name="'Наименование кредита'" field-value="creditRequest.creditType.name"></div>
     <div simple-metadata ng-if="creditRequest.creditType.displayCreditKind" field-name="'Вид'" field-value="creditRequest.creditType.displayCreditKind"></div>
+    <div simple-metadata ng-if="creditRequest.displayStatus" field-name="'Дата оформления'" field-value="creditRequest.creationDate" is-date="true"></div>
+    <div simple-metadata ng-if="creditRequest.displayStatus" field-name="'Текущий статус'" field-value="creditRequest.displayStatus"></div>
     <div ng-if="creditRequest.creditType.isDocumentsRequired">
         <h4>Прикрепленные документы</h4>
         <div class="row" ng-repeat="attachment in creditRequest.attachments">
@@ -16,8 +18,24 @@
         </div>
     </div>
     
-    <h4>Платежи</h4>
-
+    <h4>Информация о платежах</h4>
+    <div simple-metadata ng-if="balanceInfo.mainDebtBalance" field-name="'Остаток'" field-value="balanceInfo.mainDebtBalance" field-action="concatCurrency"></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Сумма платежа</th>
+                <th>Дата платежа</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="payment in creditRequest.payments">
+                <td>{{$index + 1}}</td>
+                <td>{{concatCurrency(payment.amount)}}</td>
+                <td>{{payment.processedAt | date : 'dd-MMMM-yyyy HH:mm'}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$close()">Закрыть</button>
