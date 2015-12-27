@@ -52,7 +52,7 @@
 
         public static main(modules: ModuleBootstrapper[]) {
             var modulesNames: string[] = modules.asEnumerable().select((m: ModuleBootstrapper, index: number) => { return m.module.name; }).toArray();
-            modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI']);
+            modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI', 'angularFileUpload']);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
                 .directive("textFieldInput",() => new Directives.TextFieldInputDirective)
@@ -72,6 +72,7 @@
                 .service("creditTypeService", Credit.CreditTypeService)
                 .service("createCreditRequestService", Credit.CreateCreditRequestService)
                 .service("paymentsService", Payments.PaymentsService)
+                .service("customFileUploader", FileUploadModule.FileUploadService)
                 .controller("ClientController", TFIP.Web.UI.Clients.ClientController)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("CreateClientConroller", Clients.CreateIndividualClientController)

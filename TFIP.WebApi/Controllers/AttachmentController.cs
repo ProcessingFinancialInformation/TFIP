@@ -17,20 +17,22 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage SaveAttachment(HttpPostedFileBase file)
+        public HttpResponseMessage SaveAttachment()
         {
-            if (file != null)
+            if (HttpContext.Current.Request.Files.Count == 0)
             {
-                var result = ProcessViewModel<FileViewModel, ListItem>(new FileViewModel()
-                {
-                    InputStream = file.InputStream,
-                    FileName = file.FileName
-                }, null, fileManagementService.SaveAttachmentToTempFolder);
-
-                return Request.CreateResponse(HttpStatusCode.OK, result);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "No files");
             }
 
-            return Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
+            var file = HttpContext.Current.Request.Files[0];
+
+            var result =
+                ProcessViewModel<FileViewModel, ListItem>(
+                    new FileViewModel { InputStream = file.InputStream, FileName = file.FileName },
+                    null,
+                    fileManagementService.SaveAttachmentToTempFolder);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         public HttpResponseMessage Download(ListItem file)

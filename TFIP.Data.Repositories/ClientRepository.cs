@@ -20,7 +20,7 @@ namespace TFIP.Data.Repositories
             return DbSet
                 .Include(c => c.CreditRequests
                     .Select(request => request.CreditType))
-                .FirstOrDefault(c=> c.Id == id);
+                .FirstOrDefault(c => c.Id == id);
         }
     }
 }

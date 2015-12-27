@@ -16,6 +16,8 @@
 
         public static creditRequestNoGuarantors = "Для выбранного кредита необходимы поручители.";
 
+        public static creditRequestNoDocuments = "Для выбранного кредита необходимы документы.";
+
         public static creditTypeStatusActiveChanged = "Кредит переведен в статус \"активен\".";
 
         public static creditTypeStatusNotActiveChanged = "Кредит переведен в статус \"неактивен\".";

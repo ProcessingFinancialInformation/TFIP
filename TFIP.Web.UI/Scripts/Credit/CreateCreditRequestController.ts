@@ -1,4 +1,5 @@
 ﻿module TFIP.Web.UI.Credit {
+
     export interface ICreateCreditRequestScope extends ng.IScope {
         creditRequestModel: CreditRequestModel;
         addGuarantor: () => void
@@ -12,9 +13,14 @@
         creditRequestForm: Core.ICustomFormController;
         regex: Const.RegularExpressions;
         editGuarantor: (index: number) => void;
+        uploader: any;
+        fileSelectBtn: string;
+        addFile: () => void;
+        removeFile: (item: any) => void;
     }
 
     export class CreateCreditRequestController extends Core.BaseController {
+
         public static $inject = [
             "$scope",
             "$uibModalInstance",
@@ -23,8 +29,13 @@
             "creditTypes",
             "clientId",
             "clientType",
-            "createCreditRequestService"
+            "createCreditRequestService",
+            "customFileUploader",
+            "apiUrlService",
+            "$q"
         ];
+
+        private attachments: Shared.ListItem[];
 
         constructor(
             private $scope: ICreateCreditRequestScope,
@@ -34,16 +45,15 @@
             private creditTypes: CreditTypeModel[],
             private clientId: number,
             private clientType: string,
-            private createCreditRequestService: ICreateCreditRequestService) {
+            private createCreditRequestService: ICreateCreditRequestService,
+            private customFileUploader: FileUploadModule.IFileUploadService,
+            private apiUrlService: Core.IApiUrlService,
+            private $q: ng.IQService) {
             super();
+
             this.$scope.creditRequestModel = new CreditRequestModel();
             this.$scope.creditRequestModel.clientId = clientId;
             this.$scope.creditRequestModel.clientType = clientType;
-            this.$scope.addGuarantor = () => this.addGuarantor();
-            this.$scope.documentsRequired = () => this.documentsRequired();
-            this.$scope.guarantorRequired = () => this.guarantorRequired();
-            this.$scope.getMinAmount = () => this.getMinAmount();
-            this.$scope.getMaxAmount = () => this.getMaxAmount();
             this.$scope.creditTypes = creditTypes;
             this.$scope.creditTypesViewModel = creditTypes.asEnumerable().select((ct: CreditTypeModel) => {
                 return {
@@ -51,9 +61,45 @@
                     value: ct.name
                 }
             }).toArray();
+            this.attachments = [];
+            this.initScope();
+            this.initUploader();
+        }
+
+        private initScope() {
+            this.$scope.addGuarantor = () => this.addGuarantor();
+            this.$scope.documentsRequired = () => this.documentsRequired();
+            this.$scope.guarantorRequired = () => this.guarantorRequired();
+            this.$scope.getMinAmount = () => this.getMinAmount();
+            this.$scope.getMaxAmount = () => this.getMaxAmount();
             this.$scope.onSaveClick = () => this.createCreditRequest();
             this.$scope.editGuarantor = (index: number) => this.editGuarantor(index);
             this.$scope.regex = new Const.RegularExpressions();
+            this.$scope.addFile = () => this.addFile();
+            this.$scope.removeFile = (item: any) => this.removeFile(item);
+            this.$scope.$on("$destroy", () => {
+                this.customFileUploader.destroyUploader();
+            });
+        }
+
+        private initUploader() {
+            this.customFileUploader.initUploader({
+                url: this.apiUrlService.attachmentApi.uploadFile,
+                onFileSuccess: (response: Shared.AjaxViewModel<Shared.ListItem>, status: number, headers: any) => this.onFileSuccess(response, status, headers),
+                onFileError: (response: any, status: number, headers: any) => this.onFileError(response, status, headers),
+                continueOnError: false
+            });
+            this.$scope.uploader = this.customFileUploader.getUploader();
+            this.$scope.fileSelectBtn = "fileSelectBtn";
+        }
+
+        private addFile() {
+            var fileBtn = angular.element("[nv-file-select]");
+            fileBtn.click();
+        }
+
+        private removeFile(item: any) {
+            this.customFileUploader.removeItemFromQueue(item);
         }
 
         private createCreditRequest() {
@@ -66,7 +112,24 @@
                 this.messageBox.showError(Const.Messages.creditCreation, Const.Messages.creditRequestNoGuarantors);
                 return;
             }
+            if (this.documentsRequired() && !this.customFileUploader.anyFilesToUpload()) {
+                this.messageBox.showError(Const.Messages.creditCreation, Const.Messages.creditRequestNoDocuments);
+                return;
+            }
 
+            if (this.documentsRequired()) {
+                this.customFileUploader.uploadByFile().then(() => {
+                    this.$scope.creditRequestModel.attachments = this.attachments;
+                    this.createCreditRequestItself();
+                }, (reason: any) => {
+                    this.messageBox.showError(Const.Messages.creditCreation, reason);
+                });
+            } else {
+                this.createCreditRequestItself();
+            }
+        }
+
+        private createCreditRequestItself() {
             var promise = this.createCreditRequestService.createCreditRequest(this.$scope.creditRequestModel);
 
             promise.then((data: Shared.AjaxViewModel<CreditRequestModel>) => {
@@ -75,9 +138,29 @@
                 } else {
                     this.messageBox.showErrorMulty(Const.Messages.creditCreation, data.errors);
                 }
-            }, (reason: Core.IRejectionReason) => {
-                this.messageBox.showError(Const.Messages.creditCreation, reason.message);
-            });
+            },(reason: Core.IRejectionReason) => {
+                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+                });
+        }
+
+        private onFileSuccess(response: Shared.AjaxViewModel<Shared.ListItem>, status: number, headers: any): ng.IPromise<any> {
+            var deferred = this.$q.defer();
+            this.attachments.push(response.data);
+
+            deferred.resolve();
+
+            return deferred.promise;
+        }
+
+        private onFileError(response: any, status: number, headers: any): ng.IPromise<any> {
+            var deferred = this.$q.defer();
+            console.log(response);
+            console.log(status);
+            console.log(headers);
+
+            deferred.resolve();
+
+            return deferred.promise;
         }
 
         private addGuarantor() {

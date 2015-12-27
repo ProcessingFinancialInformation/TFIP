@@ -7,6 +7,24 @@
 <div class="modal-body">
     <div class="form-horizontal" ng-form="creditRequestForm">
         <div select-field-input name="'creditTypeId'" label-text="'Наименование кредита'" model="creditRequestModel.creditTypeId" is-required="true" model-values="creditTypesViewModel"></div>
+        
+        <div class="form-group" ng-if="documentsRequired()">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default" ng-click="addFile()">Добавить документ</button>
+                <input type="file" class="hidden" nv-file-select uploader="uploader" ng-class="{ fileSelectBtn : true }" />
+            </div>
+        </div>
+        
+        <div class="form-group" ng-repeat="item in uploader.queue">
+            <div class="col-sm-2">Документ №{{$index + 1}}</div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-xs-8" style="word-wrap: break-word;">{{item.file.name}}</div>
+                    <div class="col-xs-2">{{ item.file.size/1024/1024|number:2 }} МБ</div>
+                    <button type="button" class="close col-xs-2" ng-click="removeFile(item)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+        </div>
 
         <div class="form-group" ng-if="guarantorRequired()">
             <div class="col-sm-offset-2 col-sm-10">
@@ -17,7 +35,7 @@
         <div class="form-group" ng-repeat="guarantor in creditRequestModel.guarantors" ng-if="guarantorRequired()">
             <div class="col-sm-2">Поручитель №{{$index + 1}}</div>
             <div class="col-sm-10">
-                <p><span>{{guarantor.lastName}}</span><span>{{guarantor.firstName}}</span></p>
+                <p><span>{{guarantor.lastName}}</span><span>&nbsp;</span><span>{{guarantor.firstName}}</span></p>
                 <p><span>{{guarantor.passportNo}}</span></p>
                 <button ng-if="!guarantor.id" class="btn btn-default" ng-click="editGuarantor($index)">Редактировать</button>
             </div>

@@ -296,3 +296,5 @@ TFIP.Web.UI/Scripts/Clients/CreateClientBaseController.js
 TFIP.Web.UI/Scripts/Clients/CreateClientBaseController.js.map
 TFIP.Web.UI/Scripts/Clients/CreateClientModalController.js
 TFIP.Web.UI/Scripts/Clients/CreateClientModalController.js.map
+TFIP.Web.UI/Scripts/FileUpload/FileUploadService.js
+TFIP.Web.UI/Scripts/FileUpload/FileUploadService.js.map

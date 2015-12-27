@@ -46,6 +46,7 @@
         totalAmount: number;
         status: string;
         statusId: number;
+        attachments: Shared.ListItem[];
     }
 
 } 

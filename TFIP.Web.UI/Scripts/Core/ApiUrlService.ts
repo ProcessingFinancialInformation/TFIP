@@ -5,6 +5,7 @@
         creditTypeApi: CreditTypeApi;
         creditRequestApi: CreditRequestApi;
         paymentsApi: PaymentsApi;
+        attachmentApi: AttachmentApi;
     }
 
     export class ApiUrlService {
@@ -16,6 +17,7 @@
         public creditTypeApi: CreditTypeApi;
         public creditRequestApi: CreditRequestApi;
         public paymentsApi: PaymentsApi;
+        public attachmentApi: AttachmentApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
@@ -24,6 +26,7 @@
             this.creditTypeApi = new CreditTypeApi(baseUrl);
             this.creditRequestApi = new CreditRequestApi(baseUrl);
             this.paymentsApi = new PaymentsApi(baseUrl);
+            this.attachmentApi = new AttachmentApi(baseUrl);
         }
     }
 
@@ -99,8 +102,16 @@
             this.getBalanceInformation = this.getBasePath() + "api/payments/getBalanceInformation";
             this.makePayment = this.getBasePath() + "api/payments/makePayment";
         }
+    }
 
+    export class AttachmentApi extends UrlHelperBase {
+        public uploadFile: string;
 
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.uploadFile = this.getBasePath() + "api/attachment/saveAttachment";
+        }
     }
 
 } 

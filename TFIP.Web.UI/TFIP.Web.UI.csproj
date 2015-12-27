@@ -164,6 +164,7 @@
     <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\FileUpload\angular-file-upload.js" />
     <Content Include="Scripts\jQuery\jquery.validate.js" />
     <Content Include="Scripts\jQuery\jquery.validate.min.js" />
     <Content Include="Scripts\jQuery\jquery-1.10.2.js" />
@@ -255,6 +256,7 @@
     <TypeScriptCompile Include="Scripts\Directives\FieldInputs\TextAreaFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Directives\FieldInputs\TextFieldInputDirective.ts" />
     <TypeScriptCompile Include="Scripts\Extensions\ArrayEx.ts" />
+    <TypeScriptCompile Include="Scripts\FileUpload\FileUploadService.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.d.ts" />
     <TypeScriptCompile Include="Scripts\linq\linq.jquery.d.ts" />
