@@ -108,11 +108,13 @@
 
     export class AttachmentApi extends UrlHelperBase {
         public uploadFile: string;
+        public download: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.uploadFile = this.getBasePath() + "api/attachment/saveAttachment";
+            this.download = this.getBasePath() + "api/attachment/download";
         }
     }
 

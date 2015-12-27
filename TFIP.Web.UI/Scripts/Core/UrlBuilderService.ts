@@ -16,7 +16,7 @@
         public buildQuery(template: string, params: any): string {
             var queryString = "?";
 
-            queryString = queryString.concat($.param(params));
+            queryString = queryString.concat($.param(params, false));
 
             return template.concat(queryString);
         }

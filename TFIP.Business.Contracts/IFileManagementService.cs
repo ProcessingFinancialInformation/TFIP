@@ -3,6 +3,8 @@ using TFIP.Business.Models;
 
 namespace TFIP.Business.Contracts
 {
+    using System.IO;
+
     public interface IFileManagementService
     {
         ListItem SaveAttachmentToTempFolder(FileViewModel fileViewModel);
@@ -20,6 +22,8 @@ namespace TFIP.Business.Contracts
         bool FileExists(ListItem file);
 
         byte[] GetFileBytes(ListItem file);
+
+        Stream GetFileStream(ListItem file);
 
         void MoveTemporaryAttachmentsToStorage(IEnumerable<string> foldersToCheck);
     }

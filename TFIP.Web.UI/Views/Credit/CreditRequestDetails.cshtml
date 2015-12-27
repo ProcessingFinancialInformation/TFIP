@@ -9,7 +9,11 @@
     <div simple-metadata ng-if="creditRequest.creditType.displayCreditKind" field-name="'Вид'" field-value="creditRequest.creditType.displayCreditKind"></div>
     <div ng-if="creditRequest.creditType.isDocumentsRequired">
         <h4>Прикрепленные документы</h4>
-        <div ng-repeat="attachment in creditRequest.attachments"></div>
+        <div class="row" ng-repeat="attachment in creditRequest.attachments">
+            <div class="col-xs-12">
+                <a ng-click="downloadAttachment(attachment)">{{attachment.value}}</a>
+            </div>
+        </div>
     </div>
     
     <h4>Платежи</h4>
