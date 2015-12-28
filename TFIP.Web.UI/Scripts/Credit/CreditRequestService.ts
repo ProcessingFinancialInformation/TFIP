@@ -16,7 +16,8 @@
             "$uibModal",
             "apiUrlService",
             "creditTypeService",
-            "urlBuilderService"
+            "urlBuilderService",
+            "paymentsService"
         ];
 
         constructor(
@@ -26,7 +27,8 @@
             private $uibModal: ng.ui.bootstrap.IModalService,
             private apiUrlService: Core.IApiUrlService,
             private creditTypeService: Credit.ICreditTypeService,
-            private urlBuilderService: Core.IUrlBuilderService) {
+            private urlBuilderService: Core.IUrlBuilderService,
+            private paymentsService: Payments.IPaymentsService) {
             
         }
 
@@ -63,24 +65,39 @@
 
         public showCreditRequestDetailsPopup(requestId: number): ng.IPromise<any> {
             var deferred = this.$q.defer();
+            var creditRequest: CreditRequestModel;
+            var balanceInfo: Payments.BalanceInformationModel;
 
-            this.getCreditRequestInfo(requestId).then((data: CreditRequestModel) => {
+
+            var promise1 = this.getCreditRequestInfo(requestId).then((data: CreditRequestModel) => {
+                creditRequest = data;
+            }, (reason: Core.IRejectionReason) => {
+                this.messageBox.showError(Const.Messages.creditRequestInfo, reason.message);
+                deferred.reject();
+            });
+
+            var promise2 = this.paymentsService.getBalanceInformation(requestId).then((bInfo: Payments.BalanceInformationModel) => {
+                balanceInfo = bInfo;
+            }, (reason: Core.IRejectionReason) => {
+                this.messageBox.showError(Const.Messages.creditRequestInfo, reason.message);
+                deferred.reject();
+            });
+
+            this.$q.all([promise1, promise2]).then(() => {
                 var modalInstance = this.$uibModal.open({
                     templateUrl: "/Credit/CreditRequestDetails",
                     controller: CreditRequestDetailsController,
                     resolve: {
-                        creditRequest: () => data
+                        creditRequest: () => creditRequest,
+                        balanceInfo: () => balanceInfo
                     }
                 });
 
                 modalInstance.result.then((modalData: any) => {
-                    deferred.resolve(data);
+                    deferred.resolve(modalData);
                 }, (reason: any) => {
                     deferred.reject(reason);
                 });
-            }, (reason: Core.IRejectionReason) => {
-                    this.messageBox.showError(Const.Messages.creditRequestInfo, reason.message);
-                deferred.reject();
             });
 
             return deferred.promise;

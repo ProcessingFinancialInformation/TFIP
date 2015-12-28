@@ -47,6 +47,7 @@
         status: string;
         statusId: number;
         attachments: Shared.ListItem[];
+        creditType: any;
     }
 
 } 
