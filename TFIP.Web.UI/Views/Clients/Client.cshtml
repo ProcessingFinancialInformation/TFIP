@@ -60,10 +60,10 @@
                                     <th>Кредит</th>
                                     <th>Вид кредита</th>
                                     <th>Дата создания заявки</th>
-                                    <th>Дата подтверждения заявки</th>
+                                    <th>Дата подтверждения/отклонения заявки</th>
                                     <th>Дата последнего платежа</th>
                                     <th>Статус</th>
-                                    <th>Действия</th>
+                                    <th class="action-column">Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,6 +77,10 @@
                                     <td ng-bind="creditRequest.status"></td>
                                     <td>
                                         <a ng-if="canMakePayment(creditRequest)" ng-click="makePayment(creditRequest)" title="Внести платёж" class="glyphicon glyphicon-euro"></a>
+                                        <span>&nbsp;</span>
+                                        <a ng-click="approveRequest(creditRequest)" title="Подтвердить заявку" class="glyphicon glyphicon-ok green yes-no-buttons"></a>
+                                        <span>&nbsp;</span>
+                                        <a ng-click="denyRequest(creditRequest)" title="Отклонить заявку" class="glyphicon glyphicon-remove red yes-no-buttons"></a>
                                         <span>&nbsp;</span>
                                         <a ng-click="getCreditRequestDetails(creditRequest)" title="Подробнее" class="glyphicon glyphicon-list-alt"></a>
                                     </td>

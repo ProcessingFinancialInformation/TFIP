@@ -85,12 +85,18 @@
     export class CreditRequestApi extends UrlHelperBase {
         public saveCreditRequest: string;
         public getCreditRequest: string;
+        public approveByCreditComission: string;
+        public approveBySecurity: string;
+        public deny: string;
 
         constructor(basePath: string) {
             super(basePath);
 
             this.saveCreditRequest = this.getBasePath() + "api/creditRequest/createCreditRequest";
             this.getCreditRequest = this.getBasePath() + "api/creditRequest/getCreditRequestInfo";
+            this.approveByCreditComission = this.getBasePath() + "api/creditRequest/approveByCreditComission";
+            this.approveBySecurity = this.getBasePath() + "api/creditRequest/approveBySecurity";
+            this.deny = this.getBasePath() + "api/creditRequest/deny";
         }
     }
 

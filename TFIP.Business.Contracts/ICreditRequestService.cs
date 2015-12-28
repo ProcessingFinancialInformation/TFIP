@@ -6,7 +6,11 @@ namespace TFIP.Business.Contracts
     {
         CreditRequestViewModel GetCreditRequestInfo(long id);
 
-        void ApproveByCreditComission(long id);
+        CreditRequestListItemViewModel ApproveByCreditComission(long id);
+
+        CreditRequestListItemViewModel Deny(long id);
+
+        CreditRequestListItemViewModel ApproveBySecurity(long id);
 
         CreditRequestListItemViewModel CreateCreditRequest(CreditRequestViewModel creditRequestViewModel);
     }

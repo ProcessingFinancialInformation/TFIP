@@ -26,10 +26,25 @@ namespace TFIP.Web.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, creditRequest);
         }
 
-        public HttpResponseMessage ApproveByCreditComission(long id)
+        [HttpPost]
+        public HttpResponseMessage ApproveByCreditComission(ListItem data)
         {
-            creditRequestService.ApproveByCreditComission(id);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var updatedRequest = creditRequestService.ApproveByCreditComission(long.Parse(data.Id));
+            return Request.CreateResponse(HttpStatusCode.OK, updatedRequest);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Deny(ListItem data)
+        {
+            var updatedRequest = creditRequestService.Deny(long.Parse(data.Id));
+            return Request.CreateResponse(HttpStatusCode.OK, updatedRequest);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage ApproveBySecurity(ListItem data)
+        {
+            var updatedRequest = creditRequestService.ApproveBySecurity(long.Parse(data.Id));
+            return Request.CreateResponse(HttpStatusCode.OK, updatedRequest);
         }
 
         public HttpResponseMessage CreateCreditRequest(CreditRequestViewModel creditRequest)

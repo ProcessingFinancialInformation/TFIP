@@ -42,6 +42,7 @@
         </div>
 
         <div numeric-field-input name="'totalAmount'" label-text="'Сумма кредита'" model="creditRequestModel.totalAmount" is-required="true" min-value="{{getMinAmount()}}" max-value="{{getMaxAmount()}}"></div>
+        <span ng-if="creditRequestModel.creditTypeId" class="note">Возможная сумма для выбранного типа кредита <span ng-if="getMinAmount()">от <span ng-bind="getMinAmount()"></span></span><span ng-if="getMaxAmount()"> до <span ng-bind="getMaxAmount()"></span></span>.</span>
     </div>
 </div>
 <div class="modal-footer">

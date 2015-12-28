@@ -32,12 +32,12 @@ namespace TFIP.Business.Services
             return AutoMapper.Mapper.Map<CreditRequest, CreditRequestViewModel>(creditRequest);
         }
 
-        public void ApproveByCreditComission(long id)
+        public CreditRequestListItemViewModel ApproveByCreditComission(long id)
         {
             var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(id);
             if (creditRequest.Status != CreditRequestStatus.AwaitingCreditCommissionValidation)
             {
-                return;
+                return null;
             }
 
             creditRequest.Status = CreditRequestStatus.InProgress;
@@ -51,14 +51,33 @@ namespace TFIP.Business.Services
                 notificationService.SendCreditRequestIsProcessed(creditRequest.IndividualClient.FirstName,
                     creditRequest.IndividualClient.ContactEmail, CreditRequestStatus.InProgress);
             }
+
+            return AutoMapper.Mapper.Map<CreditRequest, CreditRequestListItemViewModel>(creditRequest);
         }
 
-        public void ApproveBySecurity(long id)
+        public CreditRequestListItemViewModel Deny(long id)
+        {
+            var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(id);
+            creditRequest.Status = CreditRequestStatus.Denied;
+            creditRequest.ApprovalDate = DateTime.Now;
+            creditUow.CreditRequests.InsertOrUpdate(creditRequest);
+            creditUow.Commit();
+
+            if (creditRequest.IndividualClientId.HasValue)
+            {
+                notificationService.SendCreditRequestIsProcessed(creditRequest.IndividualClient.FirstName,
+                    creditRequest.IndividualClient.ContactEmail, creditRequest.Status);
+            }
+
+            return AutoMapper.Mapper.Map<CreditRequest, CreditRequestListItemViewModel>(creditRequest);
+        }
+
+        public CreditRequestListItemViewModel ApproveBySecurity(long id)
         {
             var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(id);
             if (creditRequest.Status != CreditRequestStatus.AwaitingSecurityValidation)
             {
-                return;
+                return null;
             }
 
             creditRequest.Status = CreditRequestStatus.AwaitingCreditCommissionValidation;
@@ -75,12 +94,19 @@ namespace TFIP.Business.Services
                 notificationService.SendCreditRequestIsProcessedBySecurity(creditRequest.JuridicalClientId.Value,
                     ClientType.JuridicalPerson, creditRequest.Id.ToString());
             }
+
+            return AutoMapper.Mapper.Map<CreditRequest, CreditRequestListItemViewModel>(creditRequest);
         }
 
         public CreditRequestListItemViewModel CreateCreditRequest(CreditRequestViewModel creditRequestViewModel)
         {
             var creditRequest = AutoMapper.Mapper.Map<CreditRequestViewModel, CreditRequest>(creditRequestViewModel);
-            this.attachmentService.SaveAttachmentHeader(creditRequestViewModel.Attachments.ToList(), creditRequest);
+            creditRequest.Status = CreditRequestStatus.AwaitingSecurityValidation;
+            if (creditRequestViewModel.Attachments != null)
+            {
+                this.attachmentService.SaveAttachmentHeader(creditRequestViewModel.Attachments.ToList(), creditRequest);
+            }
+
             creditUow.CreditRequests.InsertOrUpdate(creditRequest);
             creditUow.Commit();
 

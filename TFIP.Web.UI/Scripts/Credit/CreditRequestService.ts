@@ -5,6 +5,9 @@
         showCreditRequestDetailsPopup(requestId: number): ng.IPromise<any>;
         createCreditRequest(creditRequest: CreditRequestModel): ng.IPromise<Shared.AjaxViewModel<CreditRequestModel>>;
         getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel>;
+        approveRequestByComission(id: number): ng.IPromise<CreditRequestModel>;
+        approveRequestBySecurity(id: number): ng.IPromise<CreditRequestModel>;
+        denyRequest(id: number): ng.IPromise<CreditRequestModel>;
     }
 
     export class CreditRequestService implements ICreditRequestService {
@@ -109,6 +112,18 @@
 
         public getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel> {
             return this.httpWrapper.get(this.urlBuilderService.buildQuery(this.apiUrlService.creditRequestApi.getCreditRequest, { id: id }));
+        }
+
+        public approveRequestByComission(id: number): ng.IPromise<CreditRequestModel> {
+            return this.httpWrapper.post(this.apiUrlService.creditRequestApi.approveByCreditComission, { id:  id });
+        }
+
+        public approveRequestBySecurity(id: number): ng.IPromise<CreditRequestModel> {
+            return this.httpWrapper.post(this.apiUrlService.creditRequestApi.approveBySecurity, { id: id });
+        }
+
+        public denyRequest(id: number): ng.IPromise<CreditRequestModel> {
+            return this.httpWrapper.post(this.apiUrlService.creditRequestApi.deny, { id: id });
         }
     }
 } 

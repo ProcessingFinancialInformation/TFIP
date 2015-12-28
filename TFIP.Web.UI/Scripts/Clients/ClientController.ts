@@ -9,6 +9,8 @@
         getClientName: () => string;
         canMakePayment: (request: Credit.CreditRequestModel) => boolean;
         editClient: () => void;
+        approveRequest: (request: Credit.CreditRequestModel) => void;
+        denyRequest: (request: Credit.CreditRequestModel) => void;
     }
 
     export class ClientController {
@@ -48,6 +50,8 @@
             this.$scope.getClientName = () => this.getClientName();
             this.$scope.canMakePayment = (request: Credit.CreditRequestModel) => this.canMakePayment(request);
             this.$scope.editClient = () => this.editClient();
+            this.$scope.approveRequest = (request: Credit.CreditRequestModel) => this.approveRequest(request);
+            this.$scope.denyRequest = (request: Credit.CreditRequestModel) => this.denyRequest(request);
         }
 
         private init(clientId: string, clientType: string) {
@@ -105,6 +109,39 @@
 
         private canMakePayment(request: Credit.CreditRequestModel): boolean {
             return request.statusId == Credit.CreditRequestStatus.InProgress;
+        }
+
+        private approveRequest(request: Credit.CreditRequestModel) {
+            if (request.statusId == Credit.CreditRequestStatus.AwaitingSecurityValidation) {
+                this.creditRequestService.approveRequestBySecurity(request.id)
+                    .then((data: Credit.CreditRequestModel) => {
+                        this.updateRow(data);
+                    });
+            } else if (request.statusId == Credit.CreditRequestStatus.AwaitingCreditCommissionValidation) {
+                this.creditRequestService.approveRequestByComission(request.id)
+                    .then((data: Credit.CreditRequestModel) => {
+                        this.updateRow(data);
+                    });
+            }
+        }
+
+        private denyRequest(request: Credit.CreditRequestModel) {
+            if (request.statusId == Credit.CreditRequestStatus.AwaitingSecurityValidation ||
+                request.statusId == Credit.CreditRequestStatus.AwaitingCreditCommissionValidation) {
+                this.creditRequestService.denyRequest(request.id)
+                    .then((data: Credit.CreditRequestModel) => {
+                        this.updateRow(data);
+                    });
+            }
+        }
+
+        private updateRow(request: Credit.CreditRequestModel) {
+            this.$scope.clientViewModel.credits.forEach((creditRequest: Credit.CreditRequestModel, index: number, array: any) => {
+                if (creditRequest.id == request.id) {
+                    array[index] = request;
+                    return;
+                }
+            });
         }
     }
 } 

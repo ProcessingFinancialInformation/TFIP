@@ -21,4 +21,3 @@ var TFIP;
         })(UI = Web.UI || (Web.UI = {}));
     })(Web = TFIP.Web || (TFIP.Web = {}));
 })(TFIP || (TFIP = {}));
-//# sourceMappingURL=angular-bootstrap.js.map
