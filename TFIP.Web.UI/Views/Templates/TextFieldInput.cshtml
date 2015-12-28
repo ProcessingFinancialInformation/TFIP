@@ -4,7 +4,7 @@
 
     <label for="{{name}}" class="col-sm-2 col-xs-3 control-label">{{labelText}}</label>
     <div class="col-sm-10 col-xs-9">
-        <input  type="text"
+        <input type="text"
                ng-model="model"
                class="form-control"
                id="{{name}}"
@@ -12,7 +12,8 @@
                placeholder="{{labelText}}"
                ng-required="isRequired"
                ng-pattern="pattern"
-               ng-disabled="isDisabled">
+               ng-disabled="isDisabled"
+               ng-readonly="isReadOnly">
     </div>
 
 </div>

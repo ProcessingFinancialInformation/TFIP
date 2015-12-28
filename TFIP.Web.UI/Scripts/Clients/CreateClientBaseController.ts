@@ -4,6 +4,9 @@
         clientViewModel: ClientViewModelBase;
         countries: Shared.ListItem[];
         clientType: string;
+        clientTypes: ClientType;
+        clientId: string;
+        editMode: boolean;
 
         createUser: () => void;
         createClient: () => ng.IPromise<Shared.AjaxViewModel<any>> ;
@@ -25,19 +28,22 @@
         }
 
         private init() {
-            var promise = this.clientService.getClientFormViewModel().then((data: ClientFormViewModel) => {
+            this.$scope.clientId = this.locationHelperService.getParameterValue("clientId");
+
+            var clientFormPromise: ng.IPromise<ClientFormViewModel>;
+
+            clientFormPromise = this.clientService.getClientFormViewModel();
+            clientFormPromise.then((data: ClientFormViewModel) => {
                 this.$scope.countries = data.countries;
-                //this.$scope.clientViewModel = new ClientViewModel();
-
-                this.$scope.$watch("clientViewModel", (newVal, oldVal) => {
-                    for (var prop in this.$scope.clientViewModel) {
-
-                        if (typeof (this.$scope.clientViewModel[prop]) == "string") {
-                            this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
-                        }
-                    }
-                }, true);
             });
+            this.$scope.$watch("clientViewModel",(newVal, oldVal) => {
+                for (var prop in this.$scope.clientViewModel) {
+                    if (typeof (this.$scope.clientViewModel[prop]) == "string") {
+                        this.$scope.clientViewModel[prop] = this.$scope.clientViewModel[prop].toUpperCase();
+                    }
+                }
+            }, true);
+            this.$scope.clientTypes = new ClientType();
             this.$scope.createUser = () => this.createUser();
             this.$scope.today = moment();
             this.$scope.min18AgeDate = moment().subtract("years", 18);

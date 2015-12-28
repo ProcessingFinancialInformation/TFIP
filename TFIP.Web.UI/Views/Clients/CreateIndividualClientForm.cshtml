@@ -5,7 +5,7 @@
     <div text-field-input name="'lastName'" label-text="'Фамилия'" model="clientViewModel.lastName" is-required="true" pattern="regex.lastName"></div>
     <div text-field-input name="'firstName'" label-text="'Имя'" model="clientViewModel.firstName" is-required="true" pattern="regex.characters"></div>
     <div text-field-input name="'patronymic'" label-text="'Отчество'" model="clientViewModel.patronymic" pattern="regex.characters"></div>
-    <div date-field-input name="'dateOfBirth'" label-text="'Дата рождения'" model="clientViewModel.dateOfBirth" is-required="true" max-date="min18AgeDate"></div>
+    <div date-field-input name="'dateOfBirth'" label-text="'Дата рождения'" model="clientViewModel.dateOfBirth" is-required="true" max-date="min18AgeDate" is-read-only="editMode"></div>
     <div text-field-input name="'placeOfBirth'" label-text="'Место рождения'" model="clientViewModel.placeOfBirth" is-required="true" pattern="regex.charactersWithSpace"></div>
     <div select-field-input name="'gender'" label-text="'Пол'" model="clientViewModel.gender" model-values="genders" is-required="true"></div>
 
@@ -13,7 +13,7 @@
 
     <div text-field-input name="'nationality'" label-text="'Гражданство'" model="clientViewModel.nationality" is-required="true" pattern="regex.charactersWithSpace"></div>
     <div text-field-input name="'passportNo'" label-text="'Номер паспорта'" model="clientViewModel.passportNo" is-required="true" pattern="regex.numberWithCharacters2_9"></div>
-    <div text-field-input name="'identificationNo'" label-text="'Идентификационный номер'" model="clientViewModel.identificationNo" is-required="true" pattern="regex.numberWithCharacters2_14"></div>
+    <div text-field-input name="'identificationNo'" label-text="'Идентификационный номер'" model="clientViewModel.identificationNo" is-required="true" pattern="regex.numberWithCharacters2_14" is-read-only="editMode"></div>
     <div text-field-input name="'authority'" label-text="'Орган выдавший документ'" model="clientViewModel.authority" is-required="true"></div>
     <div date-field-input name="'dateOfIssue'" label-text="'Дата выдачи'" model="clientViewModel.dateOfIssue" is-required="true" max-date="today"></div>
     <div date-field-input name="'dateOfExpiry'" label-text="'Срок выдачи'" model="clientViewModel.dateOfExpiry" is-required="true" min-date="clientViewModel.dateOfIssue"></div>
@@ -35,7 +35,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" ng-click="createUser()">Создать</button>
+            <button type="submit" class="btn btn-default" ng-click="createUser()">Сохранить</button>
         </div>
     </div>
 </div>

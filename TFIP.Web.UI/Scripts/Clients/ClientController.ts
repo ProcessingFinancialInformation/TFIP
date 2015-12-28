@@ -8,6 +8,7 @@
         clientTypes: ClientType;
         getClientName: () => string;
         canMakePayment: (request: Credit.CreditRequestModel) => boolean;
+        editClient: () => void;
     }
 
     export class ClientController {
@@ -46,6 +47,7 @@
             this.$scope.clientTypes = new ClientType();
             this.$scope.getClientName = () => this.getClientName();
             this.$scope.canMakePayment = (request: Credit.CreditRequestModel) => this.canMakePayment(request);
+            this.$scope.editClient = () => this.editClient();
         }
 
         private init(clientId: string, clientType: string) {
@@ -67,6 +69,15 @@
                     this.$scope.clientViewModel.credits.push(data);
                 }
             });
+        }
+
+        private editClient() {
+            if (this.$scope.clientType.toLowerCase() == this.$scope.clientTypes.individualClient.toLowerCase() ) {
+                this.locationHelperService.redirect('/Clients/CreateIndividualClient?' + 'clientId=' + this.$scope.clientViewModel.id);
+            }
+            if (this.$scope.clientType.toLowerCase() == this.$scope.clientTypes.juridicalPerson.toLowerCase()) {
+                this.locationHelperService.redirect('/Clients/CreateJuridicalPersonClient?' + 'clientId=' + this.$scope.clientViewModel.id);
+            }
         }
 
         private getClientName() {

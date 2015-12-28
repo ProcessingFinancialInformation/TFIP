@@ -6,6 +6,14 @@ namespace TFIP.Business.Models
 {
     public class ClientViewModel
     {
+        public bool IsNew
+        {
+            get
+            {
+                return this.Id == 0;
+            }
+        }
+
         public long Id { get; set; }
 
         [Required]
