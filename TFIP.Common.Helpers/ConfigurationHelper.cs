@@ -7,6 +7,11 @@ namespace TFIP.Common.Helpers
 {
     public class ConfigurationHelper
     {
+        public static string GetCreditAgentGroup()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.CreditAgentGroup);
+        }
+
         public static string GetFilesStorageFolder()
         {
             return GetSettingFromConfig(ConfigurationKeys.FilesStorageFolder);

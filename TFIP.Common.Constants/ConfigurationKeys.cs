@@ -31,5 +31,7 @@
         public const string FilesStorageFolder = "Files.StorageFolder";
 
         public const string UiAddress = "UIAddress";
+
+        public const string CreditAgentGroup = "Groups.CreditAgent";
     }
 }

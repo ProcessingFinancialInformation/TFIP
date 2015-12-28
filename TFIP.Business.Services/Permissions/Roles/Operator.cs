@@ -11,6 +11,11 @@ namespace TFIP.Business.Services.Permissions.Roles
             
         }
 
+        public override bool CanCreateIndividualClient()
+        {
+            return true;
+        }
+
         public override bool CanMakePayment(CreditRequestContext context)
         {
             return context.Status == CreditRequestStatus.InProgress;

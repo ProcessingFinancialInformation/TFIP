@@ -16,6 +16,8 @@ namespace TFIP.Web.ViewModels
                 {Capability.CreateCreditRequest, CheckPermission(Capability.CreateCreditRequest, username)},
                 {Capability.MIDInformation, CheckPermission(Capability.MIDInformation, username)},
                 {Capability.NBRBInformation, CheckPermission(Capability.NBRBInformation, username)},
+                {Capability.CreateIndividualClient, CheckPermission(Capability.CreateIndividualClient, username)},
+                {Capability.CreateJuridicalClient, CheckPermission(Capability.CreateJuridicalClient, username)},
                 {Capability.MakePayment, CheckPermission(Capability.MakePayment, username)}
             };
         }
