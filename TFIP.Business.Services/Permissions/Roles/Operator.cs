@@ -30,5 +30,10 @@ namespace TFIP.Business.Services.Permissions.Roles
         {
             return true;
         }
+
+        public override bool CanEditClientInfo()
+        {
+            return true;
+        }
     }
 }

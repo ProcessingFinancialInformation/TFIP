@@ -18,16 +18,20 @@
             "$scope",
             "creditTypeService",
             "messageBox",
-            "$q"
+            "$q",
+            "capabilityService"
         ];
 
         constructor(
             private $scope: IAdminScope,
             private creditTypeService: Credit.ICreditTypeService,
             private messageBox: Core.IMessageBoxService,
-            private $q: ng.IQService) {
+            private $q: ng.IQService,
+            private capabilityService: Capability.ICapabilityService) {
 
-            this.init();
+            this.capabilityService.checkCapability("adminPermissions").then(() => {
+                this.init();
+            });
         }
 
         private init() {

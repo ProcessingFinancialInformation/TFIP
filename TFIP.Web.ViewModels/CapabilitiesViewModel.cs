@@ -12,13 +12,12 @@ namespace TFIP.Web.ViewModels
         {
             Capabilities = new Dictionary<Capability, bool>
             {
-                {Capability.ApproveCreditRequest, CheckPermission(Capability.ApproveCreditRequest, username)},
-                {Capability.CreateCreditRequest, CheckPermission(Capability.CreateCreditRequest, username)},
-                {Capability.MIDInformation, CheckPermission(Capability.MIDInformation, username)},
-                {Capability.NBRBInformation, CheckPermission(Capability.NBRBInformation, username)},
-                {Capability.CreateIndividualClient, CheckPermission(Capability.CreateIndividualClient, username)},
-                {Capability.CreateJuridicalClient, CheckPermission(Capability.CreateJuridicalClient, username)},
-                {Capability.MakePayment, CheckPermission(Capability.MakePayment, username)}
+                { Capability.CreateCreditRequest, CheckPermission(Capability.CreateCreditRequest, username) },
+                { Capability.CreateIndividualClient, CheckPermission(Capability.CreateIndividualClient, username) },
+                { Capability.CreateJuridicalClient, CheckPermission(Capability.CreateJuridicalClient, username) },
+                { Capability.AdminPermissions, this.CheckPermission(Capability.AdminPermissions, username) },
+                { Capability.EditClientInfo, this.CheckPermission(Capability.EditClientInfo, username) },
+                { Capability.ClientInformation, this.CheckPermission(Capability.EditClientInfo, username) },
             };
         }
 

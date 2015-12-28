@@ -73,6 +73,7 @@
                 .service("creditRequestService", Credit.CreditRequestService)
                 .service("paymentsService", Payments.PaymentsService)
                 .service("customFileUploader", FileUploadModule.FileUploadService)
+                .service("capabilityService", Capability.CapabilityService)
                 .controller("ClientController", TFIP.Web.UI.Clients.ClientController)
                 .controller("ClientsSelectorController", TFIP.Web.UI.Clients.ClientsSelectorController)
                 .controller("CreateClientConroller", Clients.CreateIndividualClientController)

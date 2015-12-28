@@ -302,3 +302,7 @@ TFIP.Web.UI/Scripts/Credit/CreditRequestDetailsController.js
 TFIP.Web.UI/Scripts/Credit/CreditRequestDetailsController.js.map
 TFIP.Web.UI/Scripts/Credit/CreditRequestService.js
 TFIP.Web.UI/Scripts/Credit/CreditRequestService.js.map
+TFIP.Web.UI/Scripts/Capability/CapabilityModels.js
+TFIP.Web.UI/Scripts/Capability/CapabilityModels.js.map
+TFIP.Web.UI/Scripts/Capability/CapabilityService.js
+TFIP.Web.UI/Scripts/Capability/CapabilityService.js.map

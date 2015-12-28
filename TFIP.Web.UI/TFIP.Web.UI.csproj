@@ -224,6 +224,8 @@
     <TypeScriptCompile Include="Scripts\Admin\AdminController.ts" />
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
+    <TypeScriptCompile Include="Scripts\Capability\CapabilityModels.ts" />
+    <TypeScriptCompile Include="Scripts\Capability\CapabilityService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TFIP.Business.Models
 {
+    using TFIP.Common.Helpers;
+
     public class CreditRequestListItemViewModel
     {
         public long Id { get; set; }
@@ -23,5 +22,7 @@ namespace TFIP.Business.Models
         public int StatusId { get; set; }
 
         public DateTime? LastPaymentDate { get; set; }
+
+        public Dictionary<Capability, bool> Capabilities { get; set; } 
     }
 }

@@ -7,6 +7,9 @@ using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {
+    using TFIP.Common.Helpers;
+    using TFIP.Web.Api.Security;
+
     public class CreditRequestController : BaseApiController
     {
         private readonly ICreditRequestService creditRequestService;
@@ -27,6 +30,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
+        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage ApproveByCreditComission(ListItem data)
         {
             var updatedRequest = creditRequestService.ApproveByCreditComission(long.Parse(data.Id));
@@ -34,6 +38,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
+        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage Deny(ListItem data)
         {
             var updatedRequest = creditRequestService.Deny(long.Parse(data.Id));
@@ -41,12 +46,14 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
+        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage ApproveBySecurity(ListItem data)
         {
             var updatedRequest = creditRequestService.ApproveBySecurity(long.Parse(data.Id));
             return Request.CreateResponse(HttpStatusCode.OK, updatedRequest);
         }
 
+        [UserAuthorize(Capability.CreateCreditRequest)]
         public HttpResponseMessage CreateCreditRequest(CreditRequestViewModel creditRequest)
         {
             var creditItemViewModel = ProcessViewModel<CreditRequestViewModel, CreditRequestListItemViewModel>(creditRequest, creditRequestValidationService,

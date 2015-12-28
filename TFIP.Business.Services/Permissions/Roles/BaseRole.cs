@@ -41,9 +41,16 @@ namespace TFIP.Business.Services.Permissions.Roles
                     return CanCreateJuridicalClient();
                 case Capability.MakePayment:
                     return CanMakePayment((CreditRequestContext)context);
+                case Capability.EditClientInfo:
+                    return CanEditClientInfo();
                 default:
                     return false;
             }
+        }
+
+        public virtual bool CanEditClientInfo()
+        {
+            return false;
         }
 
         public virtual bool CanCreateJuridicalClient()

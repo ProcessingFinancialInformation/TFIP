@@ -9,6 +9,7 @@
         MakePayment = 5,
         CreateIndividualClient = 6,
         CreateJuridicalClient = 7,
+        EditClientInfo = 8,
         ClientInformation = 254,
         AdminPermissions = 255
     }

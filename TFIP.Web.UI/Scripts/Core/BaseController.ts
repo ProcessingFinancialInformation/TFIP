@@ -1,7 +1,6 @@
 ﻿module TFIP.Web.UI.Core {
     
     export class BaseController {
-        
 
         public makeFormDirty(form: Core.ICustomFormController) {
             if (form.$error.required) {
@@ -35,6 +34,7 @@
                     }
                 }
             }
+
         }
     }
 } 

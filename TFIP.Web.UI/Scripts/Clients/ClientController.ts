@@ -1,5 +1,5 @@
 ﻿module TFIP.Web.UI.Clients {
-    export interface IClientScope extends ng.IScope {
+    export interface IClientScope extends MasterPage.IMasterPageScope {
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
         clientType: string;
@@ -11,6 +11,7 @@
         editClient: () => void;
         approveRequest: (request: Credit.CreditRequestModel) => void;
         denyRequest: (request: Credit.CreditRequestModel) => void;
+
     }
 
     export class ClientController {
@@ -20,7 +21,8 @@
             "messageBox",
             "clientService",
             "paymentsService",
-            "creditRequestService"
+            "creditRequestService",
+            "capabilityService"
         ];
 
         constructor(
@@ -29,14 +31,17 @@
             private messageBox: Core.IMessageBoxService,
             private clientService: IClientService,
             private paymentsService: Payments.IPaymentsService,
-            private creditRequestService: Credit.ICreditRequestService) {
+            private creditRequestService: Credit.ICreditRequestService,
+            private capabilityService: Capability.ICapabilityService) {
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
             var clientType = this.locationHelperService.getParameterValue("clientType");
             
             if (clientId && clientType) {
-                this.init(clientId, clientType);
-                this.$scope.clientType = clientType;
+                this.capabilityService.checkCapability("clientInformation").then(() => {
+                    this.init(clientId, clientType);
+                    this.$scope.clientType = clientType;
+                });
             } else {
                 this.messageBox.showError(Const.Messages.clients, "Идентификатор и/или тип клиента не определен").finally(() => {
                     this.locationHelperService.redirect("/Clients");
@@ -52,6 +57,10 @@
             this.$scope.editClient = () => this.editClient();
             this.$scope.approveRequest = (request: Credit.CreditRequestModel) => this.approveRequest(request);
             this.$scope.denyRequest = (request: Credit.CreditRequestModel) => this.denyRequest(request);
+
+            this.$scope.$watch("capabilityModel", (newVal, oldVal) => {
+                console.log(newVal);
+            });
         }
 
         private init(clientId: string, clientType: string) {
@@ -115,13 +124,13 @@
             if (request.statusId == Credit.CreditRequestStatus.AwaitingSecurityValidation) {
                 this.creditRequestService.approveRequestBySecurity(request.id)
                     .then((data: Credit.CreditRequestModel) => {
-                        this.updateRow(data);
-                    });
+                    this.updateRow(data);
+                });
             } else if (request.statusId == Credit.CreditRequestStatus.AwaitingCreditCommissionValidation) {
                 this.creditRequestService.approveRequestByComission(request.id)
                     .then((data: Credit.CreditRequestModel) => {
-                        this.updateRow(data);
-                    });
+                    this.updateRow(data);
+                });
             }
         }
 
@@ -130,8 +139,8 @@
                 request.statusId == Credit.CreditRequestStatus.AwaitingCreditCommissionValidation) {
                 this.creditRequestService.denyRequest(request.id)
                     .then((data: Credit.CreditRequestModel) => {
-                        this.updateRow(data);
-                    });
+                    this.updateRow(data);
+                });
             }
         }
 
@@ -143,5 +152,6 @@
                 }
             });
         }
+
     }
 } 
