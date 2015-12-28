@@ -14,9 +14,10 @@
                    style=""
                    id="{{name}}"
                    min-date="minDate"
-                   max-date="maxDate">
+                   max-date="maxDate"
+                   ng-readonly="isReadOnly">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="isOpened = !isOpened"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="isOpened = !isOpened" ng-disabled="isReadOnly"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
         </p>
     </div>

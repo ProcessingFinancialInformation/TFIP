@@ -17,7 +17,8 @@
                 model: "=",
                 isRequired: "=",
                 pattern: "=",
-                isDisabled: "="
+                isDisabled: "=",
+                isReadOnly: "="
             }
         }
     }

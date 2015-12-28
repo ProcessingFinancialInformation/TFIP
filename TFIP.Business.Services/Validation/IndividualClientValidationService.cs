@@ -49,7 +49,7 @@ namespace TFIP.Business.Services.Validation
             {
                 errors.Add(String.Format(ErrorMessages.InvalidCountryId, viewModel.CountryId));
             }
-            if (creditUow.IndividualClients.Get(c => c.IdentificationNo == viewModel.IdentificationNo)
+            if (viewModel.IsNew && creditUow.IndividualClients.Get(c => c.IdentificationNo == viewModel.IdentificationNo)
                 .FirstOrDefault() !=null)
             {
                 errors.Add(String.Format(ErrorMessages.UniqueIndividualClientIdentificationNumber,viewModel.IdentificationNo));
