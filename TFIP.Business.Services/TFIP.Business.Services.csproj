@@ -105,6 +105,7 @@
     <Compile Include="Permissions\PermissionService.cs" />
     <Compile Include="Permissions\Roles\Admin.cs" />
     <Compile Include="Permissions\Roles\BaseRole.cs" />
+    <Compile Include="Permissions\Roles\CreditAgent.cs" />
     <Compile Include="Permissions\Roles\CreditComission.cs" />
     <Compile Include="Permissions\Roles\Operator.cs" />
     <Compile Include="Permissions\Roles\SecurityAgent.cs" />
