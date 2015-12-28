@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using TFIP.Common.Helpers;
 using TFIP.Web.Api.Filters;
 
 namespace TFIP.Web.Api
@@ -13,7 +14,7 @@ namespace TFIP.Web.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            var cors = new EnableCorsAttribute("http://localhost:59691", "*", "*");
+            var cors = new EnableCorsAttribute(ConfigurationHelper.GetUiUrl(), "*", "*");
             config.EnableCors(cors);
 
             // Web API routes

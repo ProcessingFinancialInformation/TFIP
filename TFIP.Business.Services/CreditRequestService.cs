@@ -53,14 +53,46 @@ namespace TFIP.Business.Services
             }
         }
 
+        public void ApproveBySecurity(long id)
+        {
+            var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(id);
+            if (creditRequest.Status != CreditRequestStatus.AwaitingSecurityValidation)
+            {
+                return;
+            }
+
+            creditRequest.Status = CreditRequestStatus.AwaitingCreditCommissionValidation;
+            creditUow.CreditRequests.InsertOrUpdate(creditRequest);
+            creditUow.Commit();
+
+            if (creditRequest.IndividualClientId.HasValue)
+            {
+                notificationService.SendCreditRequestIsProcessedBySecurity(creditRequest.IndividualClientId.Value,
+                    ClientType.Individual, creditRequest.Id.ToString());
+            } 
+            else if (creditRequest.JuridicalClientId.HasValue)
+            {
+                notificationService.SendCreditRequestIsProcessedBySecurity(creditRequest.JuridicalClientId.Value,
+                    ClientType.JuridicalPerson, creditRequest.Id.ToString());
+            }
+        }
+
         public CreditRequestListItemViewModel CreateCreditRequest(CreditRequestViewModel creditRequestViewModel)
         {
             var creditRequest = AutoMapper.Mapper.Map<CreditRequestViewModel, CreditRequest>(creditRequestViewModel);
             this.attachmentService.SaveAttachmentHeader(creditRequestViewModel.Attachments.ToList(), creditRequest);
             creditUow.CreditRequests.InsertOrUpdate(creditRequest);
             creditUow.Commit();
+
+            SendNotificationForNewCreditRequest(creditRequestViewModel, creditRequest.Id);
+
             return AutoMapper.Mapper.
                 Map<CreditRequest, CreditRequestListItemViewModel>(creditUow.CreditRequests.GetFullCreditRequest(creditRequest.Id));
+        }
+
+        private void SendNotificationForNewCreditRequest(CreditRequestViewModel creditRequest, long id)
+        {
+            notificationService.SendNewCreditRequestCreated(creditRequest.ClientId.Value, creditRequest.ClientType, id.ToString());
         }
     }
 }

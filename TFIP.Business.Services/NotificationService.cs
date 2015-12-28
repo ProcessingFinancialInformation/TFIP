@@ -21,13 +21,13 @@ namespace TFIP.Business.Services
 
         // TODO: Save into database!
 
-        public bool SendNewCreditRequestCreated(long requestId, string requestNumber)
+        public bool SendNewCreditRequestCreated(long clientId, ClientType clientType, string requestNumber)
         {
             dynamic data = new ExpandoObject();
             data.Subject = EmailTemplatesSubjects.NewRequestCreated;
 
             data.RequestNumber = requestNumber;
-            data.LinkToRequest = GenerateLinkToRequest(requestId);
+            data.LinkToRequest = GenerateLinkToRequest(clientId, clientType);
 
             var securityDeparmentEmails =
                 ActiveDirectoryHelper.GetGroupEmails(ConfigurationHelper.GetSecurityAgentGroup());
@@ -54,13 +54,13 @@ namespace TFIP.Business.Services
                 new Addressee(clientEmail, NotificationAccountType.Email), data);
         }
 
-        public bool SendCreditRequestIsProcessedBySecurity(long requestId, string requestNumber)
+        public bool SendCreditRequestIsProcessedBySecurity(long clientId, ClientType clientType, string requestNumber)
         {
             dynamic data = new ExpandoObject();
             data.Subject = EmailTemplatesSubjects.CreditRequestIsProcessedBySecurity;
 
             data.RequestNumber = requestNumber;
-            data.LinkToRequest = GenerateLinkToRequest(requestId);
+            data.LinkToRequest = GenerateLinkToRequest(clientId, clientType);
 
             var creditComissionEmail =
                 ActiveDirectoryHelper.GetGroupEmails(ConfigurationHelper.GetCreditComissionGroup());
@@ -82,10 +82,9 @@ namespace TFIP.Business.Services
                 new Addressee(recepients, NotificationAccountType.Email), obj);
         }
 
-        private string GenerateLinkToRequest(long requestId)
+        private string GenerateLinkToRequest(long clientId, ClientType clientType)
         {
-            // TODO!
-            return string.Empty;
+            return string.Format("{0}/Clients/Index?clientId={1}&clientType={2}", ConfigurationHelper.GetUiUrl(), clientId, clientType.ToString());
         }
 
         private bool SendNotification(NotificationType notificationType, Addressee addressee, dynamic data)

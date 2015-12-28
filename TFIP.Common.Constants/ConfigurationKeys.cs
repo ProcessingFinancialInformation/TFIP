@@ -29,5 +29,7 @@
         public const string TemporaryFilesFolder = "Files.TemporaryFolder";
 
         public const string FilesStorageFolder = "Files.StorageFolder";
+
+        public const string UiAddress = "UIAddress";
     }
 }

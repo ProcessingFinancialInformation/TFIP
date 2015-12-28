@@ -72,6 +72,11 @@ namespace TFIP.Common.Helpers
             return GetSettingFromConfig(ConfigurationKeys.SecurityAgentGroup);
         }
 
+        public static string GetUiUrl()
+        {
+            return GetSettingFromConfig(ConfigurationKeys.UiAddress);
+        }
+
         #region Utilities
         private static string GetSettingFromConfig(string configurationKey, string defaultValue = null)
         {
