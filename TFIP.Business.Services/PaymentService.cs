@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
@@ -26,11 +23,8 @@ namespace TFIP.Business.Services
             var payment = AutoMapper.Mapper.Map<PaymentViewModel, Payment>(paymentViewModel);
             payment.ProcessedAt = DateTime.Now;
             var creditRequest = creditUow.CreditRequests.GetFullCreditRequest(payment.CreditRequestId);
-            payment.MainDeptAmount = payment.Amount - creditRequest.CurrentBalanceOnPercents;
-            creditRequest.CurrentBalanceOnPercents = 0;
-            creditRequest.CurrentBalance = 0;
+            ProcessPayment(creditRequest, payment);
             creditUow.CreditRequests.InsertOrUpdate(creditRequest);
-            creditUow.Payments.InsertOrUpdate(payment);
             creditUow.Commit();
             return annuityCreditCalculationService.CalculateBalance(creditRequest.TotalAmount, creditRequest.Payments);
         }
@@ -43,6 +37,20 @@ namespace TFIP.Business.Services
                 CurrentMonthFee = creditRequest.CurrentBalance,
                 MainDebtBalance = annuityCreditCalculationService.CalculateBalance(creditRequest.TotalAmount,creditRequest.Payments)
             };
+        }
+
+        private void ProcessPayment(CreditRequest creditRequest, Payment payment)
+        {
+            payment.MainDeptAmount = payment.Amount - creditRequest.CurrentBalanceOnPercents;
+            creditRequest.CurrentBalanceOnPercents = 0;
+            creditRequest.CurrentBalance = 0;
+            creditRequest.Payments.Add(payment);
+
+            var totalMainDeptPayments = creditRequest.Payments.Sum(it => it.MainDeptAmount);
+            if (creditRequest.TotalAmount - totalMainDeptPayments <= 0)
+            {
+                creditRequest.Status = CreditRequestStatus.Extinguished;
+            }
         }
     }
 }

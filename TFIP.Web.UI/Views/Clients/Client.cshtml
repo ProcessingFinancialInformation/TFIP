@@ -58,6 +58,7 @@
                                     <th>Вид кредита</th>
                                     <th>Дата создания заявки</th>
                                     <th>Дата подтверждения заявки</th>
+                                    <th>Дата последнего платежа</th>
                                     <th>Статус</th>
                                     <th>Действия</th>
                                 </tr>
@@ -69,6 +70,7 @@
                                     <td ng-bind="creditRequest.creditKind"></td>
                                     <td ng-bind="creditRequest.creationDate | date: 'dd.MM.yyyy'"></td>
                                     <td ng-bind="creditRequest.approvalDate | date: 'dd.MM.yyyy'"></td>
+                                    <td ng-bind="creditRequest.lastPaymentDate | date: 'dd.MM.yyyy'"></td>
                                     <td ng-bind="creditRequest.status"></td>
                                     <td>
                                         <a ng-if="canMakePayment(creditRequest)" ng-click="makePayment(creditRequest)" title="Внести платёж" class="glyphicon glyphicon-euro"></a>
