@@ -17,7 +17,9 @@ namespace TFIP.Web.ViewModels
                 { Capability.CreateJuridicalClient, CheckPermission(Capability.CreateJuridicalClient, username) },
                 { Capability.AdminPermissions, this.CheckPermission(Capability.AdminPermissions, username) },
                 { Capability.EditClientInfo, this.CheckPermission(Capability.EditClientInfo, username) },
-                { Capability.ClientInformation, this.CheckPermission(Capability.EditClientInfo, username) },
+                { Capability.ClientInformation, this.CheckPermission(Capability.ClientInformation, username) },
+                { Capability.MIDInformation, this.CheckPermission(Capability.MIDInformation, username) },
+                { Capability.NBRBInformation, this.CheckPermission(Capability.NBRBInformation, username) }
             };
         }
 

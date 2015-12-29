@@ -7,6 +7,7 @@
         paymentsApi: PaymentsApi;
         attachmentApi: AttachmentApi;
         capabilityApi: CapabilityApi;
+        securityInfoApi: SecurityInfoApi;
     }
 
     export class ApiUrlService {
@@ -20,6 +21,7 @@
         public paymentsApi: PaymentsApi;
         public attachmentApi: AttachmentApi;
         public capabilityApi: CapabilityApi;
+        public securityInfoApi: SecurityInfoApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
@@ -30,6 +32,7 @@
             this.paymentsApi = new PaymentsApi(baseUrl);
             this.attachmentApi = new AttachmentApi(baseUrl);
             this.capabilityApi = new CapabilityApi(baseUrl);
+            this.securityInfoApi = new SecurityInfoApi(baseUrl);
         }
     }
 
@@ -134,6 +137,18 @@
             super(basePath);
 
             this.getCapabilities = this.getBasePath() + "api/capability/get";
+        }
+    }
+
+    export class SecurityInfoApi extends UrlHelperBase {
+        public isInMiaDb: string;
+        public isInNbrbDb: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.isInMiaDb = this.getBasePath() + "api/securityInfo/isInMiaDatabse";
+            this.isInNbrbDb = this.getBasePath() + "api/securityInfo/isInNbrbDatabse";
         }
     }
 

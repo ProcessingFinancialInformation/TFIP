@@ -34,5 +34,12 @@
 
         public static noCapabilities = "У вас нет прав для просмотра этой страницы. Обратитесь к вашему администратору";
 
+        public static noMiaMentions = "Нет данных в базе МВД";
+
+        public static noNbrbMentions = "Нет данных в базе НБРБ";
+
+        public static miaMentions = "Есть данные в базе МВД";
+
+        public static nbrbMentions = "Есть данные в базе НБРБ";
     }
 } 

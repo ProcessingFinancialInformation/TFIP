@@ -52,6 +52,7 @@ namespace TFIP.Web.UI
                     .IncludeDirectory("~/Scripts/Extensions/", "*.js")
                     .IncludeDirectory("~/Scripts/Capability/", "*.js")
                     .IncludeDirectory("~/Scripts/MasterPage/", "*.js")
+                    .IncludeDirectory("~/Scripts/SecurityInfo/", "*.js")
                     .IncludeDirectory("~/Scripts/Admin/", "*.js")
                     .IncludeDirectory("~/Scripts/Credit/", "*.js")
                     .IncludeDirectory("~/Scripts/Clients/", "*.js")

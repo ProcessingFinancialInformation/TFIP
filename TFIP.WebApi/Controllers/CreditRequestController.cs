@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Models;
-using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {

@@ -306,3 +306,5 @@ TFIP.Web.UI/Scripts/Capability/CapabilityModels.js
 TFIP.Web.UI/Scripts/Capability/CapabilityModels.js.map
 TFIP.Web.UI/Scripts/Capability/CapabilityService.js
 TFIP.Web.UI/Scripts/Capability/CapabilityService.js.map
+TFIP.Web.UI/Scripts/SecurityInfo/SecurityInfoService.js
+TFIP.Web.UI/Scripts/SecurityInfo/SecurityInfoService.js.map

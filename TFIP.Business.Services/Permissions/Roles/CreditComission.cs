@@ -8,7 +8,6 @@ namespace TFIP.Business.Services.Permissions.Roles
     {
         public CreditComission() : base(ConfigurationHelper.GetCreditComissionGroup())
         {
-            
         }
 
         public override bool CanApproveCreditRequest(CreditRequestContext context)
@@ -16,10 +15,10 @@ namespace TFIP.Business.Services.Permissions.Roles
             return context.Status == CreditRequestStatus.AwaitingCreditCommissionValidation;
         }
 
-        public override bool CanSeeNbrbInformation(CreditRequestContext context)
-        {
-            return context.Status == CreditRequestStatus.AwaitingCreditCommissionValidation;
-        }
+        //public override bool CanSeeNbrbInformation(CreditRequestContext context)
+        //{
+        //    return context.Status == CreditRequestStatus.AwaitingCreditCommissionValidation;
+        //}
 
         public override bool CanSeeClientInformation()
         {

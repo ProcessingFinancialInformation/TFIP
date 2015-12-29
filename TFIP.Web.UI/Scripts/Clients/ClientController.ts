@@ -11,7 +11,12 @@
         editClient: () => void;
         approveRequest: (request: Credit.CreditRequestModel) => void;
         denyRequest: (request: Credit.CreditRequestModel) => void;
+        securityInfo: ISecurityInfo;
+    }
 
+    export interface ISecurityInfo {
+        mia: string;
+        nbrb: string;
     }
 
     export class ClientController {
@@ -22,7 +27,8 @@
             "clientService",
             "paymentsService",
             "creditRequestService",
-            "capabilityService"
+            "capabilityService",
+            "securityInfoService"
         ];
 
         constructor(
@@ -32,7 +38,8 @@
             private clientService: IClientService,
             private paymentsService: Payments.IPaymentsService,
             private creditRequestService: Credit.ICreditRequestService,
-            private capabilityService: Capability.ICapabilityService) {
+            private capabilityService: Capability.ICapabilityService,
+            private securityInfoService: SecurityInfo.ISecurityInfoService) {
 
             var clientId = this.locationHelperService.getParameterValue("clientId");
             var clientType = this.locationHelperService.getParameterValue("clientType");
@@ -43,7 +50,7 @@
                     this.$scope.clientType = clientType;
                 });
             } else {
-                this.messageBox.showError(Const.Messages.clients, "Идентификатор и/или тип клиента не определен").finally(() => {
+                this.messageBox.showError(Const.Messages.clients, "Идентификатор и/или тип клиента не определен")["finally"](() => {
                     this.locationHelperService.redirect("/Clients");
                 });
             }
@@ -67,6 +74,7 @@
             var promise = this.clientService.getClient(clientId, clientType);
             promise.then((data: ClientViewModelBase) => {
                 this.$scope.clientViewModel = data;
+                this.initSecurityInfo();
             }, (reason: Core.IRejectionReason) => {
                 if (!reason.aborted) {
                     this.messageBox.showError(Const.Messages.clients, reason.message).finally(() => {
@@ -153,5 +161,21 @@
             });
         }
 
+        private initSecurityInfo() {
+            this.$scope.securityInfo = {
+                mia: null,
+                nbrb: null
+            };
+            if (this.$scope.capabilityModel.capabilities.midInformation) {
+                this.securityInfoService.isInMiaDb(this.$scope.clientViewModel.identificationNo).then((data: boolean) => {
+                    this.$scope.securityInfo.mia = (!data) ? Const.Messages.noMiaMentions : Const.Messages.miaMentions;
+                });
+            }
+            if (this.$scope.capabilityModel.capabilities.nbrbInformation) {
+                this.securityInfoService.isInNbrbDb(this.$scope.clientViewModel.identificationNo).then((data: boolean) => {
+                    this.$scope.securityInfo.nbrb = (!data) ? Const.Messages.noNbrbMentions : Const.Messages.nbrbMentions;
+                });
+            }
+        }
     }
 } 

@@ -178,6 +178,7 @@
     <Compile Include="Controllers\CreditTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\SecurityInfoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\LogExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,6 +1,4 @@
-﻿
-@{
-
+﻿@{
     ViewBag.Title = "Работа с клиентом";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -39,7 +37,21 @@
                         <div simple-metadata ng-if="clientViewModel.contactEmail" field-name="'Почтовый ящик'" field-value="clientViewModel.contactEmail"></div>
                         <div simple-metadata ng-if="clientViewModel.contactPhone" field-name="'Телефон'" field-value="clientViewModel.contactPhone"></div>
                         <div simple-metadata ng-if="clientViewModel.contactFax" field-name="'Факс'" field-value="clientViewModel.contactFax"></div>
-
+                        
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion ng-if="capabilityModel.capabilities.midInformation">
+                <uib-accordion-group class="panel-primary" heading="Данные из базы МВД">
+                    <div>
+                        <div>{{securityInfo.mia}}</div>
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion ng-if="capabilityModel.capabilities.nbrbInformation">
+                <uib-accordion-group class="panel-primary" heading="Данные из НБРБ">
+                    <div>
+                        <div>{{securityInfo.nbrb}}</div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>

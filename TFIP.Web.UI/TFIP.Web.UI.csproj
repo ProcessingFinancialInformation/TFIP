@@ -269,6 +269,7 @@
     <TypeScriptCompile Include="Scripts\Payments\MakePaymentController.ts" />
     <TypeScriptCompile Include="Scripts\Payments\PaymentsModel.ts" />
     <TypeScriptCompile Include="Scripts\Payments\PaymentsService.ts" />
+    <TypeScriptCompile Include="Scripts\SecurityInfo\SecurityInfoService.ts" />
     <TypeScriptCompile Include="Scripts\Shared\SharedModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
