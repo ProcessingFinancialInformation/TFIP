@@ -26,6 +26,7 @@ namespace TFIP.Web.Api
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            #if DEBUG
             string httpOrigin = Request.Params["HTTP_ORIGIN"];
             if (httpOrigin == null)
             {
@@ -39,6 +40,7 @@ namespace TFIP.Web.Api
                 var httpApplication = sender as HttpApplication;
                 httpApplication.CompleteRequest();
             }
+            #endif
         }
 
 
