@@ -5,6 +5,7 @@ using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Common.Constants;
 using TFIP.Common.Resources;
 using TFIP.Web.ViewModels;
 
@@ -108,6 +109,20 @@ namespace TFIP.Web.Api.Controllers
                 default:
                     return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
             }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetIndividualClients()
+        {
+            var clients = individualClientsService.GetIndividualClients();
+            return Request.CreateResponse(HttpStatusCode.OK, clients);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetJuridicalClients()
+        {
+            var clients = juridicalClientsService.GetJuridicalClients();
+            return Request.CreateResponse(HttpStatusCode.OK, clients);
         }
     }
 }

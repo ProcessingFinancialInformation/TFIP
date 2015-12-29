@@ -9,4 +9,9 @@
         id: string;
         value: string;
     }
+
+    export class TabViewModel {
+        tabName: string;
+        isActive: boolean;
+    }
 } 

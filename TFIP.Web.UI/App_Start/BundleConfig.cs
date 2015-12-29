@@ -59,7 +59,8 @@ namespace TFIP.Web.UI
                     .IncludeDirectory("~/Scripts/Home/", "*.js")
                     .IncludeDirectory("~/Scripts/Payments/", "*.js")
                     .IncludeDirectory("~/Scripts/linq/", "*.js")
-                    .IncludeDirectory("~/Scripts/momentjs/", "*.js"));
+                    .IncludeDirectory("~/Scripts/momentjs/", "*.js")
+                    .IncludeDirectory("~/Scripts/Filters/", "*.js"));
         }
     }
 }

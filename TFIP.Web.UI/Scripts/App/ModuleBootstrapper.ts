@@ -55,14 +55,14 @@
             modulesNames = modulesNames.concat(["ui.bootstrap", "ngSanitize", 'blockUI', 'angularFileUpload']);
             var mainModule = angular
                 .module("TFIP.Web.UI", modulesNames)
-                .directive("textFieldInput",() => new Directives.TextFieldInputDirective)
-                .directive("textAreaFieldInput",() => new Directives.TextAreaFieldInputDirective)
-                .directive("dateFieldInput",() => new Directives.DateFieldInputDirective)
-                .directive("selectFieldInput",() => new Directives.SelectFieldInputDirective)
-                .directive("radioFieldInput",() => new Directives.RadioFieldInputDirective)
-                .directive("checkBoxFieldInput",() => new Directives.CheckBoxFieldInputDirective)
-                .directive("numericFieldInput",() => new Directives.NumericFieldInputDirective)
-                .directive("simpleMetadata",() => new Directives.SimpleMetadataDirective)
+                .directive("textFieldInput", () => new Directives.TextFieldInputDirective)
+                .directive("textAreaFieldInput", () => new Directives.TextAreaFieldInputDirective)
+                .directive("dateFieldInput", () => new Directives.DateFieldInputDirective)
+                .directive("selectFieldInput", () => new Directives.SelectFieldInputDirective)
+                .directive("radioFieldInput", () => new Directives.RadioFieldInputDirective)
+                .directive("checkBoxFieldInput", () => new Directives.CheckBoxFieldInputDirective)
+                .directive("numericFieldInput", () => new Directives.NumericFieldInputDirective)
+                .directive("simpleMetadata", () => new Directives.SimpleMetadataDirective)
                 .service("messageBox", Core.MessageBoxService)
                 .service("apiUrlService", Core.ApiUrlService)
                 .service("urlBuilderService", Core.UrlBuilderService)
@@ -81,8 +81,10 @@
                 .controller("CreateJuridicalClientController", Clients.CreateJuridicalClientController)
                 .controller("AdminController", Admin.AdminController)
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
-                .controller("HomeController", TFIP.Web.UI.Home.HomeController);
-
+                .controller("HomeController", TFIP.Web.UI.Home.HomeController)
+                .controller("CreditTypesController", TFIP.Web.UI.Credit.CreditTypesController)
+                .controller("ClientsController", TFIP.Web.UI.Clients.ClientsController)
+                .filter('offset', Filters.offset);
             return new ModuleBootstrapper(mainModule, "body");
         }
     }

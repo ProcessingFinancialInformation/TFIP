@@ -56,6 +56,8 @@
         public createJuridicalClient: string;
         public getIndividualClientFormInfo: string;
         public getClient: string;
+        public getIndividualClients: string;
+        public getJuridicalClients: string;
 
         constructor(basePath: string) {
             super(basePath);
@@ -65,6 +67,8 @@
             this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
             this.createJuridicalClient = this.getBasePath() + "api/clients/createOrUpdateJuridicalClient";
             this.getClient = this.getBasePath() + "api/clients/get";
+            this.getIndividualClients = this.getBasePath() + "api/clients/getIndividualClients";
+            this.getJuridicalClients = this.getBasePath() + "api/clients/getJuridicalClients";
         }
     }
 

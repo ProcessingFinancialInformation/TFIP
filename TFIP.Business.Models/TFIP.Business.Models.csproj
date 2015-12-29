@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BalanceInformationViewModel.cs" />
+    <Compile Include="ClientListItemViewModel.cs" />
     <Compile Include="ClientViewModel.cs" />
     <Compile Include="CreditRequestListItemViewModel.cs" />
     <Compile Include="CreditRequestViewModel.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="IndividualClientInfoViewModel.cs" />
     <Compile Include="JuridicalClientInfoViewModel.cs" />
     <Compile Include="ListItem.cs" />
+    <Compile Include="PagedCollection.cs" />
     <Compile Include="PaymentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -93,4 +93,10 @@
 
         registrationDate: string | Date | number;
     }
+
+    export class ClientsListItemViewModel {
+        name: string;
+        identificationNo: string;
+        id: number;
+    }
 }    

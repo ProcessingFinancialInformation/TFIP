@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
 using TFIP.Business.Services.Permissions;
+using TFIP.Common.Constants;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services
@@ -49,6 +51,12 @@ namespace TFIP.Business.Services
                 }).ToList();
 
             return model;
+        }
+
+        public IEnumerable<ClientListItemViewModel> GetJuridicalClients()
+        {
+            var query = creditUow.JuridicalClients.All();
+            return AutoMapper.Mapper.Map<List<ClientListItemViewModel>>(query.ToList());
         }
     }
 }
