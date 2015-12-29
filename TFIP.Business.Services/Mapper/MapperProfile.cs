@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
@@ -91,6 +92,11 @@ namespace TFIP.Business.Services.Mapper
             AutoMapper.Mapper.CreateMap<IndividualClient, IndividualClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
             AutoMapper.Mapper.CreateMap<IndividualClient, CreateIndividualClientViewModel>();
+
+            AutoMapper.Mapper.CreateMap<IndividualClient, ClientListItemViewModel>()
+                .ForMember(c => c.Name,
+                    source =>
+                        source.MapFrom(x => String.Join(" ", x.LastName, x.FirstName, x.Patronymic).Trim()));
         }
 
         private void ConfigureJuridicalClient()
@@ -101,6 +107,7 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(ic => ic.CreditRequests, option => option.Ignore());
             AutoMapper.Mapper.CreateMap<JuridicalClient, JuridicalClientInfoViewModel>()
                 .ForMember(ic => ic.Credits, option => option.MapFrom(source => source.CreditRequests));
+            AutoMapper.Mapper.CreateMap<JuridicalClient, ClientListItemViewModel>();
         }
 
         private void ConfigurePayment()

@@ -1,4 +1,5 @@
-﻿using TFIP.Business.Models;
+﻿using System.Collections.Generic;
+using TFIP.Business.Models;
 
 namespace TFIP.Business.Contracts
 {
@@ -9,5 +10,7 @@ namespace TFIP.Business.Contracts
         void CreateClient(CreateIndividualClientViewModel client);
 
         IndividualClientInfoViewModel GetIndividualClient(long id);
+
+        IEnumerable<ClientListItemViewModel> GetIndividualClients();
     }
 }

@@ -5,8 +5,12 @@ using TFIP.Business.Entities;
 
 namespace TFIP.Business.Models
 {
+    using TFIP.Common.Helpers;
+
     public class CreditRequestViewModel
     {
+        public Dictionary<Capability, bool> Capabilities { get; set; } 
+
         public long Id { get; set; }
 
         public IEnumerable<ListItem> Attachments { get; set; }

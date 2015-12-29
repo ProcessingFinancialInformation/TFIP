@@ -24,6 +24,7 @@
             public locationHelperService: Core.LocationHelperService,
             public urlBuilderService: Core.IUrlBuilderService) {
             super();
+            
             this.init();
         }
 

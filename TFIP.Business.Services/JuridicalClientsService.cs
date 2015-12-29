@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Business.Services.Permissions;
+using TFIP.Common.Constants;
 using TFIP.Data.Contracts;
 
 namespace TFIP.Business.Services
@@ -10,9 +13,12 @@ namespace TFIP.Business.Services
     {
         private readonly ICreditUow creditUow;
 
-        public JuridicalClientsService(ICreditUow creditUow)
+        private readonly ICurrentUser currentUser;
+
+        public JuridicalClientsService(ICreditUow creditUow, ICurrentUser currentUser)
         {
             this.creditUow = creditUow;
+            this.currentUser = currentUser;
         }
 
         long IJuridicalClientsService.IsClientExist(string identificationNo)
@@ -33,7 +39,24 @@ namespace TFIP.Business.Services
         public JuridicalClientInfoViewModel GetJuridicalClient(long id)
         {
             var client = creditUow.JuridicalClients.GetById(id);
-            return AutoMapper.Mapper.Map<JuridicalClient, JuridicalClientInfoViewModel>(client);
+            JuridicalClientInfoViewModel model = AutoMapper.Mapper.Map<JuridicalClient, JuridicalClientInfoViewModel>(client);
+            model.Credits = model.Credits.Select(
+                c =>
+                {
+                    c.Capabilities = PermissionService.GetCapabilitiesForCreditRequest(
+                        this.currentUser.UserAccount,
+                        (CreditRequestStatus)c.StatusId);
+
+                    return c;
+                }).ToList();
+
+            return model;
+        }
+
+        public IEnumerable<ClientListItemViewModel> GetJuridicalClients()
+        {
+            var query = creditUow.JuridicalClients.All();
+            return AutoMapper.Mapper.Map<List<ClientListItemViewModel>>(query.ToList());
         }
     }
 }

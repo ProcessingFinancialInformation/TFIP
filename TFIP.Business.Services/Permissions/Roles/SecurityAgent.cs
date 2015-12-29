@@ -18,7 +18,12 @@ namespace TFIP.Business.Services.Permissions.Roles
 
         public override bool CanSeeMidInformation(CreditRequestContext context)
         {
-            return context.Status == CreditRequestStatus.AwaitingSecurityValidation;
+            return (context == null) || context.Status == CreditRequestStatus.AwaitingSecurityValidation;
+        }
+
+        public override bool CanSeeNbrbInformation(CreditRequestContext context)
+        {
+            return (context == null) || context.Status == CreditRequestStatus.AwaitingSecurityValidation;
         }
 
         public override bool CanSeeClientInformation()

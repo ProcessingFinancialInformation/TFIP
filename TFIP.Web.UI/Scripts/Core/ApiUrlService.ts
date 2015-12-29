@@ -6,6 +6,8 @@
         creditRequestApi: CreditRequestApi;
         paymentsApi: PaymentsApi;
         attachmentApi: AttachmentApi;
+        capabilityApi: CapabilityApi;
+        securityInfoApi: SecurityInfoApi;
     }
 
     export class ApiUrlService {
@@ -18,6 +20,8 @@
         public creditRequestApi: CreditRequestApi;
         public paymentsApi: PaymentsApi;
         public attachmentApi: AttachmentApi;
+        public capabilityApi: CapabilityApi;
+        public securityInfoApi: SecurityInfoApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
@@ -27,6 +31,8 @@
             this.creditRequestApi = new CreditRequestApi(baseUrl);
             this.paymentsApi = new PaymentsApi(baseUrl);
             this.attachmentApi = new AttachmentApi(baseUrl);
+            this.capabilityApi = new CapabilityApi(baseUrl);
+            this.securityInfoApi = new SecurityInfoApi(baseUrl);
         }
     }
 
@@ -50,6 +56,8 @@
         public createJuridicalClient: string;
         public getIndividualClientFormInfo: string;
         public getClient: string;
+        public getIndividualClients: string;
+        public getJuridicalClients: string;
 
         constructor(basePath: string) {
             super(basePath);
@@ -59,6 +67,8 @@
             this.getIndividualClientFormInfo = this.getBasePath() + "api/clients/getIndividualClientFormInfo";
             this.createJuridicalClient = this.getBasePath() + "api/clients/createOrUpdateJuridicalClient";
             this.getClient = this.getBasePath() + "api/clients/get";
+            this.getIndividualClients = this.getBasePath() + "api/clients/getIndividualClients";
+            this.getJuridicalClients = this.getBasePath() + "api/clients/getJuridicalClients";
         }
     }
 
@@ -121,6 +131,28 @@
 
             this.uploadFile = this.getBasePath() + "api/attachment/saveAttachment";
             this.download = this.getBasePath() + "api/attachment/download";
+        }
+    }
+
+    export class CapabilityApi extends UrlHelperBase {
+        public getCapabilities: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.getCapabilities = this.getBasePath() + "api/capability/get";
+        }
+    }
+
+    export class SecurityInfoApi extends UrlHelperBase {
+        public isInMiaDb: string;
+        public isInNbrbDb: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.isInMiaDb = this.getBasePath() + "api/securityInfo/isInMiaDatabse";
+            this.isInNbrbDb = this.getBasePath() + "api/securityInfo/isInNbrbDatabse";
         }
     }
 

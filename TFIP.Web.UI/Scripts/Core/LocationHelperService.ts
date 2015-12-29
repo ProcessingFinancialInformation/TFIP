@@ -12,7 +12,7 @@
             private $window: ng.IWindowService) { }
 
         public check(url: string) {
-            var path = this.$location.path().toLowerCase();
+            var path = this.$window.location.pathname.toLowerCase();
             var requiredUrl = url.toLowerCase();
 
             if (requiredUrl[0] !== '/') {

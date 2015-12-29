@@ -1,6 +1,4 @@
-﻿
-@{
-
+﻿@{
     ViewBag.Title = "Работа с клиентом";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,10 +8,10 @@
         <div class="col-lg-8 col-md-6 col-xs-12">
             <h3 ng-if="clientViewModel" ng-bind="getClientName()"></h3>
         </div>
-        <div class="col-md-3 col-lg-2 col-xs-12">
+        <div ng-if="capabilityModel.capabilities.editClientInfo" class="col-md-3 col-lg-2 col-xs-12" ng-class="{'col-md-offset-3' : !capabilityModel.capabilities.createCreditRequest  }">
             <button class="btn btn-primary col-xs-12" ng-click="editClient()">Редактировать</button>
         </div>
-        <div class="col-md-3 col-lg-2 col-xs-12">
+        <div ng-if="capabilityModel.capabilities.createCreditRequest" class="col-md-3 col-lg-2 col-xs-12" ng-class="{'col-md-offset-3' : !capabilityModel.capabilities.editClientInfo }">
             <button class="btn btn-primary col-xs-12" ng-click="createCreditRequest()">Оформить заявку</button>
         </div>
     </div>
@@ -39,7 +37,21 @@
                         <div simple-metadata ng-if="clientViewModel.contactEmail" field-name="'Почтовый ящик'" field-value="clientViewModel.contactEmail"></div>
                         <div simple-metadata ng-if="clientViewModel.contactPhone" field-name="'Телефон'" field-value="clientViewModel.contactPhone"></div>
                         <div simple-metadata ng-if="clientViewModel.contactFax" field-name="'Факс'" field-value="clientViewModel.contactFax"></div>
-
+                        
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion ng-if="capabilityModel.capabilities.midInformation">
+                <uib-accordion-group class="panel-primary" heading="Данные из базы МВД">
+                    <div>
+                        <div>{{securityInfo.mia}}</div>
+                    </div>
+                </uib-accordion-group>
+            </uib-accordion>
+            <uib-accordion ng-if="capabilityModel.capabilities.nbrbInformation">
+                <uib-accordion-group class="panel-primary" heading="Данные из НБРБ">
+                    <div>
+                        <div>{{securityInfo.nbrb}}</div>
                     </div>
                 </uib-accordion-group>
             </uib-accordion>
@@ -76,11 +88,11 @@
                                     <td ng-bind="creditRequest.lastPaymentDate | date: 'dd.MM.yyyy'"></td>
                                     <td ng-bind="creditRequest.status"></td>
                                     <td>
-                                        <a ng-if="canMakePayment(creditRequest)" ng-click="makePayment(creditRequest)" title="Внести платёж" class="glyphicon glyphicon-euro"></a>
+                                        <a ng-if="canMakePayment(creditRequest) && creditRequest.capabilities.makePayment" ng-click="makePayment(creditRequest)" title="Внести платёж" class="glyphicon glyphicon-euro"></a>
                                         <span>&nbsp;</span>
-                                        <a ng-click="approveRequest(creditRequest)" title="Подтвердить заявку" class="glyphicon glyphicon-ok green yes-no-buttons"></a>
+                                        <a ng-if="creditRequest.capabilities.approveCreditRequest" ng-click="approveRequest(creditRequest)" title="Подтвердить заявку" class="glyphicon glyphicon-ok green yes-no-buttons"></a>
                                         <span>&nbsp;</span>
-                                        <a ng-click="denyRequest(creditRequest)" title="Отклонить заявку" class="glyphicon glyphicon-remove red yes-no-buttons"></a>
+                                        <a ng-if="creditRequest.capabilities.approveCreditRequest" ng-click="denyRequest(creditRequest)" title="Отклонить заявку" class="glyphicon glyphicon-remove red yes-no-buttons"></a>
                                         <span>&nbsp;</span>
                                         <a ng-click="getCreditRequestDetails(creditRequest)" title="Подробнее" class="glyphicon glyphicon-list-alt"></a>
                                     </td>

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BalanceInformationViewModel.cs" />
+    <Compile Include="ClientListItemViewModel.cs" />
     <Compile Include="ClientViewModel.cs" />
     <Compile Include="CreditRequestListItemViewModel.cs" />
     <Compile Include="CreditRequestViewModel.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="IndividualClientInfoViewModel.cs" />
     <Compile Include="JuridicalClientInfoViewModel.cs" />
     <Compile Include="ListItem.cs" />
+    <Compile Include="PagedCollection.cs" />
     <Compile Include="PaymentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +64,10 @@
     <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
       <Project>{8483aae7-5e1c-4d74-91f9-b44878f83359}</Project>
       <Name>TFIP.Common.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
+      <Project>{4124f2f0-d0df-403f-a2ce-b645c61c5d30}</Project>
+      <Name>TFIP.Common.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

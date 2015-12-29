@@ -12,7 +12,8 @@ module TFIP.Web.UI.Clients {
             "clientService",
             "$location",
             "locationHelperService",
-            "urlBuilderService"
+            "urlBuilderService",
+            "capabilityService"
         ];
 
         constructor(
@@ -21,19 +22,26 @@ module TFIP.Web.UI.Clients {
             public clientService: IClientService,
             public $location: ng.ILocationService,
             public locationHelperService: Core.LocationHelperService,
-            public urlBuilderService: Core.IUrlBuilderService) {
+            public urlBuilderService: Core.IUrlBuilderService,
+            public capabilityService: Capability.ICapabilityService) {
             super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService);
+            this.capabilityService.checkCapability("createIndividualClient").then(() => {
+                this.initialize();
+            });
+            
+        }
 
+        private initialize() {
             this.$scope.clientType = this.$scope.clientTypes.individualClient;
             if (this.$scope.clientId) {
                 var promsie = this.clientService.getClient(this.$scope.clientId, this.$scope.clientType);
                 promsie.then((data: ClientViewModel) => {
                     this.$scope.clientViewModel = data;
                     this.$scope.editMode = true;
-                }, (reason: Core.IRejectionReason) => {
-                    this.$scope.clientViewModel = new ClientViewModel();
-                    this.messageBox.showError(Const.Messages.clients, reason.message);
-                });
+                },(reason: Core.IRejectionReason) => {
+                        this.$scope.clientViewModel = new ClientViewModel();
+                        this.messageBox.showError(Const.Messages.clients, reason.message);
+                    });
             } else {
                 this.$scope.clientViewModel = new ClientViewModel();
             }

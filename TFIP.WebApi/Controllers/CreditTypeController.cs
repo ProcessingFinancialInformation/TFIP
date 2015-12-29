@@ -41,20 +41,22 @@ namespace TFIP.Web.Api.Controllers
             var result = creditTypeService.GetCreditType(id);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
+        
         public HttpResponseMessage GetCreditTypes(bool? isActive = null)
         {
             var result = creditTypeService.GetCreditTypes(isActive);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [UserAuthorize(Capability.AdminPermissions)]
         public HttpResponseMessage SaveCreditType(CreditTypeViewModel model)
         {
             var result = ProcessViewModel(model, creditTypeValidationService, creditTypeService.CreateOrUpdateCreditType);
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-        
+
         [HttpGet]
+        [UserAuthorize(Capability.AdminPermissions)]
         public HttpResponseMessage ChangeActivity(long creditTypeId, bool active)
         {
             creditTypeService.ChangeCreditTypeStatus(creditTypeId, active);

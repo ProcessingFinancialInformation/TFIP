@@ -1,0 +1,54 @@
+﻿<div ng-controller="CreditTypesController">
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-xs-12">
+            <button class="btn btn-primary col-xs-12" ng-click="createCreditType()">Добавить новый кредит</button>
+        </div>
+    </div>
+    <div class="row" ng-cloak>
+        <div class="col-xs-12">
+            <div class="pull-left">
+                <ol class="breadcrumb  pull-left">
+                    <li><a href="#" ng-click="filter.isActive = null">Все ({{creditTypes.length}})</a></li>
+                    <li><a href="#" ng-click="filter.isActive = true">Активные ({{count(true)}})</a></li>
+                    <li><a href="#" ng-click="filter.isActive = false">Неактивные ({{count(false)}})</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <input type="text" ng-model="filter.name" />
+        </div>
+    </div>
+    <div class="table-responsive" ng-cloak>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Наименование</th>
+                <th>Тип</th>
+                <th>Активен</th>
+                <th>Сменить активность</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="creditType in creditTypes | filter : matchCriteria(filter) | offset: (currentPage-1)*numPerPage |limitTo: numPerPage">
+                    <td ng-bind="(currentPage-1)*numPerPage + $index + 1"></td>
+                    <td ng-bind="creditType.name"></td>
+                    <td ng-bind="getCreditKindName(creditType.creditKind)"></td>
+                    <td>
+                        {{active(creditType.isActive)}}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-bind="creditType.isActive ? 'Сделать неактивным' : 'Сделать активным'" ng-click="changeActivity(creditType.id, !creditType.isActive)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div data-pagination="" data-num-pages="numPages()"
+             data-current-page="currentPage" data-max-size="maxSize"
+             data-boundary-links="true"></div>
+        <uib-pagination ng-model="currentPage" ng-change="pageChanged()" total-items="totalCount">
+        </uib-pagination>
+    </div>
+</div>

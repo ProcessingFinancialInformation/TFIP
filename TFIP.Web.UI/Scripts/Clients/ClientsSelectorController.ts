@@ -5,7 +5,7 @@
         clientType: string;
     }
 
-    export interface IClientsSelectorScope extends ng.IScope {
+    export interface IClientsSelectorScope extends MasterPage.IMasterPageScope {
         clientTypes: ClientType;
         clientInput: ClientSelectorInput;
         getClient: () => void;
@@ -20,7 +20,8 @@
             "clientService",
             "$location",
             "locationHelperService",
-            "urlBuilderService"
+            "urlBuilderService",
+            "capabilityService"
         ];
 
         constructor(
@@ -29,12 +30,14 @@
             private clientService: IClientService,
             private $location: ng.ILocationService,
             private locationHelperService: Core.LocationHelperService,
-            private urlBuilderService: Core.IUrlBuilderService) {
+            private urlBuilderService: Core.IUrlBuilderService,
+            private capabilityService: Capability.CapabilityService) {
 
             this.$scope.clientTypes = new ClientType();
             this.$scope.clientInput = new ClientSelectorInput();
             this.$scope.clientInput.clientType = this.$scope.clientTypes.individualClient;
             this.$scope.getClient = () => this.getClient();
+            this.capabilityService.checkCapability("clientInformation");
         }
 
         private getClient() {

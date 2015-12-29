@@ -7,7 +7,8 @@
             "clientService",
             "$location",
             "locationHelperService",
-            "urlBuilderService"
+            "urlBuilderService",
+            "capabilityService"
         ];
 
         constructor(
@@ -16,9 +17,19 @@
             public clientService: IClientService,
             public $location: ng.ILocationService,
             public locationHelperService: Core.LocationHelperService,
-            public urlBuilderService: Core.IUrlBuilderService) {
+            public urlBuilderService: Core.IUrlBuilderService,
+            public capabilityService: Capability.ICapabilityService) {
             super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService);
 
+            this.capabilityService.checkCapability("createIndividualClient").then(() => {
+                this.initialize();
+            });
+
+            
+
+        }
+
+        private initialize() {
             this.$scope.clientType = this.$scope.clientTypes.juridicalPerson;
 
             if (this.$scope.clientId) {
@@ -35,7 +46,6 @@
             }
 
             this.$scope.createClient = () => this.clientService.createJuridicalClient(<JuridicalClientViewModel>this.$scope.clientViewModel);
-
         }
 
     }

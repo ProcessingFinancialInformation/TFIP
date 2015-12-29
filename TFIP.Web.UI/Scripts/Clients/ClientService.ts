@@ -8,6 +8,8 @@
         getClient(clientId: string, clientType: string): ng.IPromise<ClientViewModelBase>;
         showFindClients(): ng.IPromise<ClientViewModel>;
         showCreateClients(clientType: string, clientModel?: ClientViewModelBase): ng.IPromise<ClientViewModel>;
+        getIndividualClients(): ng.IPromise<ClientsListItemViewModel[]>;
+        getJuridicalClients(): ng.IPromise<ClientsListItemViewModel[]>;
     }
 
     export class ClientService implements IClientService {
@@ -60,6 +62,28 @@
                 deferred.resolve(data);
             }, () => {
                 deferred.reject();
+            });
+
+            return deferred.promise;
+        }
+
+        public getIndividualClients(): ng.IPromise<ClientsListItemViewModel[]> {
+            var deferred = this.$q.defer();
+            this.httpWrapper.get(this.apiUrlService.clientApi.getIndividualClients).then((data) => {
+                deferred.resolve(data);
+            }, (reason) => {
+                deferred.reject(reason);
+            });
+
+            return deferred.promise;
+        }
+
+        public getJuridicalClients(): ng.IPromise<ClientsListItemViewModel[]> {
+            var deferred = this.$q.defer();
+            this.httpWrapper.get(this.apiUrlService.clientApi.getJuridicalClients).then((data) => {
+                deferred.resolve(data);
+            }, (reason) => {
+                deferred.reject(reason);
             });
 
             return deferred.promise;

@@ -14,5 +14,7 @@ namespace TFIP.Business.Contracts
         void CreateClient(CreateJuridicalClientViewModel client);
 
         JuridicalClientInfoViewModel GetJuridicalClient(long id);
+
+        IEnumerable<ClientListItemViewModel> GetJuridicalClients();
     }
 }

@@ -28,5 +28,18 @@
 
         public static paymentDone = "Платёж успешно зарегистрирован. Текущий баланс: ";
 
+        public static capability = "Права доступа";
+
+        public static cannotGetCapabilities = "Не удалось получить права доступа для вашего пользователя. Попробуйте обновить страницу или обратитесь к администратору";
+
+        public static noCapabilities = "У вас нет прав для просмотра этой страницы. Обратитесь к вашему администратору";
+
+        public static noMiaMentions = "Нет данных в базе МВД";
+
+        public static noNbrbMentions = "Нет данных в базе НБРБ";
+
+        public static miaMentions = "Есть данные в базе МВД";
+
+        public static nbrbMentions = "Есть данные в базе НБРБ";
     }
 } 

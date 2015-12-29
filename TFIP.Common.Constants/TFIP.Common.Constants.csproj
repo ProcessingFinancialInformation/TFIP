@@ -79,6 +79,7 @@
     <Compile Include="CreditKindsConstants.cs" />
     <Compile Include="CreditRequestStatusConstants.cs" />
     <Compile Include="DataAccessLayerConstants.cs" />
+    <Compile Include="PaginationConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexConstants.cs" />
   </ItemGroup>

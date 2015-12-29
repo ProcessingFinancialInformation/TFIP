@@ -5,11 +5,15 @@ using System.Web.Http;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
 using TFIP.Business.Models;
+using TFIP.Common.Constants;
 using TFIP.Common.Resources;
 using TFIP.Web.ViewModels;
 
 namespace TFIP.Web.Api.Controllers
 {
+    using TFIP.Common.Helpers;
+    using TFIP.Web.Api.Security;
+
     public class ClientsController : BaseApiController
     {
         private readonly IIndividualClientsService individualClientsService;
@@ -39,6 +43,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpGet]
+        [UserAuthorize(Capability.CreateIndividualClient)]
         public HttpResponseMessage GetIndividualClientFormInfo()
         {
             return Request.CreateResponse(HttpStatusCode.OK, new IndividualClientFormViewModel()
@@ -64,6 +69,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
+        [UserAuthorize(Capability.CreateIndividualClient)]
         public HttpResponseMessage CreateOrUpdateIndividualClient(CreateIndividualClientViewModel individualClient)
         {
             var model = ProcessViewModel(individualClient, individualClientValidationService, individualClientsService.CreateClient);
@@ -71,6 +77,7 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
+        [UserAuthorize(Capability.CreateJuridicalClient)]
         public HttpResponseMessage CreateOrUpdateJuridicalClient(CreateJuridicalClientViewModel juridicalClient)
         {
             var model = ProcessViewModel(juridicalClient, juridicalClientValidationService, juridicalClientsService.CreateClient);
@@ -84,8 +91,8 @@ namespace TFIP.Web.Api.Controllers
             switch (clientType)
             { 
                 case ClientType.Individual:
-                {
-                    client = individualClientsService.GetIndividualClient(clientId);
+                    {
+                        client = individualClientsService.GetIndividualClient(clientId);
                     return client != null
                                ? this.Request.CreateResponse(HttpStatusCode.OK, client)
                                : this.Request.CreateErrorResponse(
@@ -102,6 +109,20 @@ namespace TFIP.Web.Api.Controllers
                 default:
                     return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, ErrorMessages.InvalidClientType);
             }
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetIndividualClients()
+        {
+            var clients = individualClientsService.GetIndividualClients();
+            return Request.CreateResponse(HttpStatusCode.OK, clients);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetJuridicalClients()
+        {
+            var clients = juridicalClientsService.GetJuridicalClients();
+            return Request.CreateResponse(HttpStatusCode.OK, clients);
         }
     }
 }

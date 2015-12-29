@@ -133,6 +133,10 @@
       <Project>{c0279e21-0b66-492a-a498-044194155d12}</Project>
       <Name>TFIP.Business.NotificationModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
+      <Project>{8483aae7-5e1c-4d74-91f9-b44878f83359}</Project>
+      <Name>TFIP.Common.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124F2F0-D0DF-403F-A2CE-B645C61C5D30}</Project>
       <Name>TFIP.Common.Helpers</Name>

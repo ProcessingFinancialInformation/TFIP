@@ -2,6 +2,7 @@
 /// <reference path="App\angular-bootstrap.ts"/>
 /// <reference path="App\ModuleBootstrapper.ts"/>
 /// <reference path="Clients\ClientController.ts"/>
+/// <reference path="Clients\ClientsController.ts"/>
 /// <reference path="Clients\ClientService.ts"/>
 /// <reference path="Clients\ClientsModel.ts"/>
 /// <reference path="Clients\ClientsSelectorController.ts"/>

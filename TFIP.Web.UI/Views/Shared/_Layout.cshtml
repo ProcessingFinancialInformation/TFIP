@@ -18,12 +18,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Bank System", "Index", "Clients", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Bank System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" ng-cloak>
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Работа с клиентами", "Index", "Clients")</li>
-                    <li>@Html.ActionLink("Администрирование", "Index", "Admin")</li>
+                    <li ng-if="allExceptAdmin()">@Html.ActionLink("Работа с клиентами", "Index", "Clients")</li>
+                    <li ng-if="capabilityModel.capabilities.adminPermissions">@Html.ActionLink("Администрирование", "Index", "Admin")</li>
                 </ul>
             </div>
         </div>
