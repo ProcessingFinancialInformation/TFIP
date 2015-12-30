@@ -3,6 +3,7 @@
     import NumericConstants = TFIP.Web.UI.Const.NumericConstants;
     import PageInfoViewModel = TFIP.Web.UI.Shared.PageInfoViewModel;
     import ClientViewModel = TFIP.Web.UI.Clients.ClientViewModel;
+    import ClientService = TFIP.Web.UI.Clients.IClientService;
 
     export interface IClientsScope extends ng.IScope {
         makeActive: (tab) => void;
@@ -19,12 +20,16 @@
     export class AdminClientsController {
         public static $inject = [
             "$scope",
-            "clientService",
+            "locationHelperService",
+            "messageBox",
+            "clientService"
         ];
 
         constructor(
             private $scope: IClientsScope,
-            private clientService: Clients.IClientService) {
+            private locationHelperService: Core.LocationHelperService,
+            private messageBox: Core.IMessageBoxService,
+            private clientService: ClientService) {
             this.$scope.juridicalPageInfo = { currentPage: 1, totalItems: 0 };
             this.$scope.individualPageInfo = { currentPage: 1, totalItems: 0 };
             this.$scope.numPerPage = NumericConstants.itemsPerPage;
@@ -46,12 +51,12 @@
                 if (this.$scope.individualClients) {
                     this.$scope.individualPageInfo.totalItems = this.$scope.individualClients.asEnumerable().count(z => z.name.indexOf(newVal.name) > -1);
                 }
-            });
+            },true);
             this.$scope.$watch("juridicalFilter", (newVal, oldval) => {
                 if (this.$scope.juridicalClients) {
                     this.$scope.juridicalPageInfo.totalItems = this.$scope.juridicalClients.asEnumerable().count(z => z.name.indexOf(newVal.name) > -1);
                 }
-            });
+            },true);
         }
 
         private makeActive(tab) {

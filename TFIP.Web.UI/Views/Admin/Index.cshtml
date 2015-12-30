@@ -5,16 +5,19 @@
 
 <div ng-controller="AdminController">
     <ul class="nav nav-tabs" role="tablist">
-        <li ng-repeat="tab in tabs" role="presentation" ng-class="{'active': tab.isActive}">
+        <li ng-repeat="tab in tabs" role="presentation" ng-class="{'active': tab.isActive }">
             <a aria-controls="home" href class="h3" role="tab" data-toggle="tab" ng-click="makeActive(tab) " ng-bind="tab.tabName"></a>
         </li>
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" ng-class="{'active': tabs[0].isActive}" class="tab-pane">
+        <div role="tabpanel" ng-class="{ 'active': tabs[0].isActive }" class="tab-pane">
             @Html.Partial("CreditTypes")
         </div>
         <div role="tabpanel" ng-class="{'active': tabs[1].isActive}" class="tab-pane subtab">
             @Html.Partial("Clients")
+        </div>
+        <div role="tabpanel" ng-class="{ 'active': tabs[2].isActive }" class="tab-pane">
+            @Html.Partial("Settings")
         </div>
     </div>
     

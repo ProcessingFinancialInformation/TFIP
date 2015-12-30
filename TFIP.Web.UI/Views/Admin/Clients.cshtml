@@ -36,12 +36,12 @@
         </div>
     </div>
     <div class="tab-content">
-        <div class="row search-inputs-row">
-            <div class="col-xs-3">
-                <input class="form-control" placeholder="Введите название" type="text" ng-model="juridicalFilter.name" />
-            </div>
-        </div>
         <div role="tabpanel" ng-class="{'active': tabs[1].isActive}" class="tab-pane">
+            <div class="row search-inputs-row">
+                <div class="col-xs-3">
+                    <input class="form-control" placeholder="Введите название" type="text" ng-model="juridicalFilter.name" />
+                </div>
+            </div>
             <div class="table-responsive" ng-cloak>
                 <table class="table">
                     <thead>
