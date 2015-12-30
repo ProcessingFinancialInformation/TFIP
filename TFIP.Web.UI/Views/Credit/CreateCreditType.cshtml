@@ -7,7 +7,7 @@
 <div class="modal-body" ng-form="createCreditTypeForm">
     <div>
         <div class="form-horizontal">
-            <div text-field-input name="'name'" model="creditTypeModel.name" label-text="'Наименование'" is-required="true" pattern="regex.charactersWithSpace"></div>
+            <div text-field-input name="'name'" model="creditTypeModel.name" label-text="'Наименование'" is-required="true"></div>
             <div radio-field-input name="'isIndividual'" model="creditTypeModel.isIndividual" is-required="true" model-values="isIndividualValues"></div>
             <div select-field-input name="'creditKind'" label-text="'Цель кредита'" model="creditTypeModel.creditKind" is-required="true" model-values="creditTypePage.creditKinds"></div>
             <div select-field-input name="'calculationType'" label-text="'Тип выплат'" model="creditTypeModel.calculationType" is-required="true" model-values="creditTypePage.calculationTypes"></div>

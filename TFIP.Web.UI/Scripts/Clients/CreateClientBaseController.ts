@@ -14,6 +14,7 @@
         createClientForm: Core.ICustomFormController;
         today: Date;
         min18AgeDate: Date;
+        maxAge: Date;
     }
 
     export class CreateClientBaseController extends Core.BaseController {
@@ -23,7 +24,8 @@
             public clientService: IClientService,
             public $location: ng.ILocationService,
             public locationHelperService: Core.LocationHelperService,
-            public urlBuilderService: Core.IUrlBuilderService) {
+            public urlBuilderService: Core.IUrlBuilderService,
+            public settingsService: Settings.ISettingsService) {
             super();
             
             this.init();
@@ -49,7 +51,12 @@
             this.$scope.clientTypes = new ClientType();
             this.$scope.createUser = () => this.createUser();
             this.$scope.today = moment();
-            this.$scope.min18AgeDate = moment().subtract("years", 18);
+            this.settingsService.getSettings().then((data: Settings.SettingsViewModel) => {
+                var adulthood = data.ageSettings.filter((s) => s.additionalInfo == Settings.SettingsNames.adulthood)[0].value;
+                this.$scope.min18AgeDate = moment().subtract("years", parseInt(adulthood));
+                var maxAge = data.ageSettings.filter((s) => s.additionalInfo == Settings.SettingsNames.maxAge)[0].value;
+                this.$scope.maxAge = moment().subtract("years", parseInt(maxAge));
+            });
         }
 
         private createUser() {

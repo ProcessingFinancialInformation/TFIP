@@ -100,7 +100,6 @@
         /// Gets or sets the name.
         /// </summary>
         [Required]
-        [RegularExpression(RegexConstants.CharactersWithSpace)]
         public string Name { get; set; }
 
         /// <summary>

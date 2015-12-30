@@ -5,7 +5,7 @@
     <div text-field-input name="'lastName'" label-text="'Фамилия'" model="clientViewModel.lastName" is-required="true" pattern="regex.lastName"></div>
     <div text-field-input name="'firstName'" label-text="'Имя'" model="clientViewModel.firstName" is-required="true" pattern="regex.characters"></div>
     <div text-field-input name="'patronymic'" label-text="'Отчество'" model="clientViewModel.patronymic" pattern="regex.characters"></div>
-    <div date-field-input name="'dateOfBirth'" label-text="'Дата рождения'" model="clientViewModel.dateOfBirth" is-required="true" max-date="min18AgeDate" is-read-only="editMode"></div>
+    <div date-field-input name="'dateOfBirth'" label-text="'Дата рождения'" model="clientViewModel.dateOfBirth" is-required="true" max-date="min18AgeDate" min-date="maxAge" is-read-only="editMode"></div>
     <div text-field-input name="'placeOfBirth'" label-text="'Место рождения'" model="clientViewModel.placeOfBirth" is-required="true" pattern="regex.charactersWithSpace"></div>
     <div select-field-input name="'gender'" label-text="'Пол'" model="clientViewModel.gender" model-values="genders" is-required="true"></div>
 

@@ -4,6 +4,11 @@
         ageSettings: Shared.ListItem[];
     }
 
+    export class SettingsNames {
+        public static adulthood = "Возраст совершеннолетия";
+        public static maxAge = "Максимально допустимый возраст";
+    }
+
     export interface ISettingsService {
         getSettings(): ng.IPromise<SettingsViewModel>;
         saveSettings(model: SettingsViewModel): ng.IPromise<Shared.AjaxViewModel<SettingsViewModel>>;

@@ -125,6 +125,8 @@
                     this.createCreditRequestItself();
                 }, (reason: any) => {
                     this.messageBox.showError(Const.Messages.creditCreation, reason);
+
+                    this.attachments = [];
                 });
             } else {
                 this.createCreditRequestItself();
@@ -140,9 +142,11 @@
                 } else {
                     this.messageBox.showErrorMulty(Const.Messages.creditCreation, data.errors);
                 }
-            },(reason: Core.IRejectionReason) => {
-                    this.messageBox.showError(Const.Messages.creditCreation, reason.message);
-                });
+            }, (reason: Core.IRejectionReason) => {
+                this.messageBox.showError(Const.Messages.creditCreation, reason.message);
+
+                this.attachments = [];
+            });
         }
 
         private onFileSuccess(response: Shared.AjaxViewModel<Shared.ListItem>, status: number, headers: any): ng.IPromise<any> {
@@ -156,9 +160,8 @@
 
         private onFileError(response: any, status: number, headers: any): ng.IPromise<any> {
             var deferred = this.$q.defer();
-            console.log(response);
-            console.log(status);
-            console.log(headers);
+
+            this.attachments = [];
 
             deferred.resolve();
 

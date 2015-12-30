@@ -23,7 +23,6 @@
         }
 
         [HttpGet]
-        [UserAuthorize(Capability.AdminPermissions)]
         public HttpResponseMessage Get()
         {
             SettingsViewModel model = new SettingsViewModel { AgeSettings = this.settingsService.GetAgeSettings().ToList() };

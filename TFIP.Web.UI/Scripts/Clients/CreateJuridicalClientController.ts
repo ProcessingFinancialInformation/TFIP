@@ -8,7 +8,8 @@
             "$location",
             "locationHelperService",
             "urlBuilderService",
-            "capabilityService"
+            "capabilityService",
+            "settingsService"
         ];
 
         constructor(
@@ -18,15 +19,13 @@
             public $location: ng.ILocationService,
             public locationHelperService: Core.LocationHelperService,
             public urlBuilderService: Core.IUrlBuilderService,
-            public capabilityService: Capability.ICapabilityService) {
-            super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService);
+            public capabilityService: Capability.ICapabilityService,
+            public settingsService: Settings.ISettingsService) {
+            super($scope, messageBox, clientService, $location, locationHelperService, urlBuilderService, settingsService);
 
-            this.capabilityService.checkCapability("createIndividualClient").then(() => {
+            this.capabilityService.checkCapability("createJuridicalClient").then(() => {
                 this.initialize();
             });
-
-            
-
         }
 
         private initialize() {

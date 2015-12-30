@@ -8,6 +8,7 @@
     export class ListItem {
         id: string;
         value: string;
+        additionalInfo: string;
     }
 
     export class TabViewModel {

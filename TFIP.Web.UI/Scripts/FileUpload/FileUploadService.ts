@@ -12,7 +12,7 @@
     export interface IFileUploadService {
         getUploader(): any;
         uploadAll(): void;
-        uploadByFile(deferred?: ng.IDeferred<any>): ng.IPromise<any>;
+        uploadByFile(deferred?: ng.IDeferred<any>, startIndex?: number): ng.IPromise<any>;
         removeItemFromQueue(item: any): void;
         anyFilesToUpload(): boolean;
         initUploader(options: IUploaderOptions): void;
@@ -43,7 +43,7 @@
             }
 
             this.uploader.withCredentials = true;
-            this.uploader.removeAfterUpload = true;
+            this.uploader.removeAfterUpload = false;
             this.uploader.url = options.url;
             this.uploader.queueLimit = options.queueLimit || Number.MAX_VALUE;
             this.onFileSuccess = options.onFileSuccess;
@@ -67,20 +67,20 @@
             this.uploader.uploadAll();
         }
 
-        public uploadByFile(deferred?: ng.IDeferred<any>): ng.IPromise<any> {
+        public uploadByFile(deferred?: ng.IDeferred<any>, startIndex?: number): ng.IPromise<any> {
             deferred = deferred || this.$q.defer();
-
-            if (this.uploader.queue.length != 0) {
-                var item = this.uploader.queue[0];
+            startIndex = startIndex || 0;
+            if (this.uploader.queue.length > startIndex) {
+                var item = this.uploader.queue[startIndex];
                 item.onSuccess = (response, status, headers) => {
                     this.onFileSuccess(response, status, headers).then(() => {
-                        this.uploadByFile(deferred);
+                        this.uploadByFile(deferred, startIndex + 1);
                     });
                 };
                 item.onError = (response, status, headers) => {
                     this.onFileError(response, status, headers).then(() => {
                         if (this.continueOnError) {
-                            this.uploadByFile(deferred);
+                            this.uploadByFile(deferred, startIndex + 1);
                         } else {
                             deferred.reject();
                         }
