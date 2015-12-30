@@ -8,7 +8,9 @@
 
         public static invalidForm = "Некоторые поля заполнены неверно";
 
-        public static clientNotExist = "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?";
+        public static clientNotExist = "Клиента с таким идентификатором не существует.";
+
+        public static clientNotExistCreateNew = "Клиента с таким идентификатором не существует. Хотите ли вы создать нового клиента?";
 
         public static admin = "Администрирование";
 

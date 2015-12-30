@@ -43,6 +43,9 @@
                     });
             } else {
                 this.$scope.clientViewModel = new JuridicalClientViewModel();
+                if (this.$scope.idNo) {
+                    this.$scope.clientViewModel.identificationNo = this.$scope.idNo;
+                }
             }
 
             this.$scope.createClient = () => this.clientService.createJuridicalClient(<JuridicalClientViewModel>this.$scope.clientViewModel);

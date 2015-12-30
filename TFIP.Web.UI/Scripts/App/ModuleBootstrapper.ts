@@ -86,7 +86,15 @@
                 .controller("CreditTypesController", TFIP.Web.UI.Credit.CreditTypesController)
                 .controller("AdminClientsController", TFIP.Web.UI.Admin.AdminClientsController)
                 .controller("AdminSettingsController", TFIP.Web.UI.Admin.AdminSettingsController)
-                .filter('offset', Filters.offset);
+                .filter('offset', Filters.offset)
+                .config([
+                    "blockUIConfig", (blockUIConfig: any) => {
+
+                        // Change the default overlay message
+                        blockUIConfig.message = 'Загрузка';
+
+                    }
+                ]);
             return new ModuleBootstrapper(mainModule, "body");
         }
     }

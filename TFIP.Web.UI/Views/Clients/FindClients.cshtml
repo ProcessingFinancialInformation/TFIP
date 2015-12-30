@@ -1,10 +1,10 @@
 ﻿<div ng-form="clientSelectionForm">
     <div class="form-group">
-        <label class="radio-inline">
-            <input type="radio" ng-model="clientInput.clientType" ng-value="clientTypes.individualClient" name="clientType" /> Физическое лицо
+        <label class="radio-inline" ng-if="capabilityModel.capabilities.clientInformation && !capabilityModel.capabilities.createJuridicalClient">
+            <input type="radio" ng-model="clientInput.clientType" ng-value="clientTypes.individualClient" name="clientType" ng-checked="capabilityModel.capabilities.createIndividualClient && capabilityModel.capabilities.clientInformation" /> Физическое лицо
         </label>
-        <label class="radio-inline">
-            <input type="radio" ng-model="clientInput.clientType" ng-value="clientTypes.juridicalPerson" name="clientType" /> Юридическое лицо
+        <label class="radio-inline" ng-if="capabilityModel.capabilities.clientInformation">
+            <input type="radio" ng-model="clientInput.clientType" ng-value="clientTypes.juridicalPerson" ng-checked="capabilityModel.capabilities.createJuridicalClient" name="clientType" /> Юридическое лицо
         </label>
     </div>
     <div class="form-group" ng-class="{ 'has-error': clientSelectionForm.clientId.$error.required && clientSelectionForm.clientId.$dirty }">

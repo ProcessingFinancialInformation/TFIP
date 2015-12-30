@@ -1,7 +1,7 @@
 ﻿module TFIP.Web.UI.Credit {
 
     export interface ICreditTypeService {
-        getCreditTypes(isActive?: boolean): ng.IPromise<CreditTypeModel[]>;
+        getCreditTypes(isActive?: boolean, isIndividual?: boolean): ng.IPromise<CreditTypeModel[]>;
         getCreditType(id: number): ng.IPromise<CreditTypeModel>;
         getPage(): ng.IPromise<CreditTypePageModel>;
         showCreateCreditType(): ng.IPromise<any>;
@@ -102,9 +102,9 @@
             return deferred.promise;
         }
 
-        public getCreditTypes(isActive?: boolean): ng.IPromise<CreditTypeModel[]> {
+        public getCreditTypes(isActive?: boolean, isIndividual?: boolean): ng.IPromise<CreditTypeModel[]> {
             var deferred = this.$q.defer();
-            var url = this.urlBuilderService.buildQuery(this.apiUrlService.creditTypeApi.getCredtTypes, { isActive: isActive });
+            var url = this.urlBuilderService.buildQuery(this.apiUrlService.creditTypeApi.getCredtTypes, { isActive: isActive, isIndividual: isIndividual });
             this.httpWrapper.get(url).then((data: CreditTypeModel[]) => {
                 deferred.resolve(data);
             }, (reason) => {
@@ -155,9 +155,9 @@
             var url = this.urlBuilderService.buildQuery(this.apiUrlService.creditTypeApi.changeActivity, { creditTypeId: id, active: active });
             this.httpWrapper.get(url).then((data: CreditTypePageModel) => {
                 deferred.resolve(data);
-            },(reason) => {
-                    deferred.reject(reason);
-                });
+            }, (reason) => {
+                deferred.reject(reason);
+            });
 
             return deferred.promise;
         }

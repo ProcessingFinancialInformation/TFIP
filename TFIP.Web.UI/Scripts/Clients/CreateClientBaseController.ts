@@ -7,6 +7,7 @@
         clientTypes: ClientType;
         clientId: string;
         editMode: boolean;
+        idNo: string;
 
         createUser: () => void;
         createClient: () => ng.IPromise<Shared.AjaxViewModel<any>> ;
@@ -30,6 +31,7 @@
 
         private init() {
             this.$scope.clientId = this.locationHelperService.getParameterValue("clientId");
+            this.$scope.idNo = this.locationHelperService.getParameterValue("idNo");
 
             var clientFormPromise: ng.IPromise<ClientFormViewModel>;
 

@@ -9,7 +9,7 @@ namespace TFIP.Business.Contracts
 
         void ChangeCreditTypeStatus(long id, bool isActive);
 
-        IEnumerable<CreditTypeViewModel> GetCreditTypes(bool? isActive);
+        IEnumerable<CreditTypeViewModel> GetCreditTypes(bool? isActive, bool? isIndividual);
 
         CreditTypeViewModel GetCreditType(long id);
     }

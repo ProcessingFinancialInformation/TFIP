@@ -1,7 +1,7 @@
 ﻿module TFIP.Web.UI.Credit {
     
     export interface ICreditRequestService {
-        showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<CreditRequestModel>;
+        showCreateCreditPopup(clientId: number, clientType: string, isIndividual: boolean): ng.IPromise<CreditRequestModel>;
         showCreditRequestDetailsPopup(requestId: number): ng.IPromise<any>;
         createCreditRequest(creditRequest: CreditRequestModel): ng.IPromise<Shared.AjaxViewModel<CreditRequestModel>>;
         getCreditRequestInfo(id: number): ng.IPromise<CreditRequestModel>;
@@ -35,11 +35,11 @@
             
         }
 
-        public showCreateCreditPopup(clientId: number, clientType: string): ng.IPromise<CreditRequestModel> {
+        public showCreateCreditPopup(clientId: number, clientType: string, isIndividual: boolean): ng.IPromise<CreditRequestModel> {
             var deferred = this.$q.defer();
 
             if (clientId && clientType) {
-                this.creditTypeService.getCreditTypes(true).then((data: CreditTypeModel[]) => {
+                this.creditTypeService.getCreditTypes(true, isIndividual).then((data: CreditTypeModel[]) => {
                     var modalInstance = this.$uibModal.open({
                         templateUrl: "/Credit/CreateCreditRequest",
                         controller: CreateCreditRequestController,

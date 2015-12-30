@@ -44,6 +44,9 @@ module TFIP.Web.UI.Clients {
                     });
             } else {
                 this.$scope.clientViewModel = new ClientViewModel();
+                if (this.$scope.idNo) {
+                    this.$scope.clientViewModel.identificationNo = this.$scope.idNo;
+                }
             }
 
             this.$scope.createClient = () => this.clientService.createClient(<ClientViewModel>this.$scope.clientViewModel);

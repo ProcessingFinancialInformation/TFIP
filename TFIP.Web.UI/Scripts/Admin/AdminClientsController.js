@@ -8,8 +8,10 @@ var TFIP;
             (function (Admin) {
                 var NumericConstants = TFIP.Web.UI.Const.NumericConstants;
                 var AdminClientsController = (function () {
-                    function AdminClientsController($scope, clientService) {
+                    function AdminClientsController($scope, locationHelperService, messageBox, clientService) {
                         this.$scope = $scope;
+                        this.locationHelperService = locationHelperService;
+                        this.messageBox = messageBox;
                         this.clientService = clientService;
                         this.$scope.juridicalPageInfo = { currentPage: 1, totalItems: 0 };
                         this.$scope.individualPageInfo = { currentPage: 1, totalItems: 0 };
@@ -32,12 +34,12 @@ var TFIP;
                             if (_this.$scope.individualClients) {
                                 _this.$scope.individualPageInfo.totalItems = _this.$scope.individualClients.asEnumerable().count(function (z) { return z.name.indexOf(newVal.name) > -1; });
                             }
-                        });
+                        }, true);
                         this.$scope.$watch("juridicalFilter", function (newVal, oldval) {
                             if (_this.$scope.juridicalClients) {
                                 _this.$scope.juridicalPageInfo.totalItems = _this.$scope.juridicalClients.asEnumerable().count(function (z) { return z.name.indexOf(newVal.name) > -1; });
                             }
-                        });
+                        }, true);
                     };
                     AdminClientsController.prototype.makeActive = function (tab) {
                         var _this = this;
@@ -47,7 +49,9 @@ var TFIP;
                     };
                     AdminClientsController.$inject = [
                         "$scope",
-                        "clientService",
+                        "locationHelperService",
+                        "messageBox",
+                        "clientService"
                     ];
                     return AdminClientsController;
                 })();

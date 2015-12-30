@@ -31,11 +31,19 @@ namespace TFIP.Business.Services
             creditUow.Commit();
         }
 
-        public IEnumerable<CreditTypeViewModel> GetCreditTypes(bool? isActive)
+        public IEnumerable<CreditTypeViewModel> GetCreditTypes(bool? isActive, bool? isIndividual)
         {
             IEnumerable<CreditType> result = isActive.HasValue
-                ? creditUow.CreditTypes.Get(it => it.IsActive == isActive.Value)
-                : creditUow.CreditTypes.All();
+                                                 ? (isIndividual.HasValue)
+                                                       ? creditUow.CreditTypes.Get(
+                                                           it =>
+                                                           it.IsActive == isActive.Value
+                                                           && it.IsIndividual == isIndividual.HasValue)
+                                                       : creditUow.CreditTypes.Get(it => it.IsActive == isActive.Value)
+                                                 : (isIndividual.HasValue)
+                                                       ? creditUow.CreditTypes.Get(
+                                                           it => it.IsIndividual == isIndividual.Value)
+                                                       : creditUow.CreditTypes.All();
 
             return AutoMapper.Mapper.Map<IEnumerable<CreditType>, IEnumerable<CreditTypeViewModel>>(result);
         }
