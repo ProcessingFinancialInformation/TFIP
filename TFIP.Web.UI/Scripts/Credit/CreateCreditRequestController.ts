@@ -17,6 +17,7 @@
         fileSelectBtn: string;
         addFile: () => void;
         removeFile: (item: any) => void;
+        removeGuarantor: (item: any) => void ;
     }
 
     export class CreateCreditRequestController extends Core.BaseController {
@@ -77,6 +78,7 @@
             this.$scope.regex = new Const.RegularExpressions();
             this.$scope.addFile = () => this.addFile();
             this.$scope.removeFile = (item: any) => this.removeFile(item);
+            this.$scope.removeGuarantor = (item: any) => this.removeGuarantor(item);
             this.$scope.$on("$destroy", () => {
                 this.customFileUploader.destroyUploader();
             });
@@ -174,6 +176,13 @@
                     });
                 }
             });
+        }
+
+        private removeGuarantor(guarantor) {
+            var index = this.$scope.creditRequestModel.guarantors.indexOf(guarantor)
+            if (index > -1) {
+                this.$scope.creditRequestModel.guarantors.splice(index, 1);
+            }
         }
 
         private pushGuarantor(data: Clients.ClientViewModel) {
