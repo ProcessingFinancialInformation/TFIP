@@ -49,6 +49,7 @@
         attachments: Shared.ListItem[];
         creditType: any;
         capabilities: Capability.ICapabilities;
+        payments: any;
     }
 
 } 

@@ -1,4 +1,6 @@
 ﻿module TFIP.Web.UI.Clients {
+    import NumericConstants = TFIP.Web.UI.Const.NumericConstants;
+
     export interface IClientScope extends MasterPage.IMasterPageScope {
         clientViewModel: ClientViewModelBase;
         createCreditRequest: () => void;
@@ -12,6 +14,9 @@
         approveRequest: (request: Credit.CreditRequestModel) => void;
         denyRequest: (request: Credit.CreditRequestModel) => void;
         securityInfo: ISecurityInfo;
+        currentPage: number;
+        totalItems: number;
+        numPerPage: number;
     }
 
     export interface ISecurityInfo {
@@ -67,6 +72,9 @@
 
             this.$scope.$watch("capabilityModel", (newVal, oldVal) => {
                 console.log(newVal);
+
+                this.$scope.currentPage = 1;
+                this.$scope.numPerPage = NumericConstants.itemsPerPage;
             });
         }
 
@@ -74,6 +82,7 @@
             var promise = this.clientService.getClient(clientId, clientType);
             promise.then((data: ClientViewModelBase) => {
                 this.$scope.clientViewModel = data;
+                this.$scope.totalItems = data.credits.length;
                 this.initSecurityInfo();
             }, (reason: Core.IRejectionReason) => {
                 if (!reason.aborted) {

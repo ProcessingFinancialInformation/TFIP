@@ -1,33 +1,18 @@
-﻿<div ng-controller="ClientsController">
+﻿<div ng-controller="AdminClientsController">
     <ul class="nav nav-tabs" role="tablist">
         <li ng-repeat="tab in tabs" role="presentation" ng-class="{'active': tab.isActive}">
-            <a aria-controls="home" href class="h3" role="tab" data-toggle="tab" ng-click="makeActive(tab) " ng-bind="tab.tabName"></a>
+            <a aria-controls="home" href class="h4" role="tab" data-toggle="tab" ng-click="makeActive(tab) " ng-bind="tab.tabName"></a>
         </li>
     </ul>
+
     <div class="tab-content">
+
         <div role="tabpanel" ng-class="{'active': tabs[0].isActive}" class="tab-pane">
-            <div class="table-responsive" ng-cloak>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Имя</th>
-                            <th>Идентификационный номер</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="client in individualClients  | filter : activeFilter">
-                            <td ng-bind="$index + 1"></td>
-                            <td ng-bind="client.name"></td>
-                            <td ng-bind="client.identificationNo"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <uib-pagination ng-model="individualPageInfo.currentPage" total-items="individualPageInfo.totalCount">
-                </uib-pagination>
+            <div class="search-inputs-row row">
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="Введите ФИО" ng-model="individualFilter.name" />
+                </div>
             </div>
-        </div>
-        <div role="tabpanel" ng-class="{'active': tabs[1].isActive}" class="tab-pane">
             <div class="table-responsive" ng-cloak>
                 <table class="table">
                     <thead>
@@ -38,17 +23,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="client in juridicalClients | filter : activeFilter">
-                            <td ng-bind="$index + 1"></td>
+                        <tr ng-repeat="client in individualClients | filter : individualFilter | offset: (individualPageInfo.currentPage-1)*numPerPage |limitTo: numPerPage">
+                            <td ng-bind="(individualPageInfo.currentPage-1)*numPerPage +$index + 1"></td>
                             <td ng-bind="client.name"></td>
                             <td ng-bind="client.identificationNo"></td>
                         </tr>
                     </tbody>
                 </table>
-                <uib-pagination ng-model="juridicalPageInfo.currentPage" total-items="juridicalPageInfo.totalCount">
+                <uib-pagination ng-model="individualPageInfo.currentPage" total-items="individualPageInfo.totalItems">
                 </uib-pagination>
             </div>
         </div>
     </div>
+    <div class="tab-content">
+        <div role="tabpanel" ng-class="{'active': tabs[1].isActive}" class="tab-pane">
+            <div class="row search-inputs-row">
+                <div class="col-xs-3">
+                    <input class="form-control" placeholder="Введите название" type="text" ng-model="juridicalFilter.name" />
+                </div>
+            </div>
+            <div class="table-responsive" ng-cloak>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Имя</th>
+                            <th>Идентификационный номер</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="client in juridicalClients | filter : juridicalFilter| offset: (juridicalPageInfo.currentPage-1)*numPerPage |limitTo: numPerPage">
+                            <td ng-bind="(juridicalPageInfo.currentPage-1)*numPerPage +$index + 1"></td>
+                            <td ng-bind="client.name"></td>
+                            <td ng-bind="client.identificationNo"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <uib-pagination ng-model="juridicalPageInfo.currentPage" total-items="juridicalPageInfo.totalItems">
+                </uib-pagination>
+            </div>
+        </div>
+
+    </div>
+
+
 
 </div>

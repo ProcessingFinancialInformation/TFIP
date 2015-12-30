@@ -14,4 +14,9 @@
         tabName: string;
         isActive: boolean;
     }
+
+    export class PageInfoViewModel {
+        currentPage: number;
+        totalItems: number;
+    }
 } 

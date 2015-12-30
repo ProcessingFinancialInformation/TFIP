@@ -34,7 +34,8 @@
 
         <div class="form-group" ng-repeat="guarantor in creditRequestModel.guarantors" ng-if="guarantorRequired()">
             <div class="col-sm-2">Поручитель №{{$index + 1}}</div>
-            <div class="col-sm-10">
+            <div class="col-sm-10 guarantor-wrapper">
+                <a  ng-click="removeGuarantor(guarantor)" title="Удалить поручителя" class="glyphicon glyphicon-remove red yes-no-buttons delete-button"></a>
                 <p><span>{{guarantor.lastName}}</span><span>&nbsp;</span><span>{{guarantor.firstName}}</span></p>
                 <p><span>{{guarantor.passportNo}}</span></p>
                 <button ng-if="!guarantor.id" class="btn btn-default" ng-click="editGuarantor($index)">Редактировать</button>

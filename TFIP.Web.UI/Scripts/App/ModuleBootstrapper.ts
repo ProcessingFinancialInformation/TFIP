@@ -84,7 +84,7 @@
                 .controller("MasterPageController", TFIP.Web.UI.MasterPage.MasterPageController)
                 .controller("HomeController", TFIP.Web.UI.Home.HomeController)
                 .controller("CreditTypesController", TFIP.Web.UI.Credit.CreditTypesController)
-                .controller("ClientsController", TFIP.Web.UI.Clients.ClientsController)
+                .controller("AdminClientsController", TFIP.Web.UI.Admin.AdminClientsController)
                 .controller("AdminSettingsController", TFIP.Web.UI.Admin.AdminSettingsController)
                 .filter('offset', Filters.offset);
             return new ModuleBootstrapper(mainModule, "body");
