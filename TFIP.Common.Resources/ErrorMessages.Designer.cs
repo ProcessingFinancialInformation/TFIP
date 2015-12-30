@@ -196,6 +196,15 @@ namespace TFIP.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Значение настроек не может быть пустым.
+        /// </summary>
+        public static string SettingMustNotBeEmpty {
+            get {
+                return ResourceManager.GetString("SettingMustNotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Клиент с идентификационным номером {0} уже существует.
         /// </summary>
         public static string UniqueIndividualClientIdentificationNumber {

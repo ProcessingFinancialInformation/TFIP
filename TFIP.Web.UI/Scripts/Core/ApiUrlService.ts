@@ -8,6 +8,7 @@
         attachmentApi: AttachmentApi;
         capabilityApi: CapabilityApi;
         securityInfoApi: SecurityInfoApi;
+        settingsApi: SettingsApi;
     }
 
     export class ApiUrlService {
@@ -22,6 +23,7 @@
         public attachmentApi: AttachmentApi;
         public capabilityApi: CapabilityApi;
         public securityInfoApi: SecurityInfoApi;
+        public settingsApi: SettingsApi;
 
         constructor(private $window: ng.IWindowService) {
             var baseUrl = this.$window["consts"].webApiRoot;
@@ -33,6 +35,7 @@
             this.attachmentApi = new AttachmentApi(baseUrl);
             this.capabilityApi = new CapabilityApi(baseUrl);
             this.securityInfoApi = new SecurityInfoApi(baseUrl);
+            this.settingsApi = new SettingsApi(baseUrl);
         }
     }
 
@@ -153,6 +156,19 @@
 
             this.isInMiaDb = this.getBasePath() + "api/securityInfo/isInMiaDatabse";
             this.isInNbrbDb = this.getBasePath() + "api/securityInfo/isInNbrbDatabse";
+        }
+    }
+
+    export class SettingsApi extends UrlHelperBase {
+
+        public getSettings: string;
+        public postSettings: string;
+
+        constructor(basePath: string) {
+            super(basePath);
+
+            this.getSettings = this.getBasePath() + "api/settings/get";
+            this.postSettings = this.getBasePath() + "api/settings/post";
         }
     }
 

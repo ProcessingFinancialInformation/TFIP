@@ -115,6 +115,7 @@
     <Compile Include="Validation\CreditTypeValidationService.cs" />
     <Compile Include="Validation\IndividualClientValidationService.cs" />
     <Compile Include="Validation\JuridicalClientsValidationService.cs" />
+    <Compile Include="Validation\SettingsValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TFIP.Business.Contracts\TFIP.Business.Contracts.csproj">

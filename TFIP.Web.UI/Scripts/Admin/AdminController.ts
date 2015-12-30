@@ -4,6 +4,7 @@
     export interface IAdminScope extends ng.IScope {
         makeActive: (tab)=> void ;
         tabs: TabViewModel[];
+        regex: Const.RegularExpressions;
     }
 
     export class AdminController {
@@ -28,8 +29,13 @@
         }
 
         private init() {
-            this.$scope.tabs = [{ tabName: "Кредиты", isActive: true }, { tabName: "Клиенты", isActive: false }];
+            this.$scope.tabs = [
+                { tabName: "Кредиты", isActive: true },
+                { tabName: "Клиенты", isActive: false },
+                { tabName: "Настройки", isActive: false }
+            ];
             this.$scope.makeActive = (tab: TabViewModel) => this.makeActive(tab);
+            this.$scope.regex = new Const.RegularExpressions();
         }
 
         private makeActive(tab) {

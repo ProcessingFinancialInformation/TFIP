@@ -162,6 +162,9 @@
   <data name="MaxAge" xml:space="preserve">
     <value>Клиенты старше {0} лет не обслуживаются</value>
   </data>
+  <data name="SettingMustNotBeEmpty" xml:space="preserve">
+    <value>Значение настроек не может быть пустым</value>
+  </data>
   <data name="UniqueIndividualClientIdentificationNumber" xml:space="preserve">
     <value>Клиент с идентификационным номером {0} уже существует</value>
   </data>

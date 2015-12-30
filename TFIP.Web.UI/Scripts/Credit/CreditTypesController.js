@@ -30,10 +30,6 @@ var TFIP;
                         this.$scope.count = function (active) { return _this.count(active); };
                         this.$scope.numPerPage = NumericConstants.itemsPerPage;
                         this.$scope.currentPage = 1;
-                        this.$scope.pageChanged = function () {
-                            //this.$scope.creditTypes = 
-                            console.log(_this.$scope.currentPage);
-                        };
                         this.$scope.matchCriteria = function (filter) { return _this.matchCriteria(filter); };
                         this.$scope.$watch("filter", function (newVal, oldval) {
                             if (_this.$scope.creditTypes) {
@@ -66,7 +62,9 @@ var TFIP;
                             promise.then(function () {
                                 var message = (active) ? UI.Const.Messages.creditTypeStatusActiveChanged : UI.Const.Messages.creditTypeStatusNotActiveChanged;
                                 _this.messageBox.show(UI.Const.Messages.admin, message)["finally"](function () {
-                                    var creditType = _this.$scope.creditTypes.asEnumerable().firstOrDefault(function (ct) { return ct.id == id; });
+                                    var creditType = _this.$scope.creditTypes.asEnumerable().firstOrDefault(function (ct) {
+                                        return ct.id == id;
+                                    });
                                     creditType.isActive = active;
                                 });
                             }, function (reason) {
@@ -76,7 +74,9 @@ var TFIP;
                     };
                     CreditTypesController.prototype.getCreditKindName = function (kind) {
                         if (this.$scope.creditTypePage) {
-                            return this.$scope.creditTypePage.creditKinds.asEnumerable().firstOrDefault(function (el) { return el.id == kind.toString(); }).value;
+                            return this.$scope.creditTypePage.creditKinds.asEnumerable().firstOrDefault(function (el) {
+                                return el.id == kind.toString();
+                            }).value;
                         }
                         else {
                             return "";

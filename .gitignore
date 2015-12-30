@@ -308,3 +308,7 @@ TFIP.Web.UI/Scripts/Capability/CapabilityService.js
 TFIP.Web.UI/Scripts/Capability/CapabilityService.js.map
 TFIP.Web.UI/Scripts/SecurityInfo/SecurityInfoService.js
 TFIP.Web.UI/Scripts/SecurityInfo/SecurityInfoService.js.map
+/TFIP.Web.UI/Scripts/Admin/AdminSettingsController.js
+/TFIP.Web.UI/Scripts/Admin/AdminSettingsController.js.map
+/TFIP.Web.UI/Scripts/Settings/SettingsService.js
+/TFIP.Web.UI/Scripts/Settings/SettingsService.js.map

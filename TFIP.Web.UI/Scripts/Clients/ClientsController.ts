@@ -18,16 +18,16 @@
     export class ClientsController {
         public static $inject = [
             "$scope",
-            "clientService",
+            "locationHelperService",
+            "messageBox",
+            "clientService"
         ];
 
         constructor(
             private $scope: IClientsScope,
             private locationHelperService: Core.LocationHelperService,
             private messageBox: Core.IMessageBoxService,
-            private clientService: IClientService,
-            private paymentsService: Payments.IPaymentsService,
-            private createCreditRequestService: Credit.ICreateCreditRequestService) {
+            private clientService: IClientService) {
             this.$scope.juridicalPageInfo = { currentPage: 1 };
             this.$scope.juridicalPageInfo = { currentPage: 1 };
             this.$scope.numPerPage = NumericConstants.itemsPerPage;

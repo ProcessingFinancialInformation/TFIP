@@ -55,6 +55,7 @@
     <Compile Include="PagedCollection.cs" />
     <Compile Include="PaymentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AutoMapper;
 using TFIP.Business.Contracts;
 using TFIP.Business.Entities;
@@ -73,6 +71,14 @@ namespace TFIP.Business.Services.Mapper
                 .ForMember(dest => dest.AdditionalInfo,
                     x => x.MapFrom(source => EnumHelper.GetEnumDescription(source.SettingName)))
                 .ForMember(dest => dest.Value, x => x.MapFrom(source => source.SettingValue));
+
+            AutoMapper.Mapper.CreateMap<ListItem, Setting>()
+                .ForMember(dest => dest.Id, x => x.MapFrom(source => source.Id))
+                .ForMember(
+                    dest => dest.SettingName,
+                    x =>
+                    x.MapFrom(source => EnumHelper.GetItemByDescription(typeof(SettingsNames), source.AdditionalInfo)))
+                .ForMember(dest => dest.SettingValue, x => x.MapFrom(source => source.Value));
         }
 
         private void ConfigureIndividualClient()

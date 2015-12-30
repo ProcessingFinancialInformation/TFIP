@@ -59,29 +59,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization.Less, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9b7581e0240fe480, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Web.Optimization.Less.1.3.4\lib\net40\System.Web.Optimization.Less.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -100,12 +80,32 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -213,8 +213,9 @@
     <Content Include="Views\Payments\MakePaymentModal.cshtml" />
     <Content Include="Views\Clients\CreateIndividualClientModal.cshtml" />
     <Content Include="Views\Credit\CreditRequestDetails.cshtml" />
-    <Content Include="Views\Admin\CreditTypes.cshtml" />
     <Content Include="Views\Admin\Clients.cshtml" />
+    <Content Include="Views\Admin\CreditTypes.cshtml" />
+    <Content Include="Views\Admin\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -225,15 +226,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Admin\AdminController.ts" />
+    <TypeScriptCompile Include="Scripts\Admin\AdminSettingsController.ts" />
     <TypeScriptCompile Include="Scripts\App\angular-bootstrap.ts" />
     <TypeScriptCompile Include="Scripts\App\ModuleBootstrapper.ts" />
     <TypeScriptCompile Include="Scripts\Capability\CapabilityModels.ts" />
     <TypeScriptCompile Include="Scripts\Capability\CapabilityService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientController.ts" />
+    <TypeScriptCompile Include="Scripts\Clients\ClientsController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsSelectorController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientService.ts" />
     <TypeScriptCompile Include="Scripts\Clients\ClientsModel.ts" />
-    <TypeScriptCompile Include="Scripts\Clients\ClientsController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateClientBaseController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateClientModalController.ts" />
     <TypeScriptCompile Include="Scripts\Clients\CreateIndividualClientController.ts" />
@@ -277,6 +279,7 @@
     <TypeScriptCompile Include="Scripts\Payments\PaymentsModel.ts" />
     <TypeScriptCompile Include="Scripts\Payments\PaymentsService.ts" />
     <TypeScriptCompile Include="Scripts\SecurityInfo\SecurityInfoService.ts" />
+    <TypeScriptCompile Include="Scripts\Settings\SettingsService.ts" />
     <TypeScriptCompile Include="Scripts\Shared\SharedModel.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-ui-bootstrap.d.ts" />
@@ -288,10 +291,6 @@
     <ProjectReference Include="..\TFIP.Business.Entities\TFIP.Business.Entities.csproj">
       <Project>{77E14FE6-3D06-4B65-A1EF-7B12BA39E53C}</Project>
       <Name>TFIP.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TFIP.Common.Constants\TFIP.Common.Constants.csproj">
-      <Project>{8483aae7-5e1c-4d74-91f9-b44878f83359}</Project>
-      <Name>TFIP.Common.Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\TFIP.Common.Helpers\TFIP.Common.Helpers.csproj">
       <Project>{4124f2f0-d0df-403f-a2ce-b645c61c5d30}</Project>
