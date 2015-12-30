@@ -4,6 +4,7 @@
         balanceInfo: BalanceInformationModel;
         makePaymentForm: Core.ICustomFormController
         makePayment: () => void;
+        maxPayment: () => void;
     }
 
     export class MakePaymentController extends Core.BaseController {
@@ -30,6 +31,7 @@
             this.$scope.paymentViewModel.creditRequestId = creditRequestId;
             this.$scope.makePayment = () => this.makePayment();
             this.$scope.balanceInfo = balanceInfo;
+            this.$scope.maxPayment = () => this.maxPayment();
         }
 
         private makePayment() {
@@ -50,6 +52,10 @@
                 this.makeFormDirty(this.$scope.makePaymentForm);
                 this.messageBox.showError(Const.Messages.payment, Const.Messages.invalidForm);
             }
+        }
+
+        private maxPayment() {
+            return this.$scope.balanceInfo.currentMonthFee + this.$scope.balanceInfo.mainDebtBalance;
         }
     }
 }
