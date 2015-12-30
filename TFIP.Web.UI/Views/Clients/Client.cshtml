@@ -67,20 +67,20 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Кредит</th>
-                                    <th>Вид кредита</th>
-                                    <th>Дата создания заявки</th>
-                                    <th>Дата подтверждения/отклонения заявки</th>
-                                    <th>Дата последнего платежа</th>
-                                    <th>Статус</th>
-                                    <th class="action-column">Действия</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Кредит</th>
+                                <th>Вид кредита</th>
+                                <th>Дата создания заявки</th>
+                                <th>Дата подтверждения/отклонения заявки</th>
+                                <th>Дата последнего платежа</th>
+                                <th>Статус</th>
+                                <th class="action-column">Действия</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="creditRequest in clientViewModel.credits">
-                                    <td ng-bind="$index + 1"></td>
+                                <tr ng-repeat="creditRequest in clientViewModel.credits | offset: (currentPage-1)*numPerPage |limitTo: numPerPage">
+                                    <td ng-bind="(currentPage-1)*numPerPage +$index + 1"></td>
                                     <td ng-bind="creditRequest.creditTypeName"></td>
                                     <td ng-bind="creditRequest.creditKind"></td>
                                     <td ng-bind="creditRequest.creationDate | date: 'dd.MM.yyyy'"></td>
@@ -99,6 +99,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <uib-pagination ng-model="currentPage" total-items="totalItems">
+                        </uib-pagination>
                     </div>
                 </div>
             </div>
