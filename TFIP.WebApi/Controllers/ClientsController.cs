@@ -43,7 +43,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpGet]
-        [UserAuthorize(Capability.CreateIndividualClient)]
         public HttpResponseMessage GetIndividualClientFormInfo()
         {
             return Request.CreateResponse(HttpStatusCode.OK, new IndividualClientFormViewModel()
