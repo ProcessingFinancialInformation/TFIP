@@ -94,7 +94,7 @@
         }
 
         private createCreditRequest() {
-            this.creditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType, this.$scope.clientType == this.$scope.clientTypes.individualClient).then((data: Credit.CreditRequestModel) => {
+            this.creditRequestService.showCreateCreditPopup(this.$scope.clientViewModel.id, this.$scope.clientType, this.$scope.clientType.toLowerCase() == this.$scope.clientTypes.individualClient.toLowerCase()).then((data: Credit.CreditRequestModel) => {
                 if (data) {
                     this.$scope.clientViewModel.credits.push(data);
                 }
