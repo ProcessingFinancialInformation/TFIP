@@ -9,6 +9,8 @@
         currentPage: number;
         totalItems: number;
         numPerPage: number;
+
+        numPages: number;
     }
 
     export class CreditRequestDetailsController {
@@ -42,6 +44,7 @@
             this.$scope.concatCurrency = (str: string) => this.concatCurrency(str);
             this.$scope.numPerPage = NumericConstants.itemsPerPage;
             this.$scope.currentPage = 1;
+            this.$scope.numPages = 6;
         }
 
         private downloadAttachment(attachment: Shared.ListItem) {

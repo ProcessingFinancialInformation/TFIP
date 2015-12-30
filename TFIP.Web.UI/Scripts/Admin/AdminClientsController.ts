@@ -15,6 +15,7 @@
         individualPageInfo: PageInfoViewModel;
         individualFilter: {};
         numPerPage: number;
+        numPages: number;
     }
 
     export class AdminClientsController {

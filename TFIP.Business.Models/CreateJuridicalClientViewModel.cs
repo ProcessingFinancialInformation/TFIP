@@ -39,7 +39,7 @@ namespace TFIP.Business.Models
         /// Должность представителя
         /// </summary>
         [Required]
-        [RegularExpression(RegexConstants.Characters)]
+        [RegularExpression(RegexConstants.CharactersWithSpace)]
         public string RepresenterPosition { get; set; }
 
         /// <summary>

@@ -6,6 +6,7 @@
         pattern: string;
         name: string;
         isDisabled: boolean;
+        model: any;
     }
 
     export class FieldInputDirective implements ng.IDirective {

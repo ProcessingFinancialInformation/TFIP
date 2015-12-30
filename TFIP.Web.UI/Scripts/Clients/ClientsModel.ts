@@ -64,7 +64,7 @@
         }
 
         passportNo: string;
-        gender: Gender;
+        gender: string;
         nationality: string;
         placeOfBirth: string;
         authority: string;
