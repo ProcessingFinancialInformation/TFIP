@@ -1,8 +1,10 @@
+/// <reference path="Admin\AdminClientsController.ts"/>
 /// <reference path="Admin\AdminController.ts"/>
 /// <reference path="App\angular-bootstrap.ts"/>
 /// <reference path="App\ModuleBootstrapper.ts"/>
+/// <reference path="Capability\CapabilityModels.ts"/>
+/// <reference path="Capability\CapabilityService.ts"/>
 /// <reference path="Clients\ClientController.ts"/>
-/// <reference path="Clients\ClientsController.ts"/>
 /// <reference path="Clients\ClientService.ts"/>
 /// <reference path="Clients\ClientsModel.ts"/>
 /// <reference path="Clients\ClientsSelectorController.ts"/>
@@ -12,6 +14,7 @@
 /// <reference path="Clients\CreateJuridicalClientController.ts"/>
 /// <reference path="Clients\FindClientController.ts"/>
 /// <reference path="Const\Messages.ts"/>
+/// <reference path="Const\NumericConstants.ts"/>
 /// <reference path="Const\RegularExpressions.ts"/>
 /// <reference path="Core\ApiUrlService.ts"/>
 /// <reference path="Core\BaseController.ts"/>
@@ -22,9 +25,11 @@
 /// <reference path="Core\MessageBoxService.ts"/>
 /// <reference path="Core\UrlBuilderService.ts"/>
 /// <reference path="Credit\CreateCreditRequestController.ts"/>
-/// <reference path="Credit\creditRequestService.ts"/>
 /// <reference path="Credit\CreateCreditTypeController.ts"/>
 /// <reference path="Credit\CreditModels.ts"/>
+/// <reference path="Credit\CreditRequestDetailsController.ts"/>
+/// <reference path="Credit\CreditRequestService.ts"/>
+/// <reference path="Credit\CreditTypesController.ts"/>
 /// <reference path="Credit\CreditTypeService.ts"/>
 /// <reference path="Directives\FieldInputs\BaseFieldInputDirective.ts"/>
 /// <reference path="Directives\FieldInputs\CheckBoxFieldInputDirective.ts"/>
@@ -37,6 +42,7 @@
 /// <reference path="Directives\FieldInputs\TextFieldInputDirective.ts"/>
 /// <reference path="Extensions\ArrayEx.ts"/>
 /// <reference path="FileUpload\FileUploadService.ts"/>
+/// <reference path="Filters\Filters.ts"/>
 /// <reference path="Home\HomeController.ts"/>
 /// <reference path="linq\linq.d.ts"/>
 /// <reference path="linq\linq.jquery.d.ts"/>
@@ -44,6 +50,7 @@
 /// <reference path="Payments\MakePaymentController.ts"/>
 /// <reference path="Payments\PaymentsModel.ts"/>
 /// <reference path="Payments\PaymentsService.ts"/>
+/// <reference path="SecurityInfo\SecurityInfoService.ts"/>
 /// <reference path="Shared\SharedModel.ts"/>
 /// <reference path="typings\angularjs\angular-sanitize.d.ts"/>
 /// <reference path="typings\angularjs\angular-ui-bootstrap.d.ts"/>

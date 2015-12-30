@@ -30,10 +30,6 @@ var TFIP;
                         this.$scope.count = function (active) { return _this.count(active); };
                         this.$scope.numPerPage = NumericConstants.itemsPerPage;
                         this.$scope.currentPage = 1;
-                        this.$scope.pageChanged = function () {
-                            //this.$scope.creditTypes = 
-                            console.log(_this.$scope.currentPage);
-                        };
                         this.$scope.matchCriteria = function (filter) { return _this.matchCriteria(filter); };
                         this.$scope.$watch("filter", function (newVal, oldval) {
                             if (_this.$scope.creditTypes) {
