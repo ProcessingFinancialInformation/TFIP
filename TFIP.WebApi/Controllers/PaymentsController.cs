@@ -24,7 +24,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        [UserAuthorize(Capability.MakePayment)]
         public HttpResponseMessage MakePayment(PaymentViewModel payment)
         {
             var balance = ProcessViewModel<PaymentViewModel,decimal>(payment, null, paymentService.MakePayment);
@@ -32,7 +31,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpGet]
-        [UserAuthorize(Capability.MakePayment)]
         public HttpResponseMessage GetBalanceInformation(long creditRequestId)
         {
             var balanceInfo = paymentService.GetBalanceInformationViewModel(creditRequestId);

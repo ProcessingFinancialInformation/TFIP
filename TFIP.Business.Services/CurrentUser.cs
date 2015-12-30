@@ -1,10 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
+using System.Web;
 using TFIP.Business.Contracts;
 using TFIP.Business.Services.ActiveDirectory;
 using TFIP.Common.Helpers;
+using TFIP.Common.Logging;
 
 namespace TFIP.Business.Services
 {
@@ -16,6 +20,8 @@ namespace TFIP.Business.Services
             {
                 if (IdentityType == IdentityTypeEnum.Windows)
                 {
+                    CommonLogger.Warn(HttpContext.Current.Request.LogonUserIdentity.Name);
+                    CommonLogger.Warn(String.Format("{0} {1}", Identity.IsAuthenticated, Identity.Name));
                     return Identity.Name.Split('\\')[1];
                 }
                 throw new System.NotImplementedException();
@@ -27,7 +33,7 @@ namespace TFIP.Business.Services
             get { return activeDirectoryUser ?? (activeDirectoryUser = ActiveDirectoryHelper.GetActiveDirectoryUser(UserAccount)); }
         }
         
-        #region Helpers
+#region Helpers
 
         private enum IdentityTypeEnum
         {
@@ -56,6 +62,6 @@ namespace TFIP.Business.Services
         }
 
         private ActiveDirectoryUser activeDirectoryUser;
-        #endregion
+#endregion
     }
 }

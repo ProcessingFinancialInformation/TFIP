@@ -38,8 +38,8 @@
 
         public static noNbrbMentions = "Нет данных в базе НБРБ";
 
-        public static miaMentions = "Есть данные в базе МВД";
+        public static miaMentions = "Клиент числится базе МВД";
 
-        public static nbrbMentions = "Есть данные в базе НБРБ";
+        public static nbrbMentions = "Клиент в черном списке в базе НБРБ";
     }
 } 

@@ -99,6 +99,7 @@ namespace TFIP.Web.Api
             PermissionService.AddRole(new Operator());
             PermissionService.AddRole(new SecurityAgent());
             PermissionService.AddRole(new CreditComission());
+            PermissionService.AddRole(new CreditAgent());
         }
     }
 }

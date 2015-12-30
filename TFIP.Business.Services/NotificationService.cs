@@ -6,6 +6,7 @@ using TFIP.Business.Entities;
 using TFIP.Common.Helpers;
 using TFIP.Business.NotificationModule.EmailTransport;
 using TFIP.Business.Services.ActiveDirectory;
+using TFIP.Common.Logging;
 using TFIP.Common.Resources;
 
 namespace TFIP.Business.Services
@@ -90,16 +91,25 @@ namespace TFIP.Business.Services
         private bool SendNotification(NotificationType notificationType, Addressee addressee, dynamic data)
         {
             var success = true;
-            foreach (var recipient in addressee.Recipients)
+            try
             {
-                success &= notificationService.SendMail(new NotificationData()
+                foreach (var recipient in addressee.Recipients)
                 {
-                    CopyTo = addressee.CopyToEmail,
-                    Recipients = List.Of(recipient),
-                    Type = notificationType,
-                    Placeholders = data
-                });
+                    success &= notificationService.SendMail(new NotificationData()
+                    {
+                        CopyTo = addressee.CopyToEmail,
+                        Recipients = List.Of(recipient),
+                        Type = notificationType,
+                        Placeholders = data
+                    });
+                } 
             }
+            catch (Exception ex)
+            {
+                CommonLogger.Error("Notification failed.", ex);
+                success = false;
+            }
+
 
             return success;
         }

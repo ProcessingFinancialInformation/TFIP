@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Runtime.Caching;
 using TFIP.Common.Helpers;
+using TFIP.Common.Logging;
 
 namespace TFIP.Business.Services.ActiveDirectory
 {
@@ -13,6 +15,7 @@ namespace TFIP.Business.Services.ActiveDirectory
 
         private static List<ActiveDirectoryUser> GetAllMembers(this GroupPrincipal groupPrincipal)
         {
+#if DEBUG
             var users = groupPrincipal.Members
                 .Where(it => !string.IsNullOrEmpty(it.Name))
                 .Select(CreateActiveDirectoryUser)
@@ -20,6 +23,23 @@ namespace TFIP.Business.Services.ActiveDirectory
 
             groupPrincipal.Dispose();
             return users;
+#else
+            var users = new List<ActiveDirectoryUser>();
+
+            foreach (var group in groupPrincipal.GetMembers(false))
+            {
+                if (group.StructuralObjectClass.Equals("group"))
+                {
+                    users.AddRange(((GroupPrincipal)group).GetAllMembers());
+                }
+                else
+                {
+                    users.Add(CreateActiveDirectoryUser(group));
+                }
+            }
+            groupPrincipal.Dispose();
+            return users;
+#endif
         }
 
         private static List<ActiveDirectoryUser> GetMembers(GroupPrincipal groupPrincipal)
@@ -39,7 +59,9 @@ namespace TFIP.Business.Services.ActiveDirectory
             CheckCacheForGroup(groupName);
             List<ActiveDirectoryUser> userAccounts = GetUserAccounts(groupName);
             string userName = userAccount.Split('\\').Last();
-            return userAccounts.Any(user => user.UserAccount.Equals(userName));
+            var isUserInRole = userAccounts.Any(user => user.UserAccount.Equals(userName));
+            CommonLogger.Warn(string.Format("Group: {0}, User: {1}, IsInGroup: {2}, UsersINGroup: {3}", groupName, userAccount, isUserInRole, string.Join(", ", (userAccounts.Select(it => it.UserAccount)))));
+            return isUserInRole;
         }
 
         private static List<ActiveDirectoryUser> GetUserAccounts(string groupName)
@@ -151,9 +173,11 @@ namespace TFIP.Business.Services.ActiveDirectory
 
         private static PrincipalContext CreatePrincipalContext()
         {
-            // var domain = Domain.GetCurrentDomain();
-            // return new PrincipalContext(ContextType.Domain, domain.Name);
+#if DEBUG
             return new PrincipalContext(ContextType.Machine);
+#else
+            return new PrincipalContext(ContextType.Domain, Domain.GetCurrentDomain().Name);
+#endif
         }
 
         public static void ClearCache()

@@ -29,7 +29,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage ApproveByCreditComission(ListItem data)
         {
             var updatedRequest = creditRequestService.ApproveByCreditComission(long.Parse(data.Id));
@@ -37,7 +36,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage Deny(ListItem data)
         {
             var updatedRequest = creditRequestService.Deny(long.Parse(data.Id));
@@ -45,7 +43,6 @@ namespace TFIP.Web.Api.Controllers
         }
 
         [HttpPost]
-        [UserAuthorize(Capability.ApproveCreditRequest)]
         public HttpResponseMessage ApproveBySecurity(ListItem data)
         {
             var updatedRequest = creditRequestService.ApproveBySecurity(long.Parse(data.Id));
