@@ -1,6 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "Добавление клиента";
+    if (this.Request.QueryString["clientId"] != null)
+    {
+        ViewBag.Title = "Редактирование клиента";
+    }
+    else
+    {
+        ViewBag.Title = "Добавление клиента";
+    }
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
