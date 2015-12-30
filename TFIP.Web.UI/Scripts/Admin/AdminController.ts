@@ -5,6 +5,7 @@
         makeActive: (tab)=> void ;
         tabs: TabViewModel[];
         regex: Const.RegularExpressions;
+        numPages: number;
     }
 
     export class AdminController {
@@ -23,6 +24,7 @@
             private $q: ng.IQService,
             private capabilityService: Capability.ICapabilityService) {
 
+            this.$scope.numPages = 6;
             this.capabilityService.checkCapability("adminPermissions").then(() => {
                 this.init();
             });

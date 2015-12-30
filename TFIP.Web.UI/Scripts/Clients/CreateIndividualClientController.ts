@@ -3,6 +3,7 @@ module TFIP.Web.UI.Clients {
 
     export interface ICreateIndividualClientScope extends ICreateClientBaseScope {
         genders: Shared.ListItem[];
+        clientViewModel: ClientViewModel;
     }
 
     export class CreateIndividualClientController extends CreateClientBaseController {

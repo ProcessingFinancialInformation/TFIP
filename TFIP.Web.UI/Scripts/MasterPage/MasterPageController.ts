@@ -4,6 +4,7 @@
         regex: Const.RegularExpressions;
         capabilityModel: Capability.CapabilityModel;
         allExceptAdmin: () => boolean;
+        numPages: number;
     }
 
     export class MasterPageController {
@@ -19,6 +20,7 @@
             private locationHelperService: Core.LocationHelperService) {
 
             this.$scope.regex = new Const.RegularExpressions();
+            this.$scope.numPages = 6;
             this.$scope.allExceptAdmin = () => this.allExceptAdmin();
             this.capabilityService.initCapabilities().then(() => {
                 this.$scope.capabilityModel = this.capabilityService.capabilityModel;

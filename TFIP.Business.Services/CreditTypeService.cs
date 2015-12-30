@@ -38,7 +38,7 @@ namespace TFIP.Business.Services
                                                        ? creditUow.CreditTypes.Get(
                                                            it =>
                                                            it.IsActive == isActive.Value
-                                                           && it.IsIndividual == isIndividual.HasValue)
+                                                           && it.IsIndividual == isIndividual.Value)
                                                        : creditUow.CreditTypes.Get(it => it.IsActive == isActive.Value)
                                                  : (isIndividual.HasValue)
                                                        ? creditUow.CreditTypes.Get(
