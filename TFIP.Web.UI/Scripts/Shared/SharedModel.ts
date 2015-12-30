@@ -5,10 +5,10 @@
         data: T;
     }
 
-    export class ListItem {
+    export interface ListItem {
         id: string;
         value: string;
-        additionalInfo: string;
+        additionalInfo?: string;
     }
 
     export class TabViewModel {
